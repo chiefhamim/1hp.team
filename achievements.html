@@ -4,10 +4,237 @@
     <meta charset="UTF-8">
     <title>1hp Achievements</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Tailwind CDN for default styles, remove if you want pure CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .big-card-shadow {
+            box-shadow: 0 4px 32px 0 rgba(253,224,71,0.45);
+        }
+        .big-card-shadow-red {
+            box-shadow: 0 4px 40px 0 rgba(239,68,68,0.45);
+        }
+        .img-hover-full {
+            transition: none;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .img-hover-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Modal styles */
+        .modal-bg {
+            background: rgba(0,0,0,0.85);
+        }
+        .modal-img {
+            max-width: 96vw;
+            max-height: 90vh;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(253,224,71,0.45), 0 0 0 8px rgba(0,0,0,0.7);
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen">
-    <!-- Content will go here step by step -->
+<body class="bg-gray-900 text-white min-h-screen py-12">
+    <h1 class="orbitron text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400 bg-clip-text text-transparent tracking-wider">
+        1hp's Achievements
+    </h1>
+    <div class="container mx-auto px-4">
+        <!-- 2x2 grid for achievements -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-center items-stretch">
+            <!-- First Achievement Card -->
+            <div class="relative flex-1 max-w-4xl mx-auto p-0 rounded-3xl big-card-shadow">
+                <div class="relative p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
+                    <svg class="absolute top-0 left-0 w-full h-16 pointer-events-none z-10" fill="none" viewBox="0 0 400 64">
+                        <circle cx="30" cy="32" r="6" fill="#fde047" opacity="0.7"/>
+                        <circle cx="370" cy="20" r="4" fill="#a78bfa" opacity="0.7"/>
+                        <rect x="80" y="10" width="8" height="8" rx="2" fill="#f87171" opacity="0.7"/>
+                        <rect x="320" y="40" width="8" height="8" rx="2" fill="#34d399" opacity="0.7"/>
+                        <circle cx="200" cy="8" r="5" fill="#fbbf24" opacity="0.7"/>
+                        <circle cx="120" cy="50" r="3" fill="#38bdf8" opacity="0.7"/>
+                        <circle cx="280" cy="55" r="4" fill="#f472b6" opacity="0.7"/>
+                    </svg>
+                    <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
+                        <div class="img-hover-container w-full flex justify-center items-center min-h-[22rem]">
+                            <img src="G4R.png"
+                                 alt="G4R Tourney Photo"
+                                 class="w-[38rem] h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
+                                 style="background:#181f2a;"
+                                 onclick="showModal('G4R.png', 'G4R Tourney Photo')">
+                        </div>
+                        <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-10 shadow-inner border border-yellow-300/30">
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
+                                <span class="ml-2 text-white text-lg font-mono tracking-wide">May 28, 2020</span>
+                            </div>
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
+                                <span class="ml-2 text-yellow-100 text-lg font-semibold">20K Tourney hosted by Team G4R Esports</span>
+                            </div>
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
+                                <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">3rd Place</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- #1 Badge -->
+                    <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-yellow-300 drop-shadow-[0_2px_12px_rgba(253,224,71,0.7)] select-none pointer-events-none">
+                        #1
+                    </div>
+                </div>
+            </div>
+            <!-- Second Achievement Card -->
+            <div class="relative flex-1 max-w-4xl mx-auto p-0 rounded-3xl big-card-shadow-red">
+                <div class="relative p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
+                    <svg class="absolute top-0 left-0 w-full h-16 pointer-events-none z-10" fill="none" viewBox="0 0 400 64">
+                        <circle cx="30" cy="32" r="6" fill="#fde047" opacity="0.7"/>
+                        <circle cx="370" cy="20" r="4" fill="#a78bfa" opacity="0.7"/>
+                        <rect x="80" y="10" width="8" height="8" rx="2" fill="#f87171" opacity="0.7"/>
+                        <rect x="320" y="40" width="8" height="8" rx="2" fill="#34d399" opacity="0.7"/>
+                        <circle cx="200" cy="8" r="5" fill="#fbbf24" opacity="0.7"/>
+                        <circle cx="120" cy="50" r="3" fill="#38bdf8" opacity="0.7"/>
+                        <circle cx="280" cy="55" r="4" fill="#f472b6" opacity="0.7"/>
+                    </svg>
+                    <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
+                        <div class="img-hover-container w-full flex justify-center items-center min-h-[22rem]">
+                            <img src="QRTN.png"
+                                 alt="PK 30K Quarantine Tournament"
+                                 class="w-[38rem] h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
+                                 style="background:#181f2a;"
+                                 onclick="showModal('QRTN.png', 'PK 30K Quarantine Tournament')">
+                        </div>
+                        <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-10 shadow-inner border border-yellow-300/30">
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
+                                <span class="ml-2 text-white text-lg font-mono tracking-wide">June 8, 2020</span>
+                            </div>
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
+                                <span class="ml-2 text-yellow-100 text-lg font-semibold">PK 30K Quarantine Tournament Final</span>
+                            </div>
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
+                                <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">5th Place</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- #2 Badge -->
+                    <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-red-500 drop-shadow-[0_2px_12px_rgba(239,68,68,0.7)] select-none pointer-events-none">
+                        #2
+                    </div>
+                </div>
+            </div>
+            <!-- Third Achievement Card (Purple) -->
+            <div class="relative flex-1 max-w-4xl mx-auto p-0 rounded-3xl" style="box-shadow: 0 4px 40px 0 rgba(168,139,250,0.45);">
+                <div class="relative p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
+                    <svg class="absolute top-0 left-0 w-full h-16 pointer-events-none z-10" fill="none" viewBox="0 0 400 64">
+                        <circle cx="30" cy="32" r="6" fill="#fde047" opacity="0.7"/>
+                        <circle cx="370" cy="20" r="4" fill="#a78bfa" opacity="0.7"/>
+                        <rect x="80" y="10" width="8" height="8" rx="2" fill="#f87171" opacity="0.7"/>
+                        <rect x="320" y="40" width="8" height="8" rx="2" fill="#34d399" opacity="0.7"/>
+                        <circle cx="200" cy="8" r="5" fill="#fbbf24" opacity="0.7"/>
+                        <circle cx="120" cy="50" r="3" fill="#38bdf8" opacity="0.7"/>
+                        <circle cx="280" cy="55" r="4" fill="#f472b6" opacity="0.7"/>
+                    </svg>
+                    <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
+                        <div class="img-hover-container w-full flex justify-center items-center min-h-[22rem]">
+                            <img src="SaW_ALBS.png"
+                                 alt="Sa.W ALBS Tournament"
+                                 class="w-[38rem] h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
+                                 style="background:#181f2a;"
+                                 onclick="showModal('SaW_ALBS.png', 'Sa.W ALBS Tournament')">
+                        </div>
+                        <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-10 shadow-inner border border-yellow-300/30">
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
+                                <span class="ml-2 text-white text-lg font-mono tracking-wide">June 29, 2020</span>
+                            </div>
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
+                                <span class="ml-2 text-yellow-100 text-lg font-semibold">First ever Apex Legends Custom tournament (ALBS) hosted by Sa.W</span>
+                            </div>
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
+                                <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st Place</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- #3 Badge (Purple) -->
+                    <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-purple-400 drop-shadow-[0_2px_12px_rgba(168,139,250,0.7)] select-none pointer-events-none">
+                        #3
+                    </div>
+                </div>
+            </div>
+            <!-- Fourth Achievement Card (Yellow) -->
+            <div class="relative flex-1 max-w-4xl mx-auto p-0 rounded-3xl big-card-shadow">
+                <div class="relative p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
+                    <svg class="absolute top-0 left-0 w-full h-16 pointer-events-none z-10" fill="none" viewBox="0 0 400 64">
+                        <circle cx="30" cy="32" r="6" fill="#fde047" opacity="0.7"/>
+                        <circle cx="370" cy="20" r="4" fill="#a78bfa" opacity="0.7"/>
+                        <rect x="80" y="10" width="8" height="8" rx="2" fill="#f87171" opacity="0.7"/>
+                        <rect x="320" y="40" width="8" height="8" rx="2" fill="#34d399" opacity="0.7"/>
+                        <circle cx="200" cy="8" r="5" fill="#fbbf24" opacity="0.7"/>
+                        <circle cx="120" cy="50" r="3" fill="#38bdf8" opacity="0.7"/>
+                        <circle cx="280" cy="55" r="4" fill="#f472b6" opacity="0.7"/>
+                    </svg>
+                    <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
+                        <div class="img-hover-container w-full flex justify-center items-center min-h-[22rem] gap-4">
+                            <img src="AorusXIntel.png"
+                                 alt="Aorus x Intel Apex Legends Cup"
+                                 class="w-[18rem] h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
+                                 style="background:#181f2a;"
+                                 onclick="showModal('AorusXIntel.png', 'Aorus x Intel Apex Legends Cup')">
+                            <img src="AorusXIntel_2.png"
+                                 alt="Aorus x Intel Apex Legends Cup 2"
+                                 class="w-[18rem] h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
+                                 style="background:#181f2a;"
+                                 onclick="showModal('AorusXIntel_2.png', 'Aorus x Intel Apex Legends Cup 2')">
+                        </div>
+                        <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-10 shadow-inner border border-yellow-300/30">
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
+                                <span class="ml-2 text-white text-lg font-mono tracking-wide">July 18, 2020</span>
+                            </div>
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
+                                <span class="ml-2 text-yellow-100 text-lg font-semibold">Aorus x Intel Apex Legends Cup</span>
+                            </div>
+                            <div class="mb-3 flex items-center gap-2">
+                                <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
+                                <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">2nd Place</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- #4 Badge (Yellow) -->
+                    <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-yellow-300 drop-shadow-[0_2px_12px_rgba(253,224,71,0.7)] select-none pointer-events-none">
+                        #4
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for full image -->
+    <div id="imgModal" class="fixed inset-0 hidden items-center justify-center z-50 modal-bg">
+        <div class="absolute inset-0 bg-black opacity-80" onclick="hideModal()"></div>
+        <img id="modalImg" src="" alt="" class="modal-img relative z-10 mx-auto my-auto" onclick="hideModal()">
+        <button onclick="hideModal()" class="absolute top-6 right-8 text-white text-4xl font-bold z-20 hover:text-yellow-400 transition-colors">&times;</button>
+    </div>
+    <script>
+        function showModal(src, alt) {
+            document.getElementById('imgModal').classList.remove('hidden');
+            document.getElementById('imgModal').classList.add('flex');
+            document.getElementById('modalImg').src = src;
+            document.getElementById('modalImg').alt = alt;
+        }
+        function hideModal() {
+            document.getElementById('imgModal').classList.remove('flex');
+            document.getElementById('imgModal').classList.add('hidden');
+            document.getElementById('modalImg').src = '';
+        }
+    </script>
 </body>
 </html>
