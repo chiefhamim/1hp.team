@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1hp Esports</title>
+    <title>1hp Esports - Apex Legends & Competitive Gaming Team</title>
     <meta name="description" content="1hp Esports - Apex Legends & competitive gaming team from Bangladesh. Meet the team, founders, advisors, and clan members.">
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="1hp Esports - Official Website">
+    <meta property="og:description" content="Friendship | Trust | Brotherhood. Check out the official home of 1hp Esports, featuring our Apex Legends team, news, and more!">
+    <meta property="og:image" content="https://www.1hp.team/1hp-social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://www.1hp.team/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="1hp Esports">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@1hpEsportsBD"> <meta name="twitter:title" content="1hp Esports - Official Website">
+    <meta name="twitter:description" content="Friendship | Trust | Brotherhood. Check out the official home of 1hp Esports!">
+    <meta name="twitter:image" content="https://www.1hp.team/1hp-social-preview.png">
+
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Orbitron:wght@400;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -15,7 +36,12 @@
             color: #F3F4F6;
             min-height: 100vh;
         }
-        .main-section-title, .about-us-title, .team-subtitle-legacy, .team-subtitle-youngsters {
+        .main-section-title, .about-us-title, .team-subtitle-legacy, .team-subtitle-youngsters,
+        /* Ensuring Orbitron is applied to these specific h3s as per your body code */
+        #founders > .container > h3, 
+        #advisors > .container > h3, 
+        #esports-team > .container > .mb-16 > h3, /* for 1hp Legacy */
+        #esports-team > .container > div:last-child > h3 /* for 1hp Youngsters */ {
             font-family: 'Orbitron', sans-serif;
         }
         .card {
@@ -29,11 +55,8 @@
         ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
     </style>
-        <link rel="icon" href="favicon.png" type="image/png">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Header & Navigation -->
     <header class="bg-gray-900/80 backdrop-blur-md shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
             <a href="#home" class="flex-shrink-0">
@@ -76,8 +99,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Hero Section -->
     <section id="home" class="relative py-16 sm:py-24 bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('image_7d1423.png'); min-height: 70vh;">
         <div class="absolute inset-0 bg-black opacity-60"></div>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -88,8 +109,6 @@
             </div>
         </div>
     </section>
-
-    <!-- About Section -->
     <section id="about" class="py-12 sm:py-16 my-8 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center text-lg space-y-6 about-us-text">
             <div class="flex flex-col items-center">
@@ -109,54 +128,49 @@
             </p>
         </div>
     </section>
-
-    <!-- Teams Section -->
     <div class="w-full flex justify-center my-6">
-        <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white-400 text-center" style="font-family: 'Orbitron', sans-serif;">
+        <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center">
             Management & Teams
         </h2>
     </div>
+
     <section id="founders" class="py-12 sm:py-16 my-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-center text-3xl sm:text-4xl font-bold mb-10 mt-8 bg-gradient-to-r from-yellow-400 via-red-400 to-purple-500 bg-clip-text text-transparent" style="font-family: 'Orbitron', sans-serif;">
+            <h3 class="text-center text-3xl sm:text-4xl font-bold mb-10 mt-8 bg-gradient-to-r from-yellow-400 via-red-400 to-purple-500 bg-clip-text text-transparent">
                 1hp's Founders
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Founder Card 1 -->
                 <div class="card bg-yellow-500/70 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(255,206,65,0.35)]">
                     <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-yellow-500 shadow-lg"
                          src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
-                         alt="Founder 1"
+                         alt="Founder 1 - chiefhamim"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+1&font=inter';">
                     <h4 class="text-xl font-semibold text-white mb-1">chiefhamim</h4>
                     <p class="text-yellow-500 font-medium mb-1">Co-Founder / Manager</p>
                     <p class="text-white-500 text-sm">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</p>
                 </div>
-                <!-- Founder Card 2 -->
                 <div class="card bg-red-500/50 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]">
                     <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-red-500 shadow-lg"
                          src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
-                         alt="Founder 2"
+                         alt="Founder 2 - crippz"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+2&font=inter';">
                     <h4 class="text-xl font-semibold text-white mb-1">crippz</h4>
                     <p class="text-red-500 font-medium mb-1">Co-Founder / Admin</p>
                     <p class="text-white-500 text-sm">Instrumental in building the team’s competitive edge, admired for his mechanical skills and leadership.</p>
                 </div>
-                <!-- Founder Card 3 -->
                 <div class="card bg-red-500/50 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]">
                     <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-red-500 shadow-lg"
                          src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
-                         alt="Founder 3"
+                         alt="Founder 3 - WakaChaka"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+3&font=inter';">
                     <h4 class="text-xl font-semibold text-white mb-1">WakaChaka</h4>
                     <p class="text-red-500 font-medium mb-1">Co-Founder / Admin </p>
                     <p class="text-white-500 text-sm">Key supporter and strategist, bringing experience and stability to the founding team. Currently inactive.</p>
                 </div>
-                <!-- Founder Card 4 -->
                 <div class="card bg-purple-500/40 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(102,75,240,0.35)]">
                     <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-purple-500 shadow-lg"
                          src="https://i.ibb.co/b5D3dzDT/SHaN.png"
-                         alt="Founder 4"
+                         alt="Founder 4 - SHaN"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+4&font=inter';">
                     <h4 class="text-xl font-semibold text-white mb-1">SHaN</h4>
                     <p class="text-purple-300 font-medium mb-1">Co-Founder / Retired</p>
@@ -166,14 +180,12 @@
         </div>
     </section>
 
-    <!-- Advisors Section -->
     <section id="advisors" class="py-12 sm:py-16 my-8 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-center text-blue-200 text-3xl sm:text-4xl font-bold mb-10 mt-8" style="font-family: 'Orbitron', sans-serif;">
+            <h3 class="text-center text-blue-200 text-3xl sm:text-4xl font-bold mb-10 mt-8">
                 1hp's Advisors
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
-                <!-- Advisor Card 1 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/20 shadow-[0_8px_32px_0_rgba(34,211,238,0.35)]">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
                          src="https://i.ibb.co/jkc4S44d/De-droper-logo.jpg"
@@ -183,7 +195,6 @@
                     <p class="text-cyan-100 font-medium mb-1">Advisor / Fund Manager</p>
                     <p class="text-gray-300 text-sm">Oversees financial strategy and resource management for the team.</p>
                 </div>
-                <!-- Advisor Card 2 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-green-400/20 shadow-[0_8px_32px_0_rgba(34,197,94,0.35)]">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-green-300 shadow-lg"
                          src="https://i.ibb.co/tpxrxGML/viper.png"
@@ -193,7 +204,6 @@
                     <p class="text-green-100 font-medium mb-1">Advisor</p>
                     <p class="text-gray-300 text-sm">Provides strategic advice and supports team development.</p>
                 </div>
-                <!-- Advisor Card 3 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/20 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)]">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg"
                          src="https://i.ibb.co/wNskW3gH/Rifat-Kabir-Samrat-1.jpg"
@@ -207,16 +217,14 @@
         </div>
     </section>
 
-    <!-- Esports Team Section -->
     <section id="esports-team" class="py-12 sm:py-16 my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center mb-12" style="font-family: 'Orbitron', sans-serif;">
+            <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center mb-12">
                 1hp's Competitive Teams
             </h2>
             <div class="mb-16">
                 <h3 class="team-subtitle-legacy text-center text-red-300 text-3xl sm:text-4xl font-bold mb-10 mt-8">1hp Legacy</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Player Card 1 -->
                     <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-blue-400/10 shadow-[0_8px_32px_0_rgba(59,130,246,0.35)] relative" style="min-height: 420px;">
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-lg"
                              src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
@@ -234,7 +242,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Player Card 2 -->
                     <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-red-400/10 shadow-[0_8px_32px_0_rgba(239,68,68,0.35)] relative" style="min-height: 420px;">
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-lg"
                              src="https://i.ibb.co/s9PQWFC9/xeox69.jpg"
@@ -252,7 +259,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Player Card 3 -->
                     <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)]">
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-lg"
                              src="https://i.ibb.co/YFxSBmMq/fahim-bhai.png"
@@ -267,7 +273,6 @@
             <div>
                 <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8">1hp Youngsters</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Player Card 1 -->
                     <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 shadow-[0_8px_32px_0_rgba(253,224,71,0.35)] relative" style="min-height: 420px;">
                         <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-lg bg-black"
                              src="https://i.ibb.co/qYgTRQ1T/frenzy.png"
@@ -285,7 +290,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Player Card 2 -->
                     <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-red-400/10 shadow-[0_8px_32px_0_rgba(239,68,68,0.35)] relative" style="min-height: 420px;">
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-300 shadow-lg"
                              src="https://i.ibb.co/tMKPHk9F/Walker.png"
@@ -297,13 +301,12 @@
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
                             <a href="https://www.youtube.com/@_walkerX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-medium transition-colors">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/>
+                                    <path d="M_21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/>
                                 </svg>
                                 YouTube
                             </a>
                         </div>
                     </div>
-                    <!-- Player Card 3 -->
                     <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)] max-w-sm mx-auto">
                         <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-lg bg-black" src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg" alt="1hp_1Doom">
                         <h3 class="text-xl font-semibold mb-2 text-white">1hp_1Doom</h3>
@@ -316,6 +319,35 @@
         </div>
     </section>
 
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            // Toggle ARIA attribute for accessibility
+            const isExpanded = menu.classList.contains('hidden') ? 'false' : 'true';
+            btn.setAttribute('aria-expanded', isExpanded);
+            // Toggle SVG icons
+            btn.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
+        });
+
+        // Close mobile menu when a link is clicked (for single-page navigation)
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (event) => {
+                // Check if the link is an internal page anchor
+                if (link.getAttribute('href').startsWith('#')) {
+                    if (!menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                        btn.setAttribute('aria-expanded', 'false');
+                        btn.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
+                    }
+                }
+                // If it's a link to a different page (e.g., "another-page.html"), 
+                // the browser will navigate, and the menu state on the new page will be default (hidden).
+            });
+        });
+    </script>
     <!--1hp Clan Specialist's Section -->
     <section id="teams-others" class="py-12 sm:py-16 my-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <style>
