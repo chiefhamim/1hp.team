@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1hp Esports</title>
+    <meta name="description" content="1hp Esports - Apex Legends & competitive gaming team from Bangladesh. Meet the team, founders, advisors, and clan members.">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #0d0d2c, #111827);
+            color: #F3F4F6;
+            min-height: 100vh;
+        }
+        .main-section-title, .about-us-title, .team-subtitle-legacy, .team-subtitle-youngsters {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="#home" class="flex-shrink-0">
+                <img class="h-10 w-auto" src="https://i.ibb.co/W4yxVzzt/1hp-Rebrand-PP-PNG.png" alt="1hp Esports Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/7c3aed/ffffff?text=1hp+Logo&font=inter';">
+            </a>
+            <div class="hidden md:flex ml-10 space-x-4">
+                <a href="https://discord.com/invite/ksvuUyMvMb" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md ml-2">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.2a.074.074 0 0 0-.078.037c-.34.607-.719 1.396-.984 2.013a18.736 18.736 0 0 0-5.59 0 12.522 12.522 0 0 0-.995-2.013.077.077 0 0 0-.078-.037c-1.432.327-2.813.82-4.105 1.569a.069.069 0 0 0-.032.027C.533 9.045-.32 13.579.099 18.057a.08.08 0 0 0 .031.056c1.732 1.277 3.415 2.048 5.077 2.568a.077.077 0 0 0 .084-.027c.391-.537.739-1.1 1.037-1.684a.076.076 0 0 0-.041-.104c-.552-.208-1.077-.462-1.584-.748a.077.077 0 0 1-.008-.128c.106-.08.213-.163.316-.246a.074.074 0 0 1 .077-.01c3.33 1.522 6.927 1.522 10.216 0a.073.073 0 0 1 .078.009c.104.083.21.166.317.247a.077.077 0 0 1-.006.128 12.298 12.298 0 0 1-1.585.747.076.076 0 0 0-.04.105c.3.584.648 1.147 1.037 1.684a.076.076 0 0 0 .084.028c1.663-.52 3.346-1.291 5.078-2.568a.077.077 0 0 0 .03-.055c.417-4.51-.7-9.017-3.548-13.661a.061.061 0 0 0-.03-.028zM8.02 15.331c-1.006 0-1.823-.922-1.823-2.053 0-1.13.807-2.053 1.823-2.053 1.025 0 1.832.932 1.823 2.053 0 1.13-.807 2.053-1.823 2.053zm7.974 0c-1.006 0-1.823-.922-1.823-2.053 0-1.13.807-2.053 1.823-2.053 1.025 0 1.832.932 1.823 2.053 0 1.13-.798 2.053-1.823 2.053z"/>
+                    </svg>
+                    Join our Discord
+                </a>
+                <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Home</a>
+                <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">About</a>
+                <a href="#esports-team" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Teams</a>
+                <a href="#news" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">News</a>
+                <a href="#sponsors" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Sponsors</a>
+                <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div class="md:hidden hidden bg-gray-900/90 backdrop-blur-md" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">About</a>
+                <a href="#esports-team" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Teams</a>
+                <a href="#news" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">News</a>
+                <a href="#sponsors" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Sponsors</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-16 sm:py-24 bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('image_7d1423.png'); min-height: 70vh;">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <img src="https://i.ibb.co/ZR2JjTMk/1hp-Rebrand-Cover-Photo.png" alt="1hp Esports Cover" class="mx-auto mb-6 max-w-xl w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/800x200/111827/ffffff?text=1hp+Esports+Cover&font=inter';">
+            <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#news" class="btn btn-primary text-lg bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300">Latest News</a>
+                <a href="#esports-team" class="btn btn-secondary text-lg bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300">Meet The Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 sm:py-16 my-8 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center text-lg space-y-6 about-us-text">
+            <div class="flex flex-col items-center">
+                <img 
+                    src="https://i.ibb.co/LDmqzR5q/20250529-221611.jpg" 
+                    alt="1hp Esports Team Photo" 
+                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-purple-400/30 mx-auto mb-8 max-w-full h-auto transition-transform duration-300 hover:scale-105"
+                    style="max-width: 520px;"
+                    onerror="this.onerror=null;this.src='https://placehold.co/800x400/374151/4b5563?text=Team+Photo&font=inter';"
+                >
+            </div>
+            <p class="bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent font-semibold">
+                The journey began on January 26th, 2020, with the goal of becoming the most reputed e-sports team in Bangladesh. 1hp has quickly risen through the ranks to become a formidable force in the Apex Legends competitive scene. Our passion for gaming, dedication to teamwork, and relentless pursuit of excellence continue to drive us forward.
+            </p>
+            <p class="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 bg-clip-text text-transparent font-semibold">
+                With a roster of talented players dedicated to achieving greatness, our mission extends beyond winning. We strive to cultivate a positive and engaging community built on friendship, trust, and the enduring spirit of brotherhood.
+            </p>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <div class="w-full flex justify-center my-6">
+        <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white-400 text-center" style="font-family: 'Orbitron', sans-serif;">
+            Management & Teams
+        </h2>
+    </div>
+    <section id="founders" class="py-12 sm:py-16 my-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-center text-3xl sm:text-4xl font-bold mb-10 mt-8 bg-gradient-to-r from-yellow-400 via-red-400 to-purple-500 bg-clip-text text-transparent" style="font-family: 'Orbitron', sans-serif;">
+                1hp's Founders
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Founder Card 1 -->
+                <div class="card bg-yellow-500/70 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(255,206,65,0.35)]">
+                    <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-yellow-500 shadow-lg"
+                         src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
+                         alt="Founder 1"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+1&font=inter';">
+                    <h4 class="text-xl font-semibold text-white mb-1">chiefhamim</h4>
+                    <p class="text-yellow-500 font-medium mb-1">Co-Founder / Manager</p>
+                    <p class="text-white-500 text-sm">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</p>
+                </div>
+                <!-- Founder Card 2 -->
+                <div class="card bg-red-500/50 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]">
+                    <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-red-500 shadow-lg"
+                         src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
+                         alt="Founder 2"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+2&font=inter';">
+                    <h4 class="text-xl font-semibold text-white mb-1">crippz</h4>
+                    <p class="text-red-500 font-medium mb-1">Co-Founder / Admin</p>
+                    <p class="text-white-500 text-sm">Instrumental in building the team’s competitive edge, admired for his mechanical skills and leadership.</p>
+                </div>
+                <!-- Founder Card 3 -->
+                <div class="card bg-red-500/50 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]">
+                    <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-red-500 shadow-lg"
+                         src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
+                         alt="Founder 3"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+3&font=inter';">
+                    <h4 class="text-xl font-semibold text-white mb-1">WakaChaka</h4>
+                    <p class="text-red-500 font-medium mb-1">Co-Founder / Admin </p>
+                    <p class="text-white-500 text-sm">Key supporter and strategist, bringing experience and stability to the founding team. Currently inactive.</p>
+                </div>
+                <!-- Founder Card 4 -->
+                <div class="card bg-purple-500/40 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(102,75,240,0.35)]">
+                    <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-purple-500 shadow-lg"
+                         src="https://i.ibb.co/b5D3dzDT/SHaN.png"
+                         alt="Founder 4"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+4&font=inter';">
+                    <h4 class="text-xl font-semibold text-white mb-1">SHaN</h4>
+                    <p class="text-purple-300 font-medium mb-1">Co-Founder / Retired</p>
+                    <p class="text-white-400 text-sm">Currently inactive and playing with life mostly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advisors Section -->
+    <section id="advisors" class="py-12 sm:py-16 my-8 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-center text-blue-200 text-3xl sm:text-4xl font-bold mb-10 mt-8" style="font-family: 'Orbitron', sans-serif;">
+                1hp's Advisors
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
+                <!-- Advisor Card 1 -->
+                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/20 shadow-[0_8px_32px_0_rgba(34,211,238,0.35)]">
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
+                         src="https://i.ibb.co/jkc4S44d/De-droper-logo.jpg"
+                         alt="1hp_moindedropper"
+                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=moindedropper&font=inter';">
+                    <h4 class="text-lg font-bold text-cyan-200 mb-1">moindedropper</h4>
+                    <p class="text-cyan-100 font-medium mb-1">Advisor / Fund Manager</p>
+                    <p class="text-gray-300 text-sm">Oversees financial strategy and resource management for the team.</p>
+                </div>
+                <!-- Advisor Card 2 -->
+                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-green-400/20 shadow-[0_8px_32px_0_rgba(34,197,94,0.35)]">
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-green-300 shadow-lg"
+                         src="https://i.ibb.co/tpxrxGML/viper.png"
+                         alt="1hp_Viper"
+                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=Viper&font=inter';">
+                    <h4 class="text-lg font-bold text-green-200 mb-1">[V̷]I̷P̷3̷R̷®</h4>
+                    <p class="text-green-100 font-medium mb-1">Advisor</p>
+                    <p class="text-gray-300 text-sm">Provides strategic advice and supports team development.</p>
+                </div>
+                <!-- Advisor Card 3 -->
+                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/20 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)]">
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg"
+                         src="https://i.ibb.co/wNskW3gH/Rifat-Kabir-Samrat-1.jpg"
+                         alt="1hp_INSTINCTx"
+                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=INSTINCTx&font=inter';">
+                    <h4 class="text-lg font-bold text-purple-200 mb-1">INSTINCTx</h4>
+                    <p class="text-purple-100 font-medium mb-1">Advisor</p>
+                    <p class="text-gray-300 text-sm">Shares experience and insights to help guide the team’s success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Esports Team Section -->
+    <section id="esports-team" class="py-12 sm:py-16 my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center mb-12" style="font-family: 'Orbitron', sans-serif;">
+                1hp's Competitive Teams
+            </h2>
+            <div class="mb-16">
+                <h3 class="team-subtitle-legacy text-center text-red-300 text-3xl sm:text-4xl font-bold mb-10 mt-8">1hp Legacy</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Player Card 1 -->
+                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-blue-400/10 shadow-[0_8px_32px_0_rgba(59,130,246,0.35)] relative" style="min-height: 420px;">
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-lg"
+                             src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
+                             alt="1hp_crippz"
+                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_crippz&font=inter';">
+                        <h3 class="text-xl font-semibold mb-2 text-white">1hp_crippz</h3>
+                        <p class="text-yellow-300 font-medium mb-1">Role: In Game Leader</p>
+                        <p class="text-gray-300 text-sm">Co Founder of 1hp Esports, a star player of Bangladesh, loved and admired because of unique playstyle, witty nature and friendly attitude.</p>
+                        <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                            <a href="https://www.facebook.com/xCrippz/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-medium transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                                </svg>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Player Card 2 -->
+                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-red-400/10 shadow-[0_8px_32px_0_rgba(239,68,68,0.35)] relative" style="min-height: 420px;">
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-lg"
+                             src="https://i.ibb.co/s9PQWFC9/xeox69.jpg"
+                             alt="1hp_xeox69"
+                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_xeox69&font=inter';">
+                        <h3 class="text-xl font-semibold mb-2 text-white">1hp_xeox69</h3>
+                        <p class="text-red-300 font-medium mb-1">Role: Playmaker / Offense</p>
+                        <p class="text-gray-300 text-sm">Joined September 23, 2020. Known for his iconic gameplay with 1hp_crippz. A competitive mindset with serious mechanical skill to dominate the game.</p>
+                        <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                            <a href="https://www.facebook.com/xeox69" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-medium transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                                </svg>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Player Card 3 -->
+                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)]">
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-lg"
+                             src="https://i.ibb.co/YFxSBmMq/fahim-bhai.png"
+                             alt="1hp_JDM Doge"
+                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_JDM%20Doge&font=inter';">
+                        <h3 class="text-xl font-semibold mb-2 text-white">1hp_JDM Doge</h3>
+                        <p class="text-purple-300 font-medium mb-1">Role: Support / Defense</p>
+                        <p class="text-gray-300 text-sm">JDM_Doge is a calm and supportive Apex player who remains composed under pressure, even in the most intense competitive moments. Specialized in rapid response on immediate support. JDM_Doge’s tactical ability usage is precise and strategic, often forcing opponents to reconsider their approach before engaging his squad.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8">1hp Youngsters</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Player Card 1 -->
+                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 shadow-[0_8px_32px_0_rgba(253,224,71,0.35)] relative" style="min-height: 420px;">
+                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-lg bg-black"
+                             src="https://i.ibb.co/qYgTRQ1T/frenzy.png"
+                             alt="1hp_Frenzy"
+                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_Frenzy&font=inter';">
+                        <h3 class="text-xl font-semibold mb-2 text-white">1hp_Frenzy</h3>
+                        <p class="text-yellow-300 font-medium mb-1">Role: In Game Leader</p>
+                        <p class="text-gray-300 text-sm">Joined August 13, 2021 as the youngest recruit of 1hp. Played Valorant as well. Known for insanely good mechanical skill and decision making. Played uncountable tournaments home and abroad.</p>
+                        <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                            <a href="https://www.facebook.com/Frenzy4356" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-medium transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                                </svg>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Player Card 2 -->
+                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-red-400/10 shadow-[0_8px_32px_0_rgba(239,68,68,0.35)] relative" style="min-height: 420px;">
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-300 shadow-lg"
+                             src="https://i.ibb.co/tMKPHk9F/Walker.png"
+                             alt="1hp_WalkerX"
+                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_WalkerX&font=inter';">
+                        <h3 class="text-xl font-semibold mb-2 text-white">1hp_WalkerX</h3>
+                        <p class="text-red-300 font-medium mb-1">Role: Offense / Support</p>
+                        <p class="text-gray-300 text-sm">Known for his juicy mechanical skill; often time does suspicious gameplay and has 6th-sense game-sense!? Very good at supporting team when they need him the most by dying first (lol) and but homie is master in playmaking most of the times.</p>
+                        <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                            <a href="https://www.youtube.com/@_walkerX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-medium transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/>
+                                </svg>
+                                YouTube
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Player Card 3 -->
+                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)] max-w-sm mx-auto">
+                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-lg bg-black" src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg" alt="1hp_1Doom">
+                        <h3 class="text-xl font-semibold mb-2 text-white">1hp_1Doom</h3>
+                        <p class="text-purple-300 font-medium mb-1">Role: Offense / Support</p>
+                        <p class="text-gray-300 text-sm"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--1hp Clan Specialist's Section -->
+    <section id="teams-others" class="py-12 sm:py-16 my-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <style>
+            /* Shifting Layers Shadow Animation */
+            @keyframes shifting-layers-shadow-yellow {
+                0% {
+                    box-shadow:
+                        0 4px 16px 0 rgba(253,224,71,0.25),
+                        8px 8px 32px 0 rgba(253,224,71,0.15),
+                        -8px 8px 32px 0 rgba(253,224,71,0.10);
+                }
+                33% {
+                    box-shadow:
+                        0 10px 24px 0 rgba(253,224,71,0.32),
+                        18px 2px 40px 0 rgba(253,224,71,0.19),
+                        -10px 16px 40px 0 rgba(253,224,71,0.14);
+                }
+                66% {
+                    box-shadow:
+                        0 7px 28px 0 rgba(253,224,71,0.28),
+                        12px 10px 44px 0 rgba(253,224,71,0.21),
+                        -18px 8px 44px 0 rgba(253,224,71,0.12);
+                }
+                100% {
+                    box-shadow:
+                        0 4px 16px 0 rgba(253,224,71,0.25),
+                        8px 8px 32px 0 rgba(253,224,71,0.15),
+                        -8px 8px 32px 0 rgba(253,224,71,0.10);
+                }
+            }
+            @keyframes shifting-layers-shadow-purple {
+                0% {
+                    box-shadow:
+                        0 4px 16px 0 rgba(168,85,247,0.25),
+                        8px 8px 32px 0 rgba(168,85,247,0.15),
+                        -8px 8px 32px 0 rgba(168,85,247,0.10);
+                }
+                33% {
+                    box-shadow:
+                        0 12px 30px 0 rgba(168,85,247,0.32),
+                        20px 4px 44px 0 rgba(168,85,247,0.19),
+                        -12px 18px 44px 0 rgba(168,85,247,0.14);
+                }
+                66% {
+                    box-shadow:
+                        0 6px 20px 0 rgba(168,85,247,0.28),
+                        10px 14px 40px 0 rgba(168,85,247,0.21),
+                        -20px 6px 40px 0 rgba(168,85,247,0.12);
+                }
+                100% {
+                    box-shadow:
+                        0 4px 16px 0 rgba(168,85,247,0.25),
+                        8px 8px 32px 0 rgba(168,85,247,0.15),
+                        -8px 8px 32px 0 rgba(168,85,247,0.10);
+                }
+            }
+            @keyframes shifting-layers-shadow-pink {
+                0% {
+                    box-shadow:
+                        0 4px 16px 0 rgba(236,72,153,0.25),
+                        8px 8px 32px 0 rgba(236,72,153,0.15),
+                        -8px 8px 32px 0 rgba(236,72,153,0.10);
+                }
+                33% {
+                    box-shadow:
+                        0 14px 28px 0 rgba(236,72,153,0.33),
+                        14px 12px 40px 0 rgba(236,72,153,0.18),
+                        -18px 14px 40px 0 rgba(236,72,153,0.13);
+                }
+                66% {
+                    box-shadow:
+                        0 8px 36px 0 rgba(236,72,153,0.29),
+                        18px 6px 48px 0 rgba(236,72,153,0.22),
+                        -14px 18px 48px 0 rgba(236,72,153,0.11);
+                }
+                100% {
+                    box-shadow:
+                        0 4px 16px 0 rgba(236,72,153,0.25),
+                        8px 8px 32px 0 rgba(236,72,153,0.15),
+                        -8px 8px 32px 0 rgba(236,72,153,0.10);
+                }
+            }
+            @keyframes shifting-layers-shadow-cyan {
+                0% {
+                    box-shadow:
+                        0 4px 16px 0 rgba(34,211,238,0.25),
+                        8px 8px 32px 0 rgba(34,211,238,0.15),
+                        -8px 8px 32px 0 rgba(34,211,238,0.10);
+                }
+                33% {
+                    box-shadow:
+                        0 8px 40px 0 rgba(34,211,238,0.31),
+                        22px 8px 44px 0 rgba(34,211,238,0.17),
+                        -10px 20px 44px 0 rgba(34,211,238,0.13);
+                }
+                66% {
+                    box-shadow:
+                        0 12px 24px 0 rgba(34,211,238,0.27),
+                        16px 12px 36px 0 rgba(34,211,238,0.20),
+                        -22px 10px 36px 0 rgba(34,211,238,0.12);
+                }
+                100% {
+                    box-shadow:
+                        0 4px 16px 0 rgba(34,211,238,0.25),
+                        8px 8px 32px 0 rgba(34,211,238,0.15),
+                        -8px 8px 32px 0 rgba(34,211,238,0.10);
+                }
+            }
+            .card-shadow-yellow {
+                animation: shifting-layers-shadow-yellow 9s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+            }
+            .card-shadow-purple {
+                animation: shifting-layers-shadow-purple 9s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+            }
+            .card-shadow-pink {
+                animation: shifting-layers-shadow-pink 9s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+            }
+            .card-shadow-cyan {
+                animation: shifting-layers-shadow-cyan 9s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+            }
+        </style>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center mb-10 mt-8" style="font-family: 'Orbitron', sans-serif;">
+                1hp's Clan Specialists
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+                <!-- Player Card 1 -->
+                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 card-shadow-yellow"
+                     style="min-height: 500px;">
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-yellow-300 shadow-lg"
+                         src="https://i.ibb.co/DDJkyfz9/MUSTAKIM.jpg"
+                         alt="MUSTAKIM"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=MUSTAKIM&font=inter';">
+                    <h4 class="text-xl font-bold text-yellow-400 mb-1">MUSTAKIM</h4>
+                    <p class="text-yellow-200 font-medium mb-1 italic">Clutch Performance Specialist</p>
+                    <p class="text-gray-300 text-sm">
+                        Mustakim thrives in the moments that matter most—where quick thinking, confidence are key. Known for stepping up under pressure, Mustakim brings a bold, can-do spirit that energizes the team and drives results. With a mix of sharp instincts and an easygoing sense of humor, Mustakim strikes the perfect balance between getting things done and keeping things fun.
+                    </p>
+                </div>
+                <!-- Player Card 2 -->
+                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 relative card-shadow-purple"
+                     style="min-height: 500px;">
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg"
+                         src="https://i.ibb.co/wGWcNjh/psykix.png"
+                         alt="Psykix"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Psykix&font=inter';">
+                    <h4 class="text-xl font-bold text-purple-400 mb-1">Psykix</h4>
+                    <p class="text-purple-200 font-medium mb-1 italic">Content Creator &amp; Caster</p>
+                    <p class="text-gray-300 text-sm">
+                        Psykix brings creativity, energy, and precision to every project—as a content creator, caster, and dependable team player. With a strong presence and a collaborative mindset, Psykix consistently delivers engaging content and supports the team with reliability and flair.
+                    </p>
+                    <div class="w-full flex flex-col items-center gap-2 absolute left-0 bottom-0 pb-6">
+                        <a href="https://www.facebook.com/psykix" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                            </svg>
+                            Facebook
+                        </a>
+                        <a href="https://www.youtube.com/@zabirshahid2658" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/>
+                            </svg>
+                            YouTube
+                        </a>
+                    </div>
+                </div>
+                <!-- Player Card 3 -->
+                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-pink-400/10 relative card-shadow-pink"
+                     style="min-height: 500px;">
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-pink-300 shadow-lg"
+                         src="https://i.ibb.co/wNRBVd2g/AfraBae.jpg"
+                         alt="AfraBae"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=AfraBae&font=inter';">
+                    <h4 class="text-xl font-bold text-pink-400 mb-1">AfraBae</h4>
+                    <p class="text-pink-200 font-medium mb-1 italic">Pro Player &amp; Team Support</p>
+                    <p class="text-gray-300 text-sm">
+                        Afrabae is the first female player from Bangladesh to surpass 100K+ LP, making waves as a trailblazer in the scene. Known for her supportive spirit and boundless energy, she uplifts the squad both in and out of the game, bringing passion, positivity, and performance to every match.
+                    </p>
+                    <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                        <a href="https://www.facebook.com/afraplay007/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 font-medium transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                            </svg>
+                            Facebook
+                        </a>
+                    </div>
+                </div>
+                <!-- Player Card 4 -->
+                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/10 card-shadow-cyan"
+                     style="min-height: 500px;">
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
+                         src="https://i.ibb.co/gZF1Bb9Q/stitch.jpg"
+                         alt="DrStitch"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=DrStitch&font=inter';">
+                    <h4 class="text-xl font-bold text-cyan-400 mb-1 normal-case">DrStitch</h4>
+                    <p class="text-cyan-200 font-medium mb-1 italic">Internal Operations Specialist</p>
+                    <p class="text-gray-300 text-sm">
+                        Dr. Stitch supports the smooth functioning of our internal operations with a professional, reliable presence. Known for excellent communication and a sharp problem-solving mindset, Stitch ensures that behind-the-scenes processes run efficiently while remaining approachable and collaborative.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- News Section -->
+    <section id="news" class="py-12 sm:py-16 bg-gray-850/80 backdrop-blur-md rounded-lg my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Latest News & Updates</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- News Card 1 -->
+                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
+                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/wFHhx03w/Legends-Reborn-Tournament-Top-5-Prizewinners.png" alt="Legends-Reborn-Tournament-Top-5-Prizewinners" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=Tournament+Win&font=inter';">
+                    <div class="p-6">
+                        <p class="text-sm text-gray-500 mb-1">May 26, 2025</p>
+                        <h3 class="text-xl font-semibold mb-3 text-white">1hp Esports WON Legends Reborn Tournament!</h3>
+                        <p class="text-gray-400 text-sm mb-4">An incredible performance by the team led to a decisive victory in the finals. Read more about their journey...</p>
+                        <a href="https://www.facebook.com/official1hp/posts/pfbid02tDDJMfJxq5w8fZhBREn37PRydngn3oKKz5beuBCmE8rF4QdBQ3vPXcXLCSsxHJcNl" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More &rarr;</a>
+                    </div>
+                </div>
+                <!-- News Card 2 -->
+                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
+                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/C310bs5R/1hp-member-Sign-UP-01.png" alt="1hp-member-Sign-UP-01" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=New+Player&font=inter';">
+                    <div class="p-6">
+                        <p class="text-sm text-gray-500 mb-1">December 5, 2023</p>
+                        <h3 class="text-xl font-semibold mb-3 text-white">Welcoming Our Newest Star Player!</h3>
+                        <p class="text-gray-400 text-sm mb-4">We're thrilled to announce the latest addition to our Apex Legends roster, INSTINCTx. Get to know them here...</p>
+                        <a href="https://www.facebook.com/photo.php?fbid=1056223615800813&set=pb.100042395546650.-2207520000&type=3" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More &rarr;</a>
+                    </div>
+                </div>
+                <!-- News Card 3 -->
+                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
+                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/wNLSs47z/Legends-Reborn-Tournament-Final-Results-Points-Table.png" alt="Legends-Reborn-Tournament-Final-Results-Points-Table" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=Match+Recap&font=inter';">
+                    <div class="p-6">
+                        <p class="text-sm text-gray-500 mb-1">May 26, 2025</p>
+                        <h3 class="text-xl font-semibold mb-3 text-white">Match Recap: Intense Battle Against Rivals</h3>
+                        <p class="text-gray-400 text-sm mb-4">A nail-biting series that went down to the wire. Catch all the highlights and analysis...</p>
+                        <a href="https://www.youtube.com/watch?v=L6Ku_fg96BY" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More &rarr;</a>
+                    </div>
+                </div>
+            <div class="text-center mt-12">
+                <a href="#" class="btn btn-primary bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="py-12 sm:py-16 bg-gray-900/80 backdrop-blur-md rounded-lg my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Our Valued Sponsors</h2>
+            <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+            </div>
+            <div class="flex justify-center mt-12">
+                <img src="https://i.ibb.co/PpZHKkW/1hp-Xcvj-Cover-4.png" alt="1hp-Xcvj-Cover-4" class="rounded-lg shadow-lg max-w-full h-auto" loading="lazy">
+            </div>
+                <div class="text-center mt-12">
+                <a href="#contact" class="btn btn-secondary bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300">Become a Sponsor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-950/90 backdrop-blur-md border-t border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">1hp Esports</h3>
+                    <p class="text-gray-400 text-sm">
+                        1hp, One Dream, 1shot<br>
+                        Dhaka, Bangladesh
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">About Us</a></li>
+                        <li><a href="#esports-team" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Our Players</a></li>
+                        <li><a href="#news" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Blog/News</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Media Kit</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Connect With Us</h3>
+                                        <div class="flex space-x-4 mb-4">
+                        <a href="https://www.facebook.com/official1hp" target="_blank" rel="noopener" class="text-gray-400 hover:text-purple-400 transition-colors" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm">Email: <a href="mailto:hpteam@1hp.team
+                        " class="hover:text-purple-400">hpteam@1hp.team</a></p>
+                    </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center">
+                <p class="text-sm text-gray-500">&copy; <span id="currentYear"></span> 1hp Esports. All rights reserved.</p>
+                <p class="text-xs text-gray-600 mt-1">Website made by @chiefhamim with help from 1Doom</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => {
+            const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+            menuButton.setAttribute('aria-expanded', !expanded);
+            mobileMenu.classList.toggle('hidden');
+            menuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+        });
+        // Hide mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    menuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.add('hidden');
+                    menuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
+                }
+            });
+        });
+        // Smooth scroll for anchor links (with offset for sticky header)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (!targetId.startsWith('#') || targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const header = document.querySelector('header');
+                    const headerOffset = header ? header.offsetHeight : 0;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset + 1;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
