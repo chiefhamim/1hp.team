@@ -122,7 +122,6 @@
         </div>
     </header>
     <section id="home" class="relative py-16 sm:py-24 bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('image_7d1423.png'); min-height: 70vh;">
-        <div class="absolute inset-0 bg-black opacity-60"></div>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <img src="https://i.ibb.co/ZR2JjTMk/1hp-Rebrand-Cover-Photo.png" alt="1hp Esports Cover" class="mx-auto mb-6 max-w-xl w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/800x200/111827/ffffff?text=1hp+Esports+Cover&font=inter';">
             <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -131,7 +130,7 @@
             </div>
         </div>
     </section>
-    <section id="about" class="py-12 sm:py-16 my-8 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <section id="about" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center text-lg space-y-6 about-us-text">
             <div class="flex flex-col items-center">
                 <img 
@@ -150,16 +149,61 @@
             </p>
         </div>
     </section>
-    <div class="w-full flex justify-center my-6">
-        <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center">
-            Management & Teams
-        </h2>
-    </div>
-<section id="founders" class="py-12 sm:py-16 my-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 class="text-center text-3xl sm:text-4xl font-bold mb-10 mt-8 bg-gradient-to-r from-yellow-400 via-red-400 to-purple-500 bg-clip-text text-transparent">
+<!-- Management & Teams and Founders Section with balanced, minimal negative space -->
+<div class="w-full flex justify-center mt-8 mb-2">
+    <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-6 management-gradient-effect">
+        Management & Teams
+    </h2>
+    <style>
+    /* Grayish to white animated gradient for Management & Teams title */
+    .management-gradient-effect {
+        background: linear-gradient(90deg, #6b7280 0%, #d1d5db 40%, #f3f4f6 100%);
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: management-gradient-move 4s ease-in-out infinite alternate;
+        text-shadow:
+            0 2px 12px rgba(107,114,128,0.13),
+            0 4px 32px rgba(209,213,219,0.10),
+            0 1.2px 0 #0008;
+        letter-spacing: 0em;
+        transition: text-shadow 0.3s;
+    }
+    @keyframes management-gradient-move {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
+    </style>
+</div>
+<section id="founders" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto px-0">
+        <h3 class="text-center text-3xl sm:text-4xl font-bold mb-6 mt-0 founders-gradient-effect">
             1hp's Founders
         </h3>
+        <style>
+        /* Animated gradient for 1hp's Founders title using logo colors (yellow, red, purple) */
+        .founders-gradient-effect {
+            background: linear-gradient(90deg, #ffce41 0%, #ec4158 50%, #664bf0 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: founders-gradient-move 4s ease-in-out infinite alternate;
+            text-shadow:
+                0 2px 12px rgba(255,206,65,0.13),
+                0 4px 32px rgba(236,65,88,0.10),
+                0 1.2px 0 #0008;
+            letter-spacing: 0em;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes founders-gradient-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        </style>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="card bg-yellow-500/70 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(255,206,65,0.35)]" data-shadow="rgba(255,206,65,0.55)">
                 <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
@@ -201,8 +245,7 @@
     </div>
 </section>
 <script>
-    // --- 1hp Founders Section Magic ---
-
+            // --- 1hp Founders Section Magic ---
     // 1. Animate cards on scroll (fade-in & slight up)
     function animateFoundersOnScroll() {
         const cards = document.querySelectorAll('#founders .card');
@@ -212,14 +255,14 @@
                 if (rect.top < window.innerHeight - 60) {
                     card.style.opacity = 1;
                     card.style.transform = 'translateY(0)';
-                    card.style.transition = `opacity 0.7s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55)`;
+                    card.style.transition = `opacity 1s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55)`;
                 }
             });
         };
         // Initial state
         cards.forEach(card => {
             card.style.opacity = 0;
-            card.style.transform = 'translateY(40px)';
+            card.style.transform = 'translateY(60px)';
         });
         window.addEventListener('scroll', reveal, { passive: true });
         reveal();
@@ -231,7 +274,7 @@
         const shadowColor = card.getAttribute('data-shadow') || 'rgba(255,255,255,0.25)';
         card.addEventListener('mouseenter', () => {
             // Use a larger blur and positive spread, no inset, so shadow stays outside
-            card.style.boxShadow = `0 0 32px 16px ${shadowColor}, 0 8px 32px 8px ${shadowColor.replace('0.55', '0.20')}`;
+            card.style.boxShadow = `0 0 40px 1px ${shadowColor}, 0 1px 40px 4px ${shadowColor.replace('0.55', '0.10')}`;
             card.style.transition = 'box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)';
         });
         card.addEventListener('mouseleave', () => {
@@ -319,11 +362,35 @@
         });
     });
 </script>
-    <section id="advisors" class="py-12 sm:py-16 my-8 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-center text-blue-200 text-3xl sm:text-4xl font-bold mb-10 mt-8">
+    <section id="advisors" class="pt-2 pb-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-0">
+            <h3 class="advisors-title text-center text-3xl sm:text-4xl font-bold mb-6 mt-0">
                 1hp's Advisors
             </h3>
+            <style>
+            .advisors-title {
+                font-family: 'Orbitron', sans-serif;
+                background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 30%, #a855f7 70%, #ec4158 100%);
+                background-size: 200% auto;
+                color: #fff;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: advisors-title-gradient 5s linear infinite alternate;
+                letter-spacing: 0em;
+                text-shadow:
+                    0 2px 12px rgba(56,189,248,0.13),
+                    0 4px 32px rgba(168,85,247,0.10),
+                    0 1px 0 #0008;
+                position: relative;
+                transition: text-shadow 0.3s;
+            }
+            .advisors-title::after { display: none !important; }
+            @keyframes advisors-title-gradient {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 100% 50%; }
+            }
+            </style>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/20 shadow-[0_8px_32px_0_rgba(34,211,238,0.35)]">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
@@ -350,19 +417,65 @@
                          onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=INSTINCTx&font=inter';">
                     <h4 class="text-lg font-bold text-purple-200 mb-1">INSTINCTx</h4>
                     <p class="text-purple-100 font-medium mb-1">Advisor</p>
-                    <p class="text-gray-300 text-sm">Shares insightful advice and suggestion to help guide the team’s success.</p>
+                    <p class="text-gray-300 text-sm">Shares insightful advice and suggestion to help guide the team.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <section id="esports-team" class="py-12 sm:py-16 my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center mb-12 tracking-widest">
+    <section id="esports-team" class="pt-2 pb-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+        <div class="container mx-auto px-0 relative z-10">
+            <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-6 tracking-widest effect-title-1hp">
                 1hp's Competitive Teams
             </h2>
-            <div class="mb-16">
-                <h3 class="team-subtitle-legacy text-center text-red-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider">1hp Legacy</h3>
+            <style>
+            /* Subtle, effect-rich style for the main section title */
+            .effect-title-1hp {
+                font-family: 'Orbitron', sans-serif;
+                background: linear-gradient(120deg, #60a5fa 0%, #ec4158 40%, #ffce41 70%, #664bf0 100%);
+                background-size: 200% auto;
+                color: #fff;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: effect-title-1hp-gradient 3s linear infinite alternate;
+                text-shadow:
+                    0 2px 12px rgba(102,75,240,0.13),
+                    0 4px 32px rgba(255,206,65,0.10),
+                    0 1.2px 0 #0008;
+                letter-spacing: 0em;
+                transition: text-shadow 0.3s;
+            }
+            @keyframes effect-title-1hp-gradient {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 100% 50%; }
+            }
+            </style>
+            <div class="mb-10">
+                <h3 class="team-subtitle-legacy text-center text-blue-300 text-3xl sm:text-4xl font-bold mb-6 mt-0 tracking-wider legacy-effect">
+                    1hp Legacy
+                </h3>
+                <style>
+                /* Subtle animated gradient + glow for 1hp Legacy subtitle (bluish tint) */
+                .legacy-effect {
+                    background: linear-gradient(120deg, #60a5fa 0%, #38bdf8 40%, #a5b4fc 70%, #818cf8 100%);
+                    background-size: 200% auto;
+                    color: #fff;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation: legacy-gradient-move 4s ease-in-out infinite alternate;
+                    text-shadow:
+                        0 2px 12px rgba(96,165,250,0.13),
+                        0 4px 32px rgba(129,140,248,0.10),
+                        0 1.2px 0 #0008;
+                    letter-spacing: 0em;
+                    transition: text-shadow 0.3s;
+                }
+                @keyframes legacy-gradient-move {
+                    0% { background-position: 0% 50%; }
+                    100% { background-position: 100% 50%; }
+                }
+                </style>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card pro-card bg-blue-trans rounded-2xl flex flex-col items-center text-center p-8 border border-blue-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="blue">
                         <div class="pro-glow"></div>
@@ -413,7 +526,31 @@
                 </div>
             </div>
             <div>
-                <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider">1hp Youngsters</h3>
+                <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider youngsters-effect">
+                    1hp Youngsters
+                </h3>
+                <style>
+                /* Subtle animated green gradient + glow for 1hp Youngsters subtitle */
+                .youngsters-effect {
+                    background: linear-gradient(90deg, #6ee7b7 0%, #34d399 40%, #38bdf8 70%, #a7f3d0 100%);
+                    background-size: 200% auto;
+                    color: #fff;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation: youngsters-gradient-move 4s ease-in-out infinite alternate;
+                    text-shadow:
+                        0 2px 12px rgba(52,211,153,0.13),
+                        0 4px 32px rgba(56,189,248,0.10),
+                        0 1.2px 0 #0008;
+                    letter-spacing: 0em;
+                    transition: text-shadow 0.3s;
+                }
+                @keyframes youngsters-gradient-move {
+                    0% { background-position: 0% 50%; }
+                    100% { background-position: 100% 50%; }
+                }
+            </style>                
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card pro-card bg-yellow-trans rounded-2xl flex flex-col items-center text-center p-8 border border-yellow-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="yellow">
                         <div class="pro-glow"></div>
@@ -451,13 +588,13 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible max-w-sm mx-auto" style="min-height: 420px;" data-neon="purple">
+                    <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="purple">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-md bg-black pro-img-glow" src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg" alt="1hp_1Doom">
                         <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">1Doom</h3>
                         <p class="text-purple-300 font-medium mb-1">Role: Offense / Support</p>
-                        <p class="text-gray-300 text-sm"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.
-                        </p>
+                        <p class="text-gray-300 text-sm"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -491,7 +628,7 @@
         z-index: -1;
         opacity: 0.32;
         filter: blur(7px);
-        transition: filter 0.3s, opacity 0.3s;
+        transition: filter 0.1s, opacity 0.1s;
     }
     .pro-card[data-neon="blue"] .pro-glow { background: radial-gradient(circle at 60% 40%, #60a5fa 0%, #1e3a8a 80%); }
     .pro-card[data-neon="red"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ec4158 0%, #991b1b 80%); }
@@ -562,8 +699,8 @@
             });
         });
     </script>
-    <!--1hp Clan Specialist's Section -->
-    <section id="teams-others" class="py-12 sm:py-16 my-8 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+ <!--1hp Clan Specialist's Section -->
+<section id="teams-others" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <style>
             /* Shifting Layers Shadow Animation */
             @keyframes shifting-layers-shadow-yellow {
@@ -684,13 +821,37 @@
             }
         </style>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center mb-10 mt-8" style="font-family: 'Orbitron', sans-serif;">
+            <h3 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-10 mt-8 clan-specialists-effect" style="font-family: 'Orbitron', sans-serif;">
                 1hp's Clan Specialists
             </h3>
+            <style>
+            /* Subtle animated gold gradient + glow for Clan Specialists title */
+            .clan-specialists-effect {
+                font-family: 'Orbitron', sans-serif;
+                background: linear-gradient(90deg, #ffe082 0%, #ffd700 30%, #ffb300 70%, #fffbe6 100%);
+                background-size: 200% auto;
+                color: #fff;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: clan-specialists-gradient 5s linear infinite alternate;
+                letter-spacing: 0em;
+                text-shadow:
+                    0 2px 12px rgba(255, 215, 0, 0.18),
+                    0 4px 32px rgba(255, 193, 7, 0.10),
+                    0 1px 0 #0008;
+                position: relative;
+                transition: text-shadow 0.3s;
+            }
+            @keyframes clan-specialists-gradient {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 100% 50%; }
+            }
+            </style>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
                 <!-- Player Card 1 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 card-shadow-yellow"
-                     style="min-height: 500px;">
+                     style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-yellow-300 shadow-lg"
                          src="https://i.ibb.co/QjkJ5Jqq/Discord-03-June-2025-10-01-12-PM.png"
                          alt="MUSTAKIM"
@@ -703,7 +864,7 @@
                 </div>
                 <!-- Player Card 2 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 relative card-shadow-purple"
-                     style="min-height: 500px;">
+                     style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg"
                          src="https://i.ibb.co/wGWcNjh/psykix.png"
                          alt="Psykix"
@@ -730,7 +891,7 @@
                 </div>
                 <!-- Player Card 3 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-pink-400/10 relative card-shadow-pink"
-                     style="min-height: 500px;">
+                     style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-pink-300 shadow-lg"
                          src="https://i.ibb.co/wNRBVd2g/AfraBae.jpg"
                          alt="AfraBae"
@@ -751,7 +912,7 @@
                 </div>
                 <!-- Player Card 4 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/10 card-shadow-cyan"
-                     style="min-height: 500px;">
+                     style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
                          src="https://i.ibb.co/gZF1Bb9Q/stitch.jpg"
                          alt="DrStitch"
@@ -763,12 +924,36 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
     <!-- News Section -->
-    <section id="news" class="py-12 sm:py-16 bg-gray-850/80 backdrop-blur-md rounded-lg my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="news" class="py-12 sm:py-16 bg-gray-850/80 backdrop-blur-md rounded-lg my-14 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Latest News & Updates</h2>
+            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 news-gradient-effect" style="font-family: 'Orbitron', sans-serif;">
+                Latest News <span class="font-extrabold">&</span> Updates
+            </h2>
+            <style>
+            /* Animated orange-pink gradient + glow for News section title */
+            .news-gradient-effect {
+                font-family: 'Orbitron', sans-serif;
+                background: linear-gradient(90deg, #ffb300 0%, #fbbf24 30%, #ec4899 70%, #f472b6 100%);
+                background-size: 200% auto;
+                color: #fff;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: news-gradient-move 5s linear infinite alternate;
+                letter-spacing: 0em;
+                text-shadow:
+                    0 2px 12px rgba(251,191,36,0.16),
+                    0 4px 32px rgba(236,72,153,0.13),
+                    0 1px 0 #0008;
+                position: relative;
+                transition: text-shadow 0.3s;
+            }
+            @keyframes news-gradient-move {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 100% 50%; }
+            }
+            </style>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- News Card 1 -->
                 <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
@@ -800,42 +985,68 @@
                         <a href="https://www.youtube.com/watch?v=L6Ku_fg96BY" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More &rarr;</a>
                     </div>
                 </div>
-            <div class="text-center mt-12">
-                <a href="#" class="btn btn-primary bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300">View All News</a>
+            <div class="flex justify-center items-center mt-8">
+                <a href="#" class="btn btn-primary bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300">
+                    View All News
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Sponsors Section -->
-    <section id="sponsors" class="py-12 sm:py-16 bg-gray-900/80 backdrop-blur-md rounded-lg my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="sponsors" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Our Valued Sponsors</h2>
+            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 sponsors-gradient-effect" style="font-family: 'Orbitron', sans-serif;">
+                Our Valued Sponsors
+            </h2>
+            <style>
+            /* Animated purple-pink gradient + glow for Sponsors section title */
+            .sponsors-gradient-effect {
+                font-family: 'Orbitron', sans-serif;
+                background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #fbbf24 100%);
+                background-size: 200% auto;
+                color: #fff;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: sponsors-gradient-move 5s linear infinite alternate;
+                letter-spacing: 0em;
+                text-shadow:
+                    0 2px 12px rgba(168,85,247,0.15),
+                    0 4px 32px rgba(236,72,153,0.10),
+                    0 1px 0 #0008;
+                position: relative;
+                transition: text-shadow 0.3s;
+            }
+            @keyframes sponsors-gradient-move {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 100% 50%; }
+            }
+            </style>
             <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
             </div>
             <div class="flex justify-center mt-12">
                 <img src="https://i.ibb.co/PpZHKkW/1hp-Xcvj-Cover-4.png" alt="1hp-Xcvj-Cover-4" class="rounded-lg shadow-lg max-w-full h-auto" loading="lazy">
             </div>
-                <div class="text-center mt-12">
-                <a href="#contact" class="btn btn-secondary bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300">Become a Sponsor</a>
+            <div class="text-center mt-12">
+                <a href="mailto:email@1hp.team?subject=Become%20a%20Sponsor%20-%201hp%20Esports" class="btn btn-secondary bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300">
+                    Become a Sponsor
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <!-- ...existing code... -->
-    <footer id="contact" class="bg-gray-950/90 backdrop-blur-md border-t border-gray-700">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer id="contact" class="border-t border-gray-700 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold text-white mb-4">1hp Esports</h3>
+                    <h3 class="text-lg font-semibold text-white mb-6">1hp Esports</h3>
                     <p class="text-gray-400 text-sm">
-                        1hp, One Dream, 1shot<br>
-                        Dhaka, Bangladesh
+                        We are a community of gamers who believe in the power of teamwork, respect, and fun. Our mission is to create a positive environment where players can thrive, improve, and enjoy the game together.
                     </p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
+                    <h3 class="text-lg font-semibold text-white mb-6">Quick Links</h3>
+                    <ul class="space-y-1">
                         <li><a href="#about" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">About Us</a></li>
                         <li><a href="#esports-team" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Our Players</a></li>
                         <li><a href="#news" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Blog/News</a></li>
@@ -860,11 +1071,10 @@
             </div>
             <div class="mt-12 border-t border-gray-700 pt-8 w-full flex flex-col items-center justify-center text-center">
                 <p class="text-sm text-gray-500">&copy; <span id="currentYear"></span> 1hp Esports. All rights reserved.</p>
-                <p class="text-xs text-gray-600 mt-1">Website made by @chiefhamim with 1Doom</p>
+                <p class="text-xs text-gray-600 mt-1">Website developed by <b>@chiefhamim</b></p>
             </div>
         </div>
     </footer>
-    <!-- ...existing code... -->
 
     <script>
         // Mobile menu toggle
