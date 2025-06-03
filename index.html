@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1hp Esports - Homepage</title>
+    <title>1hp Esports - Home</title>
     <meta name="description" content="1hp Esports - A team from Bangladesh. Meet the team, founders, advisors, and clan members.">
 
     <meta property="og:title" content="1hp Esports - Official Website">
@@ -59,13 +59,23 @@
 <body>
     <header class="bg-gray-900/80 backdrop-blur-md shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-            <a href="#home" class="flex-shrink-0">
-                <img class="h-10 w-auto" src="https://i.ibb.co/W4yxVzzt/1hp-Rebrand-PP-PNG.png" alt="1hp Esports Logo" onerror="this.onerror=null;this.src='https://placehold.co/150x50/7c3aed/ffffff?text=1hp+Logo&font=inter';">
+            <!-- Logo (always left) -->
+            <a href="index.html" class="flex-shrink-0" title="Go to Home">
+                <img class="h-10 w-auto" src="1hp Rebrand PP_PNG.png" alt="1hp Esports Logo"
+                     onerror="this.onerror=null;this.src='https://placehold.co/150x50/7c3aed/ffffff?text=1hp+Logo&font=inter';">
             </a>
-            <div class="hidden md:flex ml-10 space-x-4">
-                <a href="https://discord.com/invite/ksvuUyMvMb" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md ml-2">
-                    <img src="Discord-Symbol-White.png" alt="Discord" style="height:16px;width:auto;display:inline-block;vertical-align:middle;">
-                    Join Our Discord
+            <!-- Main Nav: Discord first, then Home, About, ... -->
+            <div class="hidden md:flex flex-1 items-center justify-center space-x-4">
+                <a href="https://discord.com/invite/ksvuUyMvMb"
+                   target="_blank"
+                   rel="noopener"
+                   class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md whitespace-nowrap min-w-0">
+                    <img src="Discord-Symbol-White.png"
+                         alt="Discord"
+                         class="h-auto w-auto"
+                         style="min-width:1.25rem;max-width:1.25rem;display:inline-block;vertical-align:middle;">
+                    <span class="hidden sm:inline">Join Our Discord</span>
+                    <span class="inline sm:hidden">Discord</span>
                 </a>
                 <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Home</a>
                 <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">About</a>
@@ -75,8 +85,19 @@
                 <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
                 <a href="achievements.html" class="px-3 py-2 rounded-md text-sm font-semibold text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors">Achievements</a>
             </div>
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <!-- Hamburger for Mobile -->
+            <div class="md:hidden flex items-center flex-1 justify-center">
+                <a href="https://discord.com/invite/ksvuUyMvMb"
+                   target="_blank"
+                   rel="noopener"
+                   class="flex items-center justify-center px-3 py-2 rounded-md bg-[#5865F2] hover:bg-[#4752c4] shadow-md"
+                   style="min-width:2.5rem;max-width:2.5rem;">
+                    <img src="Discord-Symbol-White.png"
+                         alt="Discord"
+                         class="h-auto w-auto"
+                         style="min-width:1.5rem;max-width:1.5rem;display:inline-block;vertical-align:middle;">
+                </a>
+                <button id="mobile-menu-button" class="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -87,6 +108,7 @@
                 </button>
             </div>
         </nav>
+        <!-- Mobile Nav Links (all except Discord) -->
         <div class="md:hidden hidden bg-gray-900/90 backdrop-blur-md" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Home</a>
@@ -95,6 +117,7 @@
                 <a href="#news" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">News</a>
                 <a href="#sponsors" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Sponsors</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
+                <a href="achievements.html" class="block px-3 py-2 rounded-md text-base font-semibold text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors">Achievements</a>
             </div>
         </div>
     </header>
@@ -114,8 +137,8 @@
                 <img 
                     src="https://i.ibb.co/LDmqzR5q/20250529-221611.jpg" 
                     alt="1hp Esports Team Photo" 
-                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-purple-400/30 mx-auto mb-8 max-w-full h-auto transition-transform duration-300 hover:scale-105"
-                    style="max-width: 520px;"
+                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-purple-300/50 mx-auto mb-8 max-w-full h-auto transition-transform duration-300 hover:scale-105"
+                    style="max-width: 720px;"
                     onerror="this.onerror=null;this.src='https://placehold.co/800x400/374151/4b5563?text=Team+Photo&font=inter';"
                 >
             </div>
@@ -144,7 +167,7 @@
                          src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
                          alt="Founder 1 - chiefhamim"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+1&font=inter';">
-                    <h4 class="text-xl font-semibold text-yellow-500 mb-1">chiefhamim</h4>
+                    <h4 class="text-xl font-semibold text-yellow-400 mb-1">chiefhamim</h4>
                     <p class="text-black font-semibold mb-2">Co-Founder / Manager</p>
                     <p class="text-white-500 text-sm">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</p>
                 </div>
@@ -481,7 +504,7 @@
                          alt="MUSTAKIM"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=MUSTAKIM&font=inter';">
                     <h4 class="text-xl font-bold text-yellow-400 mb-1">MUSTAKIM</h4>
-                    <p class="text-yellow-200 font-medium mb-1 italic">A diplomatic Troubleshooter</p>
+                    <p class="text-yellow-200 font-medium mb-1 italic">Diplomatic Troubleshooter</p>
                     <p class="text-gray-300 text-sm">
                         Mustakim thrives in the moments that matter most. Does dominating performance under pressure, brings a bold, can-do spirit that energizes the team and drives results. With a mix of sharp instincts and an easygoing sense of humor, homie strikes the perfect balance between getting things done and keeping things fun.
                     </p>
