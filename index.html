@@ -161,7 +161,7 @@
             1hp's Founders
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="card bg-yellow-500/70 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(255,206,65,0.35)]" data-shadow="rgba(255,206,65,0.55)">
+            <div class="card bg-yellow-500/70 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(255,206,65,0.35)]" data-shadow="rgba(255,206,65,0.55)">
                 <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
                      src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
                      alt="Founder 1 - chiefhamim"
@@ -170,7 +170,7 @@
                 <p class="text-black font-semibold mb-2">Co-Founder / Manager</p>
                 <p class="text-white-500 text-sm">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</p>
             </div>
-            <div class="card bg-red-500/50 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]" data-shadow="rgba(236,65,88,0.55)">
+            <div class="card bg-red-500/50 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]" data-shadow="rgba(236,65,88,0.55)">
                 <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
                      src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
                      alt="Founder 2 - crippz"
@@ -179,7 +179,7 @@
                 <p class="text-black font-semibold mb-2">Co-Founder / Admin</p>
                 <p class="text-white-500 text-sm">Instrumental in building the team’s competitive edge, admired for his mechanical skills and leadership.</p>
             </div>
-            <div class="card bg-red-500/50 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]" data-shadow="rgba(236,65,88,0.55)">
+            <div class="card bg-red-500/50 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]" data-shadow="rgba(236,65,88,0.55)">
                 <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
                      src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
                      alt="Founder 3 - WakaChaka"
@@ -188,7 +188,7 @@
                 <p class="text-black font-semibold mb-2">Co-Founder / Admin </p>
                 <p class="text-white-500 text-sm">Key supporter and strategist, bringing experience and stability to the founding team. Currently inactive.</p>
             </div>
-            <div class="card bg-purple-500/40 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(102,75,240,0.35)]" data-shadow="rgba(102,75,240,0.55)">
+            <div class="card bg-purple-500/40 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(102,75,240,0.35)]" data-shadow="rgba(102,75,240,0.55)">
                 <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
                      src="https://i.ibb.co/b5D3dzDT/SHaN.png"
                      alt="Founder 4 - SHaN"
@@ -202,7 +202,7 @@
 </section>
 <script>
     // --- 1hp Founders Section Magic ---
-    
+
     // 1. Animate cards on scroll (fade-in & slight up)
     function animateFoundersOnScroll() {
         const cards = document.querySelectorAll('#founders .card');
@@ -217,7 +217,7 @@
             });
         };
         // Initial state
-        document.querySelectorAll('#founders .card').forEach(card => {
+        cards.forEach(card => {
             card.style.opacity = 0;
             card.style.transform = 'translateY(40px)';
         });
@@ -225,17 +225,20 @@
         reveal();
     }
     animateFoundersOnScroll();
-// 2. Add interactive glow on hover
-document.querySelectorAll('#founders .card').forEach(card => {
-    const shadowColor = card.getAttribute('data-shadow') || 'rgba(255,255,255,0.25)';
-    card.addEventListener('mouseenter', () => {
-        card.style.boxShadow = `0 0 32px 8px ${shadowColor}, 0 8px 32px 0 ${shadowColor.replace('0.55', '0.20')}`;
-        card.style.transition = 'box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)';
+
+    // 2. Add interactive glow on hover (shadow only outside)
+    document.querySelectorAll('#founders .card').forEach(card => {
+        const shadowColor = card.getAttribute('data-shadow') || 'rgba(255,255,255,0.25)';
+        card.addEventListener('mouseenter', () => {
+            // Use a larger blur and positive spread, no inset, so shadow stays outside
+            card.style.boxShadow = `0 0 32px 16px ${shadowColor}, 0 8px 32px 8px ${shadowColor.replace('0.55', '0.20')}`;
+            card.style.transition = 'box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.boxShadow = '';
+        });
     });
-    card.addEventListener('mouseleave', () => {
-        card.style.boxShadow = '';
-    });
-});
+
     // 3. Add a floating particle effect behind the founders section
     (function foundersParticles() {
         const section = document.getElementById('founders');
@@ -250,14 +253,14 @@ document.querySelectorAll('#founders .card').forEach(card => {
         canvas.style.zIndex = 0;
         section.style.position = 'relative';
         section.prepend(canvas);
-    
+
         function resize() {
             canvas.width = section.offsetWidth;
             canvas.height = section.offsetHeight;
         }
         resize();
         window.addEventListener('resize', resize);
-    
+
         const colors = [
             'rgba(253,224,71,0.18)',   // yellow
             'rgba(236,65,88,0.18)',    // red
@@ -273,7 +276,7 @@ document.querySelectorAll('#founders .card').forEach(card => {
             color: colors[Math.floor(Math.random() * colors.length)],
             alpha: 0.2 + Math.random() * 0.3
         }));
-    
+
         function draw() {
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -301,35 +304,8 @@ document.querySelectorAll('#founders .card').forEach(card => {
         }
         animate();
     })();
-    
-    // 4. Add a "shine" effect to founder images on hover
-    document.querySelectorAll('#founders .card img').forEach(img => {
-        img.style.position = 'relative';
-        img.style.overflow = 'hidden';
-        img.addEventListener('mouseenter', function () {
-            let shine = document.createElement('div');
-            shine.className = 'founder-shine';
-            shine.style.position = 'absolute';
-            shine.style.top = 0;
-            shine.style.left = 0;
-            shine.style.width = '100%';
-            shine.style.height = '100%';
-            shine.style.pointerEvents = 'none';
-            shine.style.background = 'linear-gradient(120deg, rgba(255,255,255,0.0) 60%, rgba(255,255,255,0.35) 80%, rgba(255,255,255,0.0) 100%)';
-            shine.style.transform = 'translateX(-100%)';
-            shine.style.transition = 'transform 0.7s cubic-bezier(.68,-0.55,.27,1.55)';
-            this.parentElement.style.position = 'relative';
-            this.parentElement.appendChild(shine);
-            setTimeout(() => {
-                shine.style.transform = 'translateX(100%)';
-            }, 10);
-            setTimeout(() => {
-                shine.remove();
-            }, 800);
-        });
-    });
-    
-    // 5. Add a subtle floating animation to the cards
+
+    // 4. Add a subtle floating animation to the cards
     document.querySelectorAll('#founders .card').forEach((card, i) => {
         card.animate([
             { transform: 'translateY(0px)' },
@@ -342,8 +318,7 @@ document.querySelectorAll('#founders .card').forEach(card => {
             easing: 'ease-in-out'
         });
     });
-    </script>
-
+</script>
     <section id="advisors" class="py-12 sm:py-16 my-8 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="text-center text-blue-200 text-3xl sm:text-4xl font-bold mb-10 mt-8">
@@ -381,20 +356,21 @@ document.querySelectorAll('#founders .card').forEach(card => {
         </div>
     </section>
 
-    <section id="esports-team" class="py-12 sm:py-16 my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center mb-12">
+    <section id="esports-team" class="py-12 sm:py-16 my-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-white text-center mb-12 tracking-widest">
                 1hp's Competitive Teams
             </h2>
             <div class="mb-16">
-                <h3 class="team-subtitle-legacy text-center text-red-300 text-3xl sm:text-4xl font-bold mb-10 mt-8">1hp Legacy</h3>
+                <h3 class="team-subtitle-legacy text-center text-red-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider">1hp Legacy</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-blue-400/10 shadow-[0_8px_32px_0_rgba(59,130,246,0.35)] relative" style="min-height: 420px;">
-                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-lg"
+                    <div class="card pro-card bg-blue-trans rounded-2xl flex flex-col items-center text-center p-8 border border-blue-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="blue">
+                        <div class="pro-glow"></div>
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
                              alt="1hp_crippz"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_crippz&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-blue-400">crippz</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-400 tracking-wide">crippz</h3>
                         <p class="text-blue-300 font-medium mb-1">Role: In Game Leader</p>
                         <p class="text-gray-300 text-sm">A star player. Known for getting code:net in tournaments. Loved and admired because of unique playstyle, leadership, witty nature and friendly attitude. </p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
@@ -406,12 +382,13 @@ document.querySelectorAll('#founders .card').forEach(card => {
                             </a>
                         </div>
                     </div>
-                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-red-400/10 shadow-[0_8px_32px_0_rgba(239,68,68,0.35)] relative" style="min-height: 420px;">
-                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-lg"
+                    <div class="card pro-card bg-red-trans rounded-2xl flex flex-col items-center text-center p-8 border border-red-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="red">
+                        <div class="pro-glow"></div>
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/s9PQWFC9/xeox69.jpg"
                              alt="1hp_xeox69"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_xeox69&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-red-400">xeox69</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide">xeox69</h3>
                         <p class="text-red-300 font-medium mb-1">Role: Playmaker / Offense</p>
                         <p class="text-gray-300 text-sm">Joined September 23, 2020. Known for his iconic gameplay with crippz. A competitive mindset with serious mechanical skill to dominate the game.</p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
@@ -423,26 +400,28 @@ document.querySelectorAll('#founders .card').forEach(card => {
                             </a>
                         </div>
                     </div>
-                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)]">
-                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-lg"
+                    <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="purple">
+                        <div class="pro-glow"></div>
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/YFxSBmMq/fahim-bhai.png"
                              alt="1hp_JDM Doge"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_JDM%20Doge&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-purple-400">JDM Doge</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">JDM Doge</h3>
                         <p class="text-purple-300 font-medium mb-1">Role: Support / Defense</p>
                         <p class="text-gray-300 text-sm">JDM_Doge aka Fahim bhai is a calm and supportive player who remains composed under pressure, even in the most intense competitive moments. Specialized in rapid response on immediate support. Tactical ability usage is precise and strategic, often forcing opponents to reconsider their approach before engaging his squad.</p>
                     </div>
                 </div>
             </div>
             <div>
-                <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8">1hp Youngsters</h3>
+                <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider">1hp Youngsters</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 shadow-[0_8px_32px_0_rgba(253,224,71,0.35)] relative" style="min-height: 420px;">
-                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-lg bg-black"
+                    <div class="card pro-card bg-yellow-trans rounded-2xl flex flex-col items-center text-center p-8 border border-yellow-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="yellow">
+                        <div class="pro-glow"></div>
+                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-md bg-black pro-img-glow"
                              src="https://i.ibb.co/qYgTRQ1T/frenzy.png"
                              alt="1hp_Frenzy"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_Frenzy&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-yellow-400">Frenzy</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-yellow-400 tracking-wide">Frenzy</h3>
                         <p class="text-yellow-300 font-medium mb-1">Role: In Game Leader</p>
                         <p class="text-gray-300 text-sm">Joined August 13, 2021 as the youngest recruit of 1hp. Played Valorant as well. Known for insanely good mechanical skill and decision making. Won uncountable tournaments with crippz & xeox69 in home and abroad.</p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
@@ -454,12 +433,13 @@ document.querySelectorAll('#founders .card').forEach(card => {
                             </a>
                         </div>
                     </div>
-                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-red-400/10 shadow-[0_8px_32px_0_rgba(239,68,68,0.35)] relative" style="min-height: 420px;">
-                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-300 shadow-lg"
+                    <div class="card pro-card bg-red-trans rounded-2xl flex flex-col items-center text-center p-8 border border-red-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="red">
+                        <div class="pro-glow"></div>
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-300 shadow-md pro-img-glow"
                              src="https://i.ibb.co/tMKPHk9F/Walker.png"
                              alt="1hp_WalkerX"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_WalkerX&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-red-400">WalkerX</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide">WalkerX</h3>
                         <p class="text-red-300 font-medium mb-1">Role: Offense / Support</p>
                         <p class="text-gray-300 text-sm">Known for his juicy mechanical skill; often time does suspicious gameplay and has 6th-sense game-sense!? Very good at supporting team when they need him the most by dying first!? but homie is master at playmaking most of the times.</p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
@@ -471,9 +451,10 @@ document.querySelectorAll('#founders .card').forEach(card => {
                             </a>
                         </div>
                     </div>
-                    <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)] max-w-sm mx-auto">
-                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-lg bg-black" src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg" alt="1hp_1Doom">
-                        <h3 class="text-xl font-semibold mb-2 text-purple-400">1Doom</h3>
+                    <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible max-w-sm mx-auto" style="min-height: 420px;" data-neon="purple">
+                        <div class="pro-glow"></div>
+                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-md bg-black pro-img-glow" src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg" alt="1hp_1Doom">
+                        <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">1Doom</h3>
                         <p class="text-purple-300 font-medium mb-1">Role: Offense / Support</p>
                         <p class="text-gray-300 text-sm"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.
                         </p>
@@ -482,6 +463,75 @@ document.querySelectorAll('#founders .card').forEach(card => {
             </div>
         </div>
     </section>
+    <style>
+    /* 1hp color translucent backgrounds */
+    .bg-yellow-trans { background: rgba(255, 206, 65, 0.13) !important; }
+    .bg-red-trans    { background: rgba(236, 65, 88, 0.13) !important; }
+    .bg-purple-trans { background: rgba(102, 75, 240, 0.13) !important; }
+    .bg-blue-trans   { background: rgba(96, 165, 250, 0.13) !important; }
+    
+    /* Remove neon background box */
+    #team-neon-bg { display: none !important; }
+    
+    /* Remove neon/flicker/animated effects from section titles */
+    .neon-title, .neon-subtitle { text-shadow: none !important; }
+    
+    /* Card Effects: Softer idle, reduced hover */
+    .pro-card {
+        box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
+        transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55), transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
+        position: relative;
+        z-index: 1;
+    }
+    .pro-card .pro-glow {
+        pointer-events: none;
+        position: absolute;
+        inset: -4px;
+        border-radius: 1.25rem;
+        z-index: -1;
+        opacity: 0.32;
+        filter: blur(7px);
+        transition: filter 0.3s, opacity 0.3s;
+    }
+    .pro-card[data-neon="blue"] .pro-glow { background: radial-gradient(circle at 60% 40%, #60a5fa 0%, #1e3a8a 80%); }
+    .pro-card[data-neon="red"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ec4158 0%, #991b1b 80%); }
+    .pro-card[data-neon="purple"] .pro-glow { background: radial-gradient(circle at 60% 40%, #664bf0 0%, #581c87 80%); }
+    .pro-card[data-neon="yellow"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ffce41 0%, #b45309 80%); }
+    
+    .pro-card:hover, .pro-card:focus-within {
+        /* The transform will be set by JS for random movement */
+        box-shadow: 0 0 16px 4px #fff2, 0 0 32px 8px var(--pro-neon, #fff2);
+        z-index: 2;
+    }
+    .pro-card[data-neon="blue"]:hover { --pro-neon: #60a5fa; }
+    .pro-card[data-neon="red"]:hover { --pro-neon: #ec4158; }
+    .pro-card[data-neon="purple"]:hover { --pro-neon: #664bf0; }
+    .pro-card[data-neon="yellow"]:hover { --pro-neon: #ffce41; }
+    
+    .pro-card .pro-img-glow {
+        box-shadow: 0 0 0 0 transparent;
+        transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .pro-card[data-neon="blue"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #60a5fa66, 0 0 32px 8px #1e3a8a33; }
+    .pro-card[data-neon="red"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ec415866, 0 0 32px 8px #991b1b33; }
+    .pro-card[data-neon="purple"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #664bf066, 0 0 32px 8px #581c8733; }
+    .pro-card[data-neon="yellow"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ffce4166, 0 0 32px 8px #b4530933; }
+    </style>
+    <script>
+    // Random movement on hover for pro cards
+    document.querySelectorAll('.pro-card').forEach(card => {
+        let originalTransform = card.style.transform || '';
+        card.addEventListener('mouseenter', () => {
+            // Random direction: -1 or 1 for x and y
+            const x = (Math.random() > 0.5 ? 1 : -1) * (8 + Math.random() * 8); // 8-16px
+            const y = (Math.random() > 0.5 ? 1 : -1) * (8 + Math.random() * 8);
+            card.style.transform = `translate(${x}px, ${y}px) scale(1.025) rotate(-0.5deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = originalTransform;
+        });
+    });
+    </script>
 
     <script>
         const btn = document.getElementById('mobile-menu-button');
