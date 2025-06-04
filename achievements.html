@@ -2,760 +2,620 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>1hp Achievements</title>
+    <title>1hp Esports - Hall of Glory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the prestigious achievements and triumphs of 1hp Esports in Apex Legends from 2020 to 2025. Relive epic victories and remarkable milestones.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Roboto:wght@400;500;700&family=Oswald:wght@500;700&family=Montserrat:wght@400;600;600i&family=Electrolize&display=swap" rel="stylesheet">
     <style>
-        .orbitron {
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #0d0d2c, #111827); /* Matching main site */
+            color: #F3F4F6; /* Matching main site */
+        }
+
+        .orbitron { font-family: 'Orbitron', sans-serif; }
+        .oswald { font-family: 'Oswald', sans-serif; }
+        .montserrat { font-family: 'Montserrat', sans-serif; }
+        .electrolize { font-family: 'Electrolize', sans-serif; }
+
+        /* --- Main Achievements Title --- */
+        .achievements-main-title {
             font-family: 'Orbitron', sans-serif;
+            font-weight: 700; 
+            background: linear-gradient(120deg, #818cf8 0%, #60a5fa 20%, #ec4158 40%, #ffce41 60%, #a855f7 80%, #664bf0 100%);
+            background-size: 250% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: achievements-title-gradient-anim 5s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+            text-shadow: 
+              0 2px 3px rgba(0, 0, 0, 0.25), 
+              0 0 1.5px rgba(102, 75, 240, 0.001), 
+              0 0 2px rgba(255, 206, 65, 0.0008), 
+              0 0 2.5px rgba(236, 65, 88, 0.0005); 
+            letter-spacing: 0.01em; 
+            padding: 0.1em 0;
         }
-        .big-card-shadow-yellow {
-            box-shadow: 0 4px 32px 0 rgba(253,224,71,0.45);
+        @keyframes achievements-title-gradient-anim {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
-        .big-card-shadow-red {
-            box-shadow: 0 4px 40px 0 rgba(239,68,68,0.45);
-        }
-        .big-card-shadow-purple {
-            box-shadow: 0 4px 40px 0 rgba(168,139,250,0.45);
-        }
-        .big-card-shadow-pink {
-            box-shadow: 0 4px 40px 0 rgba(236,72,153,0.45);
-        }
-        .img-hover-full {
-            transition: none;
-            object-fit: cover;
-            cursor: pointer;
-        }
-        .img-hover-container {
-            position: relative;
+        
+        /* --- Achievement Card Styles (Neon Overhaul) --- */
+        .achievement-card {
+            background-color: rgba(23, 30, 44, 0.75); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 1.25rem; 
+            padding: 1.25rem; 
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+            border: 1px solid rgba(75, 85, 99, 0.3); 
             display: flex;
+            flex-direction: column;
+            height: 100%; 
+            position: relative; 
+            overflow: hidden;
+            --current-neon-color: #777777; /* Default fallback neon color */
+        }
+
+        .achievement-card[data-neon="blue"]    { --current-neon-color: #60a5fa; }
+        .achievement-card[data-neon="red"]     { --current-neon-color: #ec4158; }
+        .achievement-card[data-neon="purple"]  { --current-neon-color: #664bf0; }
+        .achievement-card[data-neon="yellow"]  { --current-neon-color: #ffce41; }
+        .achievement-card[data-neon="green"]   { --current-neon-color: #9ef06c; }
+        .achievement-card[data-neon="orange"]  { --current-neon-color: #f84f29; }
+        .achievement-card[data-neon="cyan"]    { --current-neon-color: #0edef0; }
+        .achievement-card[data-neon="pink"]    { --current-neon-color: #f871ed; }
+
+        .achievement-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--current-neon-color);
+            opacity: 0;
+            z-index: 0; 
+            border-radius: inherit; 
+            pointer-events: none; 
+            transition: opacity 0.3s ease-out;
+        }
+        .achievement-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px) scale(1.03); 
+            border-color: var(--current-neon-color); 
+            box-shadow: 0 0 30px -8px var(--current-neon-color), 0 10px 15px -8px var(--current-neon-color); 
+        }
+        .achievement-card:hover::before {
+            opacity: 0.12;
+        }
+        
+        .achievement-card__badge {
+            display: inline-block; 
+            padding: 0.25rem 0.5rem; 
+            border-radius: 0.25rem; 
+            background-color: rgba(31, 41, 55, 0.6); 
+            color: var(--current-neon-color); 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            letter-spacing: 0.05em; 
+            line-height: 1.25; 
+            transition: color 0.3s ease-out, background-color 0.3s ease-out, text-shadow 0.3s ease-out, box-shadow 0.3s ease-out;
+            text-shadow: none; 
+            box-shadow: none; 
+        }
+        .achievement-card:hover .achievement-card__badge {
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+        }
+
+
+        .achievement-card__image-container {
+            display: flex;
+            gap: 0.75rem; 
+            margin-bottom: 1rem; 
+            height: 16rem; 
+            overflow: hidden;
             justify-content: center;
             align-items: center;
         }
-        /* Modal styles */
+        .achievement-card__image {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 0.75rem; 
+            cursor: pointer;
+            transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+            background-color: #1f2937; 
+        }
+        .achievement-card__image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .achievement-card__image--half { 
+            width: calc(50% - 0.375rem); 
+            object-fit: contain; 
+            height: 100%;
+        }
+
+      .achievement-card__title {
+        font-family: 'Electrolize', sans-serif; 
+        color: #E5E7EB; 
+        font-size: 1.25rem; 
+        line-height: 1.4; 
+        font-weight: 700; 
+        margin-bottom: 0.5rem; 
+        text-align: center; 
+        text-transform: uppercase; 
+        transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+    }
+    .achievement-card__title em {
+        font-style: italic;
+        font-weight: 600; 
+        font-family: 'Montserrat', sans-serif; 
+    }
+    .achievement-card:hover .achievement-card__title {
+        color: var(--current-neon-color); 
+        text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+    }
+
+        .achievement-card__date {
+            font-size: 0.95rem; 
+            color: #B2B9C5;  
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 600; 
+            margin-bottom: 0.75rem; 
+            transition: color 0.3s ease-out, text-shadow 0.3s ease-out; 
+            text-shadow: none; 
+        }
+        .achievement-card:hover .achievement-card__date {
+            color: var(--current-neon-color); 
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+        }
+        
+        .achievement-card__details {
+            margin-bottom: 4rem; 
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+        }
+        .achievement-card__description {
+            font-size: 0.9rem;
+            color: #C5C9D3; 
+            margin-top: 0.5rem;
+            text-align: justify;
+            line-height: 1.5;
+            flex-grow: 1;
+            transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
+            text-shadow: none; 
+        }
+        .achievement-card:hover .achievement-card__description {
+            color: #FFFFFF; 
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+        }
+
+        .achievement-card__placement-container {
+            position: absolute;
+            bottom: 1rem; 
+            left: 1.25rem;
+            right: 1.25rem;
+            text-align: center;
+        }
+        .achievement-card__placement {
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 1.75rem; 
+            font-weight: 700; 
+            letter-spacing: 0.025em;
+            display: inline-block; 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
+            color: #9CA3AF; 
+            transition: color 0.3s ease-out, text-shadow 0.3s ease-out; 
+        }
+        .achievement-card__placement sup { 
+            font-size: 0.6em; 
+            line-height: 0; 
+            position: relative;
+            vertical-align: baseline;
+            top: -0.5em; 
+        }
+        .achievement-card:hover .achievement-card__placement {
+            color: var(--current-neon-color); 
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+        }
+        
         .modal-bg {
-            background: rgba(0,0,0,0.85);
+            background: rgba(17, 24, 39, 0.9); 
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
         .modal-img {
-            max-width: 96vw;
-            max-height: 90vh;
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 32px 0 rgba(253,224,71,0.45), 0 0 0 8px rgba(0,0,0,0.7);
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 1rem; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.1);
         }
-        /* Card hover effect (yellow/gold) */
-        .card-hover {
-            transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s cubic-bezier(.4,2,.6,1);
-            will-change: transform, box-shadow;
+        body.modal-open {
+            overflow: hidden;
         }
-        .card-hover-yellow:hover {
-            transform: translateY(-10px) scale(1.025);
-            box-shadow: 0 8px 48px 0 rgba(253,224,71,0.18), 0 0 0 4px rgba(253,224,71,0.25);
-            z-index: 10;
+
+        .back-button {
+            background-color: rgba(55, 65, 81, 0.7); 
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(107, 114, 128, 0.5); 
+            transition: all 0.2s ease-in-out;
         }
-        .card-hover-red:hover {
-            transform: translateY(-10px) scale(1.025);
-            box-shadow: 0 8px 48px 0 rgba(239,68,68,0.18), 0 0 0 4px rgba(239,68,68,0.25);
-            z-index: 10;
+        .back-button:hover {
+            background-color: rgba(75, 85, 99, 0.8); 
+            border-color: rgba(156, 163, 175, 0.7); 
+            transform: scale(1.05);
         }
-        .card-hover-purple:hover {
-            transform: translateY(-10px) scale(1.025);
-            box-shadow: 0 8px 48px 0 rgba(168,139,250,0.28), 0 0 0 4px rgba(168,139,250,0.25);
-            z-index: 10;
+
+        .sort-button {
+            font-family: 'Orbitron', sans-serif;
+            background-color: rgba(55, 65, 81, 0.5);
+            border: 1px solid rgba(107, 114, 128, 0.4);
+            color: #d1d5db; 
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem; 
+            font-size: 0.875rem; 
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        .card-hover-pink:hover {
-            transform: translateY(-10px) scale(1.025);
-            box-shadow: 0 8px 48px 0 rgba(236,72,153,0.18), 0 0 0 4px rgba(236,72,153,0.25);
-            z-index: 10;
+        .sort-button:hover {
+            background-color: rgba(75, 85, 99, 0.7);
+            color: #fff;
+            border-color: rgba(156, 163, 175, 0.6);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+        }
+
+        #backToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%; 
+            transform: translateX(-50%); 
+            background-color: rgba(55, 65, 81, 0.8); 
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(107, 114, 128, 0.6);
+            border-radius: 0.75rem; 
+            padding: 0.75rem 1.25rem; 
+            cursor: pointer;
+            display: none; 
+            z-index: 90;
+            transition: background-color 0.2s ease, opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        #backToTopBtn:hover {
+            background-color: rgba(31, 41, 55, 0.9); 
+            transform: translateX(-50%) scale(1.05); 
+        }
+        #backToTopBtn.show {
+            display: block;
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white min-h-screen py-12">
-    <h1 class="orbitron text-7xl font-extrabold text-center mb-12 bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400 bg-clip-text text-transparent tracking-wider">
-        1hp's Achievements
-        <div class="text-xl font-semibold mt-4 text-purple-200 drop-shadow text-center select-none" style="font-family:'Roboto',sans-serif;letter-spacing:normal;">
-            Apex Legends
-            <span class="text-green-300"> | 2020-2025</span>
-        </div>
-    </h1>
-    <div class="container mx-auto px-4">
-    <!-- 2x2 grid for achievements -->
-        <div class="mx-auto px-2 w-full mt-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch w-full">
-            <!-- First Achievement Card (Yellow) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-yellow card-hover card-hover-yellow flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="G4R.png"
-                         alt="G4R Tourney Photo"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('G4R.png', 'G4R Tourney Photo')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-yellow-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">May 28, 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">20,000 PKR Tourney hosted by Team G4R Esports</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">3rd Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #1 Badge (Yellow) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-yellow-300 drop-shadow-[0_2px_12px_rgba(253,224,71,0.7)] select-none pointer-events-none">
-                  #1
-                </div>
-              </div>
-            </div>
-            <!-- Second Achievement Card (Red) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-red card-hover card-hover-red flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="QRTN.png"
-                         alt="PK 30K Quarantine Tournament"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('QRTN.png', 'PK 30K Quarantine Tournament')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-red-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">June 8, 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">PK 30K Quarantine Tournament</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">5th Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #2 Badge (Red) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-red-500 drop-shadow-[0_2px_12px_rgba(239,68,68,0.7)] select-none pointer-events-none">
-                  #2
-                </div>
-              </div>
-            </div>
-            <!-- Third Achievement Card (Purple) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-purple card-hover card-hover-purple flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="SaW_ALBS.png"
-                         alt="Sa.W ALBS Tournament"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('SaW_ALBS.png', 'Sa.W ALBS Tournament')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-purple-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">June 29, 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">First Apex Legends Custom Tournament (ALBS) hosted by Sa.W</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #3 Badge (Purple) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-purple-400 drop-shadow-[0_2px_12px_rgba(168,139,250,0.7)] select-none pointer-events-none">
-                  #3
-                </div>
-              </div>
-            </div>
-            <!-- Fourth Achievement Card (Yellow) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-yellow card-hover card-hover-yellow flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem] gap-4">
-                    <img src="AorusXIntel.png"
-                         alt="Aorus x Intel Apex Legends Cup"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('AorusXIntel.png', 'Aorus x Intel Apex Legends Cup')">
-                    <img src="AorusXIntel_2.png"
-                         alt="Aorus x Intel Apex Legends Cup 2"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('AorusXIntel_2.png', 'Aorus x Intel Apex Legends Cup 2')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-yellow-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">July 18, 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">Aorus x Intel Apex Legends Cup</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">2nd Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #4 Badge (Yellow) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-yellow-300 drop-shadow-[0_2px_12px_rgba(253,224,71,0.7)] select-none pointer-events-none">
-                  #4
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mx-auto px-2 w-full mt-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch w-full">   
-            <!-- 5th Achievement Card (Red) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-red card-hover card-hover-red flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="ESPG.jpg"
-                         alt="ESPG ~ Apex Legends Summer 2020"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('ESPG.jpg', 'ESPG ~ Apex Legends Summer 2020')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-red-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">August 17, 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">ESPG ~ Apex Legends Summer 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">2nd Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #5 Badge (Red) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-red-500 drop-shadow-[0_2px_12px_rgba(239,68,68,0.7)] select-none pointer-events-none">
-                  #5
-                </div>
-              </div>
-            </div>
-            <!-- 6th Achievement Card (Purple) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-purple card-hover card-hover-purple flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="TRI_NATION.png"
-                         alt="AORUS Tri-Nation Series hosted by Sabertooth Wolves [SaW]"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('TRI_NATION.png', 'AORUS Tri-Nation Series hosted by Sabertooth Wolves [SaW]')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-purple-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">September 8, 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">AORUS Tri-Nation Series hosted by Sabertooth Wolves [SaW]</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">2nd Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #6 Badge (Purple) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-purple-400 drop-shadow-[0_2px_12px_rgba(168,139,250,0.7)] select-none pointer-events-none">
-                  #6
-                </div>
-              </div>
-            </div>
-            <!-- 7th Achievement Card (Yellow) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-yellow card-hover card-hover-yellow flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="THX_APEX.png"
-                         alt="Team Hyperion X (THX) tournament"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('THX_APEX.png', 'Team Hyperion X (THX) tournament')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-yellow-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">November 25, 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">Team Hyperion X (THX) Tournament</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">3rd Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #7 Badge (Yellow) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-yellow-300 drop-shadow-[0_2px_12px_rgba(253,224,71,0.7)] select-none pointer-events-none">
-                  #7
-                </div>
-              </div>
-            </div>
-            <!-- 8th Achievement Card (Red) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-red card-hover card-hover-red flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="CICT.png"
-                         alt="Custom Indian Community Tournament"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('CICT.png', 'Custom Indian Community Tournament')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-red-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">December 18, 2020</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">Custom Indian Community Tournament (15$ Steam Gift Card)</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #8 Badge (Red) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-red-500 drop-shadow-[0_2px_12px_rgba(239,68,68,0.7)] select-none pointer-events-none">
-                  #8
-                </div>
-              </div>
-            </div>
-            <!-- 9th Achievement Card (Purple) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-purple card-hover card-hover-purple flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="WALTON.png"
-                         alt="WALTON Computer presents Sa.W Community League"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('WALTON.png', 'WALTON Computer presents Sa.W Community League')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-purple-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">May 9, 2021</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">WALTON Computer presents Sa.W Community League</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #9 Badge (Purple) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-purple-400 drop-shadow-[0_2px_12px_rgba(168,139,250,0.7)] select-none pointer-events-none">
-                  #9
-                </div>
-              </div>
-            </div>
-            <!-- 10th Achievement Card (Yellow) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-yellow card-hover card-hover-yellow flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem] gap-4">
-                    <img src="AKADA.png"
-                         alt="Akada Gaming Tournament"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('AKADA.png', 'Akada Gaming Tournament')">
-                    <img src="AKADA_2.png"
-                         alt="Akada Gaming Tournament 2"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('AKADA_2.png', 'Akada Gaming Tournament 2')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-yellow-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">August 19, 2021</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">
-                        Akada Gaming Custom Tournament (India)
-                      </span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #10 Badge (Yellow) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-yellow-300 drop-shadow-[0_2px_12px_rgba(253,224,71,0.7)] select-none pointer-events-none">
-                  #10
-                </div>
-              </div>
-            </div>
-            <!-- 11th Achievement Card (Red) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-red card-hover card-hover-red flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem] gap-4">
-                    <img src="LENOVO.png"
-                         alt="Lenovo x Intel Rise of LEGION tournament"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('LENOVO.png', 'Lenovo x Intel Rise of LEGION tournament')">
-                    <img src="LENOVO_2.png"
-                         alt="Lenovo x Intel Rise of LEGION tournament 2"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('LENOVO_2.png', 'Lenovo x Intel Rise of LEGION tournament 2')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-red-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">September 5, 2021</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">
-                        Lenovo x Intel Rise of LEGION tournament
-                      </span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">2nd Place (1000$)</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #11 Badge (Red) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-red-500 drop-shadow-[0_2px_12px_rgba(239,68,68,0.7)] select-none pointer-events-none">
-                  #11
-                </div>
-              </div>
-            </div>
-            <!-- 12th Achievement Card (Purple) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-purple card-hover card-hover-purple flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="RWM.png"
-                         alt="Range WARMASTERS Apex Legends"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('RWM.png', 'Range WARMASTERS Apex Legends')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-purple-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">November 8, 2021</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">Range WARMASTERS Apex Legends</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">2nd Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #12 Badge (Purple) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-purple-400 drop-shadow-[0_2px_12px_rgba(168,139,250,0.7)] select-none pointer-events-none">
-                  #12
-                </div>
-              </div>
-            </div>
-            <!-- 13th Achievement Card (Yellow) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-yellow card-hover card-hover-yellow flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="CFT.png"
-                         alt="Crossfire Tournament"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('CFT.png', 'Crossfire Tournament')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-yellow-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">October 10, 2022</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">Crossfire Tournament</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">Tied (Champion chosen by Kill Points)</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #13 Badge (Yellow) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-yellow-300 drop-shadow-[0_2px_12px_rgba(253,224,71,0.7)] select-none pointer-events-none">
-                  #13
-                </div>
-              </div>
-            </div>
-            <!-- 14th Achievement Card (Red) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-red card-hover card-hover-red flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem] gap-4">
-                    <img src="ALTT.png"
-                         alt="Apex Legends Throwback Tournament 2023"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('ALTT.png', 'Apex Legends Throwback Tournament 2023')">
-                    <img src="ALTT_2.png"
-                         alt="Apex Legends Throwback Tournament 2023 - Second Roster"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('ALTT_2.png', 'Apex Legends Throwback Tournament 2023 - Second Roster')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-red-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">February 23, 2023</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">Apex Legends Throwback Tournament 2023</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st & 3rd Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #14 Badge (Red) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-red-500 drop-shadow-[0_2px_12px_rgba(239,68,68,0.7)] select-none pointer-events-none">
-                  #14
-                </div>
-              </div>
-            </div>
-            <!-- 15th Achievement Card (Purple) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-purple card-hover card-hover-purple flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem] gap-4">
-                    <img src="CH.png"
-                         alt="CLUB HOPE Apex Legends Tournament 2023"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('CH.png', 'CLUB HOPE Apex Legends Tournament 2023')">
-                    <img src="CH_2.png"
-                         alt="CLUB HOPE Apex Legends Tournament 2023 - 2"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('CH_2.png', 'CLUB HOPE Apex Legends Tournament 2023 - 2')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-purple-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">June 7, 2023</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">CLUB HOPE Apex Legends Tournament 2023</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #15 Badge (Purple) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-purple-400 drop-shadow-[0_2px_12px_rgba(168,139,250,0.7)] select-none pointer-events-none">
-                  #15
-                </div>
-              </div>
-            </div>
-            <!-- 16th Achievement Card (Yellow) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-yellow card-hover card-hover-yellow flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem] gap-4">
-                    <img src="ALBRT.png"
-                         alt="Apex Legends Battle Royal Tournament 2023"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('ALBRT.png', 'Apex Legends Battle Royal Tournament 2023')">
-                    <img src="ALBRT_2.png"
-                         alt="Apex Legends Battle Royal Tournament 2023 - 2"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('ALBRT_2.png', 'Apex Legends Battle Royal Tournament 2023 - 2')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-yellow-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">July 16, 2023</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">Apex Legends Battle Royal Tournament 2023</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #16 Badge (Yellow) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-yellow-300 drop-shadow-[0_2px_12px_rgba(253,224,71,0.7)] select-none pointer-events-none">
-                  #16
-                </div>
-              </div>
-            </div>
-            <!-- 17th Achievement Card (Pink) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-pink card-hover card-hover-pink flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem]">
-                    <img src="AFRA_100K.jpg"
-                         alt="AfraBae 100,000+ LP"
-                         class="w-full max-w-3xl h-[16rem] md:h-[24rem] object-cover rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('AFRA_100K.jpg', 'AfraBae 100,000+ LP')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-pink-400/20 via-pink-500/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-pink-400/40">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">July 19, 2023</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="text-pink-100 text-lg font-semibold">
-                        1hp's AfraBae has cemented her name in Bangladeshi Apex Legends history, proudly becoming the first person ever—and the nation's sole female player—to achieve a landmark <b>100,000+ LP</b> in Ranked.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #17 Badge (Pink) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-pink-400 drop-shadow-[0_2px_12px_rgba(236,72,153,0.7)] select-none pointer-events-none">
-                  #17
-                </div>
-              </div>
-            </div>
-            <!-- 18th Achievement Card (Red) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-red card-hover card-hover-red flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem] gap-4">
-                    <img src="GWALT.png"
-                         alt="GloriousWarfare Apex Legends Tournament"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('GWALT.png', 'GloriousWarfare Apex Legends Tournament')">
-                    <img src="GWALT_1.png"
-                         alt="GloriousWarfare Apex Legends Tournament 2"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('GWALT_1.png', 'GloriousWarfare Apex Legends Tournament 2')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-red-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">July 1, 2024</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">GloriousWarfare Apex Legends Tournament</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">2nd Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #18 Badge (Red) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-red-500 drop-shadow-[0_2px_12px_rgba(239,68,68,0.7)] select-none pointer-events-none">
-                  #18
-                </div>
-              </div>
-            </div>
-            <!-- 19th Achievement Card (Purple) -->
-            <div class="relative w-full h-full p-0 rounded-3xl big-card-shadow-purple card-hover card-hover-purple flex flex-col">
-              <div class="relative p-8 md:p-14 bg-gray-900/90 rounded-3xl shadow-2xl overflow-hidden h-full flex flex-col">
-                <div class="mb-8 relative z-20 flex flex-col items-center gap-6">
-                  <div class="img-hover-container w-full flex justify-center items-center min-h-[16rem] md:min-h-[22rem] gap-4">
-                    <img src="LRT.png"
-                         alt="Legends Reborn Tournament - Youngsters"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('LRT.png', 'Legends Reborn Tournament - Youngsters')">
-                    <img src="LRT_2.png"
-                         alt="Legends Reborn Tournament"
-                         class="w-1/2 max-w-[18rem] h-[16rem] md:h-[24rem] object-contain rounded-2xl shadow-2xl img-hover-full"
-                         style="background:#181f2a;"
-                         onclick="showModal('LRT_2.png', 'Legends Reborn Tournament')">
-                  </div>
-                  <div class="w-full bg-gradient-to-r from-yellow-400/10 via-purple-400/10 to-transparent rounded-xl p-6 md:p-10 shadow-inner border border-purple-300/30">
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-yellow-300 text-lg drop-shadow">Date:</span>
-                      <span class="ml-2 text-white text-lg font-mono font-bold tracking-wide">May 26, 2025</span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-pink-300 text-lg drop-shadow">Title:</span>
-                      <span class="ml-2 text-yellow-100 text-lg font-semibold">
-                        Legends Reborn Tournament (by 1hp)
-                      </span>
-                    </div>
-                    <div class="mb-3 flex items-center gap-2">
-                      <span class="font-bold text-green-300 text-lg drop-shadow">Placement:</span>
-                      <span class="ml-2 text-green-200 text-lg font-bold animate-pulse">1st & 4th Place</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- #19 Badge (Purple) -->
-                <div class="absolute left-1/2 bottom-6 transform -translate-x-1/2 orbitron text-4xl font-extrabold text-purple-400 drop-shadow-[0_2px_12px_rgba(168,139,250,0.7)] select-none pointer-events-none">
-                  #19
-                </div>
-              </div>
-            </div>
+<body class="min-h-screen py-8 sm:py-12">
 
-<!-- Modal for full image -->
-    <div id="imgModal" class="fixed inset-0 hidden items-center justify-center z-50 modal-bg">
-        <div class="absolute inset-0 bg-black opacity-80" onclick="hideModal()"></div>
-        <img id="modalImg" src="" alt="" class="modal-img relative z-10 mx-auto my-auto" onclick="hideModal()">
-        <button onclick="hideModal()" class="absolute top-6 right-8 text-white text-4xl font-bold z-20 hover:text-yellow-400 transition-colors">&times;</button>
+    <div class="fixed top-4 left-4 z-50">
+        <a href="index.html" 
+           class="back-button orbitron inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-gray-200 hover:text-white shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+            </svg>
+            Back to Home
+        </a>
     </div>
+
+    <header class="text-center mb-10 sm:mb-12 mt-12 sm:mt-0">
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold achievements-main-title tracking-wide">
+            HALL OF GLORY
+        </h1>
+        <p class="text-lg sm:text-xl font-semibold mt-3 text-purple-300 orbitron select-none">
+            APEX LEGENDS <span class="text-green-300">| 2020 - PRESENT</span>
+        </p>
+        <div class="mt-6 text-center">
+            <button id="sortButton" class="sort-button">Sort: Newest First</button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="achievementsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+            <!-- Achievements will be rendered here by JavaScript -->
+        </div>
+    </main>
+
+    <div id="imageModal" class="fixed inset-0 hidden items-center justify-center z-[100] modal-bg p-4">
+        <img id="modalImage" src="" alt="Enlarged achievement" class="modal-img object-contain">
+        <button onclick="hideModal()" title="Close image" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white text-3xl sm:text-4xl font-bold z-[101] hover:text-red-500 transition-colors leading-none p-2 rounded-full hover:bg-gray-700/50">
+            &times;
+        </button>
+    </div>
+
+    <button id="backToTopBtn" title="Go to top">
+        Top
+    </button>
+
+    <footer class="text-center py-12 mt-16 border-t border-gray-700/50">
+        <p class="text-sm text-gray-400">&copy; <span id="currentYear"></span> 1hp Esports. All rights reserved.</p>
+        <p class="text-xs text-gray-500 mt-1">Website by @chiefhamim</p>
+    </footer>
+
     <script>
+        const achievementsDataSource = [ 
+            // 2020
+            { id: 1, badge: "#1", date: "2020-05-28", title: "G4R Esports Tournament - Dominance Unleashed", placement: "3rd Place", images: ["G4R.png"], year: 2020, description: "Our team showcased incredible early game prowess, securing a podium finish in this competitive tournament. A testament to our foundational strength." },
+            { id: 2, badge: "#2", date: "2020-06-08", title: "PK 30K Quarantine Tournament - Top 5 Contenders", placement: "5th Place", images: ["QRTN.png"], year: 2020, description: "Navigating intense competition during the quarantine, we fought valiantly to earn a respectable top 5 position, highlighting our consistent performance." },
+            { id: 3, badge: "#3", date: "2020-06-29", title: "ALBS Custom Tournament by Sa.W - Inaugural Triumph!", placement: "1st Place", images: ["SaW_ALBS.png"], year: 2020, description: "Our first taste of victory! We dominated the inaugural ALBS custom tournament, setting the stage for future glory." },
+            { id: 4, badge: "#4", date: "2020-07-18", title: "Aorus x Intel Apex Legends Cup - Silver Supremacy", placement: "2nd Place", images: ["AorusXIntel.png", "AorusXIntel_2.png"], year: 2020, description: "Facing fierce rivals, we secured a remarkable second place in the prestigious Aorus x Intel Cup, proving our elite competitive standing." },
+            { id: 5, badge: "#5", date: "2020-08-17", title: "ESPG - Apex Legends Summer 2020 - Runner-Up Rhapsody", placement: "2nd Place", images: ["ESPG.jpg"], year: 2020, description: "Another stellar second-place finish in the ESPG Summer tournament, showcasing our consistent ability to reach grand finals." },
+            { id: 6, badge: "#6", date: "2020-09-08", title: "AORUS Tri-Nation Series by Sa.W - Regional Powerhouse", placement: "2nd Place", images: ["TRI_NATION.png"], year: 2020, description: "Competing against top teams from three nations, our strong performance secured us the runner-up spot, solidifying our regional reputation." },
+            { id: 7, badge: "#7", date: "2020-11-25", title: "Team Hyperion X (THX) Tournament - Bronze Battle", placement: "3rd Place", images: ["THX_APEX.png"], year: 2020, description: "A hard-fought battle in the THX Tournament saw us clinch third place, a testament to our resilience and strategic gameplay." },
+            { id: 8, badge: "#8", date: "2020-12-18", title: "Custom Indian Community Tournament - Champions of the Grid!", placement: "1st Place", prize: "$15 Steam Gift Card", images: ["CICT.png"], year: 2020, description: "Capping off a successful year with another championship title in the vibrant Indian community tournament, earning a well-deserved prize." },
+            // 2021
+            { id: 9, badge: "#9", date: "2021-05-09", title: "WALTON x Sa.W Community League - Unrivaled Apex Prowess", placement: "1st Place", images: ["WALTON.png"], year: 2021, description: "Victorious in the WALTON x Sa.W League, we reaffirmed our position as formidable contenders in the Apex Legends scene." },
+            { id: 10, badge: "#10", date: "2021-08-19", title: "Akada Gaming Custom Tournament (India) - Back-to-Back Crowns", placement: "1st Place", images: ["AKADA.png", "AKADA_2.png"], year: 2021, description: "A flawless victory at the Akada Gaming Tournament, marking our second consecutive championship title in India!" },
+            { id: 11, badge: "#11", date: "2021-09-05", title: "Lenovo x Intel Rise of LEGION - Epic Grand Finals", placement: "2nd Place", prize: "$1000", images: ["LENOVO.png", "LENOVO_2.png"], year: 2021, description: "A thrilling second-place finish in the high-stakes Lenovo x Intel tournament, demonstrating our ability to perform under pressure and secure significant winnings." },
+            { id: 12, badge: "#12", date: "2021-11-08", title: "Range WARMASTERS Apex Legends - Strategic Second", placement: "2nd Place", images: ["RWM.png"], year: 2021, description: "Our strategic depth shone through as we claimed the runner-up position in the challenging Range WARMASTERS event." },
+            // 2022
+            { id: 13, badge: "#13", date: "2022-10-10", title: "Crossfire Tournament - Champion by Kills!", placement: "Tied (Champion by Kills)", images: ["CFT.png"], year: 2022, description: "A dominant performance leading to a championship by total kills, showcasing our aggressive and effective gameplay." },
+            // 2023
+            { id: 14, badge: "#14", date: "2023-02-23", title: "Apex Legends Throwback Tournament 2023 - Dual Podium Finish", placement: "1st & 3rd Place", images: ["ALTT.png", "ALTT_2.png"], year: 2023, description: "An incredible display of team depth, securing both first and third place in the Throwback Tournament." },
+            { id: 15, badge: "#15", date: "2023-06-07", title: "CLUB HOPE Apex Legends Tournament 2023 - Reigning Champions", placement: "1st Place", images: ["CH.png", "CH_2.png"], year: 2023, description: "Another decisive victory at the CLUB HOPE tournament, solidifying our reign as top-tier Apex Legends players." },
+            { id: 16, badge: "#16", date: "2023-07-16", title: "Apex Legends Battle Royal Tournament 2023 - Unstoppable Victory", placement: "1st Place", images: ["ALBRT.png", "ALBRT_2.png"], year: 2023, description: "Absolute domination in the Battle Royal Tournament, securing yet another first-place trophy." },
+            { id: 17, badge: "#17", date: "2023-07-19", title: "AfraBae Achieves 100,000+ LP - Pioneering Excellence!", placement: "Personal Achievement", description: "1hp's very own AfraBae made history as the first player from Bangladesh, and the sole female player, to achieve the monumental milestone of 100,000+ LP in Apex Legends Ranked. An inspiring testament to dedication and skill!", images: ["AFRA_100K.jpg"], year: 2023 },
+            // 2024
+            { id: 18, badge: "#18", date: "2024-07-01", title: "GloriousWarfare Apex Legends Tournament - Elite Runner-Up", placement: "2nd Place", images: ["GWALT.png", "GWALT_1.png"], year: 2024, description: "A hard-fought second-place finish in the GloriousWarfare tournament, showcasing our continued competitive edge." },
+            // 2025
+            { id: 19, badge: "#19", date: "2025-05-26", title: "Legends Reborn Tournament (by 1hp) - Dual Domination!", placement: "1st & 4th Place", images: ["LRT.png", "LRT_2.png"], year: 2025, description: "Hosting and dominating our own tournament, securing both the top spot and a strong fourth place. A true showcase of 1hp's power!" }
+        ];
+
+        // Correct casing in the data source
+        achievementsDataSource.forEach(ach => {
+            if (ach.title) {
+                ach.title = ach.title.replace(/1HP/g, "1hp").replace(/AFRABEA/gi, "AfraBae");
+            }
+            if (ach.description) {
+                ach.description = ach.description.replace(/1HP/g, "1hp").replace(/AFRABEA/gi, "AfraBae");
+            }
+        });
+
+        const femaleCardId = 17;
+        const baseNeonColorCycle = ["blue", "red", "purple", "yellow", "green", "orange", "cyan", "pink"];
+        const generalNeonColors = baseNeonColorCycle.filter(c => c !== 'pink');
+        let generalColorInitialIndex = 0;
+
+        const achievementsData = achievementsDataSource.map((achievement, index) => {
+            let assignedNeonColor;
+            if (achievement.id === femaleCardId) {
+                assignedNeonColor = 'pink';
+            } else {
+                assignedNeonColor = generalNeonColors[generalColorInitialIndex % generalNeonColors.length];
+                generalColorInitialIndex++;
+            }
+            return {
+                ...achievement,
+                initialNeonColor: assignedNeonColor, 
+                parsedDate: new Date(achievement.date)
+            };
+        });
+
+        let currentSortOrder = 'newestFirst'; 
+
+        function createAchievementCardHTML(achievement) {
+            const imageClass = achievement.images.length > 1 ? 'achievement-card__image--half' : '';
+            const imageElements = achievement.images.map(imgSrc => `
+                <img src="${imgSrc}"
+                     alt="${achievement.title} - Image"
+                     class="achievement-card__image ${imageClass}"
+                     onclick="showModal('${imgSrc}', '${achievement.title}')"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x300/1f2937/4b5563?text=Image+Not+Found&font=roboto';"
+                     loading="lazy">`).join('');
+
+            const displayDate = new Date(achievement.date).toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            });
+
+            let titleDisplay = achievement.title;
+            if (achievement.id === 5 && achievement.title === "ESPG - Apex Legends Summer 2020 - Runner-Up Rhapsody") {
+                titleDisplay = `ESPG ~ Apex Legends Summer 2020 - <em>Runner-Up Rhapsody</em>`;
+            } else {
+                const parts = achievement.title.split(' - ');
+                if (parts.length > 1) {
+                    const lastPart = parts.pop();
+                    titleDisplay = `${parts.join(' - ')} - <em>${lastPart}</em>`;
+                }
+            }
+            
+            let placementHTML = achievement.placement;
+            placementHTML = placementHTML.replace(/(\d+)(st|nd|rd|th)\b/gi, '$1<sup>$2</sup>');
+
+            return `
+                <div class="achievement-card" data-id="${achievement.id}" data-neon="${achievement.initialNeonColor}">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="achievement-card__badge">${achievement.badge}</span>
+                        <span class="achievement-card__date">${displayDate}</span>
+                    </div>
+                    <div class="achievement-card__image-container">${imageElements}</div>
+                    <div class="achievement-card__details">
+                        <h2 class="achievement-card__title">${titleDisplay}</h2>
+                        ${achievement.description ? `<p class="achievement-card__description montserrat">${achievement.description}</p>` : ''}
+                    </div>
+                    <div class="achievement-card__placement-container">
+                        <p class="achievement-card__placement">
+                            ${placementHTML}
+                            ${achievement.prize ? `<span class="block text-xs font-normal text-gray-400 mt-1 montserrat">(${achievement.prize})</span>` : ''}
+                        </p>
+                    </div>
+                </div>`;
+        }
+        
+        function handleCardHover(event) {
+            const card = event.currentTarget;
+            const achievementId = parseInt(card.dataset.id);
+            const initialColor = card.dataset.initialNeonColor; // The color set at render time
+            let lastHoverColor = card.dataset.lastHoverColor || initialColor;
+            let nextColor;
+
+            if (achievementId === femaleCardId) {
+                const state = card.dataset.afraBaeHoverState || 'pinkNext';
+                if (state === 'pinkNext') {
+                    nextColor = 'pink';
+                    card.dataset.afraBaeHoverState = 'otherNext';
+                } else { // 'otherNext'
+                    let otherColorIndex = parseInt(card.dataset.afraBaeOtherColorIndex || 0);
+                    // Cycle through generalNeonColors, ensuring it's not pink (already filtered)
+                    // and ideally different from the last 'other' color if there are multiple options
+                    if (generalNeonColors.length > 0) {
+                         let attempts = 0;
+                         let potentialNextColor;
+                         do {
+                            potentialNextColor = generalNeonColors[otherColorIndex % generalNeonColors.length];
+                            otherColorIndex++;
+                            attempts++;
+                         } while (potentialNextColor === card.dataset.lastAfraBaeOtherColor && generalNeonColors.length > 1 && attempts <= generalNeonColors.length)
+                         nextColor = potentialNextColor;
+                         card.dataset.lastAfraBaeOtherColor = nextColor; // Remember the specific 'other' color shown
+                    } else {
+                        nextColor = 'pink'; // Fallback if generalNeonColors is somehow empty
+                    }
+                    card.dataset.afraBaeOtherColorIndex = otherColorIndex;
+                    card.dataset.afraBaeHoverState = 'pinkNext';
+                }
+            } else { // General cards
+                let currentColorCycleIndex = parseInt(card.dataset.currentColorCycleIndex || 0);
+                if (generalNeonColors.length <= 1) {
+                    nextColor = generalNeonColors.length > 0 ? generalNeonColors[0] : initialColor;
+                } else {
+                    let attempts = 0;
+                    do {
+                        nextColor = generalNeonColors[currentColorCycleIndex % generalNeonColors.length];
+                        currentColorCycleIndex++;
+                        attempts++;
+                    } while (nextColor === lastHoverColor && attempts <= generalNeonColors.length);
+                }
+                card.dataset.currentColorCycleIndex = currentColorCycleIndex;
+            }
+
+            card.setAttribute('data-neon', nextColor);
+            card.dataset.lastHoverColor = nextColor;
+        }
+
+        function setupCardEventListeners() {
+            const cardElements = document.querySelectorAll('#achievementsGrid .achievement-card');
+            cardElements.forEach(cardEl => {
+                const achievementId = parseInt(cardEl.dataset.id);
+                const achievement = achievementsData.find(a => a.id === achievementId);
+                if (!achievement) return;
+
+                cardEl.dataset.initialNeonColor = achievement.initialNeonColor;
+                cardEl.dataset.lastHoverColor = achievement.initialNeonColor; // Initialize last hover color
+
+                if (achievementId === femaleCardId) {
+                    cardEl.dataset.afraBaeHoverState = 'pinkNext'; // Initial state for AfraBae
+                    cardEl.dataset.afraBaeOtherColorIndex = 0;
+                } else {
+                    // Find index in generalNeonColors for cycling
+                    const initialIndexInCycle = generalNeonColors.indexOf(achievement.initialNeonColor);
+                    cardEl.dataset.currentColorCycleIndex = initialIndexInCycle !== -1 ? initialIndexInCycle : 0;
+                }
+                cardEl.removeEventListener('mouseenter', handleCardHover); // Remove old listener if any
+                cardEl.addEventListener('mouseenter', handleCardHover);
+            });
+        }
+
+        function renderAchievements() {
+            const grid = document.getElementById('achievementsGrid');
+            const sortButton = document.getElementById('sortButton');
+            if (!grid || !sortButton) return;
+
+            let sortedAchievementsData;
+            if (currentSortOrder === 'newestFirst') {
+                sortedAchievementsData = [...achievementsData].sort((a, b) => b.parsedDate - a.parsedDate);
+                sortButton.textContent = 'Sort: Oldest First';
+            } else { 
+                sortedAchievementsData = [...achievementsData].sort((a, b) => a.parsedDate - b.parsedDate);
+                sortButton.textContent = 'Sort: Newest First';
+            }
+            grid.innerHTML = sortedAchievementsData.map(ach => createAchievementCardHTML(ach)).join('');
+            setupCardEventListeners(); // Setup/reset event listeners after rendering
+        }
+
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+
         function showModal(src, alt) {
-            document.getElementById('imgModal').classList.remove('hidden');
-            document.getElementById('imgModal').classList.add('flex');
-            document.getElementById('modalImg').src = src;
-            document.getElementById('modalImg').alt = alt;
+            if (modal && modalImage) {
+                modalImage.src = src;
+                modalImage.alt = alt;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('modal-open');
+            }
         }
+
         function hideModal() {
-            document.getElementById('imgModal').classList.remove('flex');
-            document.getElementById('imgModal').classList.add('hidden');
-            document.getElementById('modalImg').src = '';
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('modal-open');
+            }
         }
+        
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                hideModal();
+            }
+        });
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                hideModal();
+            }
+        });
+
+        const backToTopButton = document.getElementById('backToTopBtn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        };
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAchievements(); 
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const sortButton = document.getElementById('sortButton');
+            if(sortButton) {
+                sortButton.addEventListener('click', () => {
+                    currentSortOrder = currentSortOrder === 'newestFirst' ? 'oldestFirst' : 'newestFirst';
+                    renderAchievements(); // This will also re-setup event listeners
+                });
+            }
+        });
     </script>
 </body>
 </html>
