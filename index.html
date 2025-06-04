@@ -645,7 +645,7 @@
 <!-- ...existing code... -->
     <section id="advisors" class="pt-2 pb-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-0">
-            <h3 class="advisors-title text-center text-3xl sm:text-4xl font-bold mb-6 mt-0">
+            <h3 class="advisors-title text-center text-3xl sm:text-4xl font-bold mb-8 mt-0">
                 Advisors
             </h3>
             <style>
@@ -658,7 +658,7 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 animation: advisors-title-gradient 5s linear infinite alternate;
-                letter-spacing: 0em;
+                letter-spacing: 0.01em;
                 text-shadow:
                     0 2px 12px rgba(56,189,248,0.13),
                     0 4px 32px rgba(168,85,247,0.10),
@@ -671,142 +671,221 @@
                 0% { background-position: 0% 50%; }
                 100% { background-position: 100% 50%; }
             }
+            .advisor-card {
+                border-radius: 1.25rem;
+                box-shadow: 0 8px 32px 0 var(--advisor-shadow, rgba(56,189,248,0.10)), 0 2px 8px 0 var(--advisor-shadow2, rgba(168,85,247,0.08));
+                border: 1.5px solid transparent;
+                transition: box-shadow 0.3s, border-color 0.3s, transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
+                position: relative;
+                overflow: visible;
+                min-height: 340px;
+                background: var(--advisor-bg, linear-gradient(120deg, rgba(34,211,238,0.10) 0%, rgba(168,85,247,0.08) 100%));
+            }
+            .advisor-card:hover, .advisor-card:focus-within {
+                box-shadow: 0 0 32px 8px var(--advisor-glow, #60a5fa33), 0 8px 32px 0 var(--advisor-glow2, #a855f733);
+                border-color: var(--advisor-border, #60a5fa);
+                transform: translateY(-6px) scale(1.045);
+                z-index: 2;
+            }
+            .advisor-img {
+                width: 7rem;
+                height: 7rem;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 4px solid #fff;
+                box-shadow: 0 2px 16px 0 var(--advisor-img-shadow, #60a5fa33);
+                background: #fff;
+                margin-bottom: 1.25rem;
+            }
+            .advisor-name {
+                font-size: 1.15rem;
+                font-family: 'Orbitron', sans-serif;
+                font-weight: 800;
+                margin-bottom: 0.15rem;
+                letter-spacing: 0.02em;
+                background: linear-gradient(90deg, #60a5fa 0%, #a855f7 100%);
+                background-size: 200% auto;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: advisors-title-gradient 5s linear infinite alternate;
+            }
+            .advisor-role {
+                font-size: 1rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                letter-spacing: 0.01em;
+            }
+            .advisor-desc {
+                font-size: 0.97rem;
+                color: #e5e7eb;
+                opacity: 0.92;
+                margin-bottom: 0;
+            }
+            /* Unique color themes for each advisor */
+            .advisor-card.advisor-blue {
+                --advisor-bg: linear-gradient(120deg, rgba(56,189,248,0.13) 0%, rgba(59,130,246,0.10) 100%);
+                --advisor-shadow: rgba(56,189,248,0.18);
+                --advisor-shadow2: rgba(59,130,246,0.13);
+                --advisor-glow: #60a5fa55;
+                --advisor-glow2: #38bdf855;
+                --advisor-border: #60a5fa;
+                --advisor-img-shadow: #60a5fa33;
+            }
+            .advisor-card.advisor-green {
+                --advisor-bg: linear-gradient(120deg, rgba(34,197,94,0.13) 0%, rgba(16,185,129,0.10) 100%);
+                --advisor-shadow: rgba(34,197,94,0.18);
+                --advisor-shadow2: rgba(16,185,129,0.13);
+                --advisor-glow: #34d39955;
+                --advisor-glow2: #10b98155;
+                --advisor-border: #34d399;
+                --advisor-img-shadow: #34d39933;
+            }
+            .advisor-card.advisor-purple {
+                --advisor-bg: linear-gradient(120deg, rgba(168,85,247,0.13) 0%, rgba(139,92,246,0.10) 100%);
+                --advisor-shadow: rgba(168,85,247,0.18);
+                --advisor-shadow2: rgba(139,92,246,0.13);
+                --advisor-glow: #a855f755;
+                --advisor-glow2: #8b5cf655;
+                --advisor-border: #a855f7;
+                --advisor-img-shadow: #a855f733;
+            }
             </style>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
-                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/20 shadow-[0_8px_32px_0_rgba(34,211,238,0.35)]">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
-                         src="https://i.ibb.co/jkc4S44d/De-droper-logo.jpg"
-                         alt="1hp_moindedropper"
-                         draggable="false"
-                         oncontextmenu="return false"
-                         ondragstart="return false"
-                         onmousedown="event.preventDefault();"
-                         onselectstart="return false"
-                         onpointerdown="event.preventDefault();"
-                         ontouchstart="event.preventDefault();"
-                         ongesturestart="event.preventDefault();"
-                         onselect="return false"
-                         oncopy="return false"
-                         oncut="return false"
-                         onpaste="return false"
-                         onbeforecopy="return false"
-                         onbeforecut="return false"
-                         onbeforepaste="return false"
-                         ondrag="return false"
-                         ondrop="return false"
-                         onmouseup="event.preventDefault();"
-                         onmouseleave="event.preventDefault();"
-                         onmouseout="event.preventDefault();"
-                         onmouseover="event.preventDefault();"
-                         onmouseenter="event.preventDefault();"
-                         onmousemove="event.preventDefault();"
-                         onmousewheel="event.preventDefault();"
-                         onwheel="event.preventDefault();"
-                         ondblclick="event.preventDefault();"
-                         onauxclick="event.preventDefault();"
-                         onpointerup="event.preventDefault();"
-                         onpointermove="event.preventDefault();"
-                         onpointerleave="event.preventDefault();"
-                         onpointerout="event.preventDefault();"
-                         onpointerover="event.preventDefault();"
-                         onpointerenter="event.preventDefault();"
-                         onpointercancel="event.preventDefault();"
-                         ongotpointercapture="event.preventDefault();"
-                         onlostpointercapture="event.preventDefault();"
-                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=moindedropper&font=inter';">
-                    <h4 class="text-lg font-bold text-cyan-200 mb-1">moindedropper</h4>
-                    <p class="text-cyan-100 font-medium mb-1">Advisor / Fund Manager</p>
-                    <p class="text-gray-300 text-sm">Oversees financial strategy and resource management for the team.</p>
+                <div class="advisor-card advisor-blue flex flex-col items-center text-center p-8">
+                    <img class="advisor-img"
+                        src="https://i.ibb.co/jkc4S44d/De-droper-logo.jpg"
+                        alt="1hp_moindedropper"
+                        draggable="false"
+                        oncontextmenu="return false"
+                        ondragstart="return false"
+                        onmousedown="event.preventDefault();"
+                        onselectstart="return false"
+                        onpointerdown="event.preventDefault();"
+                        ontouchstart="event.preventDefault();"
+                        ongesturestart="event.preventDefault();"
+                        onselect="return false"
+                        oncopy="return false"
+                        oncut="return false"
+                        onpaste="return false"
+                        onbeforecopy="return false"
+                        onbeforecut="return false"
+                        onbeforepaste="return false"
+                        ondrag="return false"
+                        ondrop="return false"
+                        onmouseup="event.preventDefault();"
+                        onmouseleave="event.preventDefault();"
+                        onmouseout="event.preventDefault();"
+                        onmouseover="event.preventDefault();"
+                        onmouseenter="event.preventDefault();"
+                        onmousemove="event.preventDefault();"
+                        onmousewheel="event.preventDefault();"
+                        onwheel="event.preventDefault();"
+                        ondblclick="event.preventDefault();"
+                        onauxclick="event.preventDefault();"
+                        onpointerup="event.preventDefault();"
+                        onpointermove="event.preventDefault();"
+                        onpointerleave="event.preventDefault();"
+                        onpointerout="event.preventDefault();"
+                        onpointerover="event.preventDefault();"
+                        onpointerenter="event.preventDefault();"
+                        onpointercancel="event.preventDefault();"
+                        ongotpointercapture="event.preventDefault();"
+                        onlostpointercapture="event.preventDefault();"
+                        onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=moindedropper&font=inter';">
+                    <div class="advisor-name text-cyan-200">moindedropper</div>
+                    <div class="advisor-role text-cyan-100">Advisor / Fund Manager</div>
+                    <div class="advisor-desc">Oversees financial strategy and resource management for the team.</div>
                 </div>
-                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-green-400/20 shadow-[0_8px_32px_0_rgba(34,197,94,0.35)]">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-green-300 shadow-lg"
-                         src="https://i.ibb.co/tpxrxGML/viper.png"
-                         alt="1hp_Viper"
-                         draggable="false"
-                         oncontextmenu="return false"
-                         ondragstart="return false"
-                         onmousedown="event.preventDefault();"
-                         onselectstart="return false"
-                         onpointerdown="event.preventDefault();"
-                         ontouchstart="event.preventDefault();"
-                         ongesturestart="event.preventDefault();"
-                         onselect="return false"
-                         oncopy="return false"
-                         oncut="return false"
-                         onpaste="return false"
-                         onbeforecopy="return false"
-                         onbeforecut="return false"
-                         onbeforepaste="return false"
-                         ondrag="return false"
-                         ondrop="return false"
-                         onmouseup="event.preventDefault();"
-                         onmouseleave="event.preventDefault();"
-                         onmouseout="event.preventDefault();"
-                         onmouseover="event.preventDefault();"
-                         onmouseenter="event.preventDefault();"
-                         onmousemove="event.preventDefault();"
-                         onmousewheel="event.preventDefault();"
-                         onwheel="event.preventDefault();"
-                         ondblclick="event.preventDefault();"
-                         onauxclick="event.preventDefault();"
-                         onpointerup="event.preventDefault();"
-                         onpointermove="event.preventDefault();"
-                         onpointerleave="event.preventDefault();"
-                         onpointerout="event.preventDefault();"
-                         onpointerover="event.preventDefault();"
-                         onpointerenter="event.preventDefault();"
-                         onpointercancel="event.preventDefault();"
-                         ongotpointercapture="event.preventDefault();"
-                         onlostpointercapture="event.preventDefault();"
-                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=Viper&font=inter';">
-                    <h4 class="text-lg font-bold text-green-200 mb-1">[V̷]I̷P̷3̷R̷®</h4>
-                    <p class="text-green-100 font-medium mb-1">Advisor</p>
-                    <p class="text-gray-300 text-sm">Provides strategic advice and supports team development.</p>
+                <div class="advisor-card advisor-green flex flex-col items-center text-center p-8">
+                    <img class="advisor-img"
+                        src="https://i.ibb.co/tpxrxGML/viper.png"
+                        alt="1hp_Viper"
+                        draggable="false"
+                        oncontextmenu="return false"
+                        ondragstart="return false"
+                        onmousedown="event.preventDefault();"
+                        onselectstart="return false"
+                        onpointerdown="event.preventDefault();"
+                        ontouchstart="event.preventDefault();"
+                        ongesturestart="event.preventDefault();"
+                        onselect="return false"
+                        oncopy="return false"
+                        oncut="return false"
+                        onpaste="return false"
+                        onbeforecopy="return false"
+                        onbeforecut="return false"
+                        onbeforepaste="return false"
+                        ondrag="return false"
+                        ondrop="return false"
+                        onmouseup="event.preventDefault();"
+                        onmouseleave="event.preventDefault();"
+                        onmouseout="event.preventDefault();"
+                        onmouseover="event.preventDefault();"
+                        onmouseenter="event.preventDefault();"
+                        onmousemove="event.preventDefault();"
+                        onmousewheel="event.preventDefault();"
+                        onwheel="event.preventDefault();"
+                        ondblclick="event.preventDefault();"
+                        onauxclick="event.preventDefault();"
+                        onpointerup="event.preventDefault();"
+                        onpointermove="event.preventDefault();"
+                        onpointerleave="event.preventDefault();"
+                        onpointerout="event.preventDefault();"
+                        onpointerover="event.preventDefault();"
+                        onpointerenter="event.preventDefault();"
+                        onpointercancel="event.preventDefault();"
+                        ongotpointercapture="event.preventDefault();"
+                        onlostpointercapture="event.preventDefault();"
+                        onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=Viper&font=inter';">
+                    <div class="advisor-name text-green-200">[V̷]I̷P̷3̷R̷®</div>
+                    <div class="advisor-role text-green-100">Advisor</div>
+                    <div class="advisor-desc">Provides strategic advice and supports team development.</div>
                 </div>
-                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/20 shadow-[0_8px_32px_0_rgba(168,85,247,0.35)]">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg"
-                         src="https://i.ibb.co/wNskW3gH/Rifat-Kabir-Samrat-1.jpg"
-                         alt="1hp_INSTINCTx"
-                         draggable="false"
-                         oncontextmenu="return false"
-                         ondragstart="return false"
-                         onmousedown="event.preventDefault();"
-                         onselectstart="return false"
-                         onpointerdown="event.preventDefault();"
-                         ontouchstart="event.preventDefault();"
-                         ongesturestart="event.preventDefault();"
-                         onselect="return false"
-                         oncopy="return false"
-                         oncut="return false"
-                         onpaste="return false"
-                         onbeforecopy="return false"
-                         onbeforecut="return false"
-                         onbeforepaste="return false"
-                         ondrag="return false"
-                         ondrop="return false"
-                         onmouseup="event.preventDefault();"
-                         onmouseleave="event.preventDefault();"
-                         onmouseout="event.preventDefault();"
-                         onmouseover="event.preventDefault();"
-                         onmouseenter="event.preventDefault();"
-                         onmousemove="event.preventDefault();"
-                         onmousewheel="event.preventDefault();"
-                         onwheel="event.preventDefault();"
-                         ondblclick="event.preventDefault();"
-                         onauxclick="event.preventDefault();"
-                         onpointerup="event.preventDefault();"
-                         onpointermove="event.preventDefault();"
-                         onpointerleave="event.preventDefault();"
-                         onpointerout="event.preventDefault();"
-                         onpointerover="event.preventDefault();"
-                         onpointerenter="event.preventDefault();"
-                         onpointercancel="event.preventDefault();"
-                         ongotpointercapture="event.preventDefault();"
-                         onlostpointercapture="event.preventDefault();"
-                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=INSTINCTx&font=inter';">
-                    <h4 class="text-lg font-bold text-purple-200 mb-1">INSTINCTx</h4>
-                    <p class="text-purple-100 font-medium mb-1">Advisor</p>
-                    <p class="text-gray-300 text-sm">Shares insightful advice and suggestion to help guide the team.</p>
+                <div class="advisor-card advisor-purple flex flex-col items-center text-center p-8">
+                    <img class="advisor-img"
+                        src="https://i.ibb.co/wNskW3gH/Rifat-Kabir-Samrat-1.jpg"
+                        alt="1hp_INSTINCTx"
+                        draggable="false"
+                        oncontextmenu="return false"
+                        ondragstart="return false"
+                        onmousedown="event.preventDefault();"
+                        onselectstart="return false"
+                        onpointerdown="event.preventDefault();"
+                        ontouchstart="event.preventDefault();"
+                        ongesturestart="event.preventDefault();"
+                        onselect="return false"
+                        oncopy="return false"
+                        oncut="return false"
+                        onpaste="return false"
+                        onbeforecopy="return false"
+                        onbeforecut="return false"
+                        onbeforepaste="return false"
+                        ondrag="return false"
+                        ondrop="return false"
+                        onmouseup="event.preventDefault();"
+                        onmouseleave="event.preventDefault();"
+                        onmouseout="event.preventDefault();"
+                        onmouseover="event.preventDefault();"
+                        onmouseenter="event.preventDefault();"
+                        onmousemove="event.preventDefault();"
+                        onmousewheel="event.preventDefault();"
+                        onwheel="event.preventDefault();"
+                        ondblclick="event.preventDefault();"
+                        onauxclick="event.preventDefault();"
+                        onpointerup="event.preventDefault();"
+                        onpointermove="event.preventDefault();"
+                        onpointerleave="event.preventDefault();"
+                        onpointerout="event.preventDefault();"
+                        onpointerover="event.preventDefault();"
+                        onpointerenter="event.preventDefault();"
+                        onpointercancel="event.preventDefault();"
+                        ongotpointercapture="event.preventDefault();"
+                        onlostpointercapture="event.preventDefault();"
+                        onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=INSTINCTx&font=inter';">
+                    <div class="advisor-name text-purple-200">INSTINCTx</div>
+                    <div class="advisor-role text-purple-100">Advisor</div>
+                    <div class="advisor-desc">Shares insightful advice and suggestions to help guide the team.</div>
                 </div>
             </div>
         </div>
@@ -866,7 +945,8 @@
                 }
                 </style>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card pro-card bg-blue-trans rounded-2xl flex flex-col items-center text-center p-8 border border-blue-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="blue">
+                    <!-- crippz: blue, code:net, meme king, IGL -->
+                    <div class="card pro-card bg-blue-trans rounded-2xl flex flex-col items-center text-center p-8 border border-blue-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="blue">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
@@ -908,9 +988,13 @@
                              ongotpointercapture="event.preventDefault();"
                              onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_crippz&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-blue-400 tracking-wide">crippz</h3>
-                        <p class="text-blue-300 font-medium mb-1">Role: In Game Leader</p>
-                        <p class="text-gray-300 text-sm">A star player. Known for getting code:net in tournaments. Loved and admired because of unique playstyle, leadership, witty nature and friendly attitude. </p>
+                        <h3 class="text-xl font-semibold mb-2 text-blue-400 tracking-wide flex items-center gap-2">
+                            crippz
+                        </h3>
+                        <p class="text-blue-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-blue-900/60 text-xs font-bold tracking-wider">In Game Leader </span></p>
+                        <p class="text-gray-300 text-sm mb-2">
+                            The star and heart of 1hp. Famous for getting <span class="font-mono bg-blue-900/40 px-1 rounded">code:net</span> in tournaments, but always returns with a smile. His unique playstyle, sharp leadership, and witty banter keep the team motivated and the mood light, no matter the stakes.
+                        </p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
                             <a href="https://www.facebook.com/xCrippz/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-medium transition-colors">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -920,7 +1004,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card pro-card bg-red-trans rounded-2xl flex flex-col items-center text-center p-8 border border-red-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="red">
+                    <!-- xeox69: red, playmaker, clutch, "sus" -->
+                    <div class="card pro-card bg-red-trans rounded-2xl flex flex-col items-center text-center p-8 border border-red-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="red">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/s9PQWFC9/xeox69.jpg"
@@ -962,9 +1047,14 @@
                              ongotpointercapture="event.preventDefault();"
                              onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_xeox69&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide">xeox69</h3>
-                        <p class="text-red-300 font-medium mb-1">Role: Playmaker / Offense</p>
-                        <p class="text-gray-300 text-sm">Joined September 23, 2020. Known for his iconic gameplay with crippz. A competitive mindset with serious mechanical skill to dominate the game.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide flex items-center gap-2">
+                            xeox69
+                        </h3>
+                        <p class="text-red-300 font-medium mb-2">
+                        <span class="ml-2 px-2 py-1 rounded bg-red-900/60 text-xs font-bold tracking-wider">Playmaker / Offense</span></p>
+                        <p class="text-gray-300 text-sm mb-2">
+                            The playmaker and clutch specialist. Known for his "wait, how?" gameplay. Often the first to dive in, but also the first to pull off the impossible. His synergy with crippz is legendary in the 1hp squad.
+                        </p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
                             <a href="https://www.facebook.com/xeox69" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-medium transition-colors">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -974,7 +1064,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="purple">
+                    <!-- JDM Doge: purple, support, calm, tactical -->
+                    <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="purple">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/YFxSBmMq/fahim-bhai.png"
@@ -1017,11 +1108,12 @@
                              onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_JDM%20Doge&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">JDM Doge</h3>
-                        <p class="text-purple-300 font-medium mb-1">Role: Support / Defense</p>
-                        <p class="text-gray-300 text-sm">JDM_Doge aka Fahim bhai is a calm and supportive player who remains composed under pressure, even in the most intense competitive moments. Specialized in rapid response on immediate support. Tactical ability usage is precise and strategic, often forcing opponents to reconsider their approach before engaging his squad.</p>
+                        <p class="text-purple-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-purple-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>
+                        <p class="text-gray-300 text-sm mb-2">
+                            The calmest presence in the squad. JDM Doge (aka Fahim bhai) is the tactical backbone—always composed, always ready to support. His rapid response and precise ability usage make him a nightmare for opponents and a blessing for teammates.
+                        </p>
                     </div>
                 </div>
-            <div>
                 <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider youngsters-effect">
                     1hp Youngsters
                 </h3>
@@ -1047,7 +1139,7 @@
                     100% { background-position: 100% 50%; }
                 }
             </style>                
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card pro-card bg-yellow-trans rounded-2xl flex flex-col items-center text-center p-8 border border-yellow-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="yellow">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-md bg-black pro-img-glow"
@@ -1091,7 +1183,7 @@
                              onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_Frenzy&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-yellow-400 tracking-wide">Frenzy</h3>
-                        <p class="text-yellow-300 font-medium mb-1">Role: In Game Leader</p>
+                        <p class="text-yellow-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-yellow-900/60 text-xs font-bold tracking-wider">In Game Leader </span></p>
                         <p class="text-gray-300 text-sm">Joined August 13, 2021 as the youngest recruit of 1hp. Played Valorant as well. Known for insanely good mechanical skill and decision making. Won uncountable tournaments with crippz & xeox69 in home and abroad.</p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
                             <a href="https://www.facebook.com/Frenzy4356" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-medium transition-colors">
@@ -1145,8 +1237,7 @@
                              onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_WalkerX&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide">WalkerX</h3>
-                        <p class="text-red-300 font-medium mb-1">Role: Offense / Support</p>
-                        <p class="text-gray-300 text-sm">Known for his juicy mechanical skill; often time does suspicious gameplay and has 6th-sense game-sense!? Very good at supporting team when they need him the most by dying first!? but homie is master at playmaking most of the times.</p>
+                        <p class="text-red-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-red-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>                        <p class="text-gray-300 text-sm">Known for his juicy mechanical skill; often time does suspicious gameplay and has 6th-sense game-sense!? Very good at supporting team when they need him the most by dying first!? but homie is master at playmaking most of the times.</p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
                             <a href="https://www.youtube.com/@_walkerX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-medium transition-colors">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1199,7 +1290,7 @@
                              onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_1Doom&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">1Doom</h3>
-                        <p class="text-purple-300 font-medium mb-1">Role: Offense / Support</p>
+                        <p class="text-purple-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-purple-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>
                         <p class="text-gray-300 text-sm"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.</p>
                     </div>
                 </div>
