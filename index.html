@@ -130,14 +130,13 @@
             </div>
         </div>
     </section>
-    <section id="about" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="about" class="pt-2 pb-2 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center text-lg space-y-6 about-us-text">
             <div class="flex flex-col items-center">
                 <img 
                     src="https://i.ibb.co/LDmqzR5q/20250529-221611.jpg" 
                     alt="1hp Esports Team Photo" 
-                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-purple-300/50 mx-auto mb-8 max-w-full h-auto transition-transform duration-300 hover:scale-105"
-                    style="max-width: 720px;"
+                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-white-300/50 mx-auto mb-8 w-full max-w-[1020px] h-auto transition-transform duration-300 hover:scale-105"
                     onerror="this.onerror=null;this.src='https://placehold.co/800x400/374151/4b5563?text=Team+Photo&font=inter';"
                 >
             </div>
@@ -151,12 +150,15 @@
     </section>
 <!-- Management & Teams and Founders Section with balanced, minimal negative space -->
 <div class="w-full flex justify-center mt-8 mb-2">
-    <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-6 management-gradient-effect">
-        Management & Teams
+    <h2 class="main-section-title text-4xl sm:text-5xl font-extrabold text-center mb-6 management-gradient-effect tracking-tight" style="font-family: 'Orbitron', 'Inter', Arial, sans-serif;">
+        <span class="uppercase tracking-widest">Management</span>
+        <span class="font-light mx-2">&amp;</span>
+        <span class="uppercase tracking-widest">Teams</span>
     </h2>
     <style>
     /* Grayish to white animated gradient for Management & Teams title */
     .management-gradient-effect {
+        font-family: 'Orbitron', 'Inter', Arial, sans-serif;
         background: linear-gradient(90deg, #6b7280 0%, #d1d5db 40%, #f3f4f6 100%);
         background-size: 200% auto;
         color: #fff;
@@ -168,7 +170,7 @@
             0 2px 12px rgba(107,114,128,0.13),
             0 4px 32px rgba(209,213,219,0.10),
             0 1.2px 0 #0008;
-        letter-spacing: 0em;
+        letter-spacing: 0.08em;
         transition: text-shadow 0.3s;
     }
     @keyframes management-gradient-move {
@@ -365,7 +367,7 @@
     <section id="advisors" class="pt-2 pb-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-0">
             <h3 class="advisors-title text-center text-3xl sm:text-4xl font-bold mb-6 mt-0">
-                1hp's Advisors
+                Advisors
             </h3>
             <style>
             .advisors-title {
@@ -424,25 +426,25 @@
     </section>
     <section id="esports-team" class="pt-2 pb-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         <div class="container mx-auto px-0 relative z-10">
-            <h2 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-6 tracking-widest effect-title-1hp">
-                1hp's Competitive Teams
+            <h2 class="main-section-title text-4xl sm:text-5xl font-extrabold text-center mb-8 tracking-widest effect-title-1hp" style="font-family: 'Orbitron', sans-serif;">
+                <span class="uppercase">COMPETITIVE ROSTERS</span>
             </h2>
             <style>
-            /* Subtle, effect-rich style for the main section title */
+            /* Enhanced, effect-rich style for the main section title */
             .effect-title-1hp {
                 font-family: 'Orbitron', sans-serif;
-                background: linear-gradient(120deg, #60a5fa 0%, #ec4158 40%, #ffce41 70%, #664bf0 100%);
-                background-size: 200% auto;
+                background: linear-gradient(120deg, #60a5fa 0%, #ec4158 30%, #ffce41 60%, #664bf0 100%);
+                background-size: 220% auto;
                 color: #fff;
                 background-clip: text;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                animation: effect-title-1hp-gradient 3s linear infinite alternate;
+                animation: effect-title-1hp-gradient 4s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
                 text-shadow:
-                    0 2px 12px rgba(102,75,240,0.13),
-                    0 4px 32px rgba(255,206,65,0.10),
+                    0 2px 16px rgba(102,75,240,0.16),
+                    0 4px 32px rgba(255,206,65,0.13),
                     0 1.2px 0 #0008;
-                letter-spacing: 0em;
+                letter-spacing: 0.02em;
                 transition: text-shadow 0.3s;
             }
             @keyframes effect-title-1hp-gradient {
@@ -822,7 +824,7 @@
         </style>
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h3 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-10 mt-8 clan-specialists-effect" style="font-family: 'Orbitron', sans-serif;">
-                1hp's Clan Specialists
+                CLAN SPECIALISTS
             </h3>
             <style>
             /* Subtle animated gold gradient + glow for Clan Specialists title */
@@ -835,11 +837,11 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 animation: clan-specialists-gradient 5s linear infinite alternate;
-                letter-spacing: 0em;
+                letter-spacing: 0.02em;
                 text-shadow:
-                    0 2px 12px rgba(255, 215, 0, 0.18),
-                    0 4px 32px rgba(255, 193, 7, 0.10),
-                    0 1px 0 #0008;
+                    0 2px 12px rgba(255, 208, 0, 0.322),
+                    0 4px 32px rgba(255, 193, 7, 0.253),
+                    0 1px 0 rgba(24, 23, 23, 0.533);
                 position: relative;
                 transition: text-shadow 0.3s;
             }
