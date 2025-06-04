@@ -124,7 +124,7 @@
             box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,0,0,0.13);
             border: none;
             position: relative;
-            overflow: visible; /* Changed from hidden to visible for potential hover effects that go outside bounds */
+            overflow: visible; 
             padding: 2.5rem 1.5rem 2rem 1.5rem;
             display: flex;
             flex-direction: column;
@@ -152,10 +152,10 @@
                 radial-gradient(ellipse 80% 60% at 20% 100%, #1a1533 0%, #23212b 80%),
                 linear-gradient(120deg, #1a1533 0%, #2d225a 100%);
         }
-        #founders .card:hover, #founders .card:focus-within { /* General hover for founders cards */
+        #founders .card:hover, #founders .card:focus-within { 
             box-shadow: 0 0 32px 8px var(--founder-glow, #fff2), 0 8px 32px 0 rgba(102,75,240,0.13);
             z-index: 2;
-            transform: translateY(-6px) scale(1.045); /* Overrides general .card:hover transform */
+            transform: translateY(-6px) scale(1.045); 
         }
         #founders .card[data-shadow*="255,206,65"] { --founder-glow: #ffce41cc; }
         #founders .card[data-shadow*="236,65,88"] { --founder-glow: #ec4158cc; }
@@ -189,7 +189,7 @@
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: founders-gradient-move 4s ease-in-out infinite alternate; /* Reuses existing animation */
+            animation: founders-gradient-move 4s ease-in-out infinite alternate; 
         }
         #founders .founder-role {
             font-size: 1rem;
@@ -209,7 +209,6 @@
 
         /* Advisors Section Styles */
         .advisors-title {
-            /* font-family is already set above */
             background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 30%, #a855f7 70%, #ec4158 100%);
             background-size: 200% auto;
             color: #fff;
@@ -225,7 +224,7 @@
             position: relative;
             transition: text-shadow 0.3s;
         }
-        .advisors-title::after { display: none !important; } /* This was an oddly specific rule, kept it */
+        .advisors-title::after { display: none !important; } 
         @keyframes advisors-title-gradient {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
@@ -240,10 +239,10 @@
             min-height: 340px;
             background: var(--advisor-bg, linear-gradient(120deg, rgba(34,211,238,0.10) 0%, rgba(168,85,247,0.08) 100%));
         }
-        .advisor-card:hover, .advisor-card:focus-within { /* General hover for advisor cards */
+        .advisor-card:hover, .advisor-card:focus-within { 
             box-shadow: 0 0 32px 8px var(--advisor-glow, #60a5fa33), 0 8px 32px 0 var(--advisor-glow2, #a855f733);
             border-color: var(--advisor-border, #60a5fa);
-            transform: translateY(-6px) scale(1.045); /* Overrides general .card:hover transform */
+            transform: translateY(-6px) scale(1.045); 
             z-index: 2;
         }
         .advisor-img {
@@ -267,7 +266,7 @@
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: advisors-title-gradient 5s linear infinite alternate; /* Reuses animation */
+            animation: advisors-title-gradient 5s linear infinite alternate; 
         }
         .advisor-role {
             font-size: 1rem;
@@ -281,7 +280,6 @@
             opacity: 0.92;
             margin-bottom: 0;
         }
-        /* Unique color themes for each advisor card */
         .advisor-card.advisor-blue {
             --advisor-bg: linear-gradient(120deg, rgba(56,189,248,0.13) 0%, rgba(59,130,246,0.10) 100%);
             --advisor-shadow: rgba(56,189,248,0.18);
@@ -312,7 +310,6 @@
         
         /* Esports Team Section Title Styles */
         .effect-title-1hp {
-            /* font-family is already set above */
             background: linear-gradient(120deg, #60a5fa 0%, #ec4158 30%, #ffce41 60%, #664bf0 100%);
             background-size: 220% auto;
             color: #fff;
@@ -332,9 +329,7 @@
             100% { background-position: 100% 50%; }
         }
         
-        /* 1hp Legacy Subtitle Style */
         .legacy-effect {
-            /* font-family is already set above */
             background: linear-gradient(120deg, #60a5fa 0%, #38bdf8 40%, #a5b4fc 70%, #818cf8 100%);
             background-size: 200% auto;
             color: #fff;
@@ -354,9 +349,7 @@
             100% { background-position: 100% 50%; }
         }
 
-        /* 1hp Youngsters Subtitle Style */
         .youngsters-effect {
-            /* font-family is already set above */
             background: linear-gradient(90deg, #6ee7b7 0%, #34d399 40%, #38bdf8 70%, #a7f3d0 100%);
             background-size: 200% auto;
             color: #fff;
@@ -382,49 +375,93 @@
         .bg-purple-trans { background: rgba(102, 75, 240, 0.13) !important; }
         .bg-blue-trans   { background: rgba(96, 165, 250, 0.13) !important; }
         
-        #team-neon-bg { display: none !important; } /* Kept as per original */
-        .neon-title, .neon-subtitle { text-shadow: none !important; } /* Kept as per original */
+        #team-neon-bg { display: none !important; } 
+        .neon-title, .neon-subtitle { text-shadow: none !important; } 
         
+        /* --- NEW/MODIFIED CSS FOR PRO CARDS --- */
+        .pro-card-grid-container {
+             /* Not strictly needed for individual card tilt if perspective is applied on card transform, 
+                but good if future 3D layouts of the grid itself are considered.
+                Can be removed if not causing issues and perspective is handled per card. */
+            /* perspective: 1200px;  */
+        }
+
         .pro-card {
             box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
-            transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55), transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
+            /* Transition for non-transform properties like box-shadow. Transform is handled by JS or very quickly for reset. */
+            transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55), transform 0.1s ease-out;
             position: relative;
             z-index: 1;
-             /* min-height is set inline, consider moving to classes if consistent */
+            transform-style: preserve-3d; /* Crucial for 3D children */
+            will-change: transform, box-shadow; /* Performance hint for animations */
         }
-        .pro-card .pro-glow {
+
+        .pro-card .pro-glow { /* Existing glow div */
             pointer-events: none;
             position: absolute;
             inset: -4px;
-            border-radius: 1.25rem; /* Matches card's rounded-2xl */
+            border-radius: 1.25rem; 
             z-index: -1;
-            opacity: 0.32;
-            filter: blur(7px);
-            transition: filter 0.1s, opacity 0.1s;
+            opacity: 0.32; /* Base opacity */
+            filter: blur(7px); /* Base blur */
+            transition: filter 0.3s, opacity 0.3s;
         }
-        .pro-card[data-neon="blue"] .pro-glow { background: radial-gradient(circle at 60% 40%, #60a5fa 0%, #1e3a8a 80%); }
-        .pro-card[data-neon="red"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ec4158 0%, #991b1b 80%); }
-        .pro-card[data-neon="purple"] .pro-glow { background: radial-gradient(circle at 60% 40%, #664bf0 0%, #581c87 80%); }
-        .pro-card[data-neon="yellow"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ffce41 0%, #b45309 80%); }
         
         .pro-card:hover, .pro-card:focus-within {
-            box-shadow: 0 0 16px 4px #fff2, 0 0 32px 8px var(--pro-neon, #fff2);
-            z-index: 2;
-            /* transform is handled by JS for random movement, general .card:hover might be overridden */
+            /* Enhanced glow effect, using existing --pro-neon variable */
+            box-shadow: 0 0 15px 4px var(--pro-neon, rgba(255,255,255,0.2)), 
+                        0 0 30px 8px var(--pro-neon, rgba(255,255,255,0.15)),
+                        0 0 45px 12px var(--pro-neon, rgba(255,255,255,0.1));
+            z-index: 10; /* Ensure hovered card is on top for effects and visibility */
+            /* transform for hover (scale, tilt) will be primarily handled by JavaScript for dynamic effect */
         }
+
+        /* Specific neon color glows on hover (from original CSS, good to keep) */
         .pro-card[data-neon="blue"]:hover { --pro-neon: #60a5fa; }
         .pro-card[data-neon="red"]:hover { --pro-neon: #ec4158; }
         .pro-card[data-neon="purple"]:hover { --pro-neon: #664bf0; }
         .pro-card[data-neon="yellow"]:hover { --pro-neon: #ffce41; }
+
+        /* Subtle shine effect on hover for pro-cards */
+        .pro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.25rem; /* Matches card's rounded-2xl */
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.0) 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            z-index: 1; /* Above card background, below card content */
+            pointer-events: none; /* Allow clicks to pass through */
+        }
+
+        .pro-card:hover::before {
+            opacity: 1;
+        }
         
+        /* Styling for inner elements of pro-card for JS-driven parallax */
+        .pro-card .pro-img-glow,
+        .pro-card h3,
+        .pro-card > p, /* Target direct paragraph children for description */
+        .pro-card .absolute.bottom-0 { /* Target social links container */
+            transition: transform 0.15s ease-out; /* Smooth transition for JS transform changes */
+            transform: translateZ(0px); /* Initial state */
+        }
+        
+        /* Original image glow on hover (pro-img-glow) - this is good and can be kept */
         .pro-card .pro-img-glow {
-            box-shadow: 0 0 0 0 transparent;
-            transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+            box-shadow: 0 0 0 0 transparent; /* Base state */
+            /* transition is now on the element itself for JS control */
         }
         .pro-card[data-neon="blue"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #60a5fa66, 0 0 32px 8px #1e3a8a33; }
         .pro-card[data-neon="red"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ec415866, 0 0 32px 8px #991b1b33; }
         .pro-card[data-neon="purple"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #664bf066, 0 0 32px 8px #581c8733; }
         .pro-card[data-neon="yellow"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ffce4166, 0 0 32px 8px #b4530933; }
+        /* --- END OF NEW/MODIFIED CSS FOR PRO CARDS --- */
+
 
         /* Clan Specialists Card Shadow Animations */
         @keyframes shifting-layers-shadow-yellow {
@@ -452,9 +489,7 @@
         .card-shadow-pink { animation: shifting-layers-shadow-pink 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
         .card-shadow-cyan { animation: shifting-layers-shadow-cyan 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
 
-        /* Clan Specialists Title Style */
         .clan-specialists-effect {
-            /* font-family is already set above */
             background: linear-gradient(90deg, #ffe082 0%, #ffd700 30%, #ffb300 70%, #fffbe6 100%);
             background-size: 200% auto;
             color: #fff;
@@ -475,9 +510,7 @@
             100% { background-position: 100% 50%; }
         }
 
-        /* News Section Title Style */
         .news-gradient-effect {
-            /* font-family is already set above */
             background: linear-gradient(90deg, #ffb300 0%, #fbbf24 30%, #ec4899 70%, #f472b6 100%);
             background-size: 200% auto;
             color: #fff;
@@ -498,9 +531,7 @@
             100% { background-position: 100% 50%; }
         }
 
-        /* Sponsors Section Title Style */
         .sponsors-gradient-effect {
-            /* font-family is already set above */
             background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #fbbf24 100%);
             background-size: 200% auto;
             color: #fff;
@@ -619,7 +650,6 @@
         </div>
     </section>
 
-    <!-- Management & Teams and Founders Section -->
     <div class="w-full flex justify-center mt-8 mb-2">
         <h2 class="main-section-title text-4xl sm:text-5xl font-extrabold text-center mb-6 management-gradient-effect tracking-tight">
             <span class="uppercase tracking-widest">Management</span>
@@ -726,6 +756,9 @@
         </div>
     </section>
 
+    <!-- =============================================================== -->
+    <!-- START OF UPDATED ESPORTS TEAM SECTION (COMPETITIVE ROSTERS)   -->
+    <!-- =============================================================== -->
     <section id="esports-team" class="pt-2 pb-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         <div class="container mx-auto px-0 relative z-10">
             <h2 class="main-section-title text-4xl sm:text-5xl font-extrabold text-center mb-8 tracking-widest effect-title-1hp">
@@ -735,7 +768,8 @@
                 <h3 class="team-subtitle-legacy text-center text-blue-300 text-3xl sm:text-4xl font-bold mb-6 mt-0 tracking-wider legacy-effect">
                     1hp Legacy
                 </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Added pro-card-grid-container class for perspective context if needed -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pro-card-grid-container">
                     <!-- crippz -->
                     <div class="card pro-card bg-blue-trans rounded-2xl flex flex-col items-center text-center p-8 border border-blue-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="blue">
                         <div class="pro-glow"></div>
@@ -799,11 +833,13 @@
                             The calmest presence in the squad. JDM Doge (aka Fahim bhai) is the tactical backbone—always composed, always ready to support. His rapid response and precise ability usage make him a nightmare for opponents and a blessing for teammates.
                         </p>
                     </div>
-                </div>
+                </div> <!-- End of 1hp Legacy grid -->
+
                 <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider youngsters-effect">
                     1hp Youngsters
                 </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <!-- Added pro-card-grid-container class for perspective context if needed -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pro-card-grid-container">
                     <div class="card pro-card bg-yellow-trans rounded-2xl flex flex-col items-center text-center p-8 border border-yellow-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="yellow">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-md bg-black pro-img-glow disable-user-interaction"
@@ -852,19 +888,20 @@
                         <p class="text-purple-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-purple-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>
                         <p class="text-gray-300 text-sm"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.</p>
                     </div>
-                </div>
+                </div> <!-- End of 1hp Youngsters grid -->
             </div>
         </div>
     </section>
+    <!-- =============================================================== -->
+    <!-- END OF UPDATED ESPORTS TEAM SECTION                             -->
+    <!-- =============================================================== -->
     
-    <!--1hp Clan Specialist's Section -->
     <section id="teams-others" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8"> <!-- This inner container was missing, added for consistency -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8"> 
             <h3 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-10 mt-8 clan-specialists-effect">
                 CLAN SPECIALISTS
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-                <!-- Player Card 1 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 card-shadow-yellow"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-yellow-300 shadow-lg disable-user-interaction"
@@ -878,7 +915,6 @@
                         Mustakim thrives in the moments that matter most. Does dominating performance under pressure, brings a bold, can-do spirit that energizes the team and drives results. With a mix of sharp instincts and an easygoing sense of humor, homie strikes the perfect balance between getting things done and keeping things fun.
                     </p>
                 </div>
-                <!-- Player Card 2 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 relative card-shadow-purple"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg disable-user-interaction"
@@ -906,7 +942,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Player Card 3 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-pink-400/10 relative card-shadow-pink"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-pink-300 shadow-lg disable-user-interaction"
@@ -928,7 +963,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Player Card 4 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/10 card-shadow-cyan"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg disable-user-interaction"
@@ -943,17 +977,15 @@
                     </p>
                 </div>
             </div>
-        </div> <!-- Closing the container div for #teams-others -->
+        </div> 
     </section>
 
-    <!-- News Section -->
     <section id="news" class="py-12 sm:py-16 bg-gray-850/80 backdrop-blur-md rounded-lg my-14 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 news-gradient-effect">
                 Latest News <span class="font-extrabold">&</span> Updates
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- News Card 1 -->
                 <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
                     <img class="w-full h-48 object-cover" src="https://i.ibb.co/wFHhx03w/Legends-Reborn-Tournament-Top-5-Prizewinners.png" alt="Legends-Reborn-Tournament-Top-5-Prizewinners" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=Tournament+Win&font=inter';">
                     <div class="p-6">
@@ -963,7 +995,6 @@
                         <a href="https://www.facebook.com/official1hp/posts/pfbid02tDDJMfJxq5w8fZhBREn37PRydngn3oKKz5beuBCmE8rF4QdBQ3vPXcXLCSsxHJcNl" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
                     </div>
                 </div>
-                <!-- News Card 2 -->
                 <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
                     <img class="w-full h-48 object-cover" src="https://i.ibb.co/C310bs5R/1hp-member-Sign-UP-01.png" alt="1hp-member-Sign-UP-01" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=New+Player&font=inter';">
                     <div class="p-6">
@@ -973,7 +1004,6 @@
                         <a href="https://www.facebook.com/photo.php?fbid=1056223615800813&set=pb.100042395546650.-2207520000&type=3" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
                     </div>
                 </div>
-                <!-- News Card 3 -->
                 <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
                     <img class="w-full h-48 object-cover" src="https://i.ibb.co/wNLSs47z/Legends-Reborn-Tournament-Final-Results-Points-Table.png" alt="Legends-Reborn-Tournament-Final-Results-Points-Table" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=Match+Recap&font=inter';">
                     <div class="p-6">
@@ -983,7 +1013,7 @@
                         <a href="https://www.youtube.com/watch?v=L6Ku_fg96BY" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
                     </div>
                 </div>
-            </div> <!-- Closing grid for news cards -->
+            </div> 
             <div class="flex justify-center items-center mt-8">
                 <a href="#" class="btn btn-primary bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300">
                     View All News
@@ -992,14 +1022,12 @@
         </div>
     </section>
 
-    <!-- Sponsors Section -->
     <section id="sponsors" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 sponsors-gradient-effect">
                 Our Valued Sponsors
             </h2>
             <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-                <!-- Sponsor logos would go here if available -->
             </div>
             <div class="flex justify-center mt-12">
                 <img src="https://i.ibb.co/PpZHKkW/1hp-Xcvj-Cover-4.png" alt="1hp Xcvj Cover - Placeholder for Sponsors" class="rounded-lg shadow-lg max-w-full h-auto" loading="lazy">
@@ -1012,8 +1040,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact" class="bg-gray-900/50 py-12 mt-12"> <!-- Added bg color and padding to footer -->
+    <footer id="contact" class="bg-gray-900/50 py-12 mt-12"> 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="border-t border-gray-700 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -1066,7 +1093,6 @@
                 mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
             });
 
-            // Close mobile menu when a link is clicked
             mobileMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', (event) => {
                     if (link.getAttribute('href').startsWith('#')) {
@@ -1084,15 +1110,14 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
-                // Ensure it's a valid internal anchor and not just "#"
                 if (targetId && targetId.startsWith('#') && targetId.length > 1) {
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         e.preventDefault();
-                        const header = document.querySelector('header.sticky'); // More specific selector for sticky header
+                        const header = document.querySelector('header.sticky'); 
                         const headerOffset = header ? header.offsetHeight : 0;
                         const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset + 1; // +1 for slight buffer
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset + 1; 
                         
                         window.scrollTo({
                             top: offsetPosition,
@@ -1117,41 +1142,36 @@
             const reveal = () => {
                 cards.forEach((card, i) => {
                     const rect = card.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 60) { // Reveal when 60px from bottom is visible
+                    if (rect.top < window.innerHeight - 60) { 
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
-                        // Apply staggered transition
                         card.style.transition = `opacity 1s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55)`;
                     }
                 });
             };
 
-            // Initial state for animation
             cards.forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(60px)';
             });
 
             window.addEventListener('scroll', reveal, { passive: true });
-            reveal(); // Initial check on load
+            reveal(); 
         }
         animateFoundersOnScroll();
 
-        // Interactive glow on hover for founder cards (original JS for this was more specific than CSS)
         document.querySelectorAll('#founders .card').forEach(card => {
             const shadowColor = card.getAttribute('data-shadow') || 'rgba(255,255,255,0.25)';
-            let originalBoxShadow = card.style.boxShadow; // Store original if set by CSS
+            let originalBoxShadow = card.style.boxShadow; 
 
             card.addEventListener('mouseenter', () => {
                 card.style.boxShadow = `0 0 40px 1px ${shadowColor}, 0 1px 40px 4px ${shadowColor.replace('0.55', '0.10')}`;
-                // card.style.transition = 'box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)'; // Transition is already on the card
             });
             card.addEventListener('mouseleave', () => {
-                card.style.boxShadow = originalBoxShadow || ''; // Revert to original or remove
+                card.style.boxShadow = originalBoxShadow || ''; 
             });
         });
 
-        // Floating particle effect behind the founders section
         (function foundersParticles() {
             const section = document.getElementById('founders');
             if (!section) return;
@@ -1163,9 +1183,9 @@
             canvas.style.width = '100%';
             canvas.style.height = '100%';
             canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '0'; // Ensure it's behind content
-            section.style.position = 'relative'; // Needed for absolute positioning of canvas
-            section.prepend(canvas); // Add canvas as the first child
+            canvas.style.zIndex = '0'; 
+            section.style.position = 'relative'; 
+            section.prepend(canvas); 
 
             const ctx = canvas.getContext('2d');
             let animationFrameId;
@@ -1173,16 +1193,15 @@
             function resizeCanvas() {
                 canvas.width = section.offsetWidth;
                 canvas.height = section.offsetHeight;
-                // Re-initialize particles or adjust positions if needed on resize
             }
-            resizeCanvas(); // Initial size
+            resizeCanvas(); 
             window.addEventListener('resize', resizeCanvas);
 
             const colors = [
-                'rgba(253,224,71,0.18)',   // yellow
-                'rgba(236,65,88,0.18)',    // red
-                'rgba(102,75,240,0.18)',   // purple
-                'rgba(255,255,255,0.10)'   // white
+                'rgba(253,224,71,0.18)',   
+                'rgba(236,65,88,0.18)',    
+                'rgba(102,75,240,0.18)',   
+                'rgba(255,255,255,0.10)'   
             ];
             const particles = Array.from({length: 24}, () => ({
                 x: Math.random() * canvas.width,
@@ -1201,19 +1220,18 @@
                     ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
                     ctx.fillStyle = p.color;
                     ctx.globalAlpha = p.alpha;
-                    ctx.shadowColor = p.color; // Add shadow for a softer glow
+                    ctx.shadowColor = p.color; 
                     ctx.shadowBlur = 16;
                     ctx.fill();
                 }
-                ctx.globalAlpha = 1; // Reset global alpha
-                ctx.shadowBlur = 0; // Reset shadow
+                ctx.globalAlpha = 1; 
+                ctx.shadowBlur = 0; 
             }
 
             function animateParticles() {
                 for (const p of particles) {
                     p.x += p.dx;
                     p.y += p.dy;
-                    // Boundary checks
                     if (p.x + p.r < 0) p.x = canvas.width + p.r;
                     else if (p.x - p.r > canvas.width) p.x = -p.r;
                     if (p.y + p.r < 0) p.y = canvas.height + p.r;
@@ -1223,7 +1241,6 @@
                 animationFrameId = requestAnimationFrame(animateParticles);
             }
             
-            // Start animation only if section is somewhat visible (basic optimization)
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1235,40 +1252,116 @@
                         }
                     }
                 });
-            }, { threshold: 0.01 }); // Start when 1% is visible
+            }, { threshold: 0.01 }); 
 
             observer.observe(section);
         })();
 
-        // Subtle floating animation for founder cards
         document.querySelectorAll('#founders .card').forEach((card, i) => {
             card.animate([
                 { transform: 'translateY(0px)' },
-                { transform: `translateY(${i % 2 === 0 ? -8 : 8}px)` }, // Alternate direction
+                { transform: `translateY(${i % 2 === 0 ? -8 : 8}px)` }, 
                 { transform: 'translateY(0px)' }
             ], {
-                duration: 4200 + i * 150, // Slightly varied duration
+                duration: 4200 + i * 150, 
                 iterations: Infinity,
                 direction: 'alternate',
                 easing: 'ease-in-out'
             });
         });
 
-        // --- Pro Card Random Movement on Hover ---
+        // --- NEW JAVASCRIPT FOR ENHANCED PRO CARD INTERACTIONS ---
+        function initializeProCardInteractions() {
+            const proCards = document.querySelectorAll('.pro-card');
+            const tiltStrength = 7; // Max rotation in degrees
+            const parallaxStrength = {
+                img: 40, // Max translateZ for image
+                title: 25, // Max translateZ for title
+                text: 15,  // Max translateZ for text/description
+                social: 20 // Max translateZ for social links
+            };
+
+            proCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = (y - centerY) / centerY * -tiltStrength;
+                    const rotateY = (x - centerX) / centerX * tiltStrength;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+
+                    // Parallax for inner elements
+                    const img = card.querySelector('.pro-img-glow');
+                    const title = card.querySelector('h3');
+                    // Query for direct child p tags for description to avoid affecting p tags inside social links etc.
+                    const descriptionPara = card.querySelector(':scope > p.text-gray-300.text-sm'); 
+                    const rolePara = card.querySelector(':scope > p:not(.text-gray-300)'); // Role paragraph
+                    const socialLinksContainer = card.querySelector('.absolute.bottom-0');
+
+                    if(img) img.style.transform = `translateZ(${parallaxStrength.img}px) rotateX(${rotateX/2}deg) rotateY(${rotateY/2}deg) scale(1.05)`;
+                    if(title) title.style.transform = `translateZ(${parallaxStrength.title}px) rotateX(${rotateX/3}deg) rotateY(${rotateY/3}deg)`;
+                    if(descriptionPara) descriptionPara.style.transform = `translateZ(${parallaxStrength.text}px)`;
+                    if(rolePara) rolePara.style.transform = `translateZ(${parallaxStrength.text + 5}px)`; // Slightly more for role
+                    if(socialLinksContainer) socialLinksContainer.style.transform = `translateZ(${parallaxStrength.social}px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    
+                    // Reset inner elements
+                    const elementsToReset = [
+                        card.querySelector('.pro-img-glow'),
+                        card.querySelector('h3'),
+                        card.querySelector(':scope > p.text-gray-300.text-sm'),
+                        card.querySelector(':scope > p:not(.text-gray-300)'),
+                        card.querySelector('.absolute.bottom-0')
+                    ];
+                    
+                    elementsToReset.forEach(el => {
+                        if(el) el.style.transform = 'translateZ(0px) scale(1) rotateX(0deg) rotateY(0deg)';
+                    });
+                     // Specifically reset scale for image if it was scaled up
+                    const img = card.querySelector('.pro-img-glow');
+                    if(img) img.style.transform = 'translateZ(0px) scale(1)';
+
+                });
+
+                card.addEventListener('mouseenter', () => {
+                    // Ensure the transition is smooth when mouse enters, especially for the transform property
+                    card.style.transition = 'transform 0.05s ease-out, box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)';
+                });
+            });
+        }
+
+        // Call the function after the DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeProCardInteractions);
+        } else {
+            initializeProCardInteractions();
+        }
+
+        // --- Old Pro Card Random Movement on Hover (Commented Out) ---
+        /*
         document.querySelectorAll('.pro-card').forEach(card => {
             let originalTransform = getComputedStyle(card).transform;
-            if (originalTransform === 'none') originalTransform = ''; // Handle case where no transform is initially set
+            if (originalTransform === 'none') originalTransform = ''; 
 
             card.addEventListener('mouseenter', () => {
-                const x = (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 4); // Reduced movement: 4-8px
+                const x = (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 4); 
                 const y = (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 4);
-                // Apply hover scale and slight rotation along with random translate
                 card.style.transform = `translate(${x}px, ${y}px) scale(1.025) rotate(-0.5deg)`;
             });
             card.addEventListener('mouseleave', () => {
-                card.style.transform = originalTransform; // Revert to original transform
+                card.style.transform = originalTransform; 
             });
         });
+        */
+        // --- END OF NEW JAVASCRIPT ---
 
     </script>
 </body>
