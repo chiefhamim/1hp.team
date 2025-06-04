@@ -16,7 +16,8 @@
     <meta property="og:site_name" content="1hp Esports">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@1hpEsportsBD"> <meta name="twitter:title" content="1hp Esports - Official Website">
+    <meta name="twitter:site" content="@1hpEsportsBD">
+    <meta name="twitter:title" content="1hp Esports - Official Website">
     <meta name="twitter:description" content="Friendship | Trust | Brotherhood. Check out the official home of 1hp Esports!">
     <meta name="twitter:image" content="https://www.1hp.team/1hp-social-preview.png">
 
@@ -36,24 +37,490 @@
             color: #F3F4F6;
             min-height: 100vh;
         }
+        /* Utility class to disable common user interactions on elements like images */
+        .disable-user-interaction {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* IE/Edge */
+        }
+
+        /* Specific Title Font Overrides */
         .main-section-title, .about-us-title, .team-subtitle-legacy, .team-subtitle-youngsters,
-        /* Ensuring Orbitron is applied to these specific h3s as per your body code */
         #founders > .container > h3, 
         #advisors > .container > h3, 
         #esports-team > .container > .mb-16 > h3, /* for 1hp Legacy */
-        #esports-team > .container > div:last-child > h3 /* for 1hp Youngsters */ {
+        #esports-team > .container > div:last-child > h3, /* for 1hp Youngsters */
+        .management-gradient-effect,
+        .founders-gradient-effect,
+        .advisors-title,
+        .effect-title-1hp,
+        .legacy-effect,
+        .youngsters-effect,
+        .clan-specialists-effect,
+        .news-gradient-effect,
+        .sponsors-gradient-effect {
             font-family: 'Orbitron', sans-serif;
         }
+
         .card {
             transition: transform 0.3s;
         }
         .card:hover {
-            transform: scale(1.05);
+            transform: scale(1.05); /* General card hover, specific cards might override this */
         }
+
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #1f2937; }
         ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+
+        /* Management & Teams Title Gradient */
+        .management-gradient-effect {
+            /* font-family is already set above */
+            background: linear-gradient(90deg, #6b7280 0%, #d1d5db 40%, #f3f4f6 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: management-gradient-move 4s ease-in-out infinite alternate;
+            text-shadow:
+                0 2px 12px rgba(107,114,128,0.13),
+                0 4px 32px rgba(209,213,219,0.10),
+                0 1.2px 0 #0008;
+            letter-spacing: 0.08em;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes management-gradient-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Founders Section Styles */
+        .founders-gradient-effect {
+            background: linear-gradient(90deg, #ffce41 0%, #ec4158 50%, #664bf0 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: founders-gradient-move 4s ease-in-out infinite alternate;
+            text-shadow:
+                0 2px 12px rgba(255,206,65,0.13),
+                0 4px 32px rgba(236,65,88,0.10),
+                0 1.2px 0 #0008;
+            letter-spacing: 0em;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes founders-gradient-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        #founders .card {
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,0,0,0.13);
+            border: none;
+            position: relative;
+            overflow: visible; /* Changed from hidden to visible for potential hover effects that go outside bounds */
+            padding: 2.5rem 1.5rem 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 410px;
+            transition: box-shadow 0.35s cubic-bezier(.68,-0.55,.27,1.55), transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
+            background: #23212b;
+        }
+        #founders .card[data-shadow*="255,206,65"] {
+            background:
+                radial-gradient(ellipse 90% 60% at 80% 0%, #ffce41cc 0%, #ffce4100 80%),
+                radial-gradient(ellipse 80% 60% at 20% 100%, #2d260b 0%, #23212b 80%),
+                linear-gradient(120deg, #3a2e0c 0%, #4d3d13 100%);
+        }
+        #founders .card[data-shadow*="236,65,88"] {
+            background:
+                radial-gradient(ellipse 90% 60% at 80% 0%, #ec4158cc 0%, #ec415800 80%),
+                radial-gradient(ellipse 80% 60% at 20% 100%, #2a1117 0%, #23212b 80%),
+                linear-gradient(120deg, #2a1117 0%, #4d232c 100%);
+        }
+        #founders .card[data-shadow*="102,75,240"] {
+            background:
+                radial-gradient(ellipse 90% 60% at 80% 0%, #664bf0cc 0%, #664bf000 80%),
+                radial-gradient(ellipse 80% 60% at 20% 100%, #1a1533 0%, #23212b 80%),
+                linear-gradient(120deg, #1a1533 0%, #2d225a 100%);
+        }
+        #founders .card:hover, #founders .card:focus-within { /* General hover for founders cards */
+            box-shadow: 0 0 32px 8px var(--founder-glow, #fff2), 0 8px 32px 0 rgba(102,75,240,0.13);
+            z-index: 2;
+            transform: translateY(-6px) scale(1.045); /* Overrides general .card:hover transform */
+        }
+        #founders .card[data-shadow*="255,206,65"] { --founder-glow: #ffce41cc; }
+        #founders .card[data-shadow*="236,65,88"] { --founder-glow: #ec4158cc; }
+        #founders .card[data-shadow*="102,75,240"] { --founder-glow: #664bf0cc; }
+
+        #founders .founder-img-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            width: 100%;
+        }
+        #founders .founder-img {
+            width: 9rem; height: 9rem;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 16px 0 var(--founder-glow, #fff2);
+            background: #fff;
+            margin: 0 auto;
+            display: block;
+        }
+        #founders .founder-name {
+            font-size: 1.35rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.02em;
+            background: linear-gradient(90deg, #ffce41 0%, #ec4158 50%, #664bf0 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: founders-gradient-move 4s ease-in-out infinite alternate; /* Reuses existing animation */
+        }
+        #founders .founder-role {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+        #founders .card[data-shadow*="255,206,65"] .founder-role { color: #ffce41; }
+        #founders .card[data-shadow*="236,65,88"] .founder-role { color: #ec4158; }
+        #founders .card[data-shadow*="102,75,240"] .founder-role { color: #664bf0; }
+        #founders .founder-desc {
+            font-size: 0.97rem;
+            color: #e5e7eb;
+            opacity: 0.92;
+            margin-bottom: 0;
+        }
+
+        /* Advisors Section Styles */
+        .advisors-title {
+            /* font-family is already set above */
+            background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 30%, #a855f7 70%, #ec4158 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: advisors-title-gradient 5s linear infinite alternate;
+            letter-spacing: 0.01em;
+            text-shadow:
+                0 2px 12px rgba(56,189,248,0.13),
+                0 4px 32px rgba(168,85,247,0.10),
+                0 1px 0 #0008;
+            position: relative;
+            transition: text-shadow 0.3s;
+        }
+        .advisors-title::after { display: none !important; } /* This was an oddly specific rule, kept it */
+        @keyframes advisors-title-gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .advisor-card {
+            border-radius: 1.25rem;
+            box-shadow: 0 8px 32px 0 var(--advisor-shadow, rgba(56,189,248,0.10)), 0 2px 8px 0 var(--advisor-shadow2, rgba(168,85,247,0.08));
+            border: 1.5px solid transparent;
+            transition: box-shadow 0.3s, border-color 0.3s, transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
+            position: relative;
+            overflow: visible;
+            min-height: 340px;
+            background: var(--advisor-bg, linear-gradient(120deg, rgba(34,211,238,0.10) 0%, rgba(168,85,247,0.08) 100%));
+        }
+        .advisor-card:hover, .advisor-card:focus-within { /* General hover for advisor cards */
+            box-shadow: 0 0 32px 8px var(--advisor-glow, #60a5fa33), 0 8px 32px 0 var(--advisor-glow2, #a855f733);
+            border-color: var(--advisor-border, #60a5fa);
+            transform: translateY(-6px) scale(1.045); /* Overrides general .card:hover transform */
+            z-index: 2;
+        }
+        .advisor-img {
+            width: 7rem;
+            height: 7rem;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 16px 0 var(--advisor-img-shadow, #60a5fa33);
+            background: #fff;
+            margin-bottom: 1.25rem;
+        }
+        .advisor-name {
+            font-size: 1.15rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            margin-bottom: 0.15rem;
+            letter-spacing: 0.02em;
+            background: linear-gradient(90deg, #60a5fa 0%, #a855f7 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: advisors-title-gradient 5s linear infinite alternate; /* Reuses animation */
+        }
+        .advisor-role {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+        .advisor-desc {
+            font-size: 0.97rem;
+            color: #e5e7eb;
+            opacity: 0.92;
+            margin-bottom: 0;
+        }
+        /* Unique color themes for each advisor card */
+        .advisor-card.advisor-blue {
+            --advisor-bg: linear-gradient(120deg, rgba(56,189,248,0.13) 0%, rgba(59,130,246,0.10) 100%);
+            --advisor-shadow: rgba(56,189,248,0.18);
+            --advisor-shadow2: rgba(59,130,246,0.13);
+            --advisor-glow: #60a5fa55;
+            --advisor-glow2: #38bdf855;
+            --advisor-border: #60a5fa;
+            --advisor-img-shadow: #60a5fa33;
+        }
+        .advisor-card.advisor-green {
+            --advisor-bg: linear-gradient(120deg, rgba(34,197,94,0.13) 0%, rgba(16,185,129,0.10) 100%);
+            --advisor-shadow: rgba(34,197,94,0.18);
+            --advisor-shadow2: rgba(16,185,129,0.13);
+            --advisor-glow: #34d39955;
+            --advisor-glow2: #10b98155;
+            --advisor-border: #34d399;
+            --advisor-img-shadow: #34d39933;
+        }
+        .advisor-card.advisor-purple {
+            --advisor-bg: linear-gradient(120deg, rgba(168,85,247,0.13) 0%, rgba(139,92,246,0.10) 100%);
+            --advisor-shadow: rgba(168,85,247,0.18);
+            --advisor-shadow2: rgba(139,92,246,0.13);
+            --advisor-glow: #a855f755;
+            --advisor-glow2: #8b5cf655;
+            --advisor-border: #a855f7;
+            --advisor-img-shadow: #a855f733;
+        }
+        
+        /* Esports Team Section Title Styles */
+        .effect-title-1hp {
+            /* font-family is already set above */
+            background: linear-gradient(120deg, #60a5fa 0%, #ec4158 30%, #ffce41 60%, #664bf0 100%);
+            background-size: 220% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: effect-title-1hp-gradient 4s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+            text-shadow:
+                0 2px 16px rgba(102,75,240,0.16),
+                0 4px 32px rgba(255,206,65,0.13),
+                0 1.2px 0 #0008;
+            letter-spacing: 0.02em;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes effect-title-1hp-gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        /* 1hp Legacy Subtitle Style */
+        .legacy-effect {
+            /* font-family is already set above */
+            background: linear-gradient(120deg, #60a5fa 0%, #38bdf8 40%, #a5b4fc 70%, #818cf8 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: legacy-gradient-move 4s ease-in-out infinite alternate;
+            text-shadow:
+                0 2px 12px rgba(96,165,250,0.13),
+                0 4px 32px rgba(129,140,248,0.10),
+                0 1.2px 0 #0008;
+            letter-spacing: 0em;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes legacy-gradient-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* 1hp Youngsters Subtitle Style */
+        .youngsters-effect {
+            /* font-family is already set above */
+            background: linear-gradient(90deg, #6ee7b7 0%, #34d399 40%, #38bdf8 70%, #a7f3d0 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: youngsters-gradient-move 4s ease-in-out infinite alternate;
+            text-shadow:
+                0 2px 12px rgba(52,211,153,0.13),
+                0 4px 32px rgba(56,189,248,0.10),
+                0 1.2px 0 #0008;
+            letter-spacing: 0em;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes youngsters-gradient-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Pro Player Card Styles */
+        .bg-yellow-trans { background: rgba(255, 206, 65, 0.13) !important; }
+        .bg-red-trans    { background: rgba(236, 65, 88, 0.13) !important; }
+        .bg-purple-trans { background: rgba(102, 75, 240, 0.13) !important; }
+        .bg-blue-trans   { background: rgba(96, 165, 250, 0.13) !important; }
+        
+        #team-neon-bg { display: none !important; } /* Kept as per original */
+        .neon-title, .neon-subtitle { text-shadow: none !important; } /* Kept as per original */
+        
+        .pro-card {
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
+            transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55), transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
+            position: relative;
+            z-index: 1;
+             /* min-height is set inline, consider moving to classes if consistent */
+        }
+        .pro-card .pro-glow {
+            pointer-events: none;
+            position: absolute;
+            inset: -4px;
+            border-radius: 1.25rem; /* Matches card's rounded-2xl */
+            z-index: -1;
+            opacity: 0.32;
+            filter: blur(7px);
+            transition: filter 0.1s, opacity 0.1s;
+        }
+        .pro-card[data-neon="blue"] .pro-glow { background: radial-gradient(circle at 60% 40%, #60a5fa 0%, #1e3a8a 80%); }
+        .pro-card[data-neon="red"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ec4158 0%, #991b1b 80%); }
+        .pro-card[data-neon="purple"] .pro-glow { background: radial-gradient(circle at 60% 40%, #664bf0 0%, #581c87 80%); }
+        .pro-card[data-neon="yellow"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ffce41 0%, #b45309 80%); }
+        
+        .pro-card:hover, .pro-card:focus-within {
+            box-shadow: 0 0 16px 4px #fff2, 0 0 32px 8px var(--pro-neon, #fff2);
+            z-index: 2;
+            /* transform is handled by JS for random movement, general .card:hover might be overridden */
+        }
+        .pro-card[data-neon="blue"]:hover { --pro-neon: #60a5fa; }
+        .pro-card[data-neon="red"]:hover { --pro-neon: #ec4158; }
+        .pro-card[data-neon="purple"]:hover { --pro-neon: #664bf0; }
+        .pro-card[data-neon="yellow"]:hover { --pro-neon: #ffce41; }
+        
+        .pro-card .pro-img-glow {
+            box-shadow: 0 0 0 0 transparent;
+            transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        .pro-card[data-neon="blue"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #60a5fa66, 0 0 32px 8px #1e3a8a33; }
+        .pro-card[data-neon="red"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ec415866, 0 0 32px 8px #991b1b33; }
+        .pro-card[data-neon="purple"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #664bf066, 0 0 32px 8px #581c8733; }
+        .pro-card[data-neon="yellow"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ffce4166, 0 0 32px 8px #b4530933; }
+
+        /* Clan Specialists Card Shadow Animations */
+        @keyframes shifting-layers-shadow-yellow {
+            0%, 100% { box-shadow: 0 4px 16px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15), -8px 8px 32px 0 rgba(253,224,71,0.10); }
+            33% { box-shadow: 0 10px 24px 0 rgba(253,224,71,0.32), 18px 2px 40px 0 rgba(253,224,71,0.19), -10px 16px 40px 0 rgba(253,224,71,0.14); }
+            66% { box-shadow: 0 7px 28px 0 rgba(253,224,71,0.28), 12px 10px 44px 0 rgba(253,224,71,0.21), -18px 8px 44px 0 rgba(253,224,71,0.12); }
+        }
+        @keyframes shifting-layers-shadow-purple {
+            0%, 100% { box-shadow: 0 4px 16px 0 rgba(168,85,247,0.25), 8px 8px 32px 0 rgba(168,85,247,0.15), -8px 8px 32px 0 rgba(168,85,247,0.10); }
+            33% { box-shadow: 0 12px 30px 0 rgba(168,85,247,0.32), 20px 4px 44px 0 rgba(168,85,247,0.19), -12px 18px 44px 0 rgba(168,85,247,0.14); }
+            66% { box-shadow: 0 6px 20px 0 rgba(168,85,247,0.28), 10px 14px 40px 0 rgba(168,85,247,0.21), -20px 6px 40px 0 rgba(168,85,247,0.12); }
+        }
+        @keyframes shifting-layers-shadow-pink {
+            0%, 100% { box-shadow: 0 4px 16px 0 rgba(236,72,153,0.25), 8px 8px 32px 0 rgba(236,72,153,0.15), -8px 8px 32px 0 rgba(236,72,153,0.10); }
+            33% { box-shadow: 0 14px 28px 0 rgba(236,72,153,0.33), 14px 12px 40px 0 rgba(236,72,153,0.18), -18px 14px 40px 0 rgba(236,72,153,0.13); }
+            66% { box-shadow: 0 8px 36px 0 rgba(236,72,153,0.29), 18px 6px 48px 0 rgba(236,72,153,0.22), -14px 18px 48px 0 rgba(236,72,153,0.11); }
+        }
+        @keyframes shifting-layers-shadow-cyan {
+            0%, 100% { box-shadow: 0 4px 16px 0 rgba(34,211,238,0.25), 8px 8px 32px 0 rgba(34,211,238,0.15), -8px 8px 32px 0 rgba(34,211,238,0.10); }
+            33% { box-shadow: 0 8px 40px 0 rgba(34,211,238,0.31), 22px 8px 44px 0 rgba(34,211,238,0.17), -10px 20px 44px 0 rgba(34,211,238,0.13); }
+            66% { box-shadow: 0 12px 24px 0 rgba(34,211,238,0.27), 16px 12px 36px 0 rgba(34,211,238,0.20), -22px 10px 36px 0 rgba(34,211,238,0.12); }
+        }
+        .card-shadow-yellow { animation: shifting-layers-shadow-yellow 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
+        .card-shadow-purple { animation: shifting-layers-shadow-purple 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
+        .card-shadow-pink { animation: shifting-layers-shadow-pink 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
+        .card-shadow-cyan { animation: shifting-layers-shadow-cyan 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
+
+        /* Clan Specialists Title Style */
+        .clan-specialists-effect {
+            /* font-family is already set above */
+            background: linear-gradient(90deg, #ffe082 0%, #ffd700 30%, #ffb300 70%, #fffbe6 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: clan-specialists-gradient 5s linear infinite alternate;
+            letter-spacing: 0.02em;
+            text-shadow:
+                0 2px 12px rgba(255, 208, 0, 0.322),
+                0 4px 32px rgba(255, 193, 7, 0.253),
+                0 1px 0 rgba(24, 23, 23, 0.533);
+            position: relative;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes clan-specialists-gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* News Section Title Style */
+        .news-gradient-effect {
+            /* font-family is already set above */
+            background: linear-gradient(90deg, #ffb300 0%, #fbbf24 30%, #ec4899 70%, #f472b6 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: news-gradient-move 5s linear infinite alternate;
+            letter-spacing: 0em;
+            text-shadow:
+                0 2px 12px rgba(251,191,36,0.16),
+                0 4px 32px rgba(236,72,153,0.13),
+                0 1px 0 #0008;
+            position: relative;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes news-gradient-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Sponsors Section Title Style */
+        .sponsors-gradient-effect {
+            /* font-family is already set above */
+            background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #fbbf24 100%);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: sponsors-gradient-move 5s linear infinite alternate;
+            letter-spacing: 0em;
+            text-shadow:
+                0 2px 12px rgba(168,85,247,0.15),
+                0 4px 32px rgba(236,72,153,0.10),
+                0 1px 0 #0008;
+            position: relative;
+            transition: text-shadow 0.3s;
+        }
+        @keyframes sponsors-gradient-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
     </style>
 </head>
 <body>
@@ -121,6 +588,7 @@
             </div>
         </div>
     </header>
+
     <section id="home" class="relative py-16 sm:py-24 bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('image_7d1423.png'); min-height: 70vh;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <img src="https://i.ibb.co/ZR2JjTMk/1hp-Rebrand-Cover-Photo.png" alt="1hp Esports Cover" class="mx-auto mb-6 max-w-xl w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/800x200/111827/ffffff?text=1hp+Esports+Cover&font=inter';">
@@ -130,49 +598,15 @@
             </div>
         </div>
     </section>
+
     <section id="about" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center text-lg space-y-6 about-us-text">
             <div class="flex flex-col items-center">
                 <img 
                     src="https://i.ibb.co/LDmqzR5q/20250529-221611.jpg" 
                     alt="1hp Esports Team Photo" 
-                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-purple-300/50 mx-auto mb-8 w-full max-w-[720px] h-auto transition-transform duration-300 hover:scale-105"
+                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-purple-300/50 mx-auto mb-8 w-full max-w-[720px] h-auto transition-transform duration-300 hover:scale-105 disable-user-interaction"
                     draggable="false"
-                    oncontextmenu="return false"
-                    ondragstart="return false"
-                    onmousedown="event.preventDefault();"
-                    onselectstart="return false"
-                    onpointerdown="event.preventDefault();"
-                    ontouchstart="event.preventDefault();"
-                    ongesturestart="event.preventDefault();"
-                    onselect="return false"
-                    oncopy="return false"
-                    oncut="return false"
-                    onpaste="return false"
-                    onbeforecopy="return false"
-                    onbeforecut="return false"
-                    onbeforepaste="return false"
-                    ondrag="return false"
-                    ondrop="return false"
-                    onmouseup="event.preventDefault();"
-                    onmouseleave="event.preventDefault();"
-                    onmouseout="event.preventDefault();"
-                    onmouseover="event.preventDefault();"
-                    onmouseenter="event.preventDefault();"
-                    onmousemove="event.preventDefault();"
-                    onmousewheel="event.preventDefault();"
-                    onwheel="event.preventDefault();"
-                    ondblclick="event.preventDefault();"
-                    onauxclick="event.preventDefault();"
-                    onpointerup="event.preventDefault();"
-                    onpointermove="event.preventDefault();"
-                    onpointerleave="event.preventDefault();"
-                    onpointerout="event.preventDefault();"
-                    onpointerover="event.preventDefault();"
-                    onpointerenter="event.preventDefault();"
-                    onpointercancel="event.preventDefault();"
-                    ongotpointercapture="event.preventDefault();"
-                    onlostpointercapture="event.preventDefault();"
                     onerror="this.onerror=null;this.src='https://placehold.co/800x400/374151/4b5563?text=Team+Photo&font=inter';"
                 >
             </div>
@@ -184,704 +618,105 @@
             </p>
         </div>
     </section>
-<!-- Management & Teams and Founders Section with balanced, minimal negative space -->
-<div class="w-full flex justify-center mt-8 mb-2">
-    <h2 class="main-section-title text-4xl sm:text-5xl font-extrabold text-center mb-6 management-gradient-effect tracking-tight" style="font-family: 'Orbitron', 'Inter', Arial, sans-serif;">
-        <span class="uppercase tracking-widest">Management</span>
-        <span class="font-light mx-2">&amp;</span>
-        <span class="uppercase tracking-widest">Teams</span>
-    </h2>
-    <style>
-    /* Grayish to white animated gradient for Management & Teams title */
-    .management-gradient-effect {
-        font-family: 'Orbitron', 'Inter', Arial, sans-serif;
-        background: linear-gradient(90deg, #6b7280 0%, #d1d5db 40%, #f3f4f6 100%);
-        background-size: 200% auto;
-        color: #fff;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: management-gradient-move 4s ease-in-out infinite alternate;
-        text-shadow:
-            0 2px 12px rgba(107,114,128,0.13),
-            0 4px 32px rgba(209,213,219,0.10),
-            0 1.2px 0 #0008;
-        letter-spacing: 0.08em;
-        transition: text-shadow 0.3s;
-    }
-    @keyframes management-gradient-move {
-        0% { background-position: 0% 50%; }
-        100% { background-position: 100% 50%; }
-    }
-    </style>
-</div>
-<!-- ...existing code... -->
-<section id="founders" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="container mx-auto px-0">
-        <h3 class="text-center text-3xl sm:text-4xl font-bold mb-6 mt-0 founders-gradient-effect">
-            1hp's Founders
-        </h3>
-        <style>
-        /* Animated gradient for 1hp's Founders title using logo colors (yellow, red, purple) */
-        .founders-gradient-effect {
-            background: linear-gradient(90deg, #ffce41 0%, #ec4158 50%, #664bf0 100%);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: founders-gradient-move 4s ease-in-out infinite alternate;
-            text-shadow:
-                0 2px 12px rgba(255,206,65,0.13),
-                0 4px 32px rgba(236,65,88,0.10),
-                0 1.2px 0 #0008;
-            letter-spacing: 0em;
-            transition: text-shadow 0.3s;
-        }
-        @keyframes founders-gradient-move {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-        /* Founder card: 3D blended tint with smooth highlight top right */
-        #founders .card {
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,0,0,0.13);
-            border: none;
-            position: relative;
-            overflow: visible;
-            padding: 2.5rem 1.5rem 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 410px;
-            transition: box-shadow 0.35s cubic-bezier(.68,-0.55,.27,1.55), transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
-            background: #23212b;
-        }
-        #founders .card[data-shadow*="255,206,65"] {
-            /* 3D yellow: dark base, smooth yellow highlight top right, subtle shadow bottom left */
-            background:
-                radial-gradient(ellipse 90% 60% at 80% 0%, #ffce41cc 0%, #ffce4100 80%),
-                radial-gradient(ellipse 80% 60% at 20% 100%, #2d260b 0%, #23212b 80%),
-                linear-gradient(120deg, #3a2e0c 0%, #4d3d13 100%);
-        }
-        #founders .card[data-shadow*="236,65,88"] {
-            /* 3D red: dark base, smooth red highlight top right, subtle shadow bottom left */
-            background:
-                radial-gradient(ellipse 90% 60% at 80% 0%, #ec4158cc 0%, #ec415800 80%),
-                radial-gradient(ellipse 80% 60% at 20% 100%, #2a1117 0%, #23212b 80%),
-                linear-gradient(120deg, #2a1117 0%, #4d232c 100%);
-        }
-        #founders .card[data-shadow*="102,75,240"] {
-            /* 3D purple: dark base, smooth purple highlight top right, subtle shadow bottom left */
-            background:
-                radial-gradient(ellipse 90% 60% at 80% 0%, #664bf0cc 0%, #664bf000 80%),
-                radial-gradient(ellipse 80% 60% at 20% 100%, #1a1533 0%, #23212b 80%),
-                linear-gradient(120deg, #1a1533 0%, #2d225a 100%);
-        }
-        #founders .card:hover, #founders .card:focus-within {
-            box-shadow: 0 0 32px 8px var(--founder-glow, #fff2), 0 8px 32px 0 rgba(102,75,240,0.13);
-            z-index: 2;
-            transform: translateY(-6px) scale(1.045);
-        }
-        #founders .card[data-shadow*="255,206,65"] { --founder-glow: #ffce41cc; }
-        #founders .card[data-shadow*="236,65,88"] { --founder-glow: #ec4158cc; }
-        #founders .card[data-shadow*="102,75,240"] { --founder-glow: #664bf0cc; }
 
-        #founders .founder-img-wrap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1.25rem;
-            width: 100%;
-        }
-        #founders .founder-img {
-            width: 9rem; height: 9rem;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            box-shadow: 0 2px 16px 0 var(--founder-glow, #fff2);
-            background: #fff;
-            margin: 0 auto;
-            display: block;
-        }
-        #founders .founder-name {
-            font-size: 1.35rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 800;
-            margin-bottom: 0.25rem;
-            letter-spacing: 0.02em;
-            background: linear-gradient(90deg, #ffce41 0%, #ec4158 50%, #664bf0 100%);
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: founders-gradient-move 4s ease-in-out infinite alternate;
-        }
-        #founders .founder-role {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.01em;
-        }
-        #founders .card[data-shadow*="255,206,65"] .founder-role { color: #ffce41; }
-        #founders .card[data-shadow*="236,65,88"] .founder-role { color: #ec4158; }
-        #founders .card[data-shadow*="102,75,240"] .founder-role { color: #664bf0; }
-        #founders .founder-desc {
-            font-size: 0.97rem;
-            color: #e5e7eb;
-            opacity: 0.92;
-            margin-bottom: 0;
-        }
-        </style>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="card" data-shadow="rgba(255,206,65,0.55)">
-                <div class="founder-img-wrap">
-                    <img class="founder-img"
-                        src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
-                        alt="Founder 1 - chiefhamim"
-                        draggable="false"
-                        oncontextmenu="return false"
-                        ondragstart="return false"
-                        onmousedown="event.preventDefault();"
-                        onselectstart="return false"
-                        onpointerdown="event.preventDefault();"
-                        ontouchstart="event.preventDefault();"
-                        ongesturestart="event.preventDefault();"
-                        onselect="return false"
-                        oncopy="return false"
-                        oncut="return false"
-                        onpaste="return false"
-                        onbeforecopy="return false"
-                        onbeforecut="return false"
-                        onbeforepaste="return false"
-                        ondrag="return false"
-                        ondrop="return false"
-                        onmouseup="event.preventDefault();"
-                        onmouseleave="event.preventDefault();"
-                        onmouseout="event.preventDefault();"
-                        onmouseover="event.preventDefault();"
-                        onmouseenter="event.preventDefault();"
-                        onmousemove="event.preventDefault();"
-                        onmousewheel="event.preventDefault();"
-                        onwheel="event.preventDefault();"
-                        ondblclick="event.preventDefault();"
-                        onauxclick="event.preventDefault();"
-                        onpointerup="event.preventDefault();"
-                        onpointermove="event.preventDefault();"
-                        onpointerleave="event.preventDefault();"
-                        onpointerout="event.preventDefault();"
-                        onpointerover="event.preventDefault();"
-                        onpointerenter="event.preventDefault();"
-                        onpointercancel="event.preventDefault();"
-                        ongotpointercapture="event.preventDefault();"
-                        onlostpointercapture="event.preventDefault();"
-                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+1&font=inter';">
+    <!-- Management & Teams and Founders Section -->
+    <div class="w-full flex justify-center mt-8 mb-2">
+        <h2 class="main-section-title text-4xl sm:text-5xl font-extrabold text-center mb-6 management-gradient-effect tracking-tight">
+            <span class="uppercase tracking-widest">Management</span>
+            <span class="font-light mx-2">&</span>
+            <span class="uppercase tracking-widest">Teams</span>
+        </h2>
+    </div>
+
+    <section id="founders" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-0">
+            <h3 class="text-center text-3xl sm:text-4xl font-bold mb-6 mt-0 founders-gradient-effect">
+                1hp's Founders
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card" data-shadow="rgba(255,206,65,0.55)">
+                    <div class="founder-img-wrap">
+                        <img class="founder-img disable-user-interaction"
+                            src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
+                            alt="Founder 1 - chiefhamim"
+                            draggable="false"
+                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+1&font=inter';">
+                    </div>
+                    <div class="founder-name">chiefhamim</div>
+                    <div class="founder-role">Co-Founder / Manager</div>
+                    <div class="founder-desc">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</div>
                 </div>
-                <div class="founder-name">chiefhamim</div>
-                <div class="founder-role">Co-Founder / Manager</div>
-                <div class="founder-desc">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</div>
-            </div>
-            <div class="card" data-shadow="rgba(236,65,88,0.55)">
-                <div class="founder-img-wrap">
-                    <img class="founder-img"
-                        src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
-                        alt="Founder 2 - crippz"
-                        draggable="false"
-                        oncontextmenu="return false"
-                        ondragstart="return false"
-                        onmousedown="event.preventDefault();"
-                        onselectstart="return false"
-                        onpointerdown="event.preventDefault();"
-                        ontouchstart="event.preventDefault();"
-                        ongesturestart="event.preventDefault();"
-                        onselect="return false"
-                        oncopy="return false"
-                        oncut="return false"
-                        onpaste="return false"
-                        onbeforecopy="return false"
-                        onbeforecut="return false"
-                        onbeforepaste="return false"
-                        ondrag="return false"
-                        ondrop="return false"
-                        onmouseup="event.preventDefault();"
-                        onmouseleave="event.preventDefault();"
-                        onmouseout="event.preventDefault();"
-                        onmouseover="event.preventDefault();"
-                        onmouseenter="event.preventDefault();"
-                        onmousemove="event.preventDefault();"
-                        onmousewheel="event.preventDefault();"
-                        onwheel="event.preventDefault();"
-                        ondblclick="event.preventDefault();"
-                        onauxclick="event.preventDefault();"
-                        onpointerup="event.preventDefault();"
-                        onpointermove="event.preventDefault();"
-                        onpointerleave="event.preventDefault();"
-                        onpointerout="event.preventDefault();"
-                        onpointerover="event.preventDefault();"
-                        onpointerenter="event.preventDefault();"
-                        onpointercancel="event.preventDefault();"
-                        ongotpointercapture="event.preventDefault();"
-                        onlostpointercapture="event.preventDefault();"
-                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+2&font=inter';">
+                <div class="card" data-shadow="rgba(236,65,88,0.55)">
+                    <div class="founder-img-wrap">
+                        <img class="founder-img disable-user-interaction"
+                            src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
+                            alt="Founder 2 - crippz"
+                            draggable="false"
+                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+2&font=inter';">
+                    </div>
+                    <div class="founder-name">crippz</div>
+                    <div class="founder-role">Co-Founder / Admin</div>
+                    <div class="founder-desc">Instrumental in building the team’s competitive edge, admired for his mechanical skills and leadership.</div>
                 </div>
-                <div class="founder-name">crippz</div>
-                <div class="founder-role">Co-Founder / Admin</div>
-                <div class="founder-desc">Instrumental in building the team’s competitive edge, admired for his mechanical skills and leadership.</div>
-            </div>
-            <div class="card" data-shadow="rgba(236,65,88,0.55)">
-                <div class="founder-img-wrap">
-                    <img class="founder-img"
-                        src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
-                        alt="Founder 3 - WakaChaka"
-                        draggable="false"
-                        oncontextmenu="return false"
-                        ondragstart="return false"
-                        onmousedown="event.preventDefault();"
-                        onselectstart="return false"
-                        onpointerdown="event.preventDefault();"
-                        ontouchstart="event.preventDefault();"
-                        ongesturestart="event.preventDefault();"
-                        onselect="return false"
-                        oncopy="return false"
-                        oncut="return false"
-                        onpaste="return false"
-                        onbeforecopy="return false"
-                        onbeforecut="return false"
-                        onbeforepaste="return false"
-                        ondrag="return false"
-                        ondrop="return false"
-                        onmouseup="event.preventDefault();"
-                        onmouseleave="event.preventDefault();"
-                        onmouseout="event.preventDefault();"
-                        onmouseover="event.preventDefault();"
-                        onmouseenter="event.preventDefault();"
-                        onmousemove="event.preventDefault();"
-                        onmousewheel="event.preventDefault();"
-                        onwheel="event.preventDefault();"
-                        ondblclick="event.preventDefault();"
-                        onauxclick="event.preventDefault();"
-                        onpointerup="event.preventDefault();"
-                        onpointermove="event.preventDefault();"
-                        onpointerleave="event.preventDefault();"
-                        onpointerout="event.preventDefault();"
-                        onpointerover="event.preventDefault();"
-                        onpointerenter="event.preventDefault();"
-                        onpointercancel="event.preventDefault();"
-                        ongotpointercapture="event.preventDefault();"
-                        onlostpointercapture="event.preventDefault();"
-                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+3&font=inter';">
+                <div class="card" data-shadow="rgba(236,65,88,0.55)">
+                    <div class="founder-img-wrap">
+                        <img class="founder-img disable-user-interaction"
+                            src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
+                            alt="Founder 3 - WakaChaka"
+                            draggable="false"
+                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+3&font=inter';">
+                    </div>
+                    <div class="founder-name">WakaChaka</div>
+                    <div class="founder-role">Co-Founder / Admin</div>
+                    <div class="founder-desc">Key supporter and strategist, bringing experience and stability to the founding team. Currently inactive.</div>
                 </div>
-                <div class="founder-name">WakaChaka</div>
-                <div class="founder-role">Co-Founder / Admin</div>
-                <div class="founder-desc">Key supporter and strategist, bringing experience and stability to the founding team. Currently inactive.</div>
-            </div>
-            <div class="card" data-shadow="rgba(102,75,240,0.55)">
-                <div class="founder-img-wrap">
-                    <img class="founder-img"
-                        src="https://i.ibb.co/b5D3dzDT/SHaN.png"
-                        alt="Founder 4 - SHaN"
-                        draggable="false"
-                        oncontextmenu="return false"
-                        ondragstart="return false"
-                        onmousedown="event.preventDefault();"
-                        onselectstart="return false"
-                        onpointerdown="event.preventDefault();"
-                        ontouchstart="event.preventDefault();"
-                        ongesturestart="event.preventDefault();"
-                        onselect="return false"
-                        oncopy="return false"
-                        oncut="return false"
-                        onpaste="return false"
-                        onbeforecopy="return false"
-                        onbeforecut="return false"
-                        onbeforepaste="return false"
-                        ondrag="return false"
-                        ondrop="return false"
-                        onmouseup="event.preventDefault();"
-                        onmouseleave="event.preventDefault();"
-                        onmouseout="event.preventDefault();"
-                        onmouseover="event.preventDefault();"
-                        onmouseenter="event.preventDefault();"
-                        onmousemove="event.preventDefault();"
-                        onmousewheel="event.preventDefault();"
-                        onwheel="event.preventDefault();"
-                        ondblclick="event.preventDefault();"
-                        onauxclick="event.preventDefault();"
-                        onpointerup="event.preventDefault();"
-                        onpointermove="event.preventDefault();"
-                        onpointerleave="event.preventDefault();"
-                        onpointerout="event.preventDefault();"
-                        onpointerover="event.preventDefault();"
-                        onpointerenter="event.preventDefault();"
-                        onpointercancel="event.preventDefault();"
-                        ongotpointercapture="event.preventDefault();"
-                        onlostpointercapture="event.preventDefault();"
-                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+4&font=inter';">
+                <div class="card" data-shadow="rgba(102,75,240,0.55)">
+                    <div class="founder-img-wrap">
+                        <img class="founder-img disable-user-interaction"
+                            src="https://i.ibb.co/b5D3dzDT/SHaN.png"
+                            alt="Founder 4 - SHaN"
+                            draggable="false"
+                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+4&font=inter';">
+                    </div>
+                    <div class="founder-name">SHaN</div>
+                    <div class="founder-role">Co-Founder / Retired</div>
+                    <div class="founder-desc">Currently inactive and playing with life mostly.</div>
                 </div>
-                <div class="founder-name">SHaN</div>
-                <div class="founder-role">Co-Founder / Retired</div>
-                <div class="founder-desc">Currently inactive and playing with life mostly.</div>
             </div>
         </div>
-</section>
-<script>
-    // --- 1hp Founders Section Magic ---
-    // 1. Animate cards on scroll (fade-in & slight up)
-    function animateFoundersOnScroll() {
-        const cards = document.querySelectorAll('#founders .card');
-        const reveal = () => {
-            cards.forEach((card, i) => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 60) {
-                    card.style.opacity = 1;
-                    card.style.transform = 'translateY(0)';
-                    card.style.transition = `opacity 1s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55)`;
-                }
-            });
-        };
-        // Initial state
-        cards.forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(60px)';
-        });
-        window.addEventListener('scroll', reveal, { passive: true });
-        reveal();
-    }
-    animateFoundersOnScroll();
+    </section>
 
-    // 2. Add interactive glow on hover (shadow only outside)
-    document.querySelectorAll('#founders .card').forEach(card => {
-        const shadowColor = card.getAttribute('data-shadow') || 'rgba(255,255,255,0.25)';
-        card.addEventListener('mouseenter', () => {
-            card.style.boxShadow = `0 0 40px 1px ${shadowColor}, 0 1px 40px 4px ${shadowColor.replace('0.55', '0.10')}`;
-            card.style.transition = 'box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.boxShadow = '';
-        });
-    });
-
-    // 3. Add a floating particle effect behind the founders section
-    (function foundersParticles() {
-        const section = document.getElementById('founders');
-        if (!section) return;
-        const canvas = document.createElement('canvas');
-        canvas.style.position = 'absolute';
-        canvas.style.top = 0;
-        canvas.style.left = 0;
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.style.pointerEvents = 'none';
-        canvas.style.zIndex = 0;
-        section.style.position = 'relative';
-        section.prepend(canvas);
-
-        function resize() {
-            canvas.width = section.offsetWidth;
-            canvas.height = section.offsetHeight;
-        }
-        resize();
-        window.addEventListener('resize', resize);
-
-        const colors = [
-            'rgba(253,224,71,0.18)',   // yellow
-            'rgba(236,65,88,0.18)',    // red
-            'rgba(102,75,240,0.18)',   // purple
-            'rgba(255,255,255,0.10)'   // white
-        ];
-        const particles = Array.from({length: 24}, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            r: 12 + Math.random() * 18,
-            dx: (Math.random() - 0.5) * 0.2,
-            dy: (Math.random() - 0.5) * 0.2,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            alpha: 0.2 + Math.random() * 0.3
-        }));
-
-        function draw() {
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (const p of particles) {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = p.alpha;
-                ctx.shadowColor = p.color;
-                ctx.shadowBlur = 16;
-                ctx.fill();
-                ctx.globalAlpha = 1;
-                ctx.shadowBlur = 0;
-            }
-        }
-        function animate() {
-            for (const p of particles) {
-                p.x += p.dx;
-                p.y += p.dy;
-                if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-            }
-            draw();
-            requestAnimationFrame(animate);
-        }
-        animate();
-    })();
-
-    // 4. Add a subtle floating animation to the cards
-    document.querySelectorAll('#founders .card').forEach((card, i) => {
-        card.animate([
-            { transform: 'translateY(0px)' },
-            { transform: `translateY(${i % 2 === 0 ? -8 : 8}px)` },
-            { transform: 'translateY(0px)' }
-        ], {
-            duration: 4200 + i * 150,
-            iterations: Infinity,
-            direction: 'alternate',
-            easing: 'ease-in-out'
-        });
-    });
-</script>
-<!-- ...existing code... -->
     <section id="advisors" class="pt-2 pb-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-0">
             <h3 class="advisors-title text-center text-3xl sm:text-4xl font-bold mb-8 mt-0">
                 Advisors
             </h3>
-            <style>
-            .advisors-title {
-                font-family: 'Orbitron', sans-serif;
-                background: linear-gradient(90deg, #60a5fa 0%, #38bdf8 30%, #a855f7 70%, #ec4158 100%);
-                background-size: 200% auto;
-                color: #fff;
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: advisors-title-gradient 5s linear infinite alternate;
-                letter-spacing: 0.01em;
-                text-shadow:
-                    0 2px 12px rgba(56,189,248,0.13),
-                    0 4px 32px rgba(168,85,247,0.10),
-                    0 1px 0 #0008;
-                position: relative;
-                transition: text-shadow 0.3s;
-            }
-            .advisors-title::after { display: none !important; }
-            @keyframes advisors-title-gradient {
-                0% { background-position: 0% 50%; }
-                100% { background-position: 100% 50%; }
-            }
-            .advisor-card {
-                border-radius: 1.25rem;
-                box-shadow: 0 8px 32px 0 var(--advisor-shadow, rgba(56,189,248,0.10)), 0 2px 8px 0 var(--advisor-shadow2, rgba(168,85,247,0.08));
-                border: 1.5px solid transparent;
-                transition: box-shadow 0.3s, border-color 0.3s, transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
-                position: relative;
-                overflow: visible;
-                min-height: 340px;
-                background: var(--advisor-bg, linear-gradient(120deg, rgba(34,211,238,0.10) 0%, rgba(168,85,247,0.08) 100%));
-            }
-            .advisor-card:hover, .advisor-card:focus-within {
-                box-shadow: 0 0 32px 8px var(--advisor-glow, #60a5fa33), 0 8px 32px 0 var(--advisor-glow2, #a855f733);
-                border-color: var(--advisor-border, #60a5fa);
-                transform: translateY(-6px) scale(1.045);
-                z-index: 2;
-            }
-            .advisor-img {
-                width: 7rem;
-                height: 7rem;
-                object-fit: cover;
-                border-radius: 50%;
-                border: 4px solid #fff;
-                box-shadow: 0 2px 16px 0 var(--advisor-img-shadow, #60a5fa33);
-                background: #fff;
-                margin-bottom: 1.25rem;
-            }
-            .advisor-name {
-                font-size: 1.15rem;
-                font-family: 'Orbitron', sans-serif;
-                font-weight: 800;
-                margin-bottom: 0.15rem;
-                letter-spacing: 0.02em;
-                background: linear-gradient(90deg, #60a5fa 0%, #a855f7 100%);
-                background-size: 200% auto;
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: advisors-title-gradient 5s linear infinite alternate;
-            }
-            .advisor-role {
-                font-size: 1rem;
-                font-weight: 600;
-                margin-bottom: 0.5rem;
-                letter-spacing: 0.01em;
-            }
-            .advisor-desc {
-                font-size: 0.97rem;
-                color: #e5e7eb;
-                opacity: 0.92;
-                margin-bottom: 0;
-            }
-            /* Unique color themes for each advisor */
-            .advisor-card.advisor-blue {
-                --advisor-bg: linear-gradient(120deg, rgba(56,189,248,0.13) 0%, rgba(59,130,246,0.10) 100%);
-                --advisor-shadow: rgba(56,189,248,0.18);
-                --advisor-shadow2: rgba(59,130,246,0.13);
-                --advisor-glow: #60a5fa55;
-                --advisor-glow2: #38bdf855;
-                --advisor-border: #60a5fa;
-                --advisor-img-shadow: #60a5fa33;
-            }
-            .advisor-card.advisor-green {
-                --advisor-bg: linear-gradient(120deg, rgba(34,197,94,0.13) 0%, rgba(16,185,129,0.10) 100%);
-                --advisor-shadow: rgba(34,197,94,0.18);
-                --advisor-shadow2: rgba(16,185,129,0.13);
-                --advisor-glow: #34d39955;
-                --advisor-glow2: #10b98155;
-                --advisor-border: #34d399;
-                --advisor-img-shadow: #34d39933;
-            }
-            .advisor-card.advisor-purple {
-                --advisor-bg: linear-gradient(120deg, rgba(168,85,247,0.13) 0%, rgba(139,92,246,0.10) 100%);
-                --advisor-shadow: rgba(168,85,247,0.18);
-                --advisor-shadow2: rgba(139,92,246,0.13);
-                --advisor-glow: #a855f755;
-                --advisor-glow2: #8b5cf655;
-                --advisor-border: #a855f7;
-                --advisor-img-shadow: #a855f733;
-            }
-            </style>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
                 <div class="advisor-card advisor-blue flex flex-col items-center text-center p-8">
-                    <img class="advisor-img"
+                    <img class="advisor-img disable-user-interaction"
                         src="https://i.ibb.co/jkc4S44d/De-droper-logo.jpg"
                         alt="1hp_moindedropper"
                         draggable="false"
-                        oncontextmenu="return false"
-                        ondragstart="return false"
-                        onmousedown="event.preventDefault();"
-                        onselectstart="return false"
-                        onpointerdown="event.preventDefault();"
-                        ontouchstart="event.preventDefault();"
-                        ongesturestart="event.preventDefault();"
-                        onselect="return false"
-                        oncopy="return false"
-                        oncut="return false"
-                        onpaste="return false"
-                        onbeforecopy="return false"
-                        onbeforecut="return false"
-                        onbeforepaste="return false"
-                        ondrag="return false"
-                        ondrop="return false"
-                        onmouseup="event.preventDefault();"
-                        onmouseleave="event.preventDefault();"
-                        onmouseout="event.preventDefault();"
-                        onmouseover="event.preventDefault();"
-                        onmouseenter="event.preventDefault();"
-                        onmousemove="event.preventDefault();"
-                        onmousewheel="event.preventDefault();"
-                        onwheel="event.preventDefault();"
-                        ondblclick="event.preventDefault();"
-                        onauxclick="event.preventDefault();"
-                        onpointerup="event.preventDefault();"
-                        onpointermove="event.preventDefault();"
-                        onpointerleave="event.preventDefault();"
-                        onpointerout="event.preventDefault();"
-                        onpointerover="event.preventDefault();"
-                        onpointerenter="event.preventDefault();"
-                        onpointercancel="event.preventDefault();"
-                        ongotpointercapture="event.preventDefault();"
-                        onlostpointercapture="event.preventDefault();"
                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=moindedropper&font=inter';">
                     <div class="advisor-name text-cyan-200">moindedropper</div>
                     <div class="advisor-role text-cyan-100">Advisor / Fund Manager</div>
                     <div class="advisor-desc">Oversees financial strategy and resource management for the team.</div>
                 </div>
                 <div class="advisor-card advisor-green flex flex-col items-center text-center p-8">
-                    <img class="advisor-img"
+                    <img class="advisor-img disable-user-interaction"
                         src="https://i.ibb.co/tpxrxGML/viper.png"
                         alt="1hp_Viper"
                         draggable="false"
-                        oncontextmenu="return false"
-                        ondragstart="return false"
-                        onmousedown="event.preventDefault();"
-                        onselectstart="return false"
-                        onpointerdown="event.preventDefault();"
-                        ontouchstart="event.preventDefault();"
-                        ongesturestart="event.preventDefault();"
-                        onselect="return false"
-                        oncopy="return false"
-                        oncut="return false"
-                        onpaste="return false"
-                        onbeforecopy="return false"
-                        onbeforecut="return false"
-                        onbeforepaste="return false"
-                        ondrag="return false"
-                        ondrop="return false"
-                        onmouseup="event.preventDefault();"
-                        onmouseleave="event.preventDefault();"
-                        onmouseout="event.preventDefault();"
-                        onmouseover="event.preventDefault();"
-                        onmouseenter="event.preventDefault();"
-                        onmousemove="event.preventDefault();"
-                        onmousewheel="event.preventDefault();"
-                        onwheel="event.preventDefault();"
-                        ondblclick="event.preventDefault();"
-                        onauxclick="event.preventDefault();"
-                        onpointerup="event.preventDefault();"
-                        onpointermove="event.preventDefault();"
-                        onpointerleave="event.preventDefault();"
-                        onpointerout="event.preventDefault();"
-                        onpointerover="event.preventDefault();"
-                        onpointerenter="event.preventDefault();"
-                        onpointercancel="event.preventDefault();"
-                        ongotpointercapture="event.preventDefault();"
-                        onlostpointercapture="event.preventDefault();"
                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=Viper&font=inter';">
                     <div class="advisor-name text-green-200">[V̷]I̷P̷3̷R̷®</div>
                     <div class="advisor-role text-green-100">Advisor</div>
                     <div class="advisor-desc">Provides strategic advice and supports team development.</div>
                 </div>
                 <div class="advisor-card advisor-purple flex flex-col items-center text-center p-8">
-                    <img class="advisor-img"
+                    <img class="advisor-img disable-user-interaction"
                         src="https://i.ibb.co/wNskW3gH/Rifat-Kabir-Samrat-1.jpg"
                         alt="1hp_INSTINCTx"
                         draggable="false"
-                        oncontextmenu="return false"
-                        ondragstart="return false"
-                        onmousedown="event.preventDefault();"
-                        onselectstart="return false"
-                        onpointerdown="event.preventDefault();"
-                        ontouchstart="event.preventDefault();"
-                        ongesturestart="event.preventDefault();"
-                        onselect="return false"
-                        oncopy="return false"
-                        oncut="return false"
-                        onpaste="return false"
-                        onbeforecopy="return false"
-                        onbeforecut="return false"
-                        onbeforepaste="return false"
-                        ondrag="return false"
-                        ondrop="return false"
-                        onmouseup="event.preventDefault();"
-                        onmouseleave="event.preventDefault();"
-                        onmouseout="event.preventDefault();"
-                        onmouseover="event.preventDefault();"
-                        onmouseenter="event.preventDefault();"
-                        onmousemove="event.preventDefault();"
-                        onmousewheel="event.preventDefault();"
-                        onwheel="event.preventDefault();"
-                        ondblclick="event.preventDefault();"
-                        onauxclick="event.preventDefault();"
-                        onpointerup="event.preventDefault();"
-                        onpointermove="event.preventDefault();"
-                        onpointerleave="event.preventDefault();"
-                        onpointerout="event.preventDefault();"
-                        onpointerover="event.preventDefault();"
-                        onpointerenter="event.preventDefault();"
-                        onpointercancel="event.preventDefault();"
-                        ongotpointercapture="event.preventDefault();"
-                        onlostpointercapture="event.preventDefault();"
                         onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=INSTINCTx&font=inter';">
                     <div class="advisor-name text-purple-200">INSTINCTx</div>
                     <div class="advisor-role text-purple-100">Advisor</div>
@@ -890,103 +725,24 @@
             </div>
         </div>
     </section>
+
     <section id="esports-team" class="pt-2 pb-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         <div class="container mx-auto px-0 relative z-10">
-            <h2 class="main-section-title text-4xl sm:text-5xl font-extrabold text-center mb-8 tracking-widest effect-title-1hp" style="font-family: 'Orbitron', sans-serif;">
+            <h2 class="main-section-title text-4xl sm:text-5xl font-extrabold text-center mb-8 tracking-widest effect-title-1hp">
                 <span class="uppercase">COMPETITIVE ROSTERS</span>
             </h2>
-            <style>
-            /* Enhanced, effect-rich style for the main section title */
-            .effect-title-1hp {
-                font-family: 'Orbitron', sans-serif;
-                background: linear-gradient(120deg, #60a5fa 0%, #ec4158 30%, #ffce41 60%, #664bf0 100%);
-                background-size: 220% auto;
-                color: #fff;
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: effect-title-1hp-gradient 4s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
-                text-shadow:
-                    0 2px 16px rgba(102,75,240,0.16),
-                    0 4px 32px rgba(255,206,65,0.13),
-                    0 1.2px 0 #0008;
-                letter-spacing: 0.02em;
-                transition: text-shadow 0.3s;
-            }
-            @keyframes effect-title-1hp-gradient {
-                0% { background-position: 0% 50%; }
-                100% { background-position: 100% 50%; }
-            }
-            </style>
             <div class="mb-10">
                 <h3 class="team-subtitle-legacy text-center text-blue-300 text-3xl sm:text-4xl font-bold mb-6 mt-0 tracking-wider legacy-effect">
                     1hp Legacy
                 </h3>
-                <style>
-                /* Subtle animated gradient + glow for 1hp Legacy subtitle (bluish tint) */
-                .legacy-effect {
-                    background: linear-gradient(120deg, #60a5fa 0%, #38bdf8 40%, #a5b4fc 70%, #818cf8 100%);
-                    background-size: 200% auto;
-                    color: #fff;
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    animation: legacy-gradient-move 4s ease-in-out infinite alternate;
-                    text-shadow:
-                        0 2px 12px rgba(96,165,250,0.13),
-                        0 4px 32px rgba(129,140,248,0.10),
-                        0 1.2px 0 #0008;
-                    letter-spacing: 0em;
-                    transition: text-shadow 0.3s;
-                }
-                @keyframes legacy-gradient-move {
-                    0% { background-position: 0% 50%; }
-                    100% { background-position: 100% 50%; }
-                }
-                </style>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- crippz: blue, code:net, meme king, IGL -->
+                    <!-- crippz -->
                     <div class="card pro-card bg-blue-trans rounded-2xl flex flex-col items-center text-center p-8 border border-blue-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="blue">
                         <div class="pro-glow"></div>
-                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-md pro-img-glow"
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-md pro-img-glow disable-user-interaction"
                              src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
                              alt="1hp_crippz"
                              draggable="false"
-                             oncontextmenu="return false"
-                             ondragstart="return false"
-                             onmousedown="event.preventDefault();"
-                             onselectstart="return false"
-                             onpointerdown="event.preventDefault();"
-                             ontouchstart="event.preventDefault();"
-                             ongesturestart="event.preventDefault();"
-                             onselect="return false"
-                             oncopy="return false"
-                             oncut="return false"
-                             onpaste="return false"
-                             onbeforecopy="return false"
-                             onbeforecut="return false"
-                             onbeforepaste="return false"
-                             ondrag="return false"
-                             ondrop="return false"
-                             onmouseup="event.preventDefault();"
-                             onmouseleave="event.preventDefault();"
-                             onmouseout="event.preventDefault();"
-                             onmouseover="event.preventDefault();"
-                             onmouseenter="event.preventDefault();"
-                             onmousemove="event.preventDefault();"
-                             onmousewheel="event.preventDefault();"
-                             onwheel="event.preventDefault();"
-                             ondblclick="event.preventDefault();"
-                             onauxclick="event.preventDefault();"
-                             onpointerup="event.preventDefault();"
-                             onpointermove="event.preventDefault();"
-                             onpointerleave="event.preventDefault();"
-                             onpointerout="event.preventDefault();"
-                             onpointerover="event.preventDefault();"
-                             onpointerenter="event.preventDefault();"
-                             onpointercancel="event.preventDefault();"
-                             ongotpointercapture="event.preventDefault();"
-                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_crippz&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-blue-400 tracking-wide flex items-center gap-2">
                             crippz
@@ -1004,48 +760,13 @@
                             </a>
                         </div>
                     </div>
-                    <!-- xeox69: red, playmaker, clutch, "sus" -->
+                    <!-- xeox69 -->
                     <div class="card pro-card bg-red-trans rounded-2xl flex flex-col items-center text-center p-8 border border-red-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="red">
                         <div class="pro-glow"></div>
-                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-md pro-img-glow"
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-md pro-img-glow disable-user-interaction"
                              src="https://i.ibb.co/s9PQWFC9/xeox69.jpg"
                              alt="1hp_xeox69"
                              draggable="false"
-                             oncontextmenu="return false"
-                             ondragstart="return false"
-                             onmousedown="event.preventDefault();"
-                             onselectstart="return false"
-                             onpointerdown="event.preventDefault();"
-                             ontouchstart="event.preventDefault();"
-                             ongesturestart="event.preventDefault();"
-                             onselect="return false"
-                             oncopy="return false"
-                             oncut="return false"
-                             onpaste="return false"
-                             onbeforecopy="return false"
-                             onbeforecut="return false"
-                             onbeforepaste="return false"
-                             ondrag="return false"
-                             ondrop="return false"
-                             onmouseup="event.preventDefault();"
-                             onmouseleave="event.preventDefault();"
-                             onmouseout="event.preventDefault();"
-                             onmouseover="event.preventDefault();"
-                             onmouseenter="event.preventDefault();"
-                             onmousemove="event.preventDefault();"
-                             onmousewheel="event.preventDefault();"
-                             onwheel="event.preventDefault();"
-                             ondblclick="event.preventDefault();"
-                             onauxclick="event.preventDefault();"
-                             onpointerup="event.preventDefault();"
-                             onpointermove="event.preventDefault();"
-                             onpointerleave="event.preventDefault();"
-                             onpointerout="event.preventDefault();"
-                             onpointerover="event.preventDefault();"
-                             onpointerenter="event.preventDefault();"
-                             onpointercancel="event.preventDefault();"
-                             ongotpointercapture="event.preventDefault();"
-                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_xeox69&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide flex items-center gap-2">
                             xeox69
@@ -1064,48 +785,13 @@
                             </a>
                         </div>
                     </div>
-                    <!-- JDM Doge: purple, support, calm, tactical -->
+                    <!-- JDM Doge -->
                     <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="purple">
                         <div class="pro-glow"></div>
-                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-md pro-img-glow"
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-md pro-img-glow disable-user-interaction"
                              src="https://i.ibb.co/YFxSBmMq/fahim-bhai.png"
                              alt="1hp_JDM Doge"
                              draggable="false"
-                             oncontextmenu="return false"
-                             ondragstart="return false"
-                             onmousedown="event.preventDefault();"
-                             onselectstart="return false"
-                             onpointerdown="event.preventDefault();"
-                             ontouchstart="event.preventDefault();"
-                             ongesturestart="event.preventDefault();"
-                             onselect="return false"
-                             oncopy="return false"
-                             oncut="return false"
-                             onpaste="return false"
-                             onbeforecopy="return false"
-                             onbeforecut="return false"
-                             onbeforepaste="return false"
-                             ondrag="return false"
-                             ondrop="return false"
-                             onmouseup="event.preventDefault();"
-                             onmouseleave="event.preventDefault();"
-                             onmouseout="event.preventDefault();"
-                             onmouseover="event.preventDefault();"
-                             onmouseenter="event.preventDefault();"
-                             onmousemove="event.preventDefault();"
-                             onmousewheel="event.preventDefault();"
-                             onwheel="event.preventDefault();"
-                             ondblclick="event.preventDefault();"
-                             onauxclick="event.preventDefault();"
-                             onpointerup="event.preventDefault();"
-                             onpointermove="event.preventDefault();"
-                             onpointerleave="event.preventDefault();"
-                             onpointerout="event.preventDefault();"
-                             onpointerover="event.preventDefault();"
-                             onpointerenter="event.preventDefault();"
-                             onpointercancel="event.preventDefault();"
-                             ongotpointercapture="event.preventDefault();"
-                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_JDM%20Doge&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">JDM Doge</h3>
                         <p class="text-purple-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-purple-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>
@@ -1117,70 +803,13 @@
                 <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider youngsters-effect">
                     1hp Youngsters
                 </h3>
-                <style>
-                /* Subtle animated green gradient + glow for 1hp Youngsters subtitle */
-                .youngsters-effect {
-                    background: linear-gradient(90deg, #6ee7b7 0%, #34d399 40%, #38bdf8 70%, #a7f3d0 100%);
-                    background-size: 200% auto;
-                    color: #fff;
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    animation: youngsters-gradient-move 4s ease-in-out infinite alternate;
-                    text-shadow:
-                        0 2px 12px rgba(52,211,153,0.13),
-                        0 4px 32px rgba(56,189,248,0.10),
-                        0 1.2px 0 #0008;
-                    letter-spacing: 0em;
-                    transition: text-shadow 0.3s;
-                }
-                @keyframes youngsters-gradient-move {
-                    0% { background-position: 0% 50%; }
-                    100% { background-position: 100% 50%; }
-                }
-            </style>                
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card pro-card bg-yellow-trans rounded-2xl flex flex-col items-center text-center p-8 border border-yellow-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="yellow">
                         <div class="pro-glow"></div>
-                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-md bg-black pro-img-glow"
+                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-md bg-black pro-img-glow disable-user-interaction"
                              src="https://i.ibb.co/qYgTRQ1T/frenzy.png"
                              alt="1hp_Frenzy"
                              draggable="false"
-                             oncontextmenu="return false"
-                             ondragstart="return false"
-                             onmousedown="event.preventDefault();"
-                             onselectstart="return false"
-                             onpointerdown="event.preventDefault();"
-                             ontouchstart="event.preventDefault();"
-                             ongesturestart="event.preventDefault();"
-                             onselect="return false"
-                             oncopy="return false"
-                             oncut="return false"
-                             onpaste="return false"
-                             onbeforecopy="return false"
-                             onbeforecut="return false"
-                             onbeforepaste="return false"
-                             ondrag="return false"
-                             ondrop="return false"
-                             onmouseup="event.preventDefault();"
-                             onmouseleave="event.preventDefault();"
-                             onmouseout="event.preventDefault();"
-                             onmouseover="event.preventDefault();"
-                             onmouseenter="event.preventDefault();"
-                             onmousemove="event.preventDefault();"
-                             onmousewheel="event.preventDefault();"
-                             onwheel="event.preventDefault();"
-                             ondblclick="event.preventDefault();"
-                             onauxclick="event.preventDefault();"
-                             onpointerup="event.preventDefault();"
-                             onpointermove="event.preventDefault();"
-                             onpointerleave="event.preventDefault();"
-                             onpointerout="event.preventDefault();"
-                             onpointerover="event.preventDefault();"
-                             onpointerenter="event.preventDefault();"
-                             onpointercancel="event.preventDefault();"
-                             ongotpointercapture="event.preventDefault();"
-                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_Frenzy&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-yellow-400 tracking-wide">Frenzy</h3>
                         <p class="text-yellow-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-yellow-900/60 text-xs font-bold tracking-wider">In Game Leader </span></p>
@@ -1196,45 +825,10 @@
                     </div>
                     <div class="card pro-card bg-red-trans rounded-2xl flex flex-col items-center text-center p-8 border border-red-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="red">
                         <div class="pro-glow"></div>
-                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-300 shadow-md pro-img-glow"
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-300 shadow-md pro-img-glow disable-user-interaction"
                              src="https://i.ibb.co/tMKPHk9F/Walker.png"
                              alt="1hp_WalkerX"
                              draggable="false"
-                             oncontextmenu="return false"
-                             ondragstart="return false"
-                             onmousedown="event.preventDefault();"
-                             onselectstart="return false"
-                             onpointerdown="event.preventDefault();"
-                             ontouchstart="event.preventDefault();"
-                             ongesturestart="event.preventDefault();"
-                             onselect="return false"
-                             oncopy="return false"
-                             oncut="return false"
-                             onpaste="return false"
-                             onbeforecopy="return false"
-                             onbeforecut="return false"
-                             onbeforepaste="return false"
-                             ondrag="return false"
-                             ondrop="return false"
-                             onmouseup="event.preventDefault();"
-                             onmouseleave="event.preventDefault();"
-                             onmouseout="event.preventDefault();"
-                             onmouseover="event.preventDefault();"
-                             onmouseenter="event.preventDefault();"
-                             onmousemove="event.preventDefault();"
-                             onmousewheel="event.preventDefault();"
-                             onwheel="event.preventDefault();"
-                             ondblclick="event.preventDefault();"
-                             onauxclick="event.preventDefault();"
-                             onpointerup="event.preventDefault();"
-                             onpointermove="event.preventDefault();"
-                             onpointerleave="event.preventDefault();"
-                             onpointerout="event.preventDefault();"
-                             onpointerover="event.preventDefault();"
-                             onpointerenter="event.preventDefault();"
-                             onpointercancel="event.preventDefault();"
-                             ongotpointercapture="event.preventDefault();"
-                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_WalkerX&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide">WalkerX</h3>
                         <p class="text-red-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-red-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>                        <p class="text-gray-300 text-sm">Known for his juicy mechanical skill; often time does suspicious gameplay and has 6th-sense game-sense!? Very good at supporting team when they need him the most by dying first!? but homie is master at playmaking most of the times.</p>
@@ -1249,45 +843,10 @@
                     </div>
                     <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="purple">
                         <div class="pro-glow"></div>
-                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-md bg-black pro-img-glow"
+                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-md bg-black pro-img-glow disable-user-interaction"
                              src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg"
                              alt="1hp_1Doom"
                              draggable="false"
-                             oncontextmenu="return false"
-                             ondragstart="return false"
-                             onmousedown="event.preventDefault();"
-                             onselectstart="return false"
-                             onpointerdown="event.preventDefault();"
-                             ontouchstart="event.preventDefault();"
-                             ongesturestart="event.preventDefault();"
-                             onselect="return false"
-                             oncopy="return false"
-                             oncut="return false"
-                             onpaste="return false"
-                             onbeforecopy="return false"
-                             onbeforecut="return false"
-                             onbeforepaste="return false"
-                             ondrag="return false"
-                             ondrop="return false"
-                             onmouseup="event.preventDefault();"
-                             onmouseleave="event.preventDefault();"
-                             onmouseout="event.preventDefault();"
-                             onmouseover="event.preventDefault();"
-                             onmouseenter="event.preventDefault();"
-                             onmousemove="event.preventDefault();"
-                             onmousewheel="event.preventDefault();"
-                             onwheel="event.preventDefault();"
-                             ondblclick="event.preventDefault();"
-                             onauxclick="event.preventDefault();"
-                             onpointerup="event.preventDefault();"
-                             onpointermove="event.preventDefault();"
-                             onpointerleave="event.preventDefault();"
-                             onpointerout="event.preventDefault();"
-                             onpointerover="event.preventDefault();"
-                             onpointerenter="event.preventDefault();"
-                             onpointercancel="event.preventDefault();"
-                             ongotpointercapture="event.preventDefault();"
-                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_1Doom&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">1Doom</h3>
                         <p class="text-purple-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-purple-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>
@@ -1297,297 +856,21 @@
             </div>
         </div>
     </section>
-    <style>
-    /* 1hp color translucent backgrounds */
-    .bg-yellow-trans { background: rgba(255, 206, 65, 0.13) !important; }
-    .bg-red-trans    { background: rgba(236, 65, 88, 0.13) !important; }
-    .bg-purple-trans { background: rgba(102, 75, 240, 0.13) !important; }
-    .bg-blue-trans   { background: rgba(96, 165, 250, 0.13) !important; }
     
-    /* Remove neon background box */
-    #team-neon-bg { display: none !important; }
-    
-    /* Remove neon/flicker/animated effects from section titles */
-    .neon-title, .neon-subtitle { text-shadow: none !important; }
-    
-    /* Card Effects: Softer idle, reduced hover */
-    .pro-card {
-        box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
-        transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55), transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
-        position: relative;
-        z-index: 1;
-    }
-    .pro-card .pro-glow {
-        pointer-events: none;
-        position: absolute;
-        inset: -4px;
-        border-radius: 1.25rem;
-        z-index: -1;
-        opacity: 0.32;
-        filter: blur(7px);
-        transition: filter 0.1s, opacity 0.1s;
-    }
-    .pro-card[data-neon="blue"] .pro-glow { background: radial-gradient(circle at 60% 40%, #60a5fa 0%, #1e3a8a 80%); }
-    .pro-card[data-neon="red"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ec4158 0%, #991b1b 80%); }
-    .pro-card[data-neon="purple"] .pro-glow { background: radial-gradient(circle at 60% 40%, #664bf0 0%, #581c87 80%); }
-    .pro-card[data-neon="yellow"] .pro-glow { background: radial-gradient(circle at 60% 40%, #ffce41 0%, #b45309 80%); }
-    
-    .pro-card:hover, .pro-card:focus-within {
-        /* The transform will be set by JS for random movement */
-        box-shadow: 0 0 16px 4px #fff2, 0 0 32px 8px var(--pro-neon, #fff2);
-        z-index: 2;
-    }
-    .pro-card[data-neon="blue"]:hover { --pro-neon: #60a5fa; }
-    .pro-card[data-neon="red"]:hover { --pro-neon: #ec4158; }
-    .pro-card[data-neon="purple"]:hover { --pro-neon: #664bf0; }
-    .pro-card[data-neon="yellow"]:hover { --pro-neon: #ffce41; }
-    
-    .pro-card .pro-img-glow {
-        box-shadow: 0 0 0 0 transparent;
-        transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55);
-    }
-    .pro-card[data-neon="blue"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #60a5fa66, 0 0 32px 8px #1e3a8a33; }
-    .pro-card[data-neon="red"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ec415866, 0 0 32px 8px #991b1b33; }
-    .pro-card[data-neon="purple"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #664bf066, 0 0 32px 8px #581c8733; }
-    .pro-card[data-neon="yellow"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ffce4166, 0 0 32px 8px #b4530933; }
-    </style>
-    <script>
-    // Random movement on hover for pro cards
-    document.querySelectorAll('.pro-card').forEach(card => {
-        let originalTransform = card.style.transform || '';
-        card.addEventListener('mouseenter', () => {
-            // Random direction: -1 or 1 for x and y
-            const x = (Math.random() > 0.5 ? 1 : -1) * (8 + Math.random() * 8); // 8-16px
-            const y = (Math.random() > 0.5 ? 1 : -1) * (8 + Math.random() * 8);
-            card.style.transform = `translate(${x}px, ${y}px) scale(1.025) rotate(-0.5deg)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = originalTransform;
-        });
-    });
-    </script>
-
-    <script>
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            // Toggle ARIA attribute for accessibility
-            const isExpanded = menu.classList.contains('hidden') ? 'false' : 'true';
-            btn.setAttribute('aria-expanded', isExpanded);
-            // Toggle SVG icons
-            btn.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
-        });
-
-        // Close mobile menu when a link is clicked (for single-page navigation)
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (event) => {
-                // Check if the link is an internal page anchor
-                if (link.getAttribute('href').startsWith('#')) {
-                    if (!menu.classList.contains('hidden')) {
-                        menu.classList.add('hidden');
-                        btn.setAttribute('aria-expanded', 'false');
-                        btn.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
-                    }
-                }
-                // If it's a link to a different page (e.g., "another-page.html"), 
-                // the browser will navigate, and the menu state on the new page will be default (hidden).
-            });
-        });
-    </script>
- <!--1hp Clan Specialist's Section -->
-<section id="teams-others" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <style>
-            /* Shifting Layers Shadow Animation */
-            @keyframes shifting-layers-shadow-yellow {
-                0% {
-                    box-shadow:
-                        0 4px 16px 0 rgba(253,224,71,0.25),
-                        8px 8px 32px 0 rgba(253,224,71,0.15),
-                        -8px 8px 32px 0 rgba(253,224,71,0.10);
-                }
-                33% {
-                    box-shadow:
-                        0 10px 24px 0 rgba(253,224,71,0.32),
-                        18px 2px 40px 0 rgba(253,224,71,0.19),
-                        -10px 16px 40px 0 rgba(253,224,71,0.14);
-                }
-                66% {
-                    box-shadow:
-                        0 7px 28px 0 rgba(253,224,71,0.28),
-                        12px 10px 44px 0 rgba(253,224,71,0.21),
-                        -18px 8px 44px 0 rgba(253,224,71,0.12);
-                }
-                100% {
-                    box-shadow:
-                        0 4px 16px 0 rgba(253,224,71,0.25),
-                        8px 8px 32px 0 rgba(253,224,71,0.15),
-                        -8px 8px 32px 0 rgba(253,224,71,0.10);
-                }
-            }
-            @keyframes shifting-layers-shadow-purple {
-                0% {
-                    box-shadow:
-                        0 4px 16px 0 rgba(168,85,247,0.25),
-                        8px 8px 32px 0 rgba(168,85,247,0.15),
-                        -8px 8px 32px 0 rgba(168,85,247,0.10);
-                }
-                33% {
-                    box-shadow:
-                        0 12px 30px 0 rgba(168,85,247,0.32),
-                        20px 4px 44px 0 rgba(168,85,247,0.19),
-                        -12px 18px 44px 0 rgba(168,85,247,0.14);
-                }
-                66% {
-                    box-shadow:
-                        0 6px 20px 0 rgba(168,85,247,0.28),
-                        10px 14px 40px 0 rgba(168,85,247,0.21),
-                        -20px 6px 40px 0 rgba(168,85,247,0.12);
-                }
-                100% {
-                    box-shadow:
-                        0 4px 16px 0 rgba(168,85,247,0.25),
-                        8px 8px 32px 0 rgba(168,85,247,0.15),
-                        -8px 8px 32px 0 rgba(168,85,247,0.10);
-                }
-            }
-            @keyframes shifting-layers-shadow-pink {
-                0% {
-                    box-shadow:
-                        0 4px 16px 0 rgba(236,72,153,0.25),
-                        8px 8px 32px 0 rgba(236,72,153,0.15),
-                        -8px 8px 32px 0 rgba(236,72,153,0.10);
-                }
-                33% {
-                    box-shadow:
-                        0 14px 28px 0 rgba(236,72,153,0.33),
-                        14px 12px 40px 0 rgba(236,72,153,0.18),
-                        -18px 14px 40px 0 rgba(236,72,153,0.13);
-                }
-                66% {
-                    box-shadow:
-                        0 8px 36px 0 rgba(236,72,153,0.29),
-                        18px 6px 48px 0 rgba(236,72,153,0.22),
-                        -14px 18px 48px 0 rgba(236,72,153,0.11);
-                }
-                100% {
-                    box-shadow:
-                        0 4px 16px 0 rgba(236,72,153,0.25),
-                        8px 8px 32px 0 rgba(236,72,153,0.15),
-                        -8px 8px 32px 0 rgba(236,72,153,0.10);
-                }
-            }
-            @keyframes shifting-layers-shadow-cyan {
-                0% {
-                    box-shadow:
-                        0 4px 16px 0 rgba(34,211,238,0.25),
-                        8px 8px 32px 0 rgba(34,211,238,0.15),
-                        -8px 8px 32px 0 rgba(34,211,238,0.10);
-                }
-                33% {
-                    box-shadow:
-                        0 8px 40px 0 rgba(34,211,238,0.31),
-                        22px 8px 44px 0 rgba(34,211,238,0.17),
-                        -10px 20px 44px 0 rgba(34,211,238,0.13);
-                }
-                66% {
-                    box-shadow:
-                        0 12px 24px 0 rgba(34,211,238,0.27),
-                        16px 12px 36px 0 rgba(34,211,238,0.20),
-                        -22px 10px 36px 0 rgba(34,211,238,0.12);
-                }
-                100% {
-                    box-shadow:
-                        0 4px 16px 0 rgba(34,211,238,0.25),
-                        8px 8px 32px 0 rgba(34,211,238,0.15),
-                        -8px 8px 32px 0 rgba(34,211,238,0.10);
-                }
-            }
-            .card-shadow-yellow {
-                animation: shifting-layers-shadow-yellow 9s cubic-bezier(.68,-0.55,.27,1.55) infinite;
-            }
-            .card-shadow-purple {
-                animation: shifting-layers-shadow-purple 9s cubic-bezier(.68,-0.55,.27,1.55) infinite;
-            }
-            .card-shadow-pink {
-                animation: shifting-layers-shadow-pink 9s cubic-bezier(.68,-0.55,.27,1.55) infinite;
-            }
-            .card-shadow-cyan {
-                animation: shifting-layers-shadow-cyan 9s cubic-bezier(.68,-0.55,.27,1.55) infinite;
-            }
-        </style>
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-10 mt-8 clan-specialists-effect" style="font-family: 'Orbitron', sans-serif;">
+    <!--1hp Clan Specialist's Section -->
+    <section id="teams-others" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8"> <!-- This inner container was missing, added for consistency -->
+            <h3 class="main-section-title text-4xl sm:text-5xl font-bold text-center mb-10 mt-8 clan-specialists-effect">
                 CLAN SPECIALISTS
             </h3>
-            <style>
-            /* Subtle animated gold gradient + glow for Clan Specialists title */
-            .clan-specialists-effect {
-                font-family: 'Orbitron', sans-serif;
-                background: linear-gradient(90deg, #ffe082 0%, #ffd700 30%, #ffb300 70%, #fffbe6 100%);
-                background-size: 200% auto;
-                color: #fff;
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: clan-specialists-gradient 5s linear infinite alternate;
-                letter-spacing: 0.02em;
-                text-shadow:
-                    0 2px 12px rgba(255, 208, 0, 0.322),
-                    0 4px 32px rgba(255, 193, 7, 0.253),
-                    0 1px 0 rgba(24, 23, 23, 0.533);
-                position: relative;
-                transition: text-shadow 0.3s;
-            }
-            @keyframes clan-specialists-gradient {
-                0% { background-position: 0% 50%; }
-                100% { background-position: 100% 50%; }
-            }
-            </style>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
                 <!-- Player Card 1 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 card-shadow-yellow"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-yellow-300 shadow-lg"
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-yellow-300 shadow-lg disable-user-interaction"
                          src="https://i.ibb.co/QjkJ5Jqq/Discord-03-June-2025-10-01-12-PM.png"
                          alt="MUSTAKIM"
                          draggable="false"
-                         oncontextmenu="return false"
-                         ondragstart="return false"
-                         onmousedown="event.preventDefault();"
-                         onselectstart="return false"
-                         onpointerdown="event.preventDefault();"
-                         ontouchstart="event.preventDefault();"
-                         ongesturestart="event.preventDefault();"
-                         onselect="return false"
-                         oncopy="return false"
-                         oncut="return false"
-                         onpaste="return false"
-                         onbeforecopy="return false"
-                         onbeforecut="return false"
-                         onbeforepaste="return false"
-                         ondrag="return false"
-                         ondrop="return false"
-                         onmouseup="event.preventDefault();"
-                         onmouseleave="event.preventDefault();"
-                         onmouseout="event.preventDefault();"
-                         onmouseover="event.preventDefault();"
-                         onmouseenter="event.preventDefault();"
-                         onmousemove="event.preventDefault();"
-                         onmousewheel="event.preventDefault();"
-                         onwheel="event.preventDefault();"
-                         ondblclick="event.preventDefault();"
-                         onauxclick="event.preventDefault();"
-                         onpointerup="event.preventDefault();"
-                         onpointermove="event.preventDefault();"
-                         onpointerleave="event.preventDefault();"
-                         onpointerout="event.preventDefault();"
-                         onpointerover="event.preventDefault();"
-                         onpointerenter="event.preventDefault();"
-                         onpointercancel="event.preventDefault();"
-                         ongotpointercapture="event.preventDefault();"
-                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=MUSTAKIM&font=inter';">
                     <h4 class="text-xl font-bold text-yellow-400 mb-1">MUSTAKIM</h4>
                     <p class="text-yellow-200 font-medium mb-1 italic">Diplomatic Troubleshooter</p>
@@ -1598,45 +881,10 @@
                 <!-- Player Card 2 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 relative card-shadow-purple"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg"
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg disable-user-interaction"
                          src="https://i.ibb.co/wGWcNjh/psykix.png"
                          alt="Psykix"
                          draggable="false"
-                         oncontextmenu="return false"
-                         ondragstart="return false"
-                         onmousedown="event.preventDefault();"
-                         onselectstart="return false"
-                         onpointerdown="event.preventDefault();"
-                         ontouchstart="event.preventDefault();"
-                         ongesturestart="event.preventDefault();"
-                         onselect="return false"
-                         oncopy="return false"
-                         oncut="return false"
-                         onpaste="return false"
-                         onbeforecopy="return false"
-                         onbeforecut="return false"
-                         onbeforepaste="return false"
-                         ondrag="return false"
-                         ondrop="return false"
-                         onmouseup="event.preventDefault();"
-                         onmouseleave="event.preventDefault();"
-                         onmouseout="event.preventDefault();"
-                         onmouseover="event.preventDefault();"
-                         onmouseenter="event.preventDefault();"
-                         onmousemove="event.preventDefault();"
-                         onmousewheel="event.preventDefault();"
-                         onwheel="event.preventDefault();"
-                         ondblclick="event.preventDefault();"
-                         onauxclick="event.preventDefault();"
-                         onpointerup="event.preventDefault();"
-                         onpointermove="event.preventDefault();"
-                         onpointerleave="event.preventDefault();"
-                         onpointerout="event.preventDefault();"
-                         onpointerover="event.preventDefault();"
-                         onpointerenter="event.preventDefault();"
-                         onpointercancel="event.preventDefault();"
-                         ongotpointercapture="event.preventDefault();"
-                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Psykix&font=inter';">
                     <h4 class="text-xl font-bold text-purple-400 mb-1">Psykix</h4>
                     <p class="text-purple-200 font-medium mb-1 italic">Chillest Pro Player</p>
@@ -1661,48 +909,13 @@
                 <!-- Player Card 3 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-pink-400/10 relative card-shadow-pink"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-pink-300 shadow-lg"
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-pink-300 shadow-lg disable-user-interaction"
                          src="https://i.ibb.co/wNRBVd2g/AfraBae.jpg"
                          alt="AfraBae"
                          draggable="false"
-                         oncontextmenu="return false"
-                         ondragstart="return false"
-                         onmousedown="event.preventDefault();"
-                         onselectstart="return false"
-                         onpointerdown="event.preventDefault();"
-                         ontouchstart="event.preventDefault();"
-                         ongesturestart="event.preventDefault();"
-                         onselect="return false"
-                         oncopy="return false"
-                         oncut="return false"
-                         onpaste="return false"
-                         onbeforecopy="return false"
-                         onbeforecut="return false"
-                         onbeforepaste="return false"
-                         ondrag="return false"
-                         ondrop="return false"
-                         onmouseup="event.preventDefault();"
-                         onmouseleave="event.preventDefault();"
-                         onmouseout="event.preventDefault();"
-                         onmouseover="event.preventDefault();"
-                         onmouseenter="event.preventDefault();"
-                         onmousemove="event.preventDefault();"
-                         onmousewheel="event.preventDefault();"
-                         onwheel="event.preventDefault();"
-                         ondblclick="event.preventDefault();"
-                         onauxclick="event.preventDefault();"
-                         onpointerup="event.preventDefault();"
-                         onpointermove="event.preventDefault();"
-                         onpointerleave="event.preventDefault();"
-                         onpointerout="event.preventDefault();"
-                         onpointerover="event.preventDefault();"
-                         onpointerenter="event.preventDefault();"
-                         onpointercancel="event.preventDefault();"
-                         ongotpointercapture="event.preventDefault();"
-                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=AfraBae&font=inter';">
                     <h4 class="text-xl font-bold text-pink-400 mb-1">AfraBae</h4>
-                    <p class="text-pink-200 font-medium mb-1 italic">Pro Player &amp; Team Support</p>
+                    <p class="text-pink-200 font-medium mb-1 italic">Pro Player & Team Support</p>
                     <p class="text-gray-300 text-sm">
                         AfraBae is the first female player from Bangladesh to surpass 100K+ LP, making waves as a trailblazer in the scene. Known for her supportive spirit and boundless energy, she uplifts the squad both in and out of the game, bringing passion, positivity, and performance to every match.
                     </p>
@@ -1718,45 +931,10 @@
                 <!-- Player Card 4 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/10 card-shadow-cyan"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
+                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg disable-user-interaction"
                          src="https://i.ibb.co/gZF1Bb9Q/stitch.jpg"
                          alt="DrStitch"
                          draggable="false"
-                         oncontextmenu="return false"
-                         ondragstart="return false"
-                         onmousedown="event.preventDefault();"
-                         onselectstart="return false"
-                         onpointerdown="event.preventDefault();"
-                         ontouchstart="event.preventDefault();"
-                         ongesturestart="event.preventDefault();"
-                         onselect="return false"
-                         oncopy="return false"
-                         oncut="return false"
-                         onpaste="return false"
-                         onbeforecopy="return false"
-                         onbeforecut="return false"
-                         onbeforepaste="return false"
-                         ondrag="return false"
-                         ondrop="return false"
-                         onmouseup="event.preventDefault();"
-                         onmouseleave="event.preventDefault();"
-                         onmouseout="event.preventDefault();"
-                         onmouseover="event.preventDefault();"
-                         onmouseenter="event.preventDefault();"
-                         onmousemove="event.preventDefault();"
-                         onmousewheel="event.preventDefault();"
-                         onwheel="event.preventDefault();"
-                         ondblclick="event.preventDefault();"
-                         onauxclick="event.preventDefault();"
-                         onpointerup="event.preventDefault();"
-                         onpointermove="event.preventDefault();"
-                         onpointerleave="event.preventDefault();"
-                         onpointerout="event.preventDefault();"
-                         onpointerover="event.preventDefault();"
-                         onpointerenter="event.preventDefault();"
-                         onpointercancel="event.preventDefault();"
-                         ongotpointercapture="event.preventDefault();"
-                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=DrStitch&font=inter';">
                     <h4 class="text-xl font-bold text-cyan-400 mb-1 normal-case">DrStitch</h4>
                     <p class="text-cyan-200 font-medium mb-1 italic">Internal Operation Specialist</p>
@@ -1765,36 +943,15 @@
                     </p>
                 </div>
             </div>
+        </div> <!-- Closing the container div for #teams-others -->
+    </section>
+
     <!-- News Section -->
     <section id="news" class="py-12 sm:py-16 bg-gray-850/80 backdrop-blur-md rounded-lg my-14 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 news-gradient-effect" style="font-family: 'Orbitron', sans-serif;">
+            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 news-gradient-effect">
                 Latest News <span class="font-extrabold">&</span> Updates
             </h2>
-            <style>
-            /* Animated orange-pink gradient + glow for News section title */
-            .news-gradient-effect {
-                font-family: 'Orbitron', sans-serif;
-                background: linear-gradient(90deg, #ffb300 0%, #fbbf24 30%, #ec4899 70%, #f472b6 100%);
-                background-size: 200% auto;
-                color: #fff;
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: news-gradient-move 5s linear infinite alternate;
-                letter-spacing: 0em;
-                text-shadow:
-                    0 2px 12px rgba(251,191,36,0.16),
-                    0 4px 32px rgba(236,72,153,0.13),
-                    0 1px 0 #0008;
-                position: relative;
-                transition: text-shadow 0.3s;
-            }
-            @keyframes news-gradient-move {
-                0% { background-position: 0% 50%; }
-                100% { background-position: 100% 50%; }
-            }
-            </style>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- News Card 1 -->
                 <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
@@ -1803,7 +960,7 @@
                         <p class="text-sm text-gray-500 mb-1">May 26, 2025</p>
                         <h3 class="text-xl font-semibold mb-3 text-white">1hp Esports WON Legends Reborn Tournament!</h3>
                         <p class="text-gray-400 text-sm mb-4">An incredible performance by the team led to a decisive victory in the finals. Read more about their journey...</p>
-                        <a href="https://www.facebook.com/official1hp/posts/pfbid02tDDJMfJxq5w8fZhBREn37PRydngn3oKKz5beuBCmE8rF4QdBQ3vPXcXLCSsxHJcNl" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More &rarr;</a>
+                        <a href="https://www.facebook.com/official1hp/posts/pfbid02tDDJMfJxq5w8fZhBREn37PRydngn3oKKz5beuBCmE8rF4QdBQ3vPXcXLCSsxHJcNl" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
                     </div>
                 </div>
                 <!-- News Card 2 -->
@@ -1813,7 +970,7 @@
                         <p class="text-sm text-gray-500 mb-1">December 5, 2023</p>
                         <h3 class="text-xl font-semibold mb-3 text-white">Welcoming Our Newest Star Player!</h3>
                         <p class="text-gray-400 text-sm mb-4">We're thrilled to announce the latest addition to our Apex Legends roster, INSTINCTx. Get to know them here...</p>
-                        <a href="https://www.facebook.com/photo.php?fbid=1056223615800813&set=pb.100042395546650.-2207520000&type=3" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More &rarr;</a>
+                        <a href="https://www.facebook.com/photo.php?fbid=1056223615800813&set=pb.100042395546650.-2207520000&type=3" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
                     </div>
                 </div>
                 <!-- News Card 3 -->
@@ -1823,9 +980,10 @@
                         <p class="text-sm text-gray-500 mb-1">May 26, 2025</p>
                         <h3 class="text-xl font-semibold mb-3 text-white">Match Recap: Intense Battle Against Rivals</h3>
                         <p class="text-gray-400 text-sm mb-4">A nail-biting series that went down to the wire. Catch all the highlights and analysis...</p>
-                        <a href="https://www.youtube.com/watch?v=L6Ku_fg96BY" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More &rarr;</a>
+                        <a href="https://www.youtube.com/watch?v=L6Ku_fg96BY" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
                     </div>
                 </div>
+            </div> <!-- Closing grid for news cards -->
             <div class="flex justify-center items-center mt-8">
                 <a href="#" class="btn btn-primary bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300">
                     View All News
@@ -1837,37 +995,14 @@
     <!-- Sponsors Section -->
     <section id="sponsors" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 sponsors-gradient-effect" style="font-family: 'Orbitron', sans-serif;">
+            <h2 class="main-section-title text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 sponsors-gradient-effect">
                 Our Valued Sponsors
             </h2>
-            <style>
-            /* Animated purple-pink gradient + glow for Sponsors section title */
-            .sponsors-gradient-effect {
-                font-family: 'Orbitron', sans-serif;
-                background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #fbbf24 100%);
-                background-size: 200% auto;
-                color: #fff;
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                animation: sponsors-gradient-move 5s linear infinite alternate;
-                letter-spacing: 0em;
-                text-shadow:
-                    0 2px 12px rgba(168,85,247,0.15),
-                    0 4px 32px rgba(236,72,153,0.10),
-                    0 1px 0 #0008;
-                position: relative;
-                transition: text-shadow 0.3s;
-            }
-            @keyframes sponsors-gradient-move {
-                0% { background-position: 0% 50%; }
-                100% { background-position: 100% 50%; }
-            }
-            </style>
             <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+                <!-- Sponsor logos would go here if available -->
             </div>
             <div class="flex justify-center mt-12">
-                <img src="https://i.ibb.co/PpZHKkW/1hp-Xcvj-Cover-4.png" alt="1hp-Xcvj-Cover-4" class="rounded-lg shadow-lg max-w-full h-auto" loading="lazy">
+                <img src="https://i.ibb.co/PpZHKkW/1hp-Xcvj-Cover-4.png" alt="1hp Xcvj Cover - Placeholder for Sponsors" class="rounded-lg shadow-lg max-w-full h-auto" loading="lazy">
             </div>
             <div class="text-center mt-12">
                 <a href="mailto:email@1hp.team?subject=Become%20a%20Sponsor%20-%201hp%20Esports" class="btn btn-secondary bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300">
@@ -1878,7 +1013,9 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="border-t border-gray-700 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer id="contact" class="bg-gray-900/50 py-12 mt-12"> <!-- Added bg color and padding to footer -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="border-t border-gray-700 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-6">1hp Esports</h3>
                     <p class="text-gray-400 text-sm">
@@ -1911,53 +1048,228 @@
                 </div>
             </div>
             <div class="mt-12 border-t border-gray-700 pt-8 w-full flex flex-col items-center justify-center text-center">
-                <p class="text-sm text-gray-500">&copy; <span id="currentYear"></span> 1hp Esports. All rights reserved.</p>
+                <p class="text-sm text-gray-500">© <span id="currentYear"></span> 1hp Esports. All rights reserved.</p>
                 <p class="text-xs text-gray-600 mt-1">Website developed by <b>@chiefhamim</b></p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const menuButton = document.getElementById('mobile-menu-button');
+        // --- Mobile Menu Functionality ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuButton.addEventListener('click', () => {
-            const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
-            menuButton.setAttribute('aria-expanded', !expanded);
-            mobileMenu.classList.toggle('hidden');
-            menuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
-        });
-        // Hide mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    menuButton.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.add('hidden');
-                    menuButton.querySelectorAll('svg').forEach(icon => icon.classList.toggle('hidden'));
-                }
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
             });
-        });
-        // Smooth scroll for anchor links (with offset for sticky header)
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    if (link.getAttribute('href').startsWith('#')) {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                            mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
+                        }
+                    }
+                });
+            });
+        }
+
+        // --- Smooth Scroll for Anchor Links (with offset for sticky header) ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
-                if (!targetId.startsWith('#') || targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    const header = document.querySelector('header');
-                    const headerOffset = header ? header.offsetHeight : 0;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset + 1;
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
+                // Ensure it's a valid internal anchor and not just "#"
+                if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const header = document.querySelector('header.sticky'); // More specific selector for sticky header
+                        const headerOffset = header ? header.offsetHeight : 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset + 1; // +1 for slight buffer
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
                 }
             });
         });
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // --- Set Current Year in Footer ---
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // --- 1hp Founders Section Animations ---
+        function animateFoundersOnScroll() {
+            const cards = document.querySelectorAll('#founders .card');
+            if (cards.length === 0) return;
+
+            const reveal = () => {
+                cards.forEach((card, i) => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 60) { // Reveal when 60px from bottom is visible
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                        // Apply staggered transition
+                        card.style.transition = `opacity 1s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55)`;
+                    }
+                });
+            };
+
+            // Initial state for animation
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(60px)';
+            });
+
+            window.addEventListener('scroll', reveal, { passive: true });
+            reveal(); // Initial check on load
+        }
+        animateFoundersOnScroll();
+
+        // Interactive glow on hover for founder cards (original JS for this was more specific than CSS)
+        document.querySelectorAll('#founders .card').forEach(card => {
+            const shadowColor = card.getAttribute('data-shadow') || 'rgba(255,255,255,0.25)';
+            let originalBoxShadow = card.style.boxShadow; // Store original if set by CSS
+
+            card.addEventListener('mouseenter', () => {
+                card.style.boxShadow = `0 0 40px 1px ${shadowColor}, 0 1px 40px 4px ${shadowColor.replace('0.55', '0.10')}`;
+                // card.style.transition = 'box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)'; // Transition is already on the card
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.boxShadow = originalBoxShadow || ''; // Revert to original or remove
+            });
+        });
+
+        // Floating particle effect behind the founders section
+        (function foundersParticles() {
+            const section = document.getElementById('founders');
+            if (!section) return;
+
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '0'; // Ensure it's behind content
+            section.style.position = 'relative'; // Needed for absolute positioning of canvas
+            section.prepend(canvas); // Add canvas as the first child
+
+            const ctx = canvas.getContext('2d');
+            let animationFrameId;
+
+            function resizeCanvas() {
+                canvas.width = section.offsetWidth;
+                canvas.height = section.offsetHeight;
+                // Re-initialize particles or adjust positions if needed on resize
+            }
+            resizeCanvas(); // Initial size
+            window.addEventListener('resize', resizeCanvas);
+
+            const colors = [
+                'rgba(253,224,71,0.18)',   // yellow
+                'rgba(236,65,88,0.18)',    // red
+                'rgba(102,75,240,0.18)',   // purple
+                'rgba(255,255,255,0.10)'   // white
+            ];
+            const particles = Array.from({length: 24}, () => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: 12 + Math.random() * 18,
+                dx: (Math.random() - 0.5) * 0.2,
+                dy: (Math.random() - 0.5) * 0.2,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                alpha: 0.2 + Math.random() * 0.3
+            }));
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (const p of particles) {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.alpha;
+                    ctx.shadowColor = p.color; // Add shadow for a softer glow
+                    ctx.shadowBlur = 16;
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1; // Reset global alpha
+                ctx.shadowBlur = 0; // Reset shadow
+            }
+
+            function animateParticles() {
+                for (const p of particles) {
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    // Boundary checks
+                    if (p.x + p.r < 0) p.x = canvas.width + p.r;
+                    else if (p.x - p.r > canvas.width) p.x = -p.r;
+                    if (p.y + p.r < 0) p.y = canvas.height + p.r;
+                    else if (p.y - p.r > canvas.height) p.y = -p.r;
+                }
+                drawParticles();
+                animationFrameId = requestAnimationFrame(animateParticles);
+            }
+            
+            // Start animation only if section is somewhat visible (basic optimization)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!animationFrameId) animateParticles();
+                    } else {
+                        if (animationFrameId) {
+                            cancelAnimationFrame(animationFrameId);
+                            animationFrameId = null;
+                        }
+                    }
+                });
+            }, { threshold: 0.01 }); // Start when 1% is visible
+
+            observer.observe(section);
+        })();
+
+        // Subtle floating animation for founder cards
+        document.querySelectorAll('#founders .card').forEach((card, i) => {
+            card.animate([
+                { transform: 'translateY(0px)' },
+                { transform: `translateY(${i % 2 === 0 ? -8 : 8}px)` }, // Alternate direction
+                { transform: 'translateY(0px)' }
+            ], {
+                duration: 4200 + i * 150, // Slightly varied duration
+                iterations: Infinity,
+                direction: 'alternate',
+                easing: 'ease-in-out'
+            });
+        });
+
+        // --- Pro Card Random Movement on Hover ---
+        document.querySelectorAll('.pro-card').forEach(card => {
+            let originalTransform = getComputedStyle(card).transform;
+            if (originalTransform === 'none') originalTransform = ''; // Handle case where no transform is initially set
+
+            card.addEventListener('mouseenter', () => {
+                const x = (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 4); // Reduced movement: 4-8px
+                const y = (Math.random() > 0.5 ? 1 : -1) * (4 + Math.random() * 4);
+                // Apply hover scale and slight rotation along with random translate
+                card.style.transform = `translate(${x}px, ${y}px) scale(1.025) rotate(-0.5deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = originalTransform; // Revert to original transform
+            });
+        });
+
     </script>
 </body>
 </html>
