@@ -130,13 +130,13 @@
             </div>
         </div>
     </section>
-    <section id="about" class="pt-2 pb-2 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="about" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center text-lg space-y-6 about-us-text">
             <div class="flex flex-col items-center">
                 <img 
                     src="https://i.ibb.co/LDmqzR5q/20250529-221611.jpg" 
                     alt="1hp Esports Team Photo" 
-                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-white-300/50 mx-auto mb-8 w-full max-w-[1020px] h-auto transition-transform duration-300 hover:scale-105"
+                    class="rounded-2xl shadow-[0_8px_32px_0_rgba(102,75,240,0.25)] border-4 border-purple-300/50 mx-auto mb-8 w-full max-w-[720px] h-auto transition-transform duration-300 hover:scale-105"
                     onerror="this.onerror=null;this.src='https://placehold.co/800x400/374151/4b5563?text=Team+Photo&font=inter';"
                 >
             </div>
@@ -179,6 +179,7 @@
     }
     </style>
 </div>
+<!-- ...existing code... -->
 <section id="founders" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="container mx-auto px-0">
         <h3 class="text-center text-3xl sm:text-4xl font-bold mb-6 mt-0 founders-gradient-effect">
@@ -205,49 +206,291 @@
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
+        /* Founder card: 3D blended tint with smooth highlight top right */
+        #founders .card {
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 2px 8px 0 rgba(0,0,0,0.13);
+            border: none;
+            position: relative;
+            overflow: visible;
+            padding: 2.5rem 1.5rem 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 410px;
+            transition: box-shadow 0.35s cubic-bezier(.68,-0.55,.27,1.55), transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
+            background: #23212b;
+        }
+        #founders .card[data-shadow*="255,206,65"] {
+            /* 3D yellow: dark base, smooth yellow highlight top right, subtle shadow bottom left */
+            background:
+                radial-gradient(ellipse 90% 60% at 80% 0%, #ffce41cc 0%, #ffce4100 80%),
+                radial-gradient(ellipse 80% 60% at 20% 100%, #2d260b 0%, #23212b 80%),
+                linear-gradient(120deg, #3a2e0c 0%, #4d3d13 100%);
+        }
+        #founders .card[data-shadow*="236,65,88"] {
+            /* 3D red: dark base, smooth red highlight top right, subtle shadow bottom left */
+            background:
+                radial-gradient(ellipse 90% 60% at 80% 0%, #ec4158cc 0%, #ec415800 80%),
+                radial-gradient(ellipse 80% 60% at 20% 100%, #2a1117 0%, #23212b 80%),
+                linear-gradient(120deg, #2a1117 0%, #4d232c 100%);
+        }
+        #founders .card[data-shadow*="102,75,240"] {
+            /* 3D purple: dark base, smooth purple highlight top right, subtle shadow bottom left */
+            background:
+                radial-gradient(ellipse 90% 60% at 80% 0%, #664bf0cc 0%, #664bf000 80%),
+                radial-gradient(ellipse 80% 60% at 20% 100%, #1a1533 0%, #23212b 80%),
+                linear-gradient(120deg, #1a1533 0%, #2d225a 100%);
+        }
+        #founders .card:hover, #founders .card:focus-within {
+            box-shadow: 0 0 32px 8px var(--founder-glow, #fff2), 0 8px 32px 0 rgba(102,75,240,0.13);
+            z-index: 2;
+            transform: translateY(-6px) scale(1.045);
+        }
+        #founders .card[data-shadow*="255,206,65"] { --founder-glow: #ffce41cc; }
+        #founders .card[data-shadow*="236,65,88"] { --founder-glow: #ec4158cc; }
+        #founders .card[data-shadow*="102,75,240"] { --founder-glow: #664bf0cc; }
+
+        #founders .founder-img-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            width: 100%;
+        }
+        #founders .founder-img {
+            width: 9rem; height: 9rem;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 16px 0 var(--founder-glow, #fff2);
+            background: #fff;
+            margin: 0 auto;
+            display: block;
+        }
+        #founders .founder-name {
+            font-size: 1.35rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.02em;
+            background: linear-gradient(90deg, #ffce41 0%, #ec4158 50%, #664bf0 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: founders-gradient-move 4s ease-in-out infinite alternate;
+        }
+        #founders .founder-role {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+        #founders .card[data-shadow*="255,206,65"] .founder-role { color: #ffce41; }
+        #founders .card[data-shadow*="236,65,88"] .founder-role { color: #ec4158; }
+        #founders .card[data-shadow*="102,75,240"] .founder-role { color: #664bf0; }
+        #founders .founder-desc {
+            font-size: 0.97rem;
+            color: #e5e7eb;
+            opacity: 0.92;
+            margin-bottom: 0;
+        }
         </style>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="card bg-yellow-500/70 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(255,206,65,0.35)]" data-shadow="rgba(255,206,65,0.55)">
-                <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
-                     src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
-                     alt="Founder 1 - chiefhamim"
-                     onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+1&font=inter';">
-                <h4 class="text-xl font-semibold text-yellow-400 mb-1">chiefhamim</h4>
-                <p class="text-black font-semibold mb-2">Co-Founder / Manager</p>
-                <p class="text-white-500 text-sm">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</p>
+            <div class="card" data-shadow="rgba(255,206,65,0.55)">
+                <div class="founder-img-wrap">
+                    <img class="founder-img"
+                        src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
+                        alt="Founder 1 - chiefhamim"
+                        draggable="false"
+                        oncontextmenu="return false"
+                        ondragstart="return false"
+                        onmousedown="event.preventDefault();"
+                        onselectstart="return false"
+                        onpointerdown="event.preventDefault();"
+                        ontouchstart="event.preventDefault();"
+                        ongesturestart="event.preventDefault();"
+                        onselect="return false"
+                        oncopy="return false"
+                        oncut="return false"
+                        onpaste="return false"
+                        onbeforecopy="return false"
+                        onbeforecut="return false"
+                        onbeforepaste="return false"
+                        ondrag="return false"
+                        ondrop="return false"
+                        onmouseup="event.preventDefault();"
+                        onmouseleave="event.preventDefault();"
+                        onmouseout="event.preventDefault();"
+                        onmouseover="event.preventDefault();"
+                        onmouseenter="event.preventDefault();"
+                        onmousemove="event.preventDefault();"
+                        onmousewheel="event.preventDefault();"
+                        onwheel="event.preventDefault();"
+                        ondblclick="event.preventDefault();"
+                        onauxclick="event.preventDefault();"
+                        onpointerup="event.preventDefault();"
+                        onpointermove="event.preventDefault();"
+                        onpointerleave="event.preventDefault();"
+                        onpointerout="event.preventDefault();"
+                        onpointerover="event.preventDefault();"
+                        onpointerenter="event.preventDefault();"
+                        onpointercancel="event.preventDefault();"
+                        ongotpointercapture="event.preventDefault();"
+                        onlostpointercapture="event.preventDefault();"
+                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+1&font=inter';">
+                </div>
+                <div class="founder-name">chiefhamim</div>
+                <div class="founder-role">Co-Founder / Manager</div>
+                <div class="founder-desc">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</div>
             </div>
-            <div class="card bg-red-500/50 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]" data-shadow="rgba(236,65,88,0.55)">
-                <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
-                     src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
-                     alt="Founder 2 - crippz"
-                     onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+2&font=inter';">
-                <h4 class="text-xl font-semibold text-red-500 mb-1">crippz</h4>
-                <p class="text-black font-semibold mb-2">Co-Founder / Admin</p>
-                <p class="text-white-500 text-sm">Instrumental in building the team’s competitive edge, admired for his mechanical skills and leadership.</p>
+            <div class="card" data-shadow="rgba(236,65,88,0.55)">
+                <div class="founder-img-wrap">
+                    <img class="founder-img"
+                        src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
+                        alt="Founder 2 - crippz"
+                        draggable="false"
+                        oncontextmenu="return false"
+                        ondragstart="return false"
+                        onmousedown="event.preventDefault();"
+                        onselectstart="return false"
+                        onpointerdown="event.preventDefault();"
+                        ontouchstart="event.preventDefault();"
+                        ongesturestart="event.preventDefault();"
+                        onselect="return false"
+                        oncopy="return false"
+                        oncut="return false"
+                        onpaste="return false"
+                        onbeforecopy="return false"
+                        onbeforecut="return false"
+                        onbeforepaste="return false"
+                        ondrag="return false"
+                        ondrop="return false"
+                        onmouseup="event.preventDefault();"
+                        onmouseleave="event.preventDefault();"
+                        onmouseout="event.preventDefault();"
+                        onmouseover="event.preventDefault();"
+                        onmouseenter="event.preventDefault();"
+                        onmousemove="event.preventDefault();"
+                        onmousewheel="event.preventDefault();"
+                        onwheel="event.preventDefault();"
+                        ondblclick="event.preventDefault();"
+                        onauxclick="event.preventDefault();"
+                        onpointerup="event.preventDefault();"
+                        onpointermove="event.preventDefault();"
+                        onpointerleave="event.preventDefault();"
+                        onpointerout="event.preventDefault();"
+                        onpointerover="event.preventDefault();"
+                        onpointerenter="event.preventDefault();"
+                        onpointercancel="event.preventDefault();"
+                        ongotpointercapture="event.preventDefault();"
+                        onlostpointercapture="event.preventDefault();"
+                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+2&font=inter';">
+                </div>
+                <div class="founder-name">crippz</div>
+                <div class="founder-role">Co-Founder / Admin</div>
+                <div class="founder-desc">Instrumental in building the team’s competitive edge, admired for his mechanical skills and leadership.</div>
             </div>
-            <div class="card bg-red-500/50 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(236,65,88,0.35)]" data-shadow="rgba(236,65,88,0.55)">
-                <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
-                     src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
-                     alt="Founder 3 - WakaChaka"
-                     onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+3&font=inter';">
-                <h4 class="text-xl font-semibold text-red-500 mb-1">WakaChaka</h4>
-                <p class="text-black font-semibold mb-2">Co-Founder / Admin </p>
-                <p class="text-white-500 text-sm">Key supporter and strategist, bringing experience and stability to the founding team. Currently inactive.</p>
+            <div class="card" data-shadow="rgba(236,65,88,0.55)">
+                <div class="founder-img-wrap">
+                    <img class="founder-img"
+                        src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
+                        alt="Founder 3 - WakaChaka"
+                        draggable="false"
+                        oncontextmenu="return false"
+                        ondragstart="return false"
+                        onmousedown="event.preventDefault();"
+                        onselectstart="return false"
+                        onpointerdown="event.preventDefault();"
+                        ontouchstart="event.preventDefault();"
+                        ongesturestart="event.preventDefault();"
+                        onselect="return false"
+                        oncopy="return false"
+                        oncut="return false"
+                        onpaste="return false"
+                        onbeforecopy="return false"
+                        onbeforecut="return false"
+                        onbeforepaste="return false"
+                        ondrag="return false"
+                        ondrop="return false"
+                        onmouseup="event.preventDefault();"
+                        onmouseleave="event.preventDefault();"
+                        onmouseout="event.preventDefault();"
+                        onmouseover="event.preventDefault();"
+                        onmouseenter="event.preventDefault();"
+                        onmousemove="event.preventDefault();"
+                        onmousewheel="event.preventDefault();"
+                        onwheel="event.preventDefault();"
+                        ondblclick="event.preventDefault();"
+                        onauxclick="event.preventDefault();"
+                        onpointerup="event.preventDefault();"
+                        onpointermove="event.preventDefault();"
+                        onpointerleave="event.preventDefault();"
+                        onpointerout="event.preventDefault();"
+                        onpointerover="event.preventDefault();"
+                        onpointerenter="event.preventDefault();"
+                        onpointercancel="event.preventDefault();"
+                        ongotpointercapture="event.preventDefault();"
+                        onlostpointercapture="event.preventDefault();"
+                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+3&font=inter';">
+                </div>
+                <div class="founder-name">WakaChaka</div>
+                <div class="founder-role">Co-Founder / Admin</div>
+                <div class="founder-desc">Key supporter and strategist, bringing experience and stability to the founding team. Currently inactive.</div>
             </div>
-            <div class="card bg-purple-500/40 rounded-2xl flex flex-col items-center text-center p-8 shadow-[0_4px_16px_0_rgba(102,75,240,0.35)]" data-shadow="rgba(102,75,240,0.55)">
-                <img class="w-36 h-36 object-cover rounded-full mb-4 border-4 border-white shadow-lg"
-                     src="https://i.ibb.co/b5D3dzDT/SHaN.png"
-                     alt="Founder 4 - SHaN"
-                     onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+4&font=inter';">
-                <h4 class="text-xl font-semibold text-purple-500 mb-1">SHaN</h4>
-                <p class="text-black font-semibold mb-2">Co-Founder / Retired</p>
-                <p class="text-white-500 text-sm">Currently inactive and playing with life mostly.</p>
+            <div class="card" data-shadow="rgba(102,75,240,0.55)">
+                <div class="founder-img-wrap">
+                    <img class="founder-img"
+                        src="https://i.ibb.co/b5D3dzDT/SHaN.png"
+                        alt="Founder 4 - SHaN"
+                        draggable="false"
+                        oncontextmenu="return false"
+                        ondragstart="return false"
+                        onmousedown="event.preventDefault();"
+                        onselectstart="return false"
+                        onpointerdown="event.preventDefault();"
+                        ontouchstart="event.preventDefault();"
+                        ongesturestart="event.preventDefault();"
+                        onselect="return false"
+                        oncopy="return false"
+                        oncut="return false"
+                        onpaste="return false"
+                        onbeforecopy="return false"
+                        onbeforecut="return false"
+                        onbeforepaste="return false"
+                        ondrag="return false"
+                        ondrop="return false"
+                        onmouseup="event.preventDefault();"
+                        onmouseleave="event.preventDefault();"
+                        onmouseout="event.preventDefault();"
+                        onmouseover="event.preventDefault();"
+                        onmouseenter="event.preventDefault();"
+                        onmousemove="event.preventDefault();"
+                        onmousewheel="event.preventDefault();"
+                        onwheel="event.preventDefault();"
+                        ondblclick="event.preventDefault();"
+                        onauxclick="event.preventDefault();"
+                        onpointerup="event.preventDefault();"
+                        onpointermove="event.preventDefault();"
+                        onpointerleave="event.preventDefault();"
+                        onpointerout="event.preventDefault();"
+                        onpointerover="event.preventDefault();"
+                        onpointerenter="event.preventDefault();"
+                        onpointercancel="event.preventDefault();"
+                        ongotpointercapture="event.preventDefault();"
+                        onlostpointercapture="event.preventDefault();"
+                        onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+4&font=inter';">
+                </div>
+                <div class="founder-name">SHaN</div>
+                <div class="founder-role">Co-Founder / Retired</div>
+                <div class="founder-desc">Currently inactive and playing with life mostly.</div>
             </div>
         </div>
-    </div>
 </section>
 <script>
-            // --- 1hp Founders Section Magic ---
+    // --- 1hp Founders Section Magic ---
     // 1. Animate cards on scroll (fade-in & slight up)
     function animateFoundersOnScroll() {
         const cards = document.querySelectorAll('#founders .card');
@@ -275,7 +518,6 @@
     document.querySelectorAll('#founders .card').forEach(card => {
         const shadowColor = card.getAttribute('data-shadow') || 'rgba(255,255,255,0.25)';
         card.addEventListener('mouseenter', () => {
-            // Use a larger blur and positive spread, no inset, so shadow stays outside
             card.style.boxShadow = `0 0 40px 1px ${shadowColor}, 0 1px 40px 4px ${shadowColor.replace('0.55', '0.10')}`;
             card.style.transition = 'box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)';
         });
@@ -364,6 +606,7 @@
         });
     });
 </script>
+<!-- ...existing code... -->
     <section id="advisors" class="pt-2 pb-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-0">
             <h3 class="advisors-title text-center text-3xl sm:text-4xl font-bold mb-6 mt-0">
@@ -398,6 +641,42 @@
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
                          src="https://i.ibb.co/jkc4S44d/De-droper-logo.jpg"
                          alt="1hp_moindedropper"
+                         draggable="false"
+                         oncontextmenu="return false"
+                         ondragstart="return false"
+                         onmousedown="event.preventDefault();"
+                         onselectstart="return false"
+                         onpointerdown="event.preventDefault();"
+                         ontouchstart="event.preventDefault();"
+                         ongesturestart="event.preventDefault();"
+                         onselect="return false"
+                         oncopy="return false"
+                         oncut="return false"
+                         onpaste="return false"
+                         onbeforecopy="return false"
+                         onbeforecut="return false"
+                         onbeforepaste="return false"
+                         ondrag="return false"
+                         ondrop="return false"
+                         onmouseup="event.preventDefault();"
+                         onmouseleave="event.preventDefault();"
+                         onmouseout="event.preventDefault();"
+                         onmouseover="event.preventDefault();"
+                         onmouseenter="event.preventDefault();"
+                         onmousemove="event.preventDefault();"
+                         onmousewheel="event.preventDefault();"
+                         onwheel="event.preventDefault();"
+                         ondblclick="event.preventDefault();"
+                         onauxclick="event.preventDefault();"
+                         onpointerup="event.preventDefault();"
+                         onpointermove="event.preventDefault();"
+                         onpointerleave="event.preventDefault();"
+                         onpointerout="event.preventDefault();"
+                         onpointerover="event.preventDefault();"
+                         onpointerenter="event.preventDefault();"
+                         onpointercancel="event.preventDefault();"
+                         ongotpointercapture="event.preventDefault();"
+                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=moindedropper&font=inter';">
                     <h4 class="text-lg font-bold text-cyan-200 mb-1">moindedropper</h4>
                     <p class="text-cyan-100 font-medium mb-1">Advisor / Fund Manager</p>
@@ -407,6 +686,42 @@
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-green-300 shadow-lg"
                          src="https://i.ibb.co/tpxrxGML/viper.png"
                          alt="1hp_Viper"
+                         draggable="false"
+                         oncontextmenu="return false"
+                         ondragstart="return false"
+                         onmousedown="event.preventDefault();"
+                         onselectstart="return false"
+                         onpointerdown="event.preventDefault();"
+                         ontouchstart="event.preventDefault();"
+                         ongesturestart="event.preventDefault();"
+                         onselect="return false"
+                         oncopy="return false"
+                         oncut="return false"
+                         onpaste="return false"
+                         onbeforecopy="return false"
+                         onbeforecut="return false"
+                         onbeforepaste="return false"
+                         ondrag="return false"
+                         ondrop="return false"
+                         onmouseup="event.preventDefault();"
+                         onmouseleave="event.preventDefault();"
+                         onmouseout="event.preventDefault();"
+                         onmouseover="event.preventDefault();"
+                         onmouseenter="event.preventDefault();"
+                         onmousemove="event.preventDefault();"
+                         onmousewheel="event.preventDefault();"
+                         onwheel="event.preventDefault();"
+                         ondblclick="event.preventDefault();"
+                         onauxclick="event.preventDefault();"
+                         onpointerup="event.preventDefault();"
+                         onpointermove="event.preventDefault();"
+                         onpointerleave="event.preventDefault();"
+                         onpointerout="event.preventDefault();"
+                         onpointerover="event.preventDefault();"
+                         onpointerenter="event.preventDefault();"
+                         onpointercancel="event.preventDefault();"
+                         ongotpointercapture="event.preventDefault();"
+                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=Viper&font=inter';">
                     <h4 class="text-lg font-bold text-green-200 mb-1">[V̷]I̷P̷3̷R̷®</h4>
                     <p class="text-green-100 font-medium mb-1">Advisor</p>
@@ -416,6 +731,42 @@
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg"
                          src="https://i.ibb.co/wNskW3gH/Rifat-Kabir-Samrat-1.jpg"
                          alt="1hp_INSTINCTx"
+                         draggable="false"
+                         oncontextmenu="return false"
+                         ondragstart="return false"
+                         onmousedown="event.preventDefault();"
+                         onselectstart="return false"
+                         onpointerdown="event.preventDefault();"
+                         ontouchstart="event.preventDefault();"
+                         ongesturestart="event.preventDefault();"
+                         onselect="return false"
+                         oncopy="return false"
+                         oncut="return false"
+                         onpaste="return false"
+                         onbeforecopy="return false"
+                         onbeforecut="return false"
+                         onbeforepaste="return false"
+                         ondrag="return false"
+                         ondrop="return false"
+                         onmouseup="event.preventDefault();"
+                         onmouseleave="event.preventDefault();"
+                         onmouseout="event.preventDefault();"
+                         onmouseover="event.preventDefault();"
+                         onmouseenter="event.preventDefault();"
+                         onmousemove="event.preventDefault();"
+                         onmousewheel="event.preventDefault();"
+                         onwheel="event.preventDefault();"
+                         ondblclick="event.preventDefault();"
+                         onauxclick="event.preventDefault();"
+                         onpointerup="event.preventDefault();"
+                         onpointermove="event.preventDefault();"
+                         onpointerleave="event.preventDefault();"
+                         onpointerout="event.preventDefault();"
+                         onpointerover="event.preventDefault();"
+                         onpointerenter="event.preventDefault();"
+                         onpointercancel="event.preventDefault();"
+                         ongotpointercapture="event.preventDefault();"
+                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=INSTINCTx&font=inter';">
                     <h4 class="text-lg font-bold text-purple-200 mb-1">INSTINCTx</h4>
                     <p class="text-purple-100 font-medium mb-1">Advisor</p>
@@ -484,6 +835,42 @@
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
                              alt="1hp_crippz"
+                             draggable="false"
+                             oncontextmenu="return false"
+                             ondragstart="return false"
+                             onmousedown="event.preventDefault();"
+                             onselectstart="return false"
+                             onpointerdown="event.preventDefault();"
+                             ontouchstart="event.preventDefault();"
+                             ongesturestart="event.preventDefault();"
+                             onselect="return false"
+                             oncopy="return false"
+                             oncut="return false"
+                             onpaste="return false"
+                             onbeforecopy="return false"
+                             onbeforecut="return false"
+                             onbeforepaste="return false"
+                             ondrag="return false"
+                             ondrop="return false"
+                             onmouseup="event.preventDefault();"
+                             onmouseleave="event.preventDefault();"
+                             onmouseout="event.preventDefault();"
+                             onmouseover="event.preventDefault();"
+                             onmouseenter="event.preventDefault();"
+                             onmousemove="event.preventDefault();"
+                             onmousewheel="event.preventDefault();"
+                             onwheel="event.preventDefault();"
+                             ondblclick="event.preventDefault();"
+                             onauxclick="event.preventDefault();"
+                             onpointerup="event.preventDefault();"
+                             onpointermove="event.preventDefault();"
+                             onpointerleave="event.preventDefault();"
+                             onpointerout="event.preventDefault();"
+                             onpointerover="event.preventDefault();"
+                             onpointerenter="event.preventDefault();"
+                             onpointercancel="event.preventDefault();"
+                             ongotpointercapture="event.preventDefault();"
+                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_crippz&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-blue-400 tracking-wide">crippz</h3>
                         <p class="text-blue-300 font-medium mb-1">Role: In Game Leader</p>
@@ -502,6 +889,42 @@
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/s9PQWFC9/xeox69.jpg"
                              alt="1hp_xeox69"
+                             draggable="false"
+                             oncontextmenu="return false"
+                             ondragstart="return false"
+                             onmousedown="event.preventDefault();"
+                             onselectstart="return false"
+                             onpointerdown="event.preventDefault();"
+                             ontouchstart="event.preventDefault();"
+                             ongesturestart="event.preventDefault();"
+                             onselect="return false"
+                             oncopy="return false"
+                             oncut="return false"
+                             onpaste="return false"
+                             onbeforecopy="return false"
+                             onbeforecut="return false"
+                             onbeforepaste="return false"
+                             ondrag="return false"
+                             ondrop="return false"
+                             onmouseup="event.preventDefault();"
+                             onmouseleave="event.preventDefault();"
+                             onmouseout="event.preventDefault();"
+                             onmouseover="event.preventDefault();"
+                             onmouseenter="event.preventDefault();"
+                             onmousemove="event.preventDefault();"
+                             onmousewheel="event.preventDefault();"
+                             onwheel="event.preventDefault();"
+                             ondblclick="event.preventDefault();"
+                             onauxclick="event.preventDefault();"
+                             onpointerup="event.preventDefault();"
+                             onpointermove="event.preventDefault();"
+                             onpointerleave="event.preventDefault();"
+                             onpointerout="event.preventDefault();"
+                             onpointerover="event.preventDefault();"
+                             onpointerenter="event.preventDefault();"
+                             onpointercancel="event.preventDefault();"
+                             ongotpointercapture="event.preventDefault();"
+                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_xeox69&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide">xeox69</h3>
                         <p class="text-red-300 font-medium mb-1">Role: Playmaker / Offense</p>
@@ -520,13 +943,48 @@
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-md pro-img-glow"
                              src="https://i.ibb.co/YFxSBmMq/fahim-bhai.png"
                              alt="1hp_JDM Doge"
+                             draggable="false"
+                             oncontextmenu="return false"
+                             ondragstart="return false"
+                             onmousedown="event.preventDefault();"
+                             onselectstart="return false"
+                             onpointerdown="event.preventDefault();"
+                             ontouchstart="event.preventDefault();"
+                             ongesturestart="event.preventDefault();"
+                             onselect="return false"
+                             oncopy="return false"
+                             oncut="return false"
+                             onpaste="return false"
+                             onbeforecopy="return false"
+                             onbeforecut="return false"
+                             onbeforepaste="return false"
+                             ondrag="return false"
+                             ondrop="return false"
+                             onmouseup="event.preventDefault();"
+                             onmouseleave="event.preventDefault();"
+                             onmouseout="event.preventDefault();"
+                             onmouseover="event.preventDefault();"
+                             onmouseenter="event.preventDefault();"
+                             onmousemove="event.preventDefault();"
+                             onmousewheel="event.preventDefault();"
+                             onwheel="event.preventDefault();"
+                             ondblclick="event.preventDefault();"
+                             onauxclick="event.preventDefault();"
+                             onpointerup="event.preventDefault();"
+                             onpointermove="event.preventDefault();"
+                             onpointerleave="event.preventDefault();"
+                             onpointerout="event.preventDefault();"
+                             onpointerover="event.preventDefault();"
+                             onpointerenter="event.preventDefault();"
+                             onpointercancel="event.preventDefault();"
+                             ongotpointercapture="event.preventDefault();"
+                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_JDM%20Doge&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">JDM Doge</h3>
                         <p class="text-purple-300 font-medium mb-1">Role: Support / Defense</p>
                         <p class="text-gray-300 text-sm">JDM_Doge aka Fahim bhai is a calm and supportive player who remains composed under pressure, even in the most intense competitive moments. Specialized in rapid response on immediate support. Tactical ability usage is precise and strategic, often forcing opponents to reconsider their approach before engaging his squad.</p>
                     </div>
                 </div>
-            </div>
             <div>
                 <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider youngsters-effect">
                     1hp Youngsters
@@ -553,12 +1011,48 @@
                     100% { background-position: 100% 50%; }
                 }
             </style>                
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="card pro-card bg-yellow-trans rounded-2xl flex flex-col items-center text-center p-8 border border-yellow-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="yellow">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-md bg-black pro-img-glow"
                              src="https://i.ibb.co/qYgTRQ1T/frenzy.png"
                              alt="1hp_Frenzy"
+                             draggable="false"
+                             oncontextmenu="return false"
+                             ondragstart="return false"
+                             onmousedown="event.preventDefault();"
+                             onselectstart="return false"
+                             onpointerdown="event.preventDefault();"
+                             ontouchstart="event.preventDefault();"
+                             ongesturestart="event.preventDefault();"
+                             onselect="return false"
+                             oncopy="return false"
+                             oncut="return false"
+                             onpaste="return false"
+                             onbeforecopy="return false"
+                             onbeforecut="return false"
+                             onbeforepaste="return false"
+                             ondrag="return false"
+                             ondrop="return false"
+                             onmouseup="event.preventDefault();"
+                             onmouseleave="event.preventDefault();"
+                             onmouseout="event.preventDefault();"
+                             onmouseover="event.preventDefault();"
+                             onmouseenter="event.preventDefault();"
+                             onmousemove="event.preventDefault();"
+                             onmousewheel="event.preventDefault();"
+                             onwheel="event.preventDefault();"
+                             ondblclick="event.preventDefault();"
+                             onauxclick="event.preventDefault();"
+                             onpointerup="event.preventDefault();"
+                             onpointermove="event.preventDefault();"
+                             onpointerleave="event.preventDefault();"
+                             onpointerout="event.preventDefault();"
+                             onpointerover="event.preventDefault();"
+                             onpointerenter="event.preventDefault();"
+                             onpointercancel="event.preventDefault();"
+                             ongotpointercapture="event.preventDefault();"
+                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_Frenzy&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-yellow-400 tracking-wide">Frenzy</h3>
                         <p class="text-yellow-300 font-medium mb-1">Role: In Game Leader</p>
@@ -577,26 +1071,100 @@
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-300 shadow-md pro-img-glow"
                              src="https://i.ibb.co/tMKPHk9F/Walker.png"
                              alt="1hp_WalkerX"
+                             draggable="false"
+                             oncontextmenu="return false"
+                             ondragstart="return false"
+                             onmousedown="event.preventDefault();"
+                             onselectstart="return false"
+                             onpointerdown="event.preventDefault();"
+                             ontouchstart="event.preventDefault();"
+                             ongesturestart="event.preventDefault();"
+                             onselect="return false"
+                             oncopy="return false"
+                             oncut="return false"
+                             onpaste="return false"
+                             onbeforecopy="return false"
+                             onbeforecut="return false"
+                             onbeforepaste="return false"
+                             ondrag="return false"
+                             ondrop="return false"
+                             onmouseup="event.preventDefault();"
+                             onmouseleave="event.preventDefault();"
+                             onmouseout="event.preventDefault();"
+                             onmouseover="event.preventDefault();"
+                             onmouseenter="event.preventDefault();"
+                             onmousemove="event.preventDefault();"
+                             onmousewheel="event.preventDefault();"
+                             onwheel="event.preventDefault();"
+                             ondblclick="event.preventDefault();"
+                             onauxclick="event.preventDefault();"
+                             onpointerup="event.preventDefault();"
+                             onpointermove="event.preventDefault();"
+                             onpointerleave="event.preventDefault();"
+                             onpointerout="event.preventDefault();"
+                             onpointerover="event.preventDefault();"
+                             onpointerenter="event.preventDefault();"
+                             onpointercancel="event.preventDefault();"
+                             ongotpointercapture="event.preventDefault();"
+                             onlostpointercapture="event.preventDefault();"
                              onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_WalkerX&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide">WalkerX</h3>
                         <p class="text-red-300 font-medium mb-1">Role: Offense / Support</p>
                         <p class="text-gray-300 text-sm">Known for his juicy mechanical skill; often time does suspicious gameplay and has 6th-sense game-sense!? Very good at supporting team when they need him the most by dying first!? but homie is master at playmaking most of the times.</p>
                         <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
                             <a href="https://www.youtube.com/@_walkerX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-medium transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/>
-                            </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/>
+                                </svg>
                                 YouTube
                             </a>
                         </div>
                     </div>
                     <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="purple">
                         <div class="pro-glow"></div>
-                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-md bg-black pro-img-glow" src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg" alt="1hp_1Doom">
+                        <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-purple-300 shadow-md bg-black pro-img-glow"
+                             src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg"
+                             alt="1hp_1Doom"
+                             draggable="false"
+                             oncontextmenu="return false"
+                             ondragstart="return false"
+                             onmousedown="event.preventDefault();"
+                             onselectstart="return false"
+                             onpointerdown="event.preventDefault();"
+                             ontouchstart="event.preventDefault();"
+                             ongesturestart="event.preventDefault();"
+                             onselect="return false"
+                             oncopy="return false"
+                             oncut="return false"
+                             onpaste="return false"
+                             onbeforecopy="return false"
+                             onbeforecut="return false"
+                             onbeforepaste="return false"
+                             ondrag="return false"
+                             ondrop="return false"
+                             onmouseup="event.preventDefault();"
+                             onmouseleave="event.preventDefault();"
+                             onmouseout="event.preventDefault();"
+                             onmouseover="event.preventDefault();"
+                             onmouseenter="event.preventDefault();"
+                             onmousemove="event.preventDefault();"
+                             onmousewheel="event.preventDefault();"
+                             onwheel="event.preventDefault();"
+                             ondblclick="event.preventDefault();"
+                             onauxclick="event.preventDefault();"
+                             onpointerup="event.preventDefault();"
+                             onpointermove="event.preventDefault();"
+                             onpointerleave="event.preventDefault();"
+                             onpointerout="event.preventDefault();"
+                             onpointerover="event.preventDefault();"
+                             onpointerenter="event.preventDefault();"
+                             onpointercancel="event.preventDefault();"
+                             ongotpointercapture="event.preventDefault();"
+                             onlostpointercapture="event.preventDefault();"
+                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_1Doom&font=inter';">
                         <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">1Doom</h3>
                         <p class="text-purple-300 font-medium mb-1">Role: Offense / Support</p>
                         <p class="text-gray-300 text-sm"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -850,13 +1418,49 @@
                 100% { background-position: 100% 50%; }
             }
             </style>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
                 <!-- Player Card 1 -->
                 <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 card-shadow-yellow"
                      style="min-height: 500px; width: 100%; max-width: 100%;">
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-yellow-300 shadow-lg"
                          src="https://i.ibb.co/QjkJ5Jqq/Discord-03-June-2025-10-01-12-PM.png"
                          alt="MUSTAKIM"
+                         draggable="false"
+                         oncontextmenu="return false"
+                         ondragstart="return false"
+                         onmousedown="event.preventDefault();"
+                         onselectstart="return false"
+                         onpointerdown="event.preventDefault();"
+                         ontouchstart="event.preventDefault();"
+                         ongesturestart="event.preventDefault();"
+                         onselect="return false"
+                         oncopy="return false"
+                         oncut="return false"
+                         onpaste="return false"
+                         onbeforecopy="return false"
+                         onbeforecut="return false"
+                         onbeforepaste="return false"
+                         ondrag="return false"
+                         ondrop="return false"
+                         onmouseup="event.preventDefault();"
+                         onmouseleave="event.preventDefault();"
+                         onmouseout="event.preventDefault();"
+                         onmouseover="event.preventDefault();"
+                         onmouseenter="event.preventDefault();"
+                         onmousemove="event.preventDefault();"
+                         onmousewheel="event.preventDefault();"
+                         onwheel="event.preventDefault();"
+                         ondblclick="event.preventDefault();"
+                         onauxclick="event.preventDefault();"
+                         onpointerup="event.preventDefault();"
+                         onpointermove="event.preventDefault();"
+                         onpointerleave="event.preventDefault();"
+                         onpointerout="event.preventDefault();"
+                         onpointerover="event.preventDefault();"
+                         onpointerenter="event.preventDefault();"
+                         onpointercancel="event.preventDefault();"
+                         ongotpointercapture="event.preventDefault();"
+                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=MUSTAKIM&font=inter';">
                     <h4 class="text-xl font-bold text-yellow-400 mb-1">MUSTAKIM</h4>
                     <p class="text-yellow-200 font-medium mb-1 italic">Diplomatic Troubleshooter</p>
@@ -870,6 +1474,42 @@
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg"
                          src="https://i.ibb.co/wGWcNjh/psykix.png"
                          alt="Psykix"
+                         draggable="false"
+                         oncontextmenu="return false"
+                         ondragstart="return false"
+                         onmousedown="event.preventDefault();"
+                         onselectstart="return false"
+                         onpointerdown="event.preventDefault();"
+                         ontouchstart="event.preventDefault();"
+                         ongesturestart="event.preventDefault();"
+                         onselect="return false"
+                         oncopy="return false"
+                         oncut="return false"
+                         onpaste="return false"
+                         onbeforecopy="return false"
+                         onbeforecut="return false"
+                         onbeforepaste="return false"
+                         ondrag="return false"
+                         ondrop="return false"
+                         onmouseup="event.preventDefault();"
+                         onmouseleave="event.preventDefault();"
+                         onmouseout="event.preventDefault();"
+                         onmouseover="event.preventDefault();"
+                         onmouseenter="event.preventDefault();"
+                         onmousemove="event.preventDefault();"
+                         onmousewheel="event.preventDefault();"
+                         onwheel="event.preventDefault();"
+                         ondblclick="event.preventDefault();"
+                         onauxclick="event.preventDefault();"
+                         onpointerup="event.preventDefault();"
+                         onpointermove="event.preventDefault();"
+                         onpointerleave="event.preventDefault();"
+                         onpointerout="event.preventDefault();"
+                         onpointerover="event.preventDefault();"
+                         onpointerenter="event.preventDefault();"
+                         onpointercancel="event.preventDefault();"
+                         ongotpointercapture="event.preventDefault();"
+                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Psykix&font=inter';">
                     <h4 class="text-xl font-bold text-purple-400 mb-1">Psykix</h4>
                     <p class="text-purple-200 font-medium mb-1 italic">Chillest Pro Player</p>
@@ -897,6 +1537,42 @@
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-pink-300 shadow-lg"
                          src="https://i.ibb.co/wNRBVd2g/AfraBae.jpg"
                          alt="AfraBae"
+                         draggable="false"
+                         oncontextmenu="return false"
+                         ondragstart="return false"
+                         onmousedown="event.preventDefault();"
+                         onselectstart="return false"
+                         onpointerdown="event.preventDefault();"
+                         ontouchstart="event.preventDefault();"
+                         ongesturestart="event.preventDefault();"
+                         onselect="return false"
+                         oncopy="return false"
+                         oncut="return false"
+                         onpaste="return false"
+                         onbeforecopy="return false"
+                         onbeforecut="return false"
+                         onbeforepaste="return false"
+                         ondrag="return false"
+                         ondrop="return false"
+                         onmouseup="event.preventDefault();"
+                         onmouseleave="event.preventDefault();"
+                         onmouseout="event.preventDefault();"
+                         onmouseover="event.preventDefault();"
+                         onmouseenter="event.preventDefault();"
+                         onmousemove="event.preventDefault();"
+                         onmousewheel="event.preventDefault();"
+                         onwheel="event.preventDefault();"
+                         ondblclick="event.preventDefault();"
+                         onauxclick="event.preventDefault();"
+                         onpointerup="event.preventDefault();"
+                         onpointermove="event.preventDefault();"
+                         onpointerleave="event.preventDefault();"
+                         onpointerout="event.preventDefault();"
+                         onpointerover="event.preventDefault();"
+                         onpointerenter="event.preventDefault();"
+                         onpointercancel="event.preventDefault();"
+                         ongotpointercapture="event.preventDefault();"
+                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=AfraBae&font=inter';">
                     <h4 class="text-xl font-bold text-pink-400 mb-1">AfraBae</h4>
                     <p class="text-pink-200 font-medium mb-1 italic">Pro Player &amp; Team Support</p>
@@ -918,6 +1594,42 @@
                     <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg"
                          src="https://i.ibb.co/gZF1Bb9Q/stitch.jpg"
                          alt="DrStitch"
+                         draggable="false"
+                         oncontextmenu="return false"
+                         ondragstart="return false"
+                         onmousedown="event.preventDefault();"
+                         onselectstart="return false"
+                         onpointerdown="event.preventDefault();"
+                         ontouchstart="event.preventDefault();"
+                         ongesturestart="event.preventDefault();"
+                         onselect="return false"
+                         oncopy="return false"
+                         oncut="return false"
+                         onpaste="return false"
+                         onbeforecopy="return false"
+                         onbeforecut="return false"
+                         onbeforepaste="return false"
+                         ondrag="return false"
+                         ondrop="return false"
+                         onmouseup="event.preventDefault();"
+                         onmouseleave="event.preventDefault();"
+                         onmouseout="event.preventDefault();"
+                         onmouseover="event.preventDefault();"
+                         onmouseenter="event.preventDefault();"
+                         onmousemove="event.preventDefault();"
+                         onmousewheel="event.preventDefault();"
+                         onwheel="event.preventDefault();"
+                         ondblclick="event.preventDefault();"
+                         onauxclick="event.preventDefault();"
+                         onpointerup="event.preventDefault();"
+                         onpointermove="event.preventDefault();"
+                         onpointerleave="event.preventDefault();"
+                         onpointerout="event.preventDefault();"
+                         onpointerover="event.preventDefault();"
+                         onpointerenter="event.preventDefault();"
+                         onpointercancel="event.preventDefault();"
+                         ongotpointercapture="event.preventDefault();"
+                         onlostpointercapture="event.preventDefault();"
                          onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=DrStitch&font=inter';">
                     <h4 class="text-xl font-bold text-cyan-400 mb-1 normal-case">DrStitch</h4>
                     <p class="text-cyan-200 font-medium mb-1 italic">Internal Operation Specialist</p>
