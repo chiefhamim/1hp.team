@@ -639,12 +639,13 @@
         .pro-card .pro-img-glow {
             box-shadow: 0 0 0 0 transparent; 
         }
-        .pro-card[data-neon="blue"]:hover { --pro-neon: #60a5fa; }
-        .pro-card[data-neon="red"]:hover { --pro-neon: #ec4158; }
-        .pro-card[data-neon="purple"]:hover { --pro-neon: #664bf0; }
-        .pro-card[data-neon="yellow"]:hover { --pro-neon: #ffce41; }
-	    .pro-card[data-neon="green"]:hover { --pro-neon: #9ef06c; }
-	    .pro-card[data-neon="orange"]:hover { --pro-neon: #f84f29; }
+        .pro-card[data-neon="blue"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #60a5fa66, 0 0 32px 8px #1e3a8a33; }
+        .pro-card[data-neon="red"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ec415866, 0 0 32px 8px #991b1b33; }
+        .pro-card[data-neon="purple"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #664bf066, 0 0 32px 8px #581c8733; }
+        .pro-card[data-neon="yellow"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ffce4166, 0 0 32px 8px #b4530933; }
+	    .pro-card[data-neon="green"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #86e14f66, 0 0 32px 8px #86e14f33; }
+	    .pro-card[data-neon="orange"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #f84f2966, 0 0 32px 8px #f84f2933; }
+
 
         @keyframes shifting-layers-shadow-yellow {
             0%, 100% { box-shadow: 0 4px 16px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15), -8px 8px 32px 0 rgba(253,224,71,0.10); }
