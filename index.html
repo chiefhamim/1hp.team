@@ -388,7 +388,35 @@
         .pro-card[data-neon="yellow"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ffce4166, 0 0 32px 8px #b4530933; }
         .pro-card[data-neon="green"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #86e14f66, 0 0 32px 8px #86e14f33; }
         .pro-card[data-neon="orange"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #f84f2966, 0 0 32px 8px #f84f2933; }
-
+        
+        /* Ensure header and other important elements stay above global particles */
+        header {
+            position: relative;
+            z-index: 60;
+        }
+        
+        /* Ensure card content stays above particles */
+        .card {
+            position: relative;
+            z-index: 5;
+        }
+        
+        /* Ensure main content sections stay above particles */
+        section {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Global particles canvas positioning */
+        #global-particles {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
 
     </style>
 </head>
@@ -985,264 +1013,432 @@
                 currentYearElement.textContent = new Date().getFullYear();
             }
         }
-        
-        // --- Founders Section: Background Particle Animation ---
-        function foundersParticles() {
-            const section = document.getElementById('founders');
-            if (!section) return;
-            const canvas = document.createElement('canvas');
-            canvas.style.position = 'absolute'; canvas.style.top = '0'; canvas.style.left = '0';
-            canvas.style.width = '100%'; canvas.style.height = '100%';
-            canvas.style.pointerEvents = 'none'; canvas.style.zIndex = '0'; 
-            section.style.position = 'relative'; section.prepend(canvas);
-            const ctx = canvas.getContext('2d');
-            let animationFrameId;
-
-            function resizeCanvas() {
-                canvas.width = section.offsetWidth; canvas.height = section.offsetHeight;
-            }
-            resizeCanvas(); 
-            window.addEventListener('resize', debounce(resizeCanvas, 250));
-
-            const colors = ['rgba(253,224,71,0.18)','rgba(236,65,88,0.18)','rgba(102,75,240,0.18)','rgba(255,255,255,0.10)'];
-            const particles = Array.from({length: 20}, () => ({
-                x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: 10+Math.random()*15,
-                dx: (Math.random()-0.5)*0.15, dy: (Math.random()-0.5)*0.15,
-                color: colors[Math.floor(Math.random()*colors.length)], alpha: 0.15+Math.random()*0.25
-            }));
-
-            function drawParticles() {
-                if (!ctx) return; 
-                ctx.clearRect(0,0,canvas.width,canvas.height);
-                particles.forEach(p=>{
-                    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,2*Math.PI); ctx.fillStyle=p.color;
-                    ctx.globalAlpha=p.alpha; ctx.shadowColor=p.color; ctx.shadowBlur=12; ctx.fill();
-                });
-                ctx.globalAlpha=1; ctx.shadowBlur=0;
-            }
-
-            function animateParticlesLoop() {
-                particles.forEach(p=>{
-                    p.x+=p.dx; p.y+=p.dy;
-                    if(p.x+p.r<0)p.x=canvas.width+p.r; else if(p.x-p.r>canvas.width)p.x=-p.r;
-                    if(p.y+p.r<0)p.y=canvas.height+p.r; else if(p.y-p.r>canvas.height)p.y=-p.r;
-                });
-                drawParticles();
-                animationFrameId = requestAnimationFrame(animateParticlesLoop);
-            }
-            
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting){ if(!animationFrameId) animateParticlesLoop(); }
-                    else { if(animationFrameId){ cancelAnimationFrame(animationFrameId); animationFrameId=null; }}
-                });
-            }, {threshold: 0.01});
-            observer.observe(section);
-        }
-
-        // --- Founders Section: Subtle Floating Card Animation ---
-        function foundersFloatingCards() {
-            document.querySelectorAll('#founders .card').forEach((card, i) => {
-                const initialTransform = getComputedStyle(card).transform;
-                const baseTransform = initialTransform === 'none' ? '' : initialTransform;
-
-                // Ensure the animation considers existing transforms (e.g., from :hover)
-                // This is a simplified approach; for complex scenarios, direct JS transform manipulation might be better.
-                card.animate([
-                    { transform: `${baseTransform} translateY(0px)` },
-                    { transform: `${baseTransform.replace(/translateY\([^)]+\)/, '')} translateY(${i % 2 === 0 ? -6 : 6}px)` },
-                    { transform: `${baseTransform} translateY(0px)` }
-                ], { 
-                    duration: 4000 + i * 100, 
-                    iterations: Infinity, 
-                    direction: 'alternate', 
-                    easing: 'ease-in-out'
-                });
-            });
-        }
-
-                // --- Card Tilt & Parallax Interaction (for Pro Cards and Specialist Cards) ---
-                function initializeCard3DEffects(selector, config) {
-                    const cards = document.querySelectorAll(selector);
-                    if (cards.length === 0) return;
-        
-                    const { tiltStrength, perspective, parallaxStrength, isSpecialistCard } = config;
+                // --- Global Site-wide Particle Animation ---
+                function globalParticles() {
+                    // Create a full-screen canvas for particles
+                    const canvas = document.createElement('canvas');
+                    canvas.id = 'global-particles';
+                    canvas.style.position = 'fixed';
+                    canvas.style.top = '0';
+                    canvas.style.left = '0';
+                    canvas.style.width = '100vw';
+                    canvas.style.height = '100vh';
+                    canvas.style.pointerEvents = 'none';
+                    canvas.style.zIndex = '1'; // Behind most content but above background
+                    canvas.style.opacity = '0.6'; // Subtle opacity
+                    document.body.prepend(canvas);
                     
-                    const specialistThemes = { 
-                        yellow: {
-                            bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(250,204,21,0.1)', 
-                            titleColor: '#facc15', roleColor: '#fde68a', 
-                            staticShadow: '0 4px 120px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15), -8px 8px 32px 0 rgba(253,224,71,0.10)', // Static shadow
-                            socialLinkColor: '#facc15', socialLinkHoverColor: '#fde047',
-                            imgGlowColor: 'rgba(250, 204, 21, 0.45)'
-                        },
-                        purple: {
-                            bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(168,85,247,0.1)',
-                            titleColor: '#a855f7', roleColor: '#d8b4fe',
-                            staticShadow: '0 4px 120px 0 rgba(168,85,247,0.25), 8px 8px 32px 0 rgba(168,85,247,0.15), -8px 8px 32px 0 rgba(168,85,247,0.10)',
-                            socialLinkColor: '#a855f7', socialLinkHoverColor: '#c084fc',
-                            imgGlowColor: 'rgba(168, 85, 247, 0.45)'
-                        },
-                        pink: {
-                            bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(236,72,153,0.1)',
-                            titleColor: '#ec4899', roleColor: '#fbcfe8',
-                            staticShadow: '0 4px 120px 0 rgba(236,72,153,0.25), 8px 8px 32px 0 rgba(236,72,153,0.15), -8px 8px 32px 0 rgba(236,72,153,0.10)',
-                            socialLinkColor: '#ec4899', socialLinkHoverColor: '#f9a8d4',
-                            imgGlowColor: 'rgba(236, 72, 153, 0.45)'
-                        },
-                        cyan: {
-                            bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(14,165,233,0.1)',
-                            titleColor: '#38bdf8', roleColor: '#7dd3fc',
-                            staticShadow: '0 4px 120px 0 rgba(14,165,233,0.25), 8px 8px 32px 0 rgba(14,165,233,0.15), -8px 8px 32px 0 rgba(14,165,233,0.10)',
-                            socialLinkColor: '#38bdf8', socialLinkHoverColor: '#67e8f9',
-                            imgGlowColor: 'rgba(14, 165, 233, 0.45)'
+                    const ctx = canvas.getContext('2d');
+                    let animationFrameId;
+                    let isVisible = true;
+        
+                    function resizeCanvas() {
+                        canvas.width = window.innerWidth;
+                        canvas.height = window.innerHeight;
+                    }
+                    resizeCanvas();
+                    window.addEventListener('resize', debounce(resizeCanvas, 250));
+        
+                    // Enhanced color palette with more variety
+                    const colors = [
+                        'rgba(253,224,71,0.12)',   // Yellow
+                        'rgba(236,65,88,0.12)',    // Red  
+                        'rgba(102,75,240,0.12)',   // Purple
+                        'rgba(96,165,250,0.12)',   // Blue
+                        'rgba(34,197,94,0.12)',    // Green
+                        'rgba(249,115,22,0.12)',   // Orange
+                        'rgba(14,165,233,0.12)',   // Cyan
+                        'rgba(236,72,153,0.12)',   // Pink
+                        'rgba(255,255,255,0.08)',  // White
+                        'rgba(168,85,247,0.10)'    // Light Purple
+                    ];
+        
+
+                    // Create more particles with varied properties
+                    const particleCount = Math.min(40, Math.floor((canvas.width * canvas.height) / 25000)); // Responsive particle count
+                    const particles = Array.from({length: particleCount}, () => ({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: 8 + Math.random() * 20, // Varied sizes
+                    dx: (Math.random() - 0.5) * 0.3, // Slower movement
+                    dy: (Math.random() - 0.5) * 0.3,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    alpha: 0.1 + Math.random() * 0.3,
+                    pulse: Math.random() * Math.PI * 2, // For pulsing effect
+                    pulseSpeed: 0.01 + Math.random() * 0.02,
+                    shape: Math.floor(Math.random() * 3) // 0 = circle, 1 = triangle, 2 = square
+                    }));
+
+                    // Draw particles with breathing effect and subtle glow
+
+                    // ...existing code...
+            function drawParticles() {
+                if (!ctx || !isVisible) return;
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(p => {
+                    // Update pulse for breathing effect
+                    p.pulse += p.pulseSpeed;
+                    const pulseMultiplier = 0.8 + 0.2 * Math.sin(p.pulse);
+                    const size = p.r * pulseMultiplier;
+                    
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.alpha * pulseMultiplier;
+                    ctx.shadowColor = p.color;
+                    ctx.shadowBlur = 15;
+                    
+                    // Draw different shapes based on particle type
+                    if (p.shape === 0) {
+                        // Circle
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, size, 0, 2 * Math.PI);
+                        ctx.fill();
+                    } else if (p.shape === 1) {
+                        // Triangle
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y - size);
+                        ctx.lineTo(p.x - size * 0.866, p.y + size * 0.5);
+                        ctx.lineTo(p.x + size * 0.866, p.y + size * 0.5);
+                        ctx.closePath();
+                        ctx.fill();
+                    } else if (p.shape === 2) {
+                        // Square
+                        ctx.fillRect(p.x - size, p.y - size, size * 2, size * 2);
+                    }
+                });
+                
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+            }
+
+                    
+        
+                    function animateGlobalParticles() {
+                        if (!isVisible) return;
+                        
+                        particles.forEach(p => {
+                            // Move particles
+                            p.x += p.dx;
+                            p.y += p.dy;
+                            
+                            // Wrap around screen edges
+                            if (p.x + p.r < 0) p.x = canvas.width + p.r;
+                            else if (p.x - p.r > canvas.width) p.x = -p.r;
+                            if (p.y + p.r < 0) p.y = canvas.height + p.r;
+                            else if (p.y - p.r > canvas.height) p.y = -p.r;
+                        });
+                        
+                        drawParticles();
+                        animationFrameId = requestAnimationFrame(animateGlobalParticles);
+                    }
+        
+                    // Performance optimization: pause when page is not visible
+                    document.addEventListener('visibilitychange', () => {
+                        if (document.hidden) {
+                            isVisible = false;
+                            if (animationFrameId) {
+                                cancelAnimationFrame(animationFrameId);
+                                animationFrameId = null;
+                            }
+                        } else {
+                            isVisible = true;
+                            if (!animationFrameId) {
+                                animateGlobalParticles();
+                            }
                         }
-                    };
+                    });
         
-                    cards.forEach(card => {
-                        let animationFrameId = null;
-                        let lastMouseEvent = null;
+                    // Start animation
+                    animateGlobalParticles();
         
-                        const imgElement = card.querySelector('img');
-                        const titleElement = card.querySelector(isSpecialistCard ? 'h4' : 'h3'); 
-                        const roleElement = titleElement ? titleElement.nextElementSibling : null;
-                        const descElement = card.querySelector('p.text-gray-300.text-sm');
-                        const socialLinksContainer = card.querySelector('.absolute.bottom-0, .mt-auto.pt-4');
-        
-                        let currentTheme = null;
-                        if (isSpecialistCard) {
-                            const themeName = card.dataset.theme;
-                            currentTheme = specialistThemes[themeName];
-                            if (currentTheme) {
-                                card.style.backgroundColor = currentTheme.bgColor;
-                                card.style.borderColor = currentTheme.borderColor;
-                                card.style.boxShadow = currentTheme.staticShadow; // Apply static shadow
-                                if(titleElement) titleElement.style.color = currentTheme.titleColor;
-                                if(roleElement && roleElement.tagName === 'P') roleElement.style.color = currentTheme.roleColor;
+                    // Optional: Add mouse interaction for extra flair
+                    let mouseX = 0, mouseY = 0;
+                    document.addEventListener('mousemove', debounce((e) => {
+                        mouseX = e.clientX;
+                        mouseY = e.clientY;
+                        
+                        // Add subtle attraction to mouse
+                        particles.forEach(p => {
+                            const dx = mouseX - p.x;
+                            const dy = mouseY - p.y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+                            
+                            if (distance < 150) {
+                                const force = (150 - distance) / 150 * 0.002;
+                                p.dx += dx * force;
+                                p.dy += dy * force;
                                 
-                                const socialLinks = card.querySelectorAll('.mt-auto.pt-4 a');
-                                socialLinks.forEach(link => {
-                                    link.style.color = currentTheme.socialLinkColor;
-                                    link.addEventListener('mouseenter', () => link.style.color = currentTheme.socialLinkHoverColor);
-                                    link.addEventListener('mouseleave', () => link.style.color = currentTheme.socialLinkColor);
-                                });
-                                // Set transitions for the new hover effects on specialist cards
-                                card.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                                if (imgElement) {
-                                    imgElement.style.transition = 'box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                                }
-                            }
-                        }
-        
-        
-                        function updateCardTransform() {
-                            if (!lastMouseEvent) { animationFrameId = null; return; }
-        
-                            if (isSpecialistCard) {
-                                animationFrameId = null; 
-                                return;
-                            }
-                            
-                            const rect = card.getBoundingClientRect();
-                            const x = lastMouseEvent.clientX - rect.left;
-                            const y = lastMouseEvent.clientY - rect.top;
-                            const cardWidth = rect.width;
-                            const cardHeight = rect.height;
-                            const rotateX = ((y - cardHeight / 2) / (cardHeight / 2)) * -tiltStrength;
-                            const rotateY = ((x - cardWidth / 2) / (cardWidth / 2)) * tiltStrength;
-        
-                            // Apply transforms directly for pro-cards, no short transition here
-                            card.style.transform = `perspective(${perspective}) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-        
-                            if (imgElement && parallaxStrength.img) imgElement.style.transform = `translateZ(${parallaxStrength.img}px) rotateX(${rotateX / 1.8}deg) rotateY(${rotateY / 1.8}deg) scale(1.07)`;
-                            if (titleElement && parallaxStrength.title) titleElement.style.transform = `translateZ(${parallaxStrength.title}px)`;
-                            
-                            if (roleElement && roleElement.tagName === 'P' && 
-                                !roleElement.classList.contains('text-gray-300') && 
-                                parallaxStrength.role) {
-                                 roleElement.style.transform = `translateZ(${parallaxStrength.role}px)`;
-                            }
-                            if (descElement && parallaxStrength.desc) descElement.style.transform = `translateZ(${parallaxStrength.desc}px)`;
-                            if (socialLinksContainer && parallaxStrength.social) socialLinksContainer.style.transform = `translateZ(${parallaxStrength.social}px)`;
-                            
-                            animationFrameId = null; 
-                        }
-        
-                        card.addEventListener('mousemove', (e) => {
-                            lastMouseEvent = e;
-        
-                            if (isSpecialistCard && currentTheme) {
-                                card.style.transform = 'translateY(-10px) scale(1.03)';
-                                if (imgElement && currentTheme.imgGlowColor) {
-                                    imgElement.style.boxShadow = `0 0 16px 4px ${currentTheme.imgGlowColor.replace('0.45', '0.7')}, 0 0 28px 7px ${currentTheme.imgGlowColor.replace('0.45', '0.5')}`;
-                                }
-                                if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
-                            } else {
-                                // For pro-cards, remove dynamic short transition settings
-                                // The rAF will handle smooth updates.
-                                // Clear any existing inline transition that might have been set by mouseleave
-                                card.style.transition = 'none';
-                                [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
-                                    if (el) el.style.transition = 'none';
-                                });
-        
-                                if (!animationFrameId) animationFrameId = requestAnimationFrame(updateCardTransform);
+                                // Limit velocity
+                                const maxSpeed = 0.5;
+                                if (Math.abs(p.dx) > maxSpeed) p.dx = p.dx > 0 ? maxSpeed : -maxSpeed;
+                                if (Math.abs(p.dy) > maxSpeed) p.dy = p.dy > 0 ? maxSpeed : -maxSpeed;
                             }
                         });
+                    }, 16)); // ~60fps throttling
+                }
         
-                        card.addEventListener('mouseleave', () => {
-                            lastMouseEvent = null;
-                            if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+                // --- Founders Section: Background Particle Animation ---
+                function foundersParticles() {
+                    const section = document.getElementById('founders');
+                    if (!section) return;
+                    const canvas = document.createElement('canvas');
+                    canvas.style.position = 'absolute'; canvas.style.top = '0'; canvas.style.left = '0';
+                    canvas.style.width = '100%'; canvas.style.height = '100%';
+                    canvas.style.pointerEvents = 'none'; canvas.style.zIndex = '0'; canvas.style.opacity = '0.4'; // Reduced opacity to not conflict with global particles
+                    section.style.position = 'relative'; section.prepend(canvas);
+                    const ctx = canvas.getContext('2d');
+                    let animationFrameId;
         
-                            if (isSpecialistCard && currentTheme) {
-                                card.style.transform = 'translateY(0px) scale(1)';
-                                if (imgElement) {
-                                    imgElement.style.boxShadow = 'none'; 
-                                }
-                                // Ensure specialist card transitions are reapplied if they were cleared by pro-card logic (though they shouldn't mix)
-                                card.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                                 if (imgElement) {
-                                    imgElement.style.transition = 'box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                                }
-                            } else {
-                                // For pro-cards, set the longer transition for resetting
-                                card.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
-                                card.style.transform = `perspective(${perspective}) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                                
-                                [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
-                                    if (el) {
-                                        el.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
-                                        el.style.transform = (el === imgElement) ? 'translateZ(0px) rotateX(0deg) rotateY(0deg) scale(1)' : 'translateZ(0px)';
-                                    }
-                                });
-                            }
+                    function resizeCanvas() {
+                        canvas.width = section.offsetWidth; canvas.height = section.offsetHeight;
+                    }
+                    resizeCanvas(); 
+                    window.addEventListener('resize', debounce(resizeCanvas, 250));
+        
+                    const colors = ['rgba(253,224,71,0.25)','rgba(236,65,88,0.25)','rgba(102,75,240,0.25)','rgba(255,255,255,0.15)'];
+                    const particles = Array.from({length: 15}, () => ({ // Reduced count
+                        x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: 12+Math.random()*18,
+                        dx: (Math.random()-0.5)*0.2, dy: (Math.random()-0.5)*0.2,
+                        color: colors[Math.floor(Math.random()*colors.length)], alpha: 0.2+Math.random()*0.3
+                    }));
+        
+                    function drawParticles() {
+                        if (!ctx) return; 
+                        ctx.clearRect(0,0,canvas.width,canvas.height);
+                        particles.forEach(p=>{
+                            ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,2*Math.PI); ctx.fillStyle=p.color;
+                            ctx.globalAlpha=p.alpha; ctx.shadowColor=p.color; ctx.shadowBlur=20; ctx.fill();
+                        });
+                        ctx.globalAlpha=1; ctx.shadowBlur=0;
+                    }
+        
+                    function animateParticlesLoop() {
+                        particles.forEach(p=>{
+                            p.x+=p.dx; p.y+=p.dy;
+                            if(p.x+p.r<0)p.x=canvas.width+p.r; else if(p.x-p.r>canvas.width)p.x=-p.r;
+                            if(p.y+p.r<0)p.y=canvas.height+p.r; else if(p.y-p.r>canvas.height)p.y=-p.r;
+                        });
+                        drawParticles();
+                        animationFrameId = requestAnimationFrame(animateParticlesLoop);
+                    }
+                    
+                    const observer = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            if(entry.isIntersecting){ if(!animationFrameId) animateParticlesLoop(); }
+                            else { if(animationFrameId){ cancelAnimationFrame(animationFrameId); animationFrameId=null; }}
+                        });
+                    }, {threshold: 0.01});
+                    observer.observe(section);
+                }
+        
+                // --- Founders Section: Subtle Floating Card Animation ---
+                function foundersFloatingCards() {
+                    document.querySelectorAll('#founders .card').forEach((card, i) => {
+                        const initialTransform = getComputedStyle(card).transform;
+                        const baseTransform = initialTransform === 'none' ? '' : initialTransform;
+        
+                        // Ensure the animation considers existing transforms (e.g., from :hover)
+                        // This is a simplified approach; for complex scenarios, direct JS transform manipulation might be better.
+                        card.animate([
+                            { transform: `${baseTransform} translateY(0px)` },
+                            { transform: `${baseTransform.replace(/translateY\([^)]+\)/, '')} translateY(${i % 2 === 0 ? -6 : 6}px)` },
+                            { transform: `${baseTransform} translateY(0px)` }
+                        ], { 
+                            duration: 4000 + i * 100, 
+                            iterations: Infinity, 
+                            direction: 'alternate', 
+                            easing: 'ease-in-out'
                         });
                     });
                 }
         
-        // ...existing code...
-
-        // --- DOMContentLoaded: Initialize all scripts ---
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeMobileMenu();
-            initializeSmoothScroll();
-            setCurrentYear();
-            
-            foundersParticles();
-            foundersFloatingCards();
-            
-            initializeCard3DEffects('.pro-card', { 
-                tiltStrength: 7, perspective: '1000px',
-                parallaxStrength: { img: 30, title: 25, role: 20, desc: 12, social: 15 }, // Restored role/name parallax for pro cards
-                isSpecialistCard: false
-            });
-
-            initializeCard3DEffects('.specialist-card', { 
-                tiltStrength: 5, perspective: '1200px',
-                parallaxStrength: { img: 20, title: 15, role: 12, desc: 8, social: 10 },
-                isSpecialistCard: true 
-            });
-        });
+                        // --- Card Tilt & Parallax Interaction (for Pro Cards and Specialist Cards) ---
+                        function initializeCard3DEffects(selector, config) {
+                            const cards = document.querySelectorAll(selector);
+                            if (cards.length === 0) return;
+                
+                            const { tiltStrength, perspective, parallaxStrength, isSpecialistCard } = config;
+                            
+                            const specialistThemes = { 
+                                yellow: {
+                                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(250,204,21,0.1)', 
+                                    titleColor: '#facc15', roleColor: '#fde68a', 
+                                    staticShadow: '0 4px 120px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15), -8px 8px 32px 0 rgba(253,224,71,0.10)', // Static shadow
+                                    socialLinkColor: '#facc15', socialLinkHoverColor: '#fde047',
+                                    imgGlowColor: 'rgba(250, 204, 21, 0.45)'
+                                },
+                                purple: {
+                                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(168,85,247,0.1)',
+                                    titleColor: '#a855f7', roleColor: '#d8b4fe',
+                                    staticShadow: '0 4px 120px 0 rgba(168,85,247,0.25), 8px 8px 32px 0 rgba(168,85,247,0.15), -8px 8px 32px 0 rgba(168,85,247,0.10)',
+                                    socialLinkColor: '#a855f7', socialLinkHoverColor: '#c084fc',
+                                    imgGlowColor: 'rgba(168, 85, 247, 0.45)'
+                                },
+                                pink: {
+                                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(236,72,153,0.1)',
+                                    titleColor: '#ec4899', roleColor: '#fbcfe8',
+                                    staticShadow: '0 4px 120px 0 rgba(236,72,153,0.25), 8px 8px 32px 0 rgba(236,72,153,0.15), -8px 8px 32px 0 rgba(236,72,153,0.10)',
+                                    socialLinkColor: '#ec4899', socialLinkHoverColor: '#f9a8d4',
+                                    imgGlowColor: 'rgba(236, 72, 153, 0.45)'
+                                },
+                                cyan: {
+                                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(14,165,233,0.1)',
+                                    titleColor: '#38bdf8', roleColor: '#7dd3fc',
+                                    staticShadow: '0 4px 120px 0 rgba(14,165,233,0.25), 8px 8px 32px 0 rgba(14,165,233,0.15), -8px 8px 32px 0 rgba(14,165,233,0.10)',
+                                    socialLinkColor: '#38bdf8', socialLinkHoverColor: '#67e8f9',
+                                    imgGlowColor: 'rgba(14, 165, 233, 0.45)'
+                                }
+                            };
+                
+                            cards.forEach(card => {
+                                let animationFrameId = null;
+                                let lastMouseEvent = null;
+                
+                                const imgElement = card.querySelector('img');
+                                const titleElement = card.querySelector(isSpecialistCard ? 'h4' : 'h3'); 
+                                const roleElement = titleElement ? titleElement.nextElementSibling : null;
+                                const descElement = card.querySelector('p.text-gray-300.text-sm');
+                                const socialLinksContainer = card.querySelector('.absolute.bottom-0, .mt-auto.pt-4');
+                
+                                let currentTheme = null;
+                                if (isSpecialistCard) {
+                                    const themeName = card.dataset.theme;
+                                    currentTheme = specialistThemes[themeName];
+                                    if (currentTheme) {
+                                        card.style.backgroundColor = currentTheme.bgColor;
+                                        card.style.borderColor = currentTheme.borderColor;
+                                        card.style.boxShadow = currentTheme.staticShadow; // Apply static shadow
+                                        if(titleElement) titleElement.style.color = currentTheme.titleColor;
+                                        if(roleElement && roleElement.tagName === 'P') roleElement.style.color = currentTheme.roleColor;
+                                        
+                                        const socialLinks = card.querySelectorAll('.mt-auto.pt-4 a');
+                                        socialLinks.forEach(link => {
+                                            link.style.color = currentTheme.socialLinkColor;
+                                            link.addEventListener('mouseenter', () => link.style.color = currentTheme.socialLinkHoverColor);
+                                            link.addEventListener('mouseleave', () => link.style.color = currentTheme.socialLinkColor);
+                                        });
+                                        // Set transitions for the new hover effects on specialist cards
+                                        card.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                                        if (imgElement) {
+                                            imgElement.style.transition = 'box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                                        }
+                                    }
+                                }
+                
+                
+                                function updateCardTransform() {
+                                    if (!lastMouseEvent) { animationFrameId = null; return; }
+                
+                                    if (isSpecialistCard) {
+                                        animationFrameId = null; 
+                                        return;
+                                    }
+                                    
+                                    const rect = card.getBoundingClientRect();
+                                    const x = lastMouseEvent.clientX - rect.left;
+                                    const y = lastMouseEvent.clientY - rect.top;
+                                    const cardWidth = rect.width;
+                                    const cardHeight = rect.height;
+                                    const rotateX = ((y - cardHeight / 2) / (cardHeight / 2)) * -tiltStrength;
+                                    const rotateY = ((x - cardWidth / 2) / (cardWidth / 2)) * tiltStrength;
+                
+                                    // Apply transforms directly for pro-cards, no short transition here
+                                    card.style.transform = `perspective(${perspective}) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+                
+                                    if (imgElement && parallaxStrength.img) imgElement.style.transform = `translateZ(${parallaxStrength.img}px) rotateX(${rotateX / 1.8}deg) rotateY(${rotateY / 1.8}deg) scale(1.07)`;
+                                    if (titleElement && parallaxStrength.title) titleElement.style.transform = `translateZ(${parallaxStrength.title}px)`;
+                                    
+                                    if (roleElement && roleElement.tagName === 'P' && 
+                                        !roleElement.classList.contains('text-gray-300') && 
+                                        parallaxStrength.role) {
+                                         roleElement.style.transform = `translateZ(${parallaxStrength.role}px)`;
+                                    }
+                                    if (descElement && parallaxStrength.desc) descElement.style.transform = `translateZ(${parallaxStrength.desc}px)`;
+                                    if (socialLinksContainer && parallaxStrength.social) socialLinksContainer.style.transform = `translateZ(${parallaxStrength.social}px)`;
+                                    
+                                    animationFrameId = null; 
+                                }
+                
+                                card.addEventListener('mousemove', (e) => {
+                                    lastMouseEvent = e;
+                
+                                    if (isSpecialistCard && currentTheme) {
+                                        card.style.transform = 'translateY(-10px) scale(1.03)';
+                                        if (imgElement && currentTheme.imgGlowColor) {
+                                            imgElement.style.boxShadow = `0 0 16px 4px ${currentTheme.imgGlowColor.replace('0.45', '0.7')}, 0 0 28px 7px ${currentTheme.imgGlowColor.replace('0.45', '0.5')}`;
+                                        }
+                                        if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+                                    } else {
+                                        // For pro-cards, remove dynamic short transition settings
+                                        // The rAF will handle smooth updates.
+                                        // Clear any existing inline transition that might have been set by mouseleave
+                                        card.style.transition = 'none';
+                                        [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
+                                            if (el) el.style.transition = 'none';
+                                        });
+                
+                                        if (!animationFrameId) animationFrameId = requestAnimationFrame(updateCardTransform);
+                                    }
+                                });
+                
+                                card.addEventListener('mouseleave', () => {
+                                    lastMouseEvent = null;
+                                    if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+                
+                                    if (isSpecialistCard && currentTheme) {
+                                        card.style.transform = 'translateY(0px) scale(1)';
+                                        if (imgElement) {
+                                            imgElement.style.boxShadow = 'none'; 
+                                        }
+                                        // Ensure specialist card transitions are reapplied if they were cleared by pro-card logic (though they shouldn't mix)
+                                        card.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                                         if (imgElement) {
+                                            imgElement.style.transition = 'box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                                        }
+                                    } else {
+                                        // For pro-cards, set the longer transition for resetting
+                                        card.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+                                        card.style.transform = `perspective(${perspective}) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                                        
+                                        [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
+                                            if (el) {
+                                                el.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+                                                el.style.transform = (el === imgElement) ? 'translateZ(0px) rotateX(0deg) rotateY(0deg) scale(1)' : 'translateZ(0px)';
+                                            }
+                                        });
+                                    }
+                                });
+                            });
+                        }
+                
+                // ...existing code...
+        
+                // --- DOMContentLoaded: Initialize all scripts ---
+                document.addEventListener('DOMContentLoaded', () => {
+                    initializeMobileMenu();
+                    initializeSmoothScroll();
+                    setCurrentYear();
+                    
+                    // Initialize global particles first
+                    globalParticles();
+                    
+                    foundersParticles();
+                    foundersFloatingCards();
+                    
+                    initializeCard3DEffects('.pro-card', { 
+                        tiltStrength: 7, perspective: '1000px',
+                        parallaxStrength: { img: 30, title: 25, role: 20, desc: 12, social: 15 }, // Restored role/name parallax for pro cards
+                        isSpecialistCard: false
+                    });
+        
+                    initializeCard3DEffects('.specialist-card', { 
+                        tiltStrength: 5, perspective: '1200px',
+                        parallaxStrength: { img: 20, title: 15, role: 12, desc: 8, social: 10 },
+                        isSpecialistCard: true 
+                    });
+                });
+        
     </script>
     <!-- JavaScript End -->
 </body>
