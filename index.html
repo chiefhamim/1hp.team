@@ -99,7 +99,7 @@
             -webkit-text-fill-color: transparent;
             animation: intro-gradient-sweep 6s linear infinite;
             text-shadow: 0 0 1px rgba(216,180,254,0.1), 0 0 2px rgba(168,85,247,0.05), 0 1px 1px rgba(0,0,0,0.7); 
-            letter-spacing: 0.05em; padding: 0.2em 0; 
+            letter-spacing: 0.05em; padding: 0.2em 0;
         }
         @keyframes intro-gradient-sweep { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
         
@@ -279,6 +279,7 @@
         #founders .card:hover .founder-desc { color: #f3f4f6; opacity: 1; }
         
         /* --- ADVISOR CARD STYLES --- */
+        
         .advisor-card {
             border-radius: 1.25rem;
             box-shadow: 0 8px 32px 0 var(--advisor-shadow, rgba(56,189,248,0.10)), 0 2px 8px 0 var(--advisor-shadow2, rgba(168,85,247,0.08));
@@ -746,7 +747,7 @@
                     </div>
                     <!-- Specialist Card: Psykix -->
                     <div class="card specialist-card rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 relative"
-                         data-theme="purple" style="min-height: 500px; width: calc(100% + 3px); ">
+                         data-theme="purple" style="min-height: 500px; width: calc(100%); ">
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 shadow-lg disable-user-interaction"
                              src="https://i.ibb.co/wGWcNjh/psykix.png" alt="Psykix" draggable="false"
                              onerror="this.onerror=null;this.src='https://placehold.co/112x112/7e22ce/ffffff?text=P&font=montserrat';">
@@ -768,7 +769,7 @@
                     </div>
                     <!-- Specialist Card: AfraBae -->
                     <div class="card specialist-card rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 relative"
-                         data-theme="pink" style="min-height: 500px; width: calc(100% + 3px); ">
+                         data-theme="pink" style="min-height: 500px; width: calc(100%); ">
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 shadow-lg disable-user-interaction"
                              src="https://i.ibb.co/wNRBVd2g/AfraBae.jpg" alt="AfraBae" draggable="false"
                              onerror="this.onerror=null;this.src='https://placehold.co/112x112/db2777/ffffff?text=A&font=montserrat';">
@@ -786,7 +787,7 @@
                     </div>
                     <!-- Specialist Card: DrStitch -->
                     <div class="card specialist-card rounded-2xl overflow-hidden flex flex-col items-center text-center p-8"
-                         data-theme="cyan" style="min-height: 500px; width: calc(100% + 3px); ">
+                         data-theme="cyan" style="min-height: 500px; width: calc(100%); ">
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 shadow-lg disable-user-interaction"
                              src="https://i.ibb.co/gZF1Bb9Q/stitch.jpg" alt="DrStitch" draggable="false"
                              onerror="this.onerror=null;this.src='https://placehold.co/112x112/0891b2/ffffff?text=DS&font=montserrat';">
@@ -873,37 +874,39 @@
     <!-- Footer Section Start -->
     <footer id="contact" class="bg-gray-900/50 py-12 mt-12"> 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="border-t border-gray-700 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Footer Column 1: About -->
-                <div>
-                    <h3 class="text-lg font-semibold text-white mb-6">1hp Esports</h3>
-                    <p class="text-gray-400 text-sm">
-                        We are a community of gamers who believe in the power of teamwork, respect, and fun. Our mission is to create a positive environment where players can thrive, improve, and enjoy the game together.
-                    </p>
-                </div>
-                <!-- Footer Column 2: Quick Links -->
-                <div>
-                    <h3 class="text-lg font-semibold text-white mb-6">Quick Links</h3>
-                    <ul class="space-y-1">
-                        <li><a href="#about" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">About Us</a></li>
-                        <li><a href="#esports-team" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Our Players</a></li>
-                        <li><a href="#news" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Blog/News</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Media Kit</a></li>
-                    </ul>
-                </div>
-                <!-- Footer Column 3: Connect -->
-                <div>
-                    <h3 class="text-lg font-semibold text-white mb-4">Connect With Us</h3>
-                    <div>
-                        <div class="flex flex-col space-y-2 mb-4">
-                            <a href="https://www.facebook.com/official1hp" target="_blank" rel="noopener" class="text-gray-400 hover:text-purple-400 transition-colors flex items-center gap-2" aria-label="Facebook">
-                                <img src="facebook.png" alt="Facebook" style="height:24px;width:auto;display:inline-block;vertical-align:middle;">
-                                <span>Follow 1hp</span>
-                            </a>
-                            <a href="mailto:email@1hp.team" class="text-gray-400 hover:text-purple-400 transition-colors flex items-center gap-2" aria-label="Email">
-                                <img src="mail.png" alt="Email" style="height:24px;width:auto;display:inline-block;vertical-align:middle;">
-                                <span>email@1hp.team</span>
-                            </a>
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row md:items-stretch md:justify-between gap-8">
+                    <!-- Footer Column 1: About -->
+                    <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+                        <h3 class="text-lg font-semibold text-white mb-6">1hp Esports</h3>
+                        <p class="text-gray-400 text-sm max-w-xs">
+                            We are a community of gamers who believe in the power of teamwork, respect, and fun. Our mission is to create a positive environment where players can thrive, improve, and enjoy the game together.
+                        </p>
+                    </div>
+                    <!-- Footer Column 2: Quick Links -->
+                    <div class="flex-1 flex flex-col items-center">
+                        <h3 class="text-lg font-semibold text-white mb-6">Quick Links</h3>
+                        <ul class="space-y-1 text-center">
+                            <li><a href="#about" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">About Us</a></li>
+                            <li><a href="#esports-team" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Our Players</a></li>
+                            <li><a href="#news" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Blog/News</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Media Kit</a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Column 3: Connect -->
+                    <div class="flex-1 flex flex-col items-center md:items-end text-center md:text-right">
+                        <h3 class="text-lg font-semibold text-white mb-4">Connect With Us</h3>
+                        <div>
+                            <div class="flex flex-col space-y-2 mb-4 items-center md:items-end">
+                                <a href="https://www.facebook.com/official1hp" target="_blank" rel="noopener" class="text-gray-400 hover:text-purple-400 transition-colors flex items-center gap-2" aria-label="Facebook">
+                                    <img src="facebook.png" alt="Facebook" style="height:24px;width:auto;display:inline-block;vertical-align:middle;">
+                                    <span>Follow 1hp</span>
+                                </a>
+                                <a href="mailto:email@1hp.team" class="text-gray-400 hover:text-purple-400 transition-colors flex items-center gap-2" aria-label="Email">
+                                    <img src="mail.png" alt="Email" style="height:24px;width:auto;display:inline-block;vertical-align:middle;">
+                                    <span>email@1hp.team</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1057,138 +1060,167 @@
                 });
             });
         }
+
+                // --- Card Tilt & Parallax Interaction (for Pro Cards and Specialist Cards) ---
+                function initializeCard3DEffects(selector, config) {
+                    const cards = document.querySelectorAll(selector);
+                    if (cards.length === 0) return;
         
-        // --- Card Tilt & Parallax Interaction (for Pro Cards and Specialist Cards) ---
-        function initializeCard3DEffects(selector, config) {
-            const cards = document.querySelectorAll(selector);
-            if (cards.length === 0) return;
-
-            const { tiltStrength, perspective, parallaxStrength, isSpecialistCard } = config;
-            
-            const specialistThemes = { 
-                yellow: {
-                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(250,204,21,0.1)', 
-                    titleColor: '#facc15', roleColor: '#fde68a', 
-                    staticShadow: '0 4px 16px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15), -8px 8px 32px 0 rgba(253,224,71,0.10)', // Static shadow
-                    socialLinkColor: '#facc15', socialLinkHoverColor: '#fde047',
-                    imgGlowColor: 'rgba(250, 204, 21, 0.45)'
-                },
-                purple: {
-                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(168,85,247,0.1)',
-                    titleColor: '#a855f7', roleColor: '#d8b4fe',
-                    staticShadow: '0 4px 16px 0 rgba(168,85,247,0.25), 8px 8px 32px 0 rgba(168,85,247,0.15), -8px 8px 32px 0 rgba(168,85,247,0.10)',
-                    socialLinkColor: '#a855f7', socialLinkHoverColor: '#c084fc',
-                    imgGlowColor: 'rgba(168, 85, 247, 0.45)'
-                },
-                pink: {
-                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(236,72,153,0.1)',
-                    titleColor: '#ec4899', roleColor: '#fbcfe8',
-                    staticShadow: '0 4px 16px 0 rgba(236,72,153,0.25), 8px 8px 32px 0 rgba(236,72,153,0.15), -8px 8px 32px 0 rgba(236,72,153,0.10)',
-                    socialLinkColor: '#ec4899', socialLinkHoverColor: '#f9a8d4',
-                    imgGlowColor: 'rgba(236, 72, 153, 0.45)'
-                },
-                cyan: {
-                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(14,165,233,0.1)',
-                    titleColor: '#38bdf8', roleColor: '#7dd3fc',
-                    staticShadow: '0 4px 16px 0 rgba(14,165,233,0.25), 8px 8px 32px 0 rgba(14,165,233,0.15), -8px 8px 32px 0 rgba(14,165,233,0.10)',
-                    socialLinkColor: '#38bdf8', socialLinkHoverColor: '#67e8f9',
-                    imgGlowColor: 'rgba(14, 165, 233, 0.45)'
-                }
-            };
-
-            cards.forEach(card => {
-                let animationFrameId = null;
-                let lastMouseEvent = null;
-
-                const imgElement = card.querySelector('img');
-                const titleElement = card.querySelector(isSpecialistCard ? 'h4' : 'h3'); 
-                const roleElement = titleElement ? titleElement.nextElementSibling : null;
-                const descElement = card.querySelector('p.text-gray-300.text-sm');
-                const socialLinksContainer = card.querySelector('.absolute.bottom-0, .mt-auto.pt-4');
-
-                let currentTheme = null;
-                if (isSpecialistCard) {
-                    const themeName = card.dataset.theme;
-                    currentTheme = specialistThemes[themeName];
-                    if (currentTheme) {
-                        card.style.backgroundColor = currentTheme.bgColor;
-                        card.style.borderColor = currentTheme.borderColor;
-                        card.style.boxShadow = currentTheme.staticShadow; // Apply static shadow
-                        if(titleElement) titleElement.style.color = currentTheme.titleColor;
-                        if(roleElement && roleElement.tagName === 'P') roleElement.style.color = currentTheme.roleColor;
-                        
-                        const socialLinks = card.querySelectorAll('.mt-auto.pt-4 a');
-                        socialLinks.forEach(link => {
-                            link.style.color = currentTheme.socialLinkColor;
-                            link.addEventListener('mouseenter', () => link.style.color = currentTheme.socialLinkHoverColor);
-                            link.addEventListener('mouseleave', () => link.style.color = currentTheme.socialLinkColor);
-                        });
-                        // Removed continuous animation:
-                        // if (typeof card.animate === 'function') {
-                        //     card.animate({ boxShadow: currentTheme.shadowKeyframes }, 
-                        //                  { duration: 9000, iterations: Infinity, easing: 'cubic-bezier(.68,-0.55,.27,1.55)' });
-                        // }
-                    }
-                }
-
-
-                function updateCardTransform() {
-                    if (!lastMouseEvent) return;
-                    const rect = card.getBoundingClientRect();
-                    const x = lastMouseEvent.clientX - rect.left;
-                    const y = lastMouseEvent.clientY - rect.top;
-                    const cardWidth = rect.width;
-                    const cardHeight = rect.height;
-                    const rotateX = ((y - cardHeight / 2) / (cardHeight / 2)) * -tiltStrength;
-                    const rotateY = ((x - cardWidth / 2) / (cardWidth / 2)) * tiltStrength;
-
-                    card.style.transform = `perspective(${perspective}) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-
-                    // Parallax for inner elements
-                    if (imgElement && parallaxStrength.img) imgElement.style.transform = `translateZ(${parallaxStrength.img}px) rotateX(${rotateX / 1.8}deg) rotateY(${rotateY / 1.8}deg) scale(1.07)`;
-                    if (titleElement && parallaxStrength.title) titleElement.style.transform = `translateZ(${parallaxStrength.title}px)`;
+                    const { tiltStrength, perspective, parallaxStrength, isSpecialistCard } = config;
                     
-                    if (roleElement && roleElement.tagName === 'P' && 
-                        (isSpecialistCard ? roleElement.classList.contains('italic') : !roleElement.classList.contains('text-gray-300')) && 
-                        parallaxStrength.role) {
-                         roleElement.style.transform = `translateZ(${parallaxStrength.role}px)`;
-                    }
-                    if (descElement && parallaxStrength.desc) descElement.style.transform = `translateZ(${parallaxStrength.desc}px)`;
-                    if (socialLinksContainer && parallaxStrength.social) socialLinksContainer.style.transform = `translateZ(${parallaxStrength.social}px)`;
-                    
-                    animationFrameId = null; 
-                }
-
-                card.addEventListener('mousemove', (e) => {
-                    lastMouseEvent = e;
-                    if (!animationFrameId) animationFrameId = requestAnimationFrame(updateCardTransform);
-                    card.style.transition = 'transform 0.05s ease-out';
-                    [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
-                        if (el) el.style.transition = 'transform 0.05s ease-out';
-                    });
-                    if (isSpecialistCard && imgElement && currentTheme && currentTheme.imgGlowColor) {
-                        // Subtle glow, less intense than pro cards, using theme color
-                        imgElement.style.boxShadow = `0 0 8px 2px ${currentTheme.imgGlowColor.replace('0.45', '0.5')}, 0 0 15px 3px ${currentTheme.imgGlowColor.replace('0.45', '0.3')}`; 
-                    }
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
-                    lastMouseEvent = null;
-                    card.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
-                    card.style.transform = `perspective(${perspective}) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                    [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
-                        if (el) {
-                            el.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
-                            el.style.transform = (el === imgElement) ? 'translateZ(0px) rotateX(0deg) rotateY(0deg) scale(1)' : 'translateZ(0px)';
+                    const specialistThemes = { 
+                        yellow: {
+                            bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(250,204,21,0.1)', 
+                            titleColor: '#facc15', roleColor: '#fde68a', 
+                            staticShadow: '0 4px 120px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15), -8px 8px 32px 0 rgba(253,224,71,0.10)', // Static shadow
+                            socialLinkColor: '#facc15', socialLinkHoverColor: '#fde047',
+                            imgGlowColor: 'rgba(250, 204, 21, 0.45)'
+                        },
+                        purple: {
+                            bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(168,85,247,0.1)',
+                            titleColor: '#a855f7', roleColor: '#d8b4fe',
+                            staticShadow: '0 4px 120px 0 rgba(168,85,247,0.25), 8px 8px 32px 0 rgba(168,85,247,0.15), -8px 8px 32px 0 rgba(168,85,247,0.10)',
+                            socialLinkColor: '#a855f7', socialLinkHoverColor: '#c084fc',
+                            imgGlowColor: 'rgba(168, 85, 247, 0.45)'
+                        },
+                        pink: {
+                            bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(236,72,153,0.1)',
+                            titleColor: '#ec4899', roleColor: '#fbcfe8',
+                            staticShadow: '0 4px 120px 0 rgba(236,72,153,0.25), 8px 8px 32px 0 rgba(236,72,153,0.15), -8px 8px 32px 0 rgba(236,72,153,0.10)',
+                            socialLinkColor: '#ec4899', socialLinkHoverColor: '#f9a8d4',
+                            imgGlowColor: 'rgba(236, 72, 153, 0.45)'
+                        },
+                        cyan: {
+                            bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(14,165,233,0.1)',
+                            titleColor: '#38bdf8', roleColor: '#7dd3fc',
+                            staticShadow: '0 4px 120px 0 rgba(14,165,233,0.25), 8px 8px 32px 0 rgba(14,165,233,0.15), -8px 8px 32px 0 rgba(14,165,233,0.10)',
+                            socialLinkColor: '#38bdf8', socialLinkHoverColor: '#67e8f9',
+                            imgGlowColor: 'rgba(14, 165, 233, 0.45)'
                         }
+                    };
+        
+                    cards.forEach(card => {
+                        let animationFrameId = null;
+                        let lastMouseEvent = null;
+        
+                        const imgElement = card.querySelector('img');
+                        const titleElement = card.querySelector(isSpecialistCard ? 'h4' : 'h3'); 
+                        const roleElement = titleElement ? titleElement.nextElementSibling : null;
+                        const descElement = card.querySelector('p.text-gray-300.text-sm');
+                        const socialLinksContainer = card.querySelector('.absolute.bottom-0, .mt-auto.pt-4');
+        
+                        let currentTheme = null;
+                        if (isSpecialistCard) {
+                            const themeName = card.dataset.theme;
+                            currentTheme = specialistThemes[themeName];
+                            if (currentTheme) {
+                                card.style.backgroundColor = currentTheme.bgColor;
+                                card.style.borderColor = currentTheme.borderColor;
+                                card.style.boxShadow = currentTheme.staticShadow; // Apply static shadow
+                                if(titleElement) titleElement.style.color = currentTheme.titleColor;
+                                if(roleElement && roleElement.tagName === 'P') roleElement.style.color = currentTheme.roleColor;
+                                
+                                const socialLinks = card.querySelectorAll('.mt-auto.pt-4 a');
+                                socialLinks.forEach(link => {
+                                    link.style.color = currentTheme.socialLinkColor;
+                                    link.addEventListener('mouseenter', () => link.style.color = currentTheme.socialLinkHoverColor);
+                                    link.addEventListener('mouseleave', () => link.style.color = currentTheme.socialLinkColor);
+                                });
+                                // Set transitions for the new hover effects on specialist cards
+                                card.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                                if (imgElement) {
+                                    imgElement.style.transition = 'box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                                }
+                            }
+                        }
+        
+        
+                        function updateCardTransform() {
+                            if (!lastMouseEvent) { animationFrameId = null; return; }
+        
+                            if (isSpecialistCard) {
+                                animationFrameId = null; 
+                                return;
+                            }
+                            
+                            const rect = card.getBoundingClientRect();
+                            const x = lastMouseEvent.clientX - rect.left;
+                            const y = lastMouseEvent.clientY - rect.top;
+                            const cardWidth = rect.width;
+                            const cardHeight = rect.height;
+                            const rotateX = ((y - cardHeight / 2) / (cardHeight / 2)) * -tiltStrength;
+                            const rotateY = ((x - cardWidth / 2) / (cardWidth / 2)) * tiltStrength;
+        
+                            // Apply transforms directly for pro-cards, no short transition here
+                            card.style.transform = `perspective(${perspective}) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+        
+                            if (imgElement && parallaxStrength.img) imgElement.style.transform = `translateZ(${parallaxStrength.img}px) rotateX(${rotateX / 1.8}deg) rotateY(${rotateY / 1.8}deg) scale(1.07)`;
+                            if (titleElement && parallaxStrength.title) titleElement.style.transform = `translateZ(${parallaxStrength.title}px)`;
+                            
+                            if (roleElement && roleElement.tagName === 'P' && 
+                                !roleElement.classList.contains('text-gray-300') && 
+                                parallaxStrength.role) {
+                                 roleElement.style.transform = `translateZ(${parallaxStrength.role}px)`;
+                            }
+                            if (descElement && parallaxStrength.desc) descElement.style.transform = `translateZ(${parallaxStrength.desc}px)`;
+                            if (socialLinksContainer && parallaxStrength.social) socialLinksContainer.style.transform = `translateZ(${parallaxStrength.social}px)`;
+                            
+                            animationFrameId = null; 
+                        }
+        
+                        card.addEventListener('mousemove', (e) => {
+                            lastMouseEvent = e;
+        
+                            if (isSpecialistCard && currentTheme) {
+                                card.style.transform = 'translateY(-10px) scale(1.03)';
+                                if (imgElement && currentTheme.imgGlowColor) {
+                                    imgElement.style.boxShadow = `0 0 16px 4px ${currentTheme.imgGlowColor.replace('0.45', '0.7')}, 0 0 28px 7px ${currentTheme.imgGlowColor.replace('0.45', '0.5')}`;
+                                }
+                                if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+                            } else {
+                                // For pro-cards, remove dynamic short transition settings
+                                // The rAF will handle smooth updates.
+                                // Clear any existing inline transition that might have been set by mouseleave
+                                card.style.transition = 'none';
+                                [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
+                                    if (el) el.style.transition = 'none';
+                                });
+        
+                                if (!animationFrameId) animationFrameId = requestAnimationFrame(updateCardTransform);
+                            }
+                        });
+        
+                        card.addEventListener('mouseleave', () => {
+                            lastMouseEvent = null;
+                            if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+        
+                            if (isSpecialistCard && currentTheme) {
+                                card.style.transform = 'translateY(0px) scale(1)';
+                                if (imgElement) {
+                                    imgElement.style.boxShadow = 'none'; 
+                                }
+                                // Ensure specialist card transitions are reapplied if they were cleared by pro-card logic (though they shouldn't mix)
+                                card.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                                 if (imgElement) {
+                                    imgElement.style.transition = 'box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                                }
+                            } else {
+                                // For pro-cards, set the longer transition for resetting
+                                card.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+                                card.style.transform = `perspective(${perspective}) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                                
+                                [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
+                                    if (el) {
+                                        el.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+                                        el.style.transform = (el === imgElement) ? 'translateZ(0px) rotateX(0deg) rotateY(0deg) scale(1)' : 'translateZ(0px)';
+                                    }
+                                });
+                            }
+                        });
                     });
-                    if (isSpecialistCard && imgElement) {
-                        imgElement.style.boxShadow = 'none'; // Remove glow on mouse leave
-                    }
-                });
-            });
-        }
+                }
+        
+        // ...existing code...
 
         // --- DOMContentLoaded: Initialize all scripts ---
         document.addEventListener('DOMContentLoaded', () => {
