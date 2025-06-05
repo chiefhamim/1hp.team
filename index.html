@@ -6,6 +6,7 @@
     <title>1hp Esports - Home</title>
     <meta name="description" content="1hp Esports - A team from Bangladesh. Meet the team, founders, advisors, and clan members.">
 
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="1hp Esports - Official Website">
     <meta property="og:description" content="Friendship | Trust | Brotherhood. Check out the official site of 1hp Esports">
     <meta property="og:image" content="https://www.1hp.team/1hp-social-preview.png">
@@ -15,28 +16,35 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="1hp Esports">
 
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@1hpEsportsBD">
+    <meta name="twitter:site" content="@1hpEsports23387">
     <meta name="twitter:title" content="1hp Esports - Official Website">
     <meta name="twitter:description" content="Friendship | Trust | Brotherhood. Check out the official home of 1hp Esports!">
     <meta name="twitter:image" content="https://www.1hp.team/1hp-social-preview.png">
 
+    <!-- Favicons -->
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Oswald:wght@400;700&family=Raleway:wght@400;700&family=Merriweather:wght@400;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700;900&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700;800&family=Poppins:wght@400;700&family=Oswald:wght@400;700&family=Raleway:wght@400;700&family=Merriweather:wght@400;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Custom Styles -->
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom, #0d0d2c, #111827);
-            color: #F3F4F6;
+            background: linear-gradient(to bottom, #0d0d2c, #111827); /* Dark blue to darker gray gradient */
+            color: #F3F4F6; /* Light gray text */
             min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll issues */
         }
+        
         /* Utility class to disable common user interactions on elements like images */
         .disable-user-interaction {
             pointer-events: none;
@@ -51,38 +59,37 @@
         .about-us-title, 
         .team-subtitle-legacy, 
         .team-subtitle-youngsters,
+        .team-subtitle-specialists, /* New class for Specialists subtitle */
         #founders > .container > h3, 
         #advisors > .container > h3, 
-        .intro-title-effect, /* New class for "Introducing Ourselves" */
+        .intro-title-effect, 
         .founders-gradient-effect,
         .advisors-title,
-        .effect-title-1hp, /* Competitive Rosters */
+        .effect-title-1hp, 
         .legacy-effect,
         .youngsters-effect,
-        .clan-specialists-effect,
+        .clan-specialists-effect, /* This is the main title effect for Specialists Section Title */
         .news-gradient-effect,
         .sponsors-gradient-effect {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Orbitron', sans-serif; /* Sci-fi/gaming font for titles */
         }
 
-        .card { /* General card transition, specific cards might override this */
-            transition: transform 0.3s, box-shadow 0.3s;
+        /* General card transition (primarily for non-JS animated cards if any) */
+        .card { 
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            will-change: transform, box-shadow; /* Performance hint for animations */
         }
-        .card:hover { /* General card hover, specific cards might override this */
-            transform: scale(1.05); 
-        }
+
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1f2937; }
-        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+        ::-webkit-scrollbar-track { background: #1f2937; /* Dark gray track */ }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; /* Medium gray thumb */ }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; /* Lighter gray on hover */ }
 
-        /* --- UPDATED TITLE STYLES --- */
+        /* --- ANIMATED TITLE STYLES --- */
 
-        /* "INTRODUCING OURSELVES" Title Style */
         .intro-title-effect {
-            font-family: 'Orbitron', sans-serif; 
             font-weight: 900; 
             background: linear-gradient(110deg, #a855f7 0%, #d8b4fe 30%, #f3f4f6 50%, #d8b4fe 70%, #a855f7 100%);
             background-size: 300% 100%; 
@@ -91,596 +98,310 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: intro-gradient-sweep 6s linear infinite;
-            text-shadow: 
-                0 0 1px rgba(216, 180, 254, 0.1), 
-                0 0 2px rgba(168, 85, 247, 0.05),  
-                0 1px 1px rgba(0,0,0,0.7); 
-            letter-spacing: 0.05em; 
-            transition: text-shadow 0.3s;
-            padding: 0.2em 0; 
+            text-shadow: 0 0 1px rgba(216,180,254,0.1), 0 0 2px rgba(168,85,247,0.05), 0 1px 1px rgba(0,0,0,0.7); 
+            letter-spacing: 0.05em; padding: 0.2em 0; 
         }
-        @keyframes intro-gradient-sweep {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes intro-gradient-sweep { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
         
-        /* Refined "1hp's Founders" Title Style */
         .founders-gradient-effect {
-            font-family: 'Orbitron', sans-serif; 
             background: linear-gradient(90deg, #ffda77 0%, #ffce41 25%, #ec4158 50%, #c53044 75%, #664bf0 100%);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 200% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: founders-gradient-move 5s ease-in-out infinite alternate; 
-            text-shadow: 
-                0 1px 2px rgba(0,0,0,0.6), 
-                0 0 4px rgba(255,206,65,0.1), 
-                0 0 8px rgba(236,65,88,0.08);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6), 0 0 4px rgba(255,206,65,0.1), 0 0 8px rgba(236,65,88,0.08);
             letter-spacing: 0.01em; 
-            transition: text-shadow 0.3s;
         }
-        @keyframes founders-gradient-move {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes founders-gradient-move { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
 
-        /* Refined "Advisors" Title Style */
         .advisors-title {
-            font-family: 'Orbitron', sans-serif; 
             background: linear-gradient(90deg, #818cf8 0%, #60a5fa 25%, #38bdf8 50%, #a855f7 75%, #ec4158 100%);
-            background-size: 250% auto; 
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 250% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: advisors-title-gradient 6s linear infinite alternate; 
             letter-spacing: 0.02em; 
-            text-shadow: 
-                0 1px 2px rgba(0,0,0,0.6),
-                0 0 4px rgba(96,165,250,0.15), 
-                0 0 8px rgba(168,85,247,0.1);
-            position: relative;
-            transition: text-shadow 0.3s;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6), 0 0 4px rgba(96,165,250,0.15), 0 0 8px rgba(168,85,247,0.1);
         }
         .advisors-title::after { display: none !important; } 
-        @keyframes advisors-title-gradient {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes advisors-title-gradient { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
         
-        /* Refined "COMPETITIVE ROSTERS" Title Style */
-        .effect-title-1hp {
-            font-family: 'Orbitron', sans-serif; 
+        .effect-title-1hp { /* Competitive Rosters Main Title */
             font-weight: 900; 
             background: linear-gradient(120deg, #818cf8 0%, #60a5fa 20%, #ec4158 40%, #ffce41 60%, #a855f7 80%, #664bf0 100%);
-            background-size: 250% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 250% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: effect-title-1hp-gradient 5s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
-            text-shadow: 
-                0 1px 2px rgba(0,0,0,0.7), 
-                0 0 1px rgba(102,75,240,0.03),
-                0 0 2px rgba(255,206,65,0.02),
-                0 0 3px rgba(236,65,88,0.015);
-            letter-spacing: 0.03em; 
-            transition: text-shadow 0.3s;
-            padding: 0.1em 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.7),0 0 1px rgba(102,75,240,0.03),0 0 2px rgba(255,206,65,0.02),0 0 3px rgba(236,65,88,0.015);
+            letter-spacing: 0.03em; padding: 0.1em 0;
         }
-        @keyframes effect-title-1hp-gradient {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes effect-title-1hp-gradient { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
         
-        /* Refined "1hp Legacy" Subtitle Style */
-        .legacy-effect {
-            font-family: 'Orbitron', sans-serif; 
+        .legacy-effect { /* 1hp Legacy Subtitle */
             font-weight: 700; 
             background: linear-gradient(120deg, #a5b4fc 0%, #818cf8 30%, #60a5fa 60%, #38bdf8 100%);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 200% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: legacy-gradient-move 4.5s ease-in-out infinite alternate;
-            text-shadow: 
-                0 1px 1px rgba(0,0,0,0.5),
-                0 0 3px rgba(96,165,250,0.1),
-                0 0 6px rgba(129,140,248,0.08);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.5), 0 0 3px rgba(96,165,250,0.1), 0 0 6px rgba(129,140,248,0.08);
             letter-spacing: 0.01em; 
-            transition: text-shadow 0.3s;
         }
-        @keyframes legacy-gradient-move {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes legacy-gradient-move { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
 
-        /* Refined "1hp Youngsters" Subtitle Style */
-        .youngsters-effect {
-            font-family: 'Orbitron', sans-serif; 
+        .youngsters-effect { /* 1hp Youngsters Subtitle */
             font-weight: 700; 
             background: linear-gradient(90deg, #a7f3d0 0%, #6ee7b7 30%, #34d399 60%, #38bdf8 100%);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 200% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: youngsters-gradient-move 4.5s ease-in-out infinite alternate;
-            text-shadow: 
-                0 1px 1px rgba(0,0,0,0.5),
-                0 0 3px rgba(52,211,153,0.15),
-                0 0 6px rgba(56,189,248,0.1);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.5), 0 0 3px rgba(52,211,153,0.15), 0 0 6px rgba(56,189,248,0.1);
             letter-spacing: 0.01em; 
-            transition: text-shadow 0.3s;
         }
-        @keyframes youngsters-gradient-move {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes youngsters-gradient-move { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
 
-        /* Refined "CLAN SPECIALISTS" Title Style */
-        .clan-specialists-effect {
+        /* Clan Specialists Subtitle (New - using existing .clan-specialists-effect for gradient) */
+        .team-subtitle-specialists { 
+            font-weight: 700; /* Match other subtitles */
+            /* Gradient is applied by .clan-specialists-effect */
+            letter-spacing: 0.01em; /* Match other subtitles */
+        }
+        .clan-specialists-effect { /* This was the old main title, now used for subtitle gradient */
             font-family: 'Orbitron', sans-serif; 
-            font-weight: 800; 
+            font-weight: 700;  /* Adjusted for subtitle */
             background: linear-gradient(110deg, #4ade80 0%, #2dd4bf 25%, #f97316 50%, #34d399 75%, #14b8a6 100%);
-            background-size: 250% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 250% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: clan-specialists-gradient 5.5s linear infinite alternate; 
-            letter-spacing: 0.03em; 
-            text-shadow: 
-                0 1px 1px rgba(0,0,0,0.6), 
-                0 0 1px rgba(74, 222, 128, 0.08), 
-                0 0 2px rgba(249, 115, 22, 0.04);    
-            position: relative;
-            transition: text-shadow 0.3s;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.6), 0 0 1px rgba(74,222,128,0.08), 0 0 2px rgba(249,115,22,0.04);   
             padding: 0.1em 0;
         }
-        @keyframes clan-specialists-gradient {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes clan-specialists-gradient { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
         
-        /* --- NEWS & SPONSORS TITLE REFINEMENTS --- */
         .news-gradient-effect {
-            font-family: 'Orbitron', sans-serif; 
             background: linear-gradient(90deg, #ffb300 0%, #fbbf24 30%, #ec4899 70%, #f472b6 100%);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 200% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: news-gradient-move 5s linear infinite alternate;
-            letter-spacing: 0em;
-            text-shadow: 
-                0 1px 1px rgba(0,0,0,0.5), 
-                0 0 2px rgba(251,191,36,0.03), 
-                0 0 3px rgba(236,72,153,0.025);   
-            position: relative;
-            transition: text-shadow 0.3s;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.5), 0 0 2px rgba(251,191,36,0.03), 0 0 3px rgba(236,72,153,0.025);  
         }
-        @keyframes news-gradient-move {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes news-gradient-move { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
 
         .sponsors-gradient-effect {
-            font-family: 'Orbitron', sans-serif; 
             background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #fbbf24 100%);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 200% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: sponsors-gradient-move 5s linear infinite alternate;
-            letter-spacing: 0em;
-            text-shadow: 
-                0 1px 1px rgba(0,0,0,0.5), 
-                0 0 2px rgba(168,85,247,0.03),  
-                0 0 3px rgba(236,72,153,0.02);    
-            position: relative;
-            transition: text-shadow 0.3s;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.5), 0 0 2px rgba(168,85,247,0.03), 0 0 3px rgba(236,72,153,0.02);   
         }
-        @keyframes sponsors-gradient-move {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-        /* --- END OF UPDATED TITLE STYLES --- */
-
-        /* --- FOUNDERS CARD ENHANCEMENTS (v3) --- */
+        @keyframes sponsors-gradient-move { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; }}
+       
+        /* --- FOUNDERS CARD STYLES --- */
         #founders .card {
-            border-radius: 1.5rem; /* 24px */
+            border-radius: 1.5rem; 
             box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.15);
-            border: 1px solid transparent; 
-            position: relative;
-            overflow: hidden; 
+            border: 1.5px solid transparent; 
+            position: relative; overflow: hidden; 
             padding: 2.5rem 1.5rem 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
             min-height: 430px; 
-            transition: transform 0.35s cubic-bezier(.25,.8,.25,1), 
-                        box-shadow 0.35s cubic-bezier(.25,.8,.25,1),
-                        border-color 0.35s ease-in-out;
             background: #23212b; 
             will-change: transform, box-shadow; 
+            /* Removed initial opacity and transform for immediate visibility, JS handles floating */
+            transition: transform 0.35s cubic-bezier(.25,.8,.25,1), 
+                        box-shadow 0.35s cubic-bezier(.25,.8,.25,1), 
+                        border-color 0.35s ease-in-out; 
         }
 
-        /* Specific themed backgrounds for founder cards with reinstated 3D edge reflections */
-        /* Explanation of radial-gradient for 3D effect:
-           - `ellipse`: Defines the shape of the gradient.
-           - `98% 68%` (example): Horizontal (98%) and vertical (68%) radii. Controls the spread.
-           - `at 88% -8%` (example): Position of the gradient center (X Y). 
-             Values > 100% or < 0% place the center outside the element, creating edge highlights.
-             e.g., `88% -8%` is 88% from left, 8% above the top edge.
-           - `#ffce41a6 0%`: Color at the start (0%) of the gradient (here, yellow with 'a6' alpha for transparency).
-           - `#ffce4100 70%`: Color at 70% of the radius (here, fully transparent yellow), creating a fade-out.
-           Two such gradients are used, one for a top/right highlight, another for a bottom/left highlight/shadow.
-        */
-        #founders .card[data-shadow*="255,206,65"] { /* Yellow theme */
-            background:
-                /* Top-right reflection */
-                radial-gradient(ellipse 98% 68% at 88% -8%, #ffce41a6 0%, #ffce4100 70%), 
-                /* Bottom-left shadow/reflection */
-                radial-gradient(ellipse 88% 68% at 12% 108%, #3a3211 0%, #23212b 70%),
-                linear-gradient(120deg, #3a2e0c 0%, #4d3d13 100%);
-        }
-        #founders .card[data-shadow*="236,65,88"] { /* Red theme */
-            background:
-                radial-gradient(ellipse 98% 68% at 88% -8%, #ec4158a6 0%, #ec415800 70%),
-                radial-gradient(ellipse 88% 68% at 12% 108%, #36171d 0%, #23212b 70%),
-                linear-gradient(120deg, #2a1117 0%, #4d232c 100%);
-        }
-        #founders .card[data-shadow*="102,75,240"] { /* Purple theme */
-            background:
-                radial-gradient(ellipse 98% 68% at 88% -8%, #664bf0a6 0%, #664bf000 70%),
-                radial-gradient(ellipse 88% 68% at 12% 108%, #1f1a3b 0%, #23212b 70%),
-                linear-gradient(120deg, #1a1533 0%, #2d225a 100%);
-        }
-
-        /* Hover state for founder cards - removed border-color, ::before pseudo-element handles border animation if re-enabled */
-        #founders .card:hover, #founders .card:focus-within { 
-            transform: translateY(-10px) scale(1.06); 
-            box-shadow: 0 12px 24px var(--founder-glow-strong, rgba(0,0,0,0.3)), 
-                        0 0 30px var(--founder-glow, rgba(255,255,255,0.15)); 
-            z-index: 10; 
-        }
-
-        /* Define --founder-theme-color and --founder-glow-strong based on data-shadow */
         #founders .card[data-shadow*="255,206,65"] { 
-            --founder-theme-color: #ffce41;
-            --founder-glow: #ffce4140; 
-            --founder-glow-strong: #ffce4133; 
+            /* Dark with yellow accent */
+            background: 
+                radial-gradient(ellipse 80% 40% at 50% 0%, #ffce41cc 0%, #23212b 80%),
+                linear-gradient(180deg, #23212b 60%, #181825 100%);
         }
         #founders .card[data-shadow*="236,65,88"] { 
-            --founder-theme-color: #ec4158;
-            --founder-glow: #ec415840;
-            --founder-glow-strong: #ec415833;
+            /* Dark with red accent */
+            background: 
+                radial-gradient(ellipse 80% 40% at 50% 0%, #ec4158cc 0%, #23212b 80%),
+                linear-gradient(180deg, #23212b 60%, #181825 100%);
         }
         #founders .card[data-shadow*="102,75,240"] { 
-            --founder-theme-color: #664bf0;
-            --founder-glow: #664bf040;
-            --founder-glow-strong: #664bf033;
+            /* Dark with purple accent */
+            background: 
+                radial-gradient(ellipse 80% 40% at 50% 0%, #664bf0cc 0%, #23212b 80%),
+                linear-gradient(180deg, #23212b 60%, #181825 100%);
         }
+
+        #founders .card:hover, #founders .card:focus-within {
+            /* Neon ring + soft colored glow + deep shadow */
+            box-shadow:
+                0 0 0 2px var(--founder-theme-color, #fff) inset,                /* Neon inner ring */
+                0 0 18px 4px var(--founder-theme-color, #fff2),                  /* Soft colored glow */
+                0 0 28px 12px var(--founder-glow, rgba(255,255,255,0.16)),      /* Outer colored glow */
+                0 8px 48px 0 rgba(0,0,0,0.55);                                 /* Deep drop shadow */
+            z-index: 10;
+        }
+
+        #founders .card[data-shadow*="255,206,65"] { --founder-theme-color: #ffce41; --founder-glow: #ffce4140; --founder-glow-strong: #ffce4133; }
+        #founders .card[data-shadow*="236,65,88"] { --founder-theme-color: #ec4158; --founder-glow: #ec415840; --founder-glow-strong: #ec415833; }
+        #founders .card[data-shadow*="102,75,240"] { --founder-theme-color: #664bf0; --founder-glow: #664bf040; --founder-glow-strong: #664bf033; }
         
-        /* Inner animated accent border on hover - Kept opacity at 0 to disable sharp edge highlight */
-        #founders .card::before {
-            content: "";
-            position: absolute;
-            inset: -2px; 
-            border-radius: calc(1.5rem + 2px); 
-            padding: 10px; 
+        #founders .card::before { 
+            content: ""; position: absolute; inset: 1px; 
+            border-radius: calc(1.5rem + 1px); padding: 1px; 
             background: linear-gradient(135deg, var(--founder-theme-color, #fff), transparent, var(--founder-theme-color, #fff));
             background-size: 400% 400%;
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0.18; /* Stays hidden */
-            transition: opacity 0.35s ease-in-out, background-position 0.5s ease-in-out;
-            animation: founder-border-anim 3s linear infinite paused; 
-            z-index: 1; 
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            opacity: 0; transition: opacity 0.35s ease-in-out, background-position 0.5s ease-in-out;
+            animation: founder-border-anim 3s linear infinite paused; z-index: 1; 
         }
+        #founders .card:hover::before { opacity: 0.28; animation-play-state: running; }
+        @keyframes founder-border-anim { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }}
 
-        #founders .card:hover::before {
-            opacity: 0.28; /* Slightly visible on hover */
-            animation-play-state: running; /* Ensure it remains hidden on hover */
-        }
-
-        @keyframes founder-border-anim { 
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-
-        #founders .founder-img-wrap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1.25rem; 
-            width: 100%;
-            transition: transform 0.3s ease-out; 
-        }
-        #founders .card:hover .founder-img-wrap {
-            transform: translateY(-15px); 
-        }
-
+        #founders .founder-img-wrap { margin-bottom: 1.25rem; transition: transform 0.3s ease-out; }
+        #founders .card:hover .founder-img-wrap { transform: translateY(-15px); }
         #founders .founder-img {
-            width: 9rem; 
-            height: 9rem; 
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #fff; 
-            box-shadow: 0 4px 20px 0 var(--founder-glow, rgba(255,255,255,0.15)); 
-            background: #fff;
-            margin: 0 auto;
-            display: block;
-            transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s ease-in-out;
+            width: 9rem; height: 9rem; object-fit: cover; border-radius: 50%;
+            border: 4px solid #fff; box-shadow: 0 4px 20px 0 var(--founder-glow, rgba(255,255,255,0.15)); 
+            background: #fff; transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s ease-in-out;
         }
-
         #founders .founder-name {
-            font-size: 1.4rem; 
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            margin-bottom: 0.35rem; 
-            letter-spacing: 0.02em;
+            font-size: 1.4rem; font-family: 'Montserrat', sans-serif; font-weight: 800;
+            margin-bottom: 0.35rem; letter-spacing: 0.02em;
             background: linear-gradient(120deg, #ffce41 0%, #ec4158 50%, #664bf0 100%);
-            background-size: 200% auto;
-            background-position: 50% 50%; /* Static gradient position for idle state */
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            /* animation: founders-gradient-move 4s ease-in-out infinite alternate; REMOVED from base */
-            transition: transform 0.3s ease-out; /* Removed background-position from transition */
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+            background-size: 200% auto; background-position: 50% 50%; 
+            background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease-out; text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
         }
-         #founders .card:hover .founder-name {
-            animation: founders-gradient-move 4s ease-in-out infinite alternate; /* Animation only on hover */
-            /* transform: translateY(-3px); REMOVED text transform on hover */
-        }
-        /* Founder role styles */
+        #founders .card:hover .founder-name { animation: founders-gradient-move 4s ease-in-out infinite alternate; }
         #founders .founder-role {
-            font-size: 1.05rem; 
-            font-weight: 700; 
-            margin-bottom: 0.75rem; 
-            letter-spacing: 0.015em; 
-            transition: color 0.3s ease-in-out; /* Removed transform from transition */
-            text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+            font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: 0.015em; 
+            transition: color 0.3s ease-in-out; text-shadow: 0 1px 1px rgba(0,0,0,0.2);
         }
-        /* Idle state role colors (tints) */
-        #founders .card[data-shadow*="255,206,65"] .founder-role { color: #FFF9E6; } /* Pale Yellow (80% white, 20% yellow approx) */
-        #founders .card[data-shadow*="236,65,88"] .founder-role { color: #FFDDE1; } /* Pale Red/Pink */
-        #founders .card[data-shadow*="102,75,240"] .founder-role { color: #E9E3FF; } /* Pale Purple/Lavender */
-
-        /* Hover state role colors (full theme color) - transform removed */
-        #founders .card:hover .founder-role { 
-            color: var(--founder-theme-color) !important; 
-        /* transform: scale(1.03); REMOVED text scale on hover */
-        }
-        /* Founder description styles */
+        #founders .card[data-shadow*="255,206,65"] .founder-role { color: #FFF9E6; }
+        #founders .card[data-shadow*="236,65,88"] .founder-role { color: #FFDDE1; }
+        #founders .card[data-shadow*="102,75,240"] .founder-role { color: #E9E3FF; }
+        #founders .card:hover .founder-role { color: var(--founder-theme-color) !important; }
         #founders .founder-desc {
-            font-size: 0.98rem; 
-            color: #d1d5db; 
-            opacity: 0.95; 
-            margin-bottom: 0;
+            font-size: 0.98rem; color: #d1d5db; opacity: 0.95; margin-bottom: 0;
             transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
-        #founders .card:hover .founder-desc {
-            color: #f3f4f6; 
-            opacity: 1;
-        }
-        /* --- END OF FOUNDERS CARD ENHANCEMENTS --- */
-
-
+        #founders .card:hover .founder-desc { color: #f3f4f6; opacity: 1; }
+        
+        /* --- ADVISOR CARD STYLES --- */
         .advisor-card {
             border-radius: 1.25rem;
             box-shadow: 0 8px 32px 0 var(--advisor-shadow, rgba(56,189,248,0.10)), 0 2px 8px 0 var(--advisor-shadow2, rgba(168,85,247,0.08));
             border: 1.5px solid transparent;
             transition: box-shadow 0.3s, border-color 0.3s, transform 0.22s cubic-bezier(.68,-0.55,.27,1.55);
-            position: relative;
-            overflow: visible;
             min-height: 340px;
             background: var(--advisor-bg, linear-gradient(120deg, rgba(34,211,238,0.10) 0%, rgba(168,85,247,0.08) 100%));
         }
         .advisor-card:hover, .advisor-card:focus-within { 
             box-shadow: 0 0 32px 8px var(--advisor-glow, #60a5fa33), 0 8px 32px 0 var(--advisor-glow2, #a855f733);
             border-color: var(--advisor-border, #60a5fa);
-            transform: translateY(-6px) scale(1.045); 
-            z-index: 2;
+            transform: translateY(-6px) scale(1.045); z-index: 2;
         }
         .advisor-img {
-            width: 7rem;
-            height: 7rem;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            box-shadow: 0 2px 16px 0 var(--advisor-img-shadow, #60a5fa33);
-            background: #fff;
-            margin-bottom: 1.25rem;
+            width: 7rem; height: 7rem; object-fit: cover; border-radius: 50%;
+            border: 4px solid #fff; box-shadow: 0 2px 16px 0 var(--advisor-img-shadow, #60a5fa33);
+            background: #fff; margin-bottom: 1.25rem;
         }
         .advisor-name {
-            font-size: 1.15rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            margin-bottom: 0.15rem;
-            letter-spacing: 0.02em;
+            font-size: 1.15rem; font-family: 'Montserrat', sans-serif; font-weight: 800;
+            margin-bottom: 0.15rem; letter-spacing: 0.02em;
             background: linear-gradient(90deg, #60a5fa 0%, #a855f7 100%);
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-size: 200% auto; background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: advisors-title-gradient 5s linear infinite alternate; 
         }
-        .advisor-role {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.01em;
-        }
-        .advisor-desc {
-            font-size: 0.97rem;
-            color: #e5e7eb;
-            opacity: 0.92;
-            margin-bottom: 0;
-        }
+        .advisor-role { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: 0.01em; }
+        .advisor-desc { font-size: 0.97rem; color: #e5e7eb; opacity: 0.92; margin-bottom: 0; }
         .advisor-card.advisor-blue {
             --advisor-bg: linear-gradient(120deg, rgba(56,189,248,0.13) 0%, rgba(59,130,246,0.10) 100%);
-            --advisor-shadow: rgba(56,189,248,0.18);
-            --advisor-shadow2: rgba(59,130,246,0.13);
-            --advisor-glow: #60a5fa55;
-            --advisor-glow2: #38bdf855;
-            --advisor-border: #60a5fa;
-            --advisor-img-shadow: #60a5fa33;
+            --advisor-shadow: rgba(56,189,248,0.18); --advisor-shadow2: rgba(59,130,246,0.13);
+            --advisor-glow: #60a5fa55; --advisor-glow2: #38bdf855;
+            --advisor-border: #60a5fa; --advisor-img-shadow: #60a5fa33;
         }
         .advisor-card.advisor-green {
             --advisor-bg: linear-gradient(120deg, rgba(34,197,94,0.13) 0%, rgba(16,185,129,0.10) 100%);
-            --advisor-shadow: rgba(34,197,94,0.18);
-            --advisor-shadow2: rgba(16,185,129,0.13);
-            --advisor-glow: #34d39955;
-            --advisor-glow2: #10b98155;
-            --advisor-border: #34d399;
-            --advisor-img-shadow: #34d39933;
+            --advisor-shadow: rgba(34,197,94,0.18); --advisor-shadow2: rgba(16,185,129,0.13);
+            --advisor-glow: #34d39955; --advisor-glow2: #10b98155;
+            --advisor-border: #34d399; --advisor-img-shadow: #34d39933;
         }
         .advisor-card.advisor-purple {
             --advisor-bg: linear-gradient(120deg, rgba(168,85,247,0.13) 0%, rgba(139,92,246,0.10) 100%);
-            --advisor-shadow: rgba(168,85,247,0.18);
-            --advisor-shadow2: rgba(139,92,246,0.13);
-            --advisor-glow: #a855f755;
-            --advisor-glow2: #8b5cf655;
-            --advisor-border: #a855f7;
-            --advisor-img-shadow: #a855f733;
+            --advisor-shadow: rgba(168,85,247,0.18); --advisor-shadow2: rgba(139,92,246,0.13);
+            --advisor-glow: #a855f755; --advisor-glow2: #8b5cf655;
+            --advisor-border: #a855f7; --advisor-img-shadow: #a855f733;
         }
         
-        .bg-yellow-trans { background: rgba(255, 206, 65, 0.13) !important; }
-        .bg-red-trans    { background: rgba(236, 65, 88, 0.13) !important; }
-        .bg-purple-trans { background: rgba(102, 75, 240, 0.13) !important; }
-        .bg-blue-trans   { background: rgba(96, 165, 250, 0.13) !important; }
-        .bg-orange-trans { background: rgba(249, 115, 22, 0.13) !important; }
-        .bg-green-trans  { background: rgba(34, 197, 94, 0.13) !important; }
+        /* Transparent Background Utility Classes (Used by Pro Cards) */
+        .bg-yellow-trans { background-color: rgba(255, 206, 65, 0.13) !important; }
+        .bg-red-trans    { background-color: rgba(236, 65, 88, 0.13) !important; }
+        .bg-purple-trans { background-color: rgba(102, 75, 240, 0.13) !important; }
+        .bg-blue-trans   { background-color: rgba(96, 165, 250, 0.13) !important; }
+        .bg-orange-trans { background-color: rgba(249, 115, 22, 0.13) !important; }
+        .bg-green-trans  { background-color: rgba(34, 197, 94, 0.13) !important; }
 
-        /* --- PRO CARD STYLES (v2) --- */
-        /* Hide team neon background and text shadows */
-        #team-neon-bg { display: none !important; } 
-        .neon-title, .neon-subtitle { text-shadow: none !important; } 
-        
-        .pro-card-grid-container {
-            /* perspective: 1200px;  */
-        }
-
+        /* --- PRO PLAYER CARD STYLES (Competitive Rosters) --- */
         .pro-card {
             box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
-            transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55), transform 0.1s ease-out;
-            position: relative;
-            z-index: 1;
+            position: relative; z-index: 1;
             transform-style: preserve-3d; 
             will-change: transform, box-shadow; 
         }
-
         .pro-card .pro-glow { 
-            pointer-events: none;
-            position: absolute;
-            inset: -4px;
-            border-radius: 1.25rem; 
-            z-index: -1;
-            opacity: 0.32; 
+            pointer-events: none; position: absolute;
+            inset: -4px; border-radius: 1.25rem; 
+            z-index: -1; opacity: 0.32; 
             filter: blur(7px); 
             transition: filter 0.3s, opacity 0.3s;
         }
-        
-        .pro-card:hover, .pro-card:focus-within {
+        .pro-card:hover, .pro-card:focus-within { 
             box-shadow: 0 0 15px 4px var(--pro-neon, rgba(255,255,255,0.2)), 
                         0 0 30px 8px var(--pro-neon, rgba(255,255,255,0.15)),
                         0 0 45px 12px var(--pro-neon, rgba(255,255,255,0.1));
             z-index: 10; 
         }
-
         .pro-card[data-neon="blue"]:hover { --pro-neon: #60a5fa; }
         .pro-card[data-neon="red"]:hover { --pro-neon: #ec4158; }
         .pro-card[data-neon="purple"]:hover { --pro-neon: #664bf0; }
         .pro-card[data-neon="yellow"]:hover { --pro-neon: #ffce41; }
-	    .pro-card[data-neon="green"]:hover { --pro-neon: #9ef06c; }
-	    .pro-card[data-neon="orange"]:hover { --pro-neon: #f84f29; }
+        .pro-card[data-neon="green"]:hover { --pro-neon: #9ef06c; }
+        .pro-card[data-neon="orange"]:hover { --pro-neon: #f84f29; }
 
-        .pro-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 1.25rem; 
+        .pro-card::before { 
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; border-radius: 1.25rem; 
             background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.0) 50%);
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
-            z-index: 1; 
-            pointer-events: none; 
+            opacity: 0; transition: opacity 0.4s ease-in-out;
+            z-index: 1; pointer-events: none; 
         }
-
-        .pro-card:hover::before {
-            opacity: 1;
-        }
+        .pro-card:hover::before { opacity: 1; }
         
         .pro-card .pro-img-glow,
         .pro-card h3,
-        .pro-card > p, 
-        .pro-card .absolute.bottom-0 { 
-            transition: transform 0.15s ease-out; 
+        .pro-card > p, /* This targets direct children p tags for role and description in Pro Cards */
+        .pro-card .absolute.bottom-0,
+        .pro-card .mt-auto.pt-4 { 
             transform: translateZ(0px); 
         }
-        
-        .pro-card .pro-img-glow {
+        .pro-card .pro-img-glow { 
             box-shadow: 0 0 0 0 transparent; 
+            transition: box-shadow 0.3s ease-out; /* Added transition for image glow */
         }
         .pro-card[data-neon="blue"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #60a5fa66, 0 0 32px 8px #1e3a8a33; }
         .pro-card[data-neon="red"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ec415866, 0 0 32px 8px #991b1b33; }
         .pro-card[data-neon="purple"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #664bf066, 0 0 32px 8px #581c8733; }
         .pro-card[data-neon="yellow"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #ffce4166, 0 0 32px 8px #b4530933; }
-	    .pro-card[data-neon="green"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #86e14f66, 0 0 32px 8px #86e14f33; }
-	    .pro-card[data-neon="orange"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #f84f2966, 0 0 32px 8px #f84f2933; }
+        .pro-card[data-neon="green"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #86e14f66, 0 0 32px 8px #86e14f33; }
+        .pro-card[data-neon="orange"]:hover .pro-img-glow { box-shadow: 0 0 16px 4px #f84f2966, 0 0 32px 8px #f84f2933; }
 
-
-        @keyframes shifting-layers-shadow-yellow {
-            0%, 100% { box-shadow: 0 4px 16px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15), -8px 8px 32px 0 rgba(253,224,71,0.10); }
-            33% { box-shadow: 0 10px 24px 0 rgba(253,224,71,0.32), 18px 2px 40px 0 rgba(253,224,71,0.19), -10px 16px 40px 0 rgba(253,224,71,0.14); }
-            66% { box-shadow: 0 7px 28px 0 rgba(253,224,71,0.28), 12px 10px 44px 0 rgba(253,224,71,0.21), -18px 8px 44px 0 rgba(253,224,71,0.12); }
-        }
-        @keyframes shifting-layers-shadow-purple {
-            0%, 100% { box-shadow: 0 4px 16px 0 rgba(168,85,247,0.25), 8px 8px 32px 0 rgba(168,85,247,0.15), -8px 8px 32px 0 rgba(168,85,247,0.10); }
-            33% { box-shadow: 0 12px 30px 0 rgba(168,85,247,0.32), 20px 4px 44px 0 rgba(168,85,247,0.19), -12px 18px 44px 0 rgba(168,85,247,0.14); }
-            66% { box-shadow: 0 6px 20px 0 rgba(168,85,247,0.28), 10px 14px 40px 0 rgba(168,85,247,0.21), -20px 6px 40px 0 rgba(168,85,247,0.12); }
-        }
-        @keyframes shifting-layers-shadow-pink {
-            0%, 100% { box-shadow: 0 4px 16px 0 rgba(236,72,153,0.25), 8px 8px 32px 0 rgba(236,72,153,0.15), -8px 8px 32px 0 rgba(236,72,153,0.10); }
-            33% { box-shadow: 0 14px 28px 0 rgba(236,72,153,0.33), 14px 12px 40px 0 rgba(236,72,153,0.18), -18px 14px 40px 0 rgba(236,72,153,0.13); }
-            66% { box-shadow: 0 8px 36px 0 rgba(236,72,153,0.29), 18px 6px 48px 0 rgba(236,72,153,0.22), -14px 18px 48px 0 rgba(236,72,153,0.11); }
-        }
-        @keyframes shifting-layers-shadow-cyan {
-            0%, 100% { box-shadow: 0 4px 16px 0 rgba(34,211,238,0.25), 8px 8px 32px 0 rgba(34,211,238,0.15), -8px 8px 32px 0 rgba(34,211,238,0.10); }
-            33% { box-shadow: 0 8px 40px 0 rgba(34,211,238,0.31), 22px 8px 44px 0 rgba(34,211,238,0.17), -10px 20px 44px 0 rgba(34,211,238,0.13); }
-            66% { box-shadow: 0 12px 24px 0 rgba(34,211,238,0.27), 16px 12px 36px 0 rgba(34,211,238,0.20), -22px 10px 36px 0 rgba(34,211,238,0.12); }
-        }
-        .card-shadow-yellow { animation: shifting-layers-shadow-yellow 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
-        .card-shadow-purple { animation: shifting-layers-shadow-purple 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
-        .card-shadow-pink { animation: shifting-layers-shadow-pink 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
-        .card-shadow-cyan { animation: shifting-layers-shadow-cyan 9s cubic-bezier(.68,-0.55,.27,1.55) infinite; }
 
     </style>
 </head>
+
 <body>
+    <!-- Header Section Start -->
     <header class="bg-gray-900/80 backdrop-blur-md shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <!-- Logo -->
             <a href="index.html" class="flex-shrink-0" title="Go to Home">
                 <img class="h-10 w-auto" src="1hp Rebrand PP_PNG.png" alt="1hp Esports Logo"
                      onerror="this.onerror=null;this.src='https://placehold.co/150x50/7c3aed/ffffff?text=1hp+Logo&font=inter';">
             </a>
+            <!-- Desktop Navigation -->
             <div class="hidden md:flex flex-1 items-center justify-center space-x-4">
                 <a href="https://discord.com/invite/ksvuUyMvMb"
                    target="_blank"
@@ -701,6 +422,7 @@
                 <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
                 <a href="achievements.html" class="px-3 py-2 rounded-md text-sm font-semibold text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors">Achievements</a>
             </div>
+            <!-- Mobile Menu Button & Discord Icon (centered for mobile) -->
             <div class="md:hidden flex items-center flex-1 justify-center">
                 <a href="https://discord.com/invite/ksvuUyMvMb"
                    target="_blank"
@@ -723,6 +445,7 @@
                 </button>
             </div>
         </nav>
+        <!-- Mobile Menu Panel -->
         <div class="md:hidden hidden bg-gray-900/90 backdrop-blur-md" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Home</a>
@@ -735,8 +458,9 @@
             </div>
         </div>
     </header>
+    <!-- Header Section End -->
 
-    <!-- Adjusted padding for #home section: py-12 sm:py-16 (was py-16 sm:py-24) -->
+    <!-- Hero Section Start -->
     <section id="home" class="relative py-12 sm:py-16 bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('image_7d1423.png'); min-height: 65vh;">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <img src="https://i.ibb.co/ZR2JjTMk/1hp-Rebrand-Cover-Photo.png" alt="1hp Esports Cover" class="mx-auto mb-6 max-w-xl w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/800x200/111827/ffffff?text=1hp+Esports+Cover&font=inter';">
@@ -746,10 +470,11 @@
             </div>
         </div>
     </section>
+    <!-- Hero Section End -->
 
-    <!-- Adjusted padding for #about section: pt-8 (was pt-2) -->
-    <section id="about" class="pt-8 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center text-lg space-y-6 about-us-text">
+    <!-- About Us Section Start -->
+    <section id="about" class="pt-12 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center text-lg space-y-6">
             <div class="flex flex-col items-center">
                 <img 
                     src="https://i.ibb.co/LDmqzR5q/20250529-221611.jpg" 
@@ -767,63 +492,70 @@
             </p>
         </div>
     </section>
+    <!-- About Us Section End -->
 
-    <!-- Adjusted margin for "INTRODUCING OURSELVES" title: mt-10 mb-6 sm:mt-12 sm:mb-8 (was mt-12 mb-6 sm:mt-16 sm:mb-8) -->
+    <!-- "INTRODUCING OURSELVES" Title Start -->
     <div class="w-full flex justify-center mt-10 mb-6 sm:mt-12 sm:mb-8"> 
         <h2 class="main-section-title text-4xl sm:text-5xl lg:text-7xl font-extrabold text-center intro-title-effect tracking-tight">
             <span class="uppercase">INTRODUCING OURSELVES</span>
         </h2>
     </div>
+    <!-- "INTRODUCING OURSELVES" Title End -->
 
+    <!-- Founders Section Start -->
     <section id="founders" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-0">
-            <h3 class="text-center text-3xl sm:text-5xl font-bold mb-6 mt-0 founders-gradient-effect">
+            <h3 class="text-center text-3xl sm:text-5xl font-bold mb-10 mt-0 founders-gradient-effect">
             The Founders
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Founder Card 1 -->
                 <div class="card" data-shadow="rgba(255,206,65,0.55)">
                     <div class="founder-img-wrap">
                         <img class="founder-img disable-user-interaction"
-                            src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
-                            alt="Founder 1 - chiefhamim"
-                            draggable="false"
-                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+1&font=inter';">
+                             src="https://i.ibb.co/39YbhBRY/CHFL-800-V1.png"
+                             alt="Founder 1 - chiefhamim"
+                             draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/144x144/374151/4b5563?text=CH&font=montserrat';">
                     </div>
                     <div class="founder-name">chiefhamim</div>
                     <div class="founder-role">Co-Founder / Manager</div>
                     <div class="founder-desc">Visionary leader and co-founder of 1hp Esports, known for his guilable attitude and discussive mentality.</div>
                 </div>
+                <!-- Founder Card 2 -->
                 <div class="card" data-shadow="rgba(236,65,88,0.55)">
                     <div class="founder-img-wrap">
                         <img class="founder-img disable-user-interaction"
-                            src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
-                            alt="Founder 2 - crippz"
-                            draggable="false"
-                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+2&font=inter';">
+                             src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
+                             alt="Founder 2 - crippz"
+                             draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/144x144/374151/4b5563?text=C&font=montserrat';">
                     </div>
                     <div class="founder-name">crippz</div>
                     <div class="founder-role">Co-Founder / Admin</div>
                     <div class="founder-desc">Instrumental in building the team’s competitive edge, admired for his mechanical skills and leadership.</div>
                 </div>
+                <!-- Founder Card 3 -->
                 <div class="card" data-shadow="rgba(236,65,88,0.55)">
                     <div class="founder-img-wrap">
                         <img class="founder-img disable-user-interaction"
-                            src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
-                            alt="Founder 3 - WakaChaka"
-                            draggable="false"
-                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+3&font=inter';">
+                             src="https://i.ibb.co/JRbLW7GJ/wakachaka.jpg"
+                             alt="Founder 3 - WakaChaka"
+                             draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/144x144/374151/4b5563?text=W&font=montserrat';">
                     </div>
                     <div class="founder-name">WakaChaka</div>
                     <div class="founder-role">Co-Founder / Admin</div>
                     <div class="founder-desc">Key supporter and strategist, bringing experience and stability to the founding team. Currently inactive.</div>
                 </div>
+                <!-- Founder Card 4 -->
                 <div class="card" data-shadow="rgba(102,75,240,0.55)">
                     <div class="founder-img-wrap">
                         <img class="founder-img disable-user-interaction"
-                            src="https://i.ibb.co/b5D3dzDT/SHaN.png"
-                            alt="Founder 4 - SHaN"
-                            draggable="false"
-                            onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Founder+4&font=inter';">
+                             src="https://i.ibb.co/b5D3dzDT/SHaN.png"
+                             alt="Founder 4 - SHaN"
+                             draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/144x144/374151/4b5563?text=S&font=montserrat';">
                     </div>
                     <div class="founder-name">SHaN</div>
                     <div class="founder-role">Co-Founder / Retired</div>
@@ -832,39 +564,44 @@
             </div>
         </div>
     </section>
+    <!-- Founders Section End -->
 
+    <!-- Advisors Section Start -->
     <section id="advisors" class="pt-2 pb-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-0">
             <h3 class="advisors-title text-center text-3xl sm:text-5xl font-bold mb-8 mt-0">
                 Advisors
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
+                <!-- Advisor Card 1 -->
                 <div class="advisor-card advisor-blue flex flex-col items-center text-center p-8">
                     <img class="advisor-img disable-user-interaction"
-                        src="https://i.ibb.co/jkc4S44d/De-droper-logo.jpg"
-                        alt="1hp_moindedropper"
-                        draggable="false"
-                        onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=moindedropper&font=inter';">
+                         src="https://i.ibb.co/jkc4S44d/De-droper-logo.jpg"
+                         alt="1hp_moindedropper"
+                         draggable="false"
+                         onerror="this.onerror=null;this.src='https://placehold.co/112x112/374151/4b5563?text=MD&font=montserrat';">
                     <div class="advisor-name text-cyan-200">moindedropper</div>
                     <div class="advisor-role text-cyan-100">Advisor / Fund Manager</div>
                     <div class="advisor-desc">Oversees financial strategy and resource management for the team.</div>
                 </div>
+                <!-- Advisor Card 2 -->
                 <div class="advisor-card advisor-green flex flex-col items-center text-center p-8">
                     <img class="advisor-img disable-user-interaction"
-                        src="https://i.ibb.co/tpxrxGML/viper.png"
-                        alt="1hp_Viper"
-                        draggable="false"
-                        onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=Viper&font=inter';">
+                         src="https://i.ibb.co/tpxrxGML/viper.png"
+                         alt="1hp_Viper"
+                         draggable="false"
+                         onerror="this.onerror=null;this.src='https://placehold.co/112x112/374151/4b5563?text=V&font=montserrat';">
                     <div class="advisor-name text-green-200">[V̷]I̷P̷3̷R̷®</div>
                     <div class="advisor-role text-green-100">Advisor</div>
                     <div class="advisor-desc">Provides strategic advice and supports team development.</div>
                 </div>
+                <!-- Advisor Card 3 -->
                 <div class="advisor-card advisor-purple flex flex-col items-center text-center p-8">
                     <img class="advisor-img disable-user-interaction"
-                        src="https://i.ibb.co/wNskW3gH/Rifat-Kabir-Samrat-1.jpg"
-                        alt="1hp_INSTINCTx"
-                        draggable="false"
-                        onerror="this.onerror=null;this.src='https://placehold.co/180x180/374151/4b5563?text=INSTINCTx&font=inter';">
+                         src="https://i.ibb.co/wNskW3gH/Rifat-Kabir-Samrat-1.jpg"
+                         alt="1hp_INSTINCTx"
+                         draggable="false"
+                         onerror="this.onerror=null;this.src='https://placehold.co/112x112/374151/4b5563?text=I&font=montserrat';">
                     <div class="advisor-name text-purple-200">INSTINCTx</div>
                     <div class="advisor-role text-purple-100">Advisor</div>
                     <div class="advisor-desc">Shares insightful advice and suggestions to help guide the team.</div>
@@ -872,272 +609,254 @@
             </div>
         </div>
     </section>
+    <!-- Advisors Section End -->
 
+    <!-- Esports Team Section Start (Now includes Clan Specialists) -->
     <section id="esports-team" class="pt-2 pb-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         <div class="container mx-auto px-0 relative z-10">
-            <h2 class="main-section-title text-4xl sm:text-6xl font-extrabold text-center mb-8 tracking-widest effect-title-1hp">
+            <h2 class="main-section-title text-4xl sm:text-6xl font-extrabold text-center mb-12 tracking-widest effect-title-1hp">
                 <span class="uppercase">COMPETITIVE ROSTERS</span>
             </h2>
-            <div class="mb-10">
-                <h3 class="team-subtitle-legacy text-center text-blue-300 text-3xl sm:text-4xl font-bold mb-6 mt-0 tracking-wider legacy-effect">
+            
+            <!-- 1hp Legacy Sub-section -->
+            <div class="mb-12">
+                <h3 class="team-subtitle-legacy text-center text-blue-300 text-3xl sm:text-4xl font-bold mb-8 mt-0 tracking-wider legacy-effect">
                     1hp Legacy
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pro-card-grid-container">
+                    <!-- Legacy Player Card: crippz -->
                     <div class="card pro-card bg-blue-trans rounded-2xl flex flex-col items-center text-center p-8 border border-blue-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="blue">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-blue-400 shadow-md pro-img-glow disable-user-interaction"
-                             src="https://i.ibb.co/h1Vt0vBJ/crippz.png"
-                             alt="1hp_crippz"
-                             draggable="false"
-                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_crippz&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-blue-400 tracking-wide flex items-center gap-2">
-                            crippz
-                        </h3>
-                        <p class="text-blue-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-blue-900/60 text-xs font-bold tracking-wider">In Game Leader </span></p>
-                        <p class="text-gray-300 text-sm mb-2">
+                             src="https://i.ibb.co/h1Vt0vBJ/crippz.png" alt="1hp_crippz" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/1e3a8a/ffffff?text=C&font=montserrat';">
+                        <h3 class="text-xl font-semibold mb-2 text-blue-400 tracking-wide">crippz</h3>
+                        <p class="text-blue-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-blue-900/60 text-xs font-bold tracking-wider">In Game Leader</span></p>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">
                             The star and heart of 1hp. Famous for getting <span class="font-mono bg-blue-900/40 px-1 rounded">code:net</span> in tournaments, but always returns with a smile. His unique playstyle, sharp leadership, and witty banter keep the team motivated and the mood light, no matter the stakes.
                         </p>
-                        <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                        <div class="w-full flex justify-center mt-auto pt-4">
                             <a href="https://www.facebook.com/xCrippz/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-medium transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
-                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
                                 Facebook
                             </a>
                         </div>
                     </div>
+                    <!-- Legacy Player Card: xeox69 -->
                     <div class="card pro-card bg-red-trans rounded-2xl flex flex-col items-center text-center p-8 border border-red-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="red">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-red-400 shadow-md pro-img-glow disable-user-interaction"
-                             src="https://i.ibb.co/s9PQWFC9/xeox69.jpg"
-                             alt="1hp_xeox69"
-                             draggable="false"
-                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_xeox69&font=inter';">
-                        <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide flex items-center gap-2">
-                            xeox69
-                        </h3>
-                        <p class="text-red-300 font-medium mb-2">
-                        <span class="ml-2 px-2 py-1 rounded bg-red-900/60 text-xs font-bold tracking-wider">Playmaker / Offense</span></p>
-                        <p class="text-gray-300 text-sm mb-2">
+                             src="https://i.ibb.co/s9PQWFC9/xeox69.jpg" alt="1hp_xeox69" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/991b1b/ffffff?text=X&font=montserrat';">
+                        <h3 class="text-xl font-semibold mb-2 text-red-400 tracking-wide">xeox69</h3>
+                        <p class="text-red-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-red-900/60 text-xs font-bold tracking-wider">Playmaker / Offense</span></p>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">
                             The playmaker and clutch specialist. Known for his "wait, how?" gameplay. Often the first to dive in, but also the first to pull off the impossible. His synergy with crippz is legendary in the 1hp squad.
                         </p>
-                        <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                        <div class="w-full flex justify-center mt-auto pt-4">
                             <a href="https://www.facebook.com/xeox69" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-medium transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
-                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
                                 Facebook
                             </a>
                         </div>
                     </div>
+                    <!-- Legacy Player Card: JDM Doge -->
                     <div class="card pro-card bg-purple-trans rounded-2xl flex flex-col items-center text-center p-8 border border-purple-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="purple">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-400 shadow-md pro-img-glow disable-user-interaction"
-                             src="https://i.ibb.co/YFxSBmMq/fahim-bhai.png"
-                             alt="1hp_JDM Doge"
-                             draggable="false"
-                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_JDM%20Doge&font=inter';">
+                             src="https://i.ibb.co/YFxSBmMq/fahim-bhai.png" alt="1hp_JDM Doge" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/581c87/ffffff?text=JD&font=montserrat';">
                         <h3 class="text-xl font-semibold mb-2 text-purple-400 tracking-wide">JDM Doge</h3>
-                        <p class="text-purple-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-purple-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>
-                        <p class="text-gray-300 text-sm mb-2">
+                        <p class="text-purple-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-purple-900/60 text-xs font-bold tracking-wider">Offense / Support</span></p>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">
                             The calmest presence in the squad. JDM Doge is the tactical backbone—always composed, always ready to support. His rapid response and precise ability usage make him a nightmare for opponents and a blessing for teammates.
                         </p>
                     </div>
                 </div> 
+            </div>
 
-                <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-10 mt-8 tracking-wider youngsters-effect">
+            <!-- 1hp Youngsters Sub-section -->
+            <div class="mb-12">
+                <h3 class="team-subtitle-youngsters text-center text-green-300 text-3xl sm:text-4xl font-bold mb-8 mt-12 tracking-wider youngsters-effect">
                     1hp Youngsters
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pro-card-grid-container">
-                    <div class="card pro-card bg-yellow-trans rounded-2xl flex flex-col items-center text-center p-8 border border-yellow-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="yellow">
+                    <!-- Youngster Card: Frenzy -->
+                    <div class="card pro-card bg-yellow-trans rounded-2xl flex flex-col items-center text-center p-8 border border-yellow-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="yellow">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-yellow-300 shadow-md bg-black pro-img-glow disable-user-interaction"
-                             src="https://i.ibb.co/qYgTRQ1T/frenzy.png"
-                             alt="1hp_Frenzy"
-                             draggable="false"
-                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_Frenzy&font=inter';">
+                             src="https://i.ibb.co/qYgTRQ1T/frenzy.png" alt="1hp_Frenzy" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/b45309/ffffff?text=F&font=montserrat';">
                         <h3 class="text-xl font-semibold mb-2 text-yellow-400 tracking-wide">Frenzy</h3>
-                        <p class="text-yellow-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-yellow-900/60 text-xs font-bold tracking-wider">In Game Leader </span></p>
-                        <p class="text-gray-300 text-sm">Joined August 13, 2021 as the youngest recruit of 1hp. Played Valorant as well. Known for insanely good mechanical skill and decision making. Won uncountable tournaments with crippz & xeox69 in home and abroad.</p>
-                        <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                        <p class="text-yellow-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-yellow-900/60 text-xs font-bold tracking-wider">In Game Leader</span></p>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">Joined August 13, 2021 as the youngest recruit of 1hp. Played Valorant as well. Known for insanely good mechanical skill and decision making. Won uncountable tournaments with crippz & xeox69 in home and abroad.</p>
+                        <div class="w-full flex justify-center mt-auto pt-4">
                             <a href="https://www.facebook.com/Frenzy4356" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-medium transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
-                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
                                 Facebook
                             </a>
                         </div>
                     </div>
-                    <div class="card pro-card bg-green-trans rounded-2xl flex flex-col items-center text-center p-8 border border-green-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="green">
+                    <!-- Youngster Card: WalkerX -->
+                    <div class="card pro-card bg-green-trans rounded-2xl flex flex-col items-center text-center p-8 border border-green-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="green">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-green-300 shadow-md pro-img-glow disable-user-interaction"
-                             src="https://i.ibb.co/tMKPHk9F/Walker.png"
-                             alt="1hp_WalkerX"
-                             draggable="false"
-                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_WalkerX&font=inter';">
+                             src="https://i.ibb.co/tMKPHk9F/Walker.png" alt="1hp_WalkerX" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/15803d/ffffff?text=W&font=montserrat';">
                         <h3 class="text-xl font-semibold mb-2 text-green-400 tracking-wide">WalkerX</h3>
-                        <p class="text-green-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-green-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>
-                        <p class="text-gray-300 text-sm">Known for his juicy mechanical skill; often time does suspicious gameplay and has 6th-sense game-sense!? Very good at supporting team when they need him the most by dying first!? but homie is master at playmaking most of the times.</p>
-                        <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
+                        <p class="text-green-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-green-900/60 text-xs font-bold tracking-wider">Offense / Support</span></p>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">Known for his juicy mechanical skill; often time does suspicious gameplay and has questionable game-sense!? Very good at supporting team when they need him the most by dying first!? but homie is master at playmaking most of the times.</p>
+                        <div class="w-full flex justify-center mt-auto pt-4">
                             <a href="https://www.youtube.com/@_walkerX" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-medium transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/>
-                                </svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
                                 YouTube
                             </a>
                         </div>
                     </div>
-                    <div class="card pro-card bg-orange-trans rounded-2xl flex flex-col items-center text-center p-8 border border-orange-400/30 shadow-lg relative overflow-visible" style="min-height: 420px;" data-neon="orange">
+                    <!-- Youngster Card: 1Doom -->
+                    <div class="card pro-card bg-orange-trans rounded-2xl flex flex-col items-center text-center p-8 border border-orange-400/30 shadow-lg relative overflow-visible" style="min-height: 440px;" data-neon="orange">
                         <div class="pro-glow"></div>
                         <img class="w-28 h-28 object-contain rounded-full mb-4 border-4 border-orange-300 shadow-md bg-black pro-img-glow disable-user-interaction"
-                             src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg"
-                             alt="1hp_1Doom"
-                             draggable="false"
-                             onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=1hp_1Doom&font=inter';">
+                             src="https://i.ibb.co/JRzRJ9x2/Doom-Symbol.jpg" alt="1hp_1Doom" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/c2410c/ffffff?text=D&font=montserrat';">
                         <h3 class="text-xl font-semibold mb-2 text-orange-400 tracking-wide">1Doom</h3>
-                        <p class="text-orange-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-orange-900/60 text-xs font-bold tracking-wider">Offense / Support </span></p>
-                        <p class="text-gray-300 text-sm"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.</p>
+                        <p class="text-orange-300 font-medium mb-2"><span class="ml-2 px-2 py-1 rounded bg-orange-900/60 text-xs font-bold tracking-wider">Offense / Support</span></p>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow"> Joined September 20, 2023. Formerly an IGL, 1Doom is recognized for his swift mechanical execution, top-tier game sense, and ability to make well-timed, subtle playmaking decisions. While his core strength lies in offensive gameplay, his supportive instincts and organized style make him a key asset in team dynamics.</p>
                     </div>
                 </div> 
             </div>
+
+            <!-- Clan Specialists Sub-Section (Moved here) -->
+            <div class="mb-12"> 
+                <h3 class="team-subtitle-specialists text-center text-3xl sm:text-6xl font-bold mb-8 mt-12 tracking-wider clan-specialists-effect">
+                    CLAN SPECIALISTS
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center" data-specialist-grid>
+                    <!-- Specialist Card: MUSTAKIM -->
+                    <div class="card specialist-card rounded-2xl overflow-hidden flex flex-col items-center text-center p-8"
+                         data-theme="yellow" style="min-height: 500px; width: calc(100% + 3px); ">
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 shadow-lg disable-user-interaction" 
+                             src="https://i.ibb.co/QjkJ5Jqq/Discord-03-June-2025-10-01-12-PM.png" alt="MUSTAKIM" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/ca8a04/ffffff?text=M&font=montserrat';">
+                        <h4 class="text-xl font-bold mb-1">MUSTAKIM</h4>
+                        <p class="font-medium mb-1 italic">Diplomatic Troubleshooter</p>
+                        <p class="text-gray-300 text-sm flex-grow">
+                            Mustakim thrives in the moments that matter most. Does dominating performance under pressure, brings a bold, can-do spirit that energizes the team and drives results. With a mix of sharp instincts and an easygoing sense of humor, homie strikes the perfect balance between getting things done and keeping things fun.
+                        </p>
+                    </div>
+                    <!-- Specialist Card: Psykix -->
+                    <div class="card specialist-card rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 relative"
+                         data-theme="purple" style="min-height: 500px; width: calc(100% + 3px); ">
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 shadow-lg disable-user-interaction"
+                             src="https://i.ibb.co/wGWcNjh/psykix.png" alt="Psykix" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/7e22ce/ffffff?text=P&font=montserrat';">
+                        <h4 class="text-xl font-bold mb-1">Psykix</h4>
+                        <p class="font-medium mb-1 italic">Chillest Pro Player</p>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">
+                            Amongst the oldest competitive Apex Player in Bangladesh. Known for his respective nature and skillful gaming performance. Has a magnificent voice. A true human being, bringing a unique blend of skill, charisma, and passion to the clan. 
+                        </p>
+                        <div class="w-full flex flex-col items-center gap-2 mt-auto pt-4">
+                            <a href="https://www.facebook.com/psykix" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-medium transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                                Facebook
+                            </a>
+                            <a href="https://www.youtube.com/@zabirshahid2658" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-medium transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+                                YouTube
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Specialist Card: AfraBae -->
+                    <div class="card specialist-card rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 relative"
+                         data-theme="pink" style="min-height: 500px; width: calc(100% + 3px); ">
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 shadow-lg disable-user-interaction"
+                             src="https://i.ibb.co/wNRBVd2g/AfraBae.jpg" alt="AfraBae" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/db2777/ffffff?text=A&font=montserrat';">
+                        <h4 class="text-xl font-bold mb-1">AfraBae</h4>
+                        <p class="font-medium mb-1 italic">Pro Player & Team Support</p>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">
+                            AfraBae is the first female player from Bangladesh to surpass 100K+ LP, making waves as a trailblazer in the scene. Known for her supportive spirit and boundless energy, she uplifts the squad both in and out of the game, bringing passion, positivity, and performance to every match.
+                        </p>
+                        <div class="w-full flex justify-center mt-auto pt-4">
+                            <a href="https://www.facebook.com/afraplay007/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-medium transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Specialist Card: DrStitch -->
+                    <div class="card specialist-card rounded-2xl overflow-hidden flex flex-col items-center text-center p-8"
+                         data-theme="cyan" style="min-height: 500px; width: calc(100% + 3px); ">
+                        <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 shadow-lg disable-user-interaction"
+                             src="https://i.ibb.co/gZF1Bb9Q/stitch.jpg" alt="DrStitch" draggable="false"
+                             onerror="this.onerror=null;this.src='https://placehold.co/112x112/0891b2/ffffff?text=DS&font=montserrat';">
+                        <h4 class="text-xl font-bold mb-1 normal-case">DrStitch</h4>
+                        <p class="font-medium mb-1 italic">Internal Operation Specialist</p>
+                        <p class="text-gray-300 text-sm flex-grow">
+                            Stitch supports the smooth functioning of our internal operations with a professional, reliable presence. Known for excellent communication and a sharp problem-solving mindset, Stitch ensures that behind-the-scenes processes run efficiently while remaining approachable and collaborative.
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- End of Clan Specialists Sub-section -->
         </div>
     </section>
-    
-    <section id="teams-others" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8"> 
-            <!-- Adjusted font size for CLAN SPECIALISTS: text-4xl sm:text-5xl (was sm:text-7xl) -->
-            <h3 class="main-section-title text-4xl sm:text-6xl font-bold text-center mb-10 mt-8 clan-specialists-effect">
-                CLAN SPECIALISTS
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-yellow-400/10 card-shadow-yellow"
-                     style="min-height: 500px; width: 100%; max-width: 100%;">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-yellow-300 shadow-lg disable-user-interaction"
-                         src="https://i.ibb.co/QjkJ5Jqq/Discord-03-June-2025-10-01-12-PM.png"
-                         alt="MUSTAKIM"
-                         draggable="false"
-                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=MUSTAKIM&font=inter';">
-                    <h4 class="text-xl font-bold text-yellow-400 mb-1">MUSTAKIM</h4>
-                    <p class="text-yellow-200 font-medium mb-1 italic">Diplomatic Troubleshooter</p>
-                    <p class="text-gray-300 text-sm">
-                        Mustakim thrives in the moments that matter most. Does dominating performance under pressure, brings a bold, can-do spirit that energizes the team and drives results. With a mix of sharp instincts and an easygoing sense of humor, homie strikes the perfect balance between getting things done and keeping things fun.
-                    </p>
-                </div>
-                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-purple-400/10 relative card-shadow-purple"
-                     style="min-height: 500px; width: 100%; max-width: 100%;">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-purple-300 shadow-lg disable-user-interaction"
-                         src="https://i.ibb.co/wGWcNjh/psykix.png"
-                         alt="Psykix"
-                         draggable="false"
-                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=Psykix&font=inter';">
-                    <h4 class="text-xl font-bold text-purple-400 mb-1">Psykix</h4>
-                    <p class="text-purple-200 font-medium mb-1 italic">Chillest Pro Player</p>
-                    <p class="text-gray-300 text-sm">
-                        Amongst the oldest competitive Apex Player in Bangladesh. Known for his respective nature and skillful gaming performance. Has a magnificent voice. A true human being, bringing a unique blend of skill, charisma, and passion to the clan. 
-                    </p>
-                    <div class="w-full flex flex-col items-center gap-2 absolute left-0 bottom-0 pb-6">
-                        <a href="https://www.facebook.com/psykix" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
-                            </svg>
-                            Facebook
-                        </a>
-                        <a href="https://www.youtube.com/@zabirshahid2658" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.2 6 12 6 12 6s-6.2 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94C2 9.661 2 12 2 12s0 2.339.2 3.999a2.75 2.75 0 0 0 1.94 1.94C5.8 18 12 18 12 18s6.2 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94C22 14.339 22 12 22 12s0-2.339-.2-3.999zM10 15.5v-7l6 3.5-6 3.5z"/>
-                            </svg>
-                            YouTube
-                        </a>
-                    </div>
-                </div>
-                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-pink-400/10 relative card-shadow-pink"
-                     style="min-height: 500px; width: 100%; max-width: 100%;">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-pink-300 shadow-lg disable-user-interaction"
-                         src="https://i.ibb.co/wNRBVd2g/AfraBae.jpg"
-                         alt="AfraBae"
-                         draggable="false"
-                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=AfraBae&font=inter';">
-                    <h4 class="text-xl font-bold text-pink-400 mb-1">AfraBae</h4>
-                    <p class="text-pink-200 font-medium mb-1 italic">Pro Player & Team Support</p>
-                    <p class="text-gray-300 text-sm">
-                        AfraBae is the first female player from Bangladesh to surpass 100K+ LP, making waves as a trailblazer in the scene. Known for her supportive spirit and boundless energy, she uplifts the squad both in and out of the game, bringing passion, positivity, and performance to every match.
-                    </p>
-                    <div class="w-full flex justify-center absolute left-0 bottom-0 pb-6">
-                        <a href="https://www.facebook.com/afraplay007/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 font-medium transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
-                            </svg>
-                            Facebook
-                        </a>
-                    </div>
-                </div>
-                <div class="card bg-[#181f2a]/90 rounded-2xl overflow-hidden flex flex-col items-center text-center p-8 border border-cyan-400/10 card-shadow-cyan"
-                     style="min-height: 500px; width: 100%; max-width: 100%;">
-                    <img class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-cyan-300 shadow-lg disable-user-interaction"
-                         src="https://i.ibb.co/gZF1Bb9Q/stitch.jpg"
-                         alt="DrStitch"
-                         draggable="false"
-                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/4b5563?text=DrStitch&font=inter';">
-                    <h4 class="text-xl font-bold text-cyan-400 mb-1 normal-case">DrStitch</h4>
-                    <p class="text-cyan-200 font-medium mb-1 italic">Internal Operation Specialist</p>
-                    <p class="text-gray-300 text-sm">
-                        Stitch supports the smooth functioning of our internal operations with a professional, reliable presence. Known for excellent communication and a sharp problem-solving mindset, Stitch ensures that behind-the-scenes processes run efficiently while remaining approachable and collaborative.
-                    </p>
-                </div>
-            </div>
-        </div> 
-    </section>
+    <!-- Esports Team Section End -->
 
-    <section id="news" class="py-12 sm:py-16 bg-gray-850/80 backdrop-blur-md rounded-lg my-14 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- News Section Start -->
+    <section id="news" class="py-12 sm:py-16 my-14 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Adjusted font size for News title: text-3xl sm:text-4xl to text-4xl sm:text-[2.5rem] (approx +1px feel) -->
-            <h2 class="main-section-title text-4xl sm:text-[2.5rem] leading-tight font-bold text-center mb-8 sm:mb-12 news-gradient-effect">
+            <h2 class="main-section-title text-4xl sm:text-[2.6rem] leading-tight font-bold text-center mb-10 sm:mb-12 news-gradient-effect">
                 Latest News <span class="font-extrabold">&</span> Updates
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
-                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/wFHhx03w/Legends-Reborn-Tournament-Top-5-Prizewinners.png" alt="Legends-Reborn-Tournament-Top-5-Prizewinners" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=Tournament+Win&font=inter';">
-                    <div class="p-6">
+                <!-- News Card 1 -->
+                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden flex flex-col">
+                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/wFHhx03w/Legends-Reborn-Tournament-Top-5-Prizewinners.png" alt="Legends Reborn Tournament Winners" onerror="this.onerror=null;this.src='https://placehold.co/600x300/374151/4b5563?text=Tournament+Win&font=inter';">
+                    <div class="p-6 flex flex-col flex-grow">
                         <p class="text-sm text-gray-500 mb-1">May 26, 2025</p>
                         <h3 class="text-xl font-semibold mb-3 text-white">1hp Esports WON Legends Reborn Tournament!</h3>
-                        <p class="text-gray-400 text-sm mb-4">An incredible performance by the team led to a decisive victory in the finals. Read more about their journey...</p>
-                        <a href="https://www.facebook.com/official1hp/posts/pfbid02tDDJMfJxq5w8fZhBREn37PRydngn3oKKz5beuBCmE8rF4QdBQ3vPXcXLCSsxHJcNl" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">An incredible performance by the team led to a decisive victory in the finals. Read more about their journey...</p>
+                        <a href="https://www.facebook.com/official1hp/posts/pfbid02tDDJMfJxq5w8fZhBREn37PRydngn3oKKz5beuBCmE8rF4QdBQ3vPXcXLCSsxHJcNl" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors mt-auto">Read More →</a>
                     </div>
                 </div>
-                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
-                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/C310bs5R/1hp-member-Sign-UP-01.png" alt="1hp-member-Sign-UP-01" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=New+Player&font=inter';">
-                    <div class="p-6">
+                <!-- News Card 2 -->
+                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden flex flex-col">
+                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/C310bs5R/1hp-member-Sign-UP-01.png" alt="New Player Announcement" onerror="this.onerror=null;this.src='https://placehold.co/600x300/374151/4b5563?text=New+Player&font=inter';">
+                    <div class="p-6 flex flex-col flex-grow">
                         <p class="text-sm text-gray-500 mb-1">December 5, 2023</p>
                         <h3 class="text-xl font-semibold mb-3 text-white">Welcoming Our Newest Star Player!</h3>
-                        <p class="text-gray-400 text-sm mb-4">We're thrilled to announce the latest addition to our Apex Legends roster, INSTINCTx. Get to know them here...</p>
-                        <a href="https://www.facebook.com/photo.php?fbid=1056223615800813&set=pb.100042395546650.-2207520000&type=3" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">We're thrilled to announce the latest addition to our Apex Legends roster, INSTINCTx. Get to know them here...</p>
+                        <a href="https://www.facebook.com/photo.php?fbid=1056223615800813&set=pb.100042395546650.-2207520000&type=3" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors mt-auto">Read More →</a>
                     </div>
                 </div>
-                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden">
-                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/wNLSs47z/Legends-Reborn-Tournament-Final-Results-Points-Table.png" alt="Legends-Reborn-Tournament-Final-Results-Points-Table" onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/4b5563?text=Match+Recap&font=inter';">
-                    <div class="p-6">
+                <!-- News Card 3 -->
+                <div class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden flex flex-col">
+                    <img class="w-full h-48 object-cover" src="https://i.ibb.co/wNLSs47z/Legends-Reborn-Tournament-Final-Results-Points-Table.png" alt="Match Recap Image" onerror="this.onerror=null;this.src='https://placehold.co/600x300/374151/4b5563?text=Match+Recap&font=inter';">
+                    <div class="p-6 flex flex-col flex-grow">
                         <p class="text-sm text-gray-500 mb-1">May 26, 2025</p>
                         <h3 class="text-xl font-semibold mb-3 text-white">Match Recap: Intense Battle Against Rivals</h3>
-                        <p class="text-gray-400 text-sm mb-4">A nail-biting series that went down to the wire. Catch all the highlights and analysis...</p>
-                        <a href="https://www.youtube.com/watch?v=L6Ku_fg96BY" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors">Read More →</a>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">A nail-biting series that went down to the wire. Catch all the highlights and analysis...</p>
+                        <a href="https://www.youtube.com/watch?v=L6Ku_fg96BY" target="_blank" rel="noopener" class="font-medium text-purple-400 hover:text-purple-300 transition-colors mt-auto">Read More →</a>
                     </div>
                 </div>
             </div> 
-            <div class="flex justify-center items-center mt-8">
+            <div class="flex justify-center items-center mt-10">
                 <a href="#" class="btn btn-primary bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300">
                     View All News
                 </a>
             </div>
         </div>
     </section>
+    <!-- News Section End -->
 
+    <!-- Sponsors Section Start -->
     <section id="sponsors" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Adjusted font size for Sponsors title: text-3xl sm:text-4xl to text-4xl sm:text-[2.5rem] (approx +1px feel) -->
-            <h2 class="main-section-title text-4xl sm:text-[2.5rem] leading-tight font-bold text-center mb-8 sm:mb-12 sponsors-gradient-effect">
+            <h2 class="main-section-title text-4xl sm:text-[2.6rem] leading-tight font-bold text-center mb-10 sm:mb-12 sponsors-gradient-effect">
                 Our Valued Sponsors
             </h2>
             <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
+                 <!-- Example: <img src="sponsor-logo.png" alt="Sponsor Name" class="h-12 mx-auto filter grayscale hover:grayscale-0 transition-all"> -->
             </div>
             <div class="flex justify-center mt-12">
                 <img src="https://i.ibb.co/PpZHKkW/1hp-Xcvj-Cover-4.png" alt="1hp Xcvj Cover - Placeholder for Sponsors" class="rounded-lg shadow-lg max-w-full h-auto" loading="lazy">
@@ -1149,16 +868,20 @@
             </div>
         </div>
     </section>
+    <!-- Sponsors Section End -->
 
+    <!-- Footer Section Start -->
     <footer id="contact" class="bg-gray-900/50 py-12 mt-12"> 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="border-t border-gray-700 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Footer Column 1: About -->
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-6">1hp Esports</h3>
                     <p class="text-gray-400 text-sm">
                         We are a community of gamers who believe in the power of teamwork, respect, and fun. Our mission is to create a positive environment where players can thrive, improve, and enjoy the game together.
                     </p>
                 </div>
+                <!-- Footer Column 2: Quick Links -->
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-6">Quick Links</h3>
                     <ul class="space-y-1">
@@ -1168,6 +891,7 @@
                         <li><a href="#" class="text-gray-400 hover:text-purple-400 text-sm transition-colors">Media Kit</a></li>
                     </ul>
                 </div>
+                <!-- Footer Column 3: Connect -->
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-4">Connect With Us</h3>
                     <div>
@@ -1184,268 +908,310 @@
                     </div>
                 </div>
             </div>
+            <!-- Copyright -->
             <div class="mt-12 border-t border-gray-700 pt-8 w-full flex flex-col items-center justify-center text-center">
                 <p class="text-sm text-gray-500">© <span id="currentYear"></span> 1hp Esports. All rights reserved.</p>
                 <p class="text-xs text-gray-600 mt-1">Website developed by <b>@chiefhamim</b></p>
             </div>
         </div>
     </footer>
+    <!-- Footer Section End -->
 
+    <!-- JavaScript Start -->
     <script>
-        // --- Mobile Menu Functionality ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // --- Utility Functions ---
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
 
-        if (mobileMenuButton && mobileMenu) {
+        // --- Mobile Menu Functionality ---
+        function initializeMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenuButton || !mobileMenu) return;
+
             mobileMenuButton.addEventListener('click', () => {
                 const isExpanded = mobileMenu.classList.toggle('hidden');
-                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
                 mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
             });
 
             mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', (event) => {
-                    if (link.getAttribute('href').startsWith('#')) {
-                        if (!mobileMenu.classList.contains('hidden')) {
-                            mobileMenu.classList.add('hidden');
-                            mobileMenuButton.setAttribute('aria-expanded', 'false');
-                            mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
-                        }
+                link.addEventListener('click', () => {
+                    if (link.getAttribute('href').startsWith('#') && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
                     }
                 });
             });
         }
 
-        // --- Smooth Scroll for Anchor Links (with offset for sticky header) ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+        // --- Smooth Scroll for Anchor Links ---
+        function initializeSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === "#") return; 
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         e.preventDefault();
                         const header = document.querySelector('header.sticky'); 
                         const headerOffset = header ? header.offsetHeight : 0;
                         const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset + 1; 
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                         
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
-                    }
-                }
-            });
-        });
-
-        // --- Set Current Year in Footer ---
-        const currentYearElement = document.getElementById('currentYear');
-        if (currentYearElement) {
-            currentYearElement.textContent = new Date().getFullYear();
-        }
-
-        // --- 1hp Founders Section Animations ---
-        function animateFoundersOnScroll() {
-            const cards = document.querySelectorAll('#founders .card');
-            if (cards.length === 0) return;
-
-            const reveal = () => {
-                cards.forEach((card, i) => {
-                    const rect = card.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 60) { 
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                        // Apply staggered transition only for initial reveal, not for hover
-                        if (!card.classList.contains('has-revealed')) {
-                             card.style.transition = `opacity 1s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s ${i * 0.1 + 0.2}s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.35s cubic-bezier(.25,.8,.25,1), border-color 0.35s ease-in-out`;
-                             card.classList.add('has-revealed');
-                        } else {
-                            // Subsequent transitions (for hover)
-                             card.style.transition = `transform 0.35s cubic-bezier(.25,.8,.25,1), box-shadow 0.35s cubic-bezier(.25,.8,.25,1), border-color 0.35s ease-in-out`;
-                        }
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                     }
                 });
-            };
-
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(60px)';
             });
-
-            window.addEventListener('scroll', reveal, { passive: true });
-            reveal(); 
         }
-        animateFoundersOnScroll();
 
-        // Removed the old JS hover for founders cards as CSS handles it now.
-
-        (function foundersParticles() {
+        // --- Set Current Year in Footer ---
+        function setCurrentYear() {
+            const currentYearElement = document.getElementById('currentYear');
+            if (currentYearElement) {
+                currentYearElement.textContent = new Date().getFullYear();
+            }
+        }
+        
+        // --- Founders Section: Background Particle Animation ---
+        function foundersParticles() {
             const section = document.getElementById('founders');
             if (!section) return;
-
             const canvas = document.createElement('canvas');
-            canvas.style.position = 'absolute';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.width = '100%';
-            canvas.style.height = '100%';
-            canvas.style.pointerEvents = 'none';
-            canvas.style.zIndex = '0'; 
-            section.style.position = 'relative'; 
-            section.prepend(canvas); 
-
+            canvas.style.position = 'absolute'; canvas.style.top = '0'; canvas.style.left = '0';
+            canvas.style.width = '100%'; canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none'; canvas.style.zIndex = '0'; 
+            section.style.position = 'relative'; section.prepend(canvas);
             const ctx = canvas.getContext('2d');
             let animationFrameId;
 
             function resizeCanvas() {
-                canvas.width = section.offsetWidth;
-                canvas.height = section.offsetHeight;
+                canvas.width = section.offsetWidth; canvas.height = section.offsetHeight;
             }
             resizeCanvas(); 
-            window.addEventListener('resize', resizeCanvas);
+            window.addEventListener('resize', debounce(resizeCanvas, 250));
 
-            const colors = [
-                'rgba(253,224,71,0.18)',   
-                'rgba(236,65,88,0.18)',    
-                'rgba(102,75,240,0.18)',   
-                'rgba(255,255,255,0.10)'   
-            ];
-            const particles = Array.from({length: 24}, () => ({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                r: 12 + Math.random() * 18,
-                dx: (Math.random() - 0.5) * 0.2,
-                dy: (Math.random() - 0.5) * 0.2,
-                color: colors[Math.floor(Math.random() * colors.length)],
-                alpha: 0.2 + Math.random() * 0.3
+            const colors = ['rgba(253,224,71,0.18)','rgba(236,65,88,0.18)','rgba(102,75,240,0.18)','rgba(255,255,255,0.10)'];
+            const particles = Array.from({length: 20}, () => ({
+                x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: 10+Math.random()*15,
+                dx: (Math.random()-0.5)*0.15, dy: (Math.random()-0.5)*0.15,
+                color: colors[Math.floor(Math.random()*colors.length)], alpha: 0.15+Math.random()*0.25
             }));
 
             function drawParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (const p of particles) {
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-                    ctx.fillStyle = p.color;
-                    ctx.globalAlpha = p.alpha;
-                    ctx.shadowColor = p.color; 
-                    ctx.shadowBlur = 16;
-                    ctx.fill();
-                }
-                ctx.globalAlpha = 1; 
-                ctx.shadowBlur = 0; 
+                if (!ctx) return; 
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                particles.forEach(p=>{
+                    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,2*Math.PI); ctx.fillStyle=p.color;
+                    ctx.globalAlpha=p.alpha; ctx.shadowColor=p.color; ctx.shadowBlur=12; ctx.fill();
+                });
+                ctx.globalAlpha=1; ctx.shadowBlur=0;
             }
 
-            function animateParticles() {
-                for (const p of particles) {
-                    p.x += p.dx;
-                    p.y += p.dy;
-                    if (p.x + p.r < 0) p.x = canvas.width + p.r;
-                    else if (p.x - p.r > canvas.width) p.x = -p.r;
-                    if (p.y + p.r < 0) p.y = canvas.height + p.r;
-                    else if (p.y - p.r > canvas.height) p.y = -p.r;
-                }
+            function animateParticlesLoop() {
+                particles.forEach(p=>{
+                    p.x+=p.dx; p.y+=p.dy;
+                    if(p.x+p.r<0)p.x=canvas.width+p.r; else if(p.x-p.r>canvas.width)p.x=-p.r;
+                    if(p.y+p.r<0)p.y=canvas.height+p.r; else if(p.y-p.r>canvas.height)p.y=-p.r;
+                });
                 drawParticles();
-                animationFrameId = requestAnimationFrame(animateParticles);
+                animationFrameId = requestAnimationFrame(animateParticlesLoop);
             }
             
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (!animationFrameId) animateParticles();
-                    } else {
-                        if (animationFrameId) {
-                            cancelAnimationFrame(animationFrameId);
-                            animationFrameId = null;
-                        }
-                    }
+                    if(entry.isIntersecting){ if(!animationFrameId) animateParticlesLoop(); }
+                    else { if(animationFrameId){ cancelAnimationFrame(animationFrameId); animationFrameId=null; }}
                 });
-            }, { threshold: 0.01 }); 
-
+            }, {threshold: 0.01});
             observer.observe(section);
-        })();
+        }
 
-        // Subtle floating animation for founder cards (already present, keeping it)
-        document.querySelectorAll('#founders .card').forEach((card, i) => {
-            card.animate([
-                { transform: 'translateY(0px) scale(1)' }, // Base state for animation
-                { transform: `translateY(${i % 2 === 0 ? -8 : 8}px) scale(1)` }, 
-                { transform: 'translateY(0px) scale(1)' }
-            ], {
-                duration: 4200 + i * 150, 
-                iterations: Infinity,
-                direction: 'alternate',
-                easing: 'ease-in-out'
+        // --- Founders Section: Subtle Floating Card Animation ---
+        function foundersFloatingCards() {
+            document.querySelectorAll('#founders .card').forEach((card, i) => {
+                const initialTransform = getComputedStyle(card).transform;
+                const baseTransform = initialTransform === 'none' ? '' : initialTransform;
+
+                // Ensure the animation considers existing transforms (e.g., from :hover)
+                // This is a simplified approach; for complex scenarios, direct JS transform manipulation might be better.
+                card.animate([
+                    { transform: `${baseTransform} translateY(0px)` },
+                    { transform: `${baseTransform.replace(/translateY\([^)]+\)/, '')} translateY(${i % 2 === 0 ? -6 : 6}px)` },
+                    { transform: `${baseTransform} translateY(0px)` }
+                ], { 
+                    duration: 4000 + i * 100, 
+                    iterations: Infinity, 
+                    direction: 'alternate', 
+                    easing: 'ease-in-out'
+                });
             });
-        });
+        }
+        
+        // --- Card Tilt & Parallax Interaction (for Pro Cards and Specialist Cards) ---
+        function initializeCard3DEffects(selector, config) {
+            const cards = document.querySelectorAll(selector);
+            if (cards.length === 0) return;
 
-        function initializeProCardInteractions() {
-            const proCards = document.querySelectorAll('.pro-card');
-            const tiltStrength = 7; 
-            const parallaxStrength = {
-                img: 40, 
-                title: 25, 
-                text: 15,  
-                social: 20 
+            const { tiltStrength, perspective, parallaxStrength, isSpecialistCard } = config;
+            
+            const specialistThemes = { 
+                yellow: {
+                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(250,204,21,0.1)', 
+                    titleColor: '#facc15', roleColor: '#fde68a', 
+                    staticShadow: '0 4px 16px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15), -8px 8px 32px 0 rgba(253,224,71,0.10)', // Static shadow
+                    socialLinkColor: '#facc15', socialLinkHoverColor: '#fde047',
+                    imgGlowColor: 'rgba(250, 204, 21, 0.45)'
+                },
+                purple: {
+                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(168,85,247,0.1)',
+                    titleColor: '#a855f7', roleColor: '#d8b4fe',
+                    staticShadow: '0 4px 16px 0 rgba(168,85,247,0.25), 8px 8px 32px 0 rgba(168,85,247,0.15), -8px 8px 32px 0 rgba(168,85,247,0.10)',
+                    socialLinkColor: '#a855f7', socialLinkHoverColor: '#c084fc',
+                    imgGlowColor: 'rgba(168, 85, 247, 0.45)'
+                },
+                pink: {
+                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(236,72,153,0.1)',
+                    titleColor: '#ec4899', roleColor: '#fbcfe8',
+                    staticShadow: '0 4px 16px 0 rgba(236,72,153,0.25), 8px 8px 32px 0 rgba(236,72,153,0.15), -8px 8px 32px 0 rgba(236,72,153,0.10)',
+                    socialLinkColor: '#ec4899', socialLinkHoverColor: '#f9a8d4',
+                    imgGlowColor: 'rgba(236, 72, 153, 0.45)'
+                },
+                cyan: {
+                    bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(14,165,233,0.1)',
+                    titleColor: '#38bdf8', roleColor: '#7dd3fc',
+                    staticShadow: '0 4px 16px 0 rgba(14,165,233,0.25), 8px 8px 32px 0 rgba(14,165,233,0.15), -8px 8px 32px 0 rgba(14,165,233,0.10)',
+                    socialLinkColor: '#38bdf8', socialLinkHoverColor: '#67e8f9',
+                    imgGlowColor: 'rgba(14, 165, 233, 0.45)'
+                }
             };
 
-            proCards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
+            cards.forEach(card => {
+                let animationFrameId = null;
+                let lastMouseEvent = null;
+
+                const imgElement = card.querySelector('img');
+                const titleElement = card.querySelector(isSpecialistCard ? 'h4' : 'h3'); 
+                const roleElement = titleElement ? titleElement.nextElementSibling : null;
+                const descElement = card.querySelector('p.text-gray-300.text-sm');
+                const socialLinksContainer = card.querySelector('.absolute.bottom-0, .mt-auto.pt-4');
+
+                let currentTheme = null;
+                if (isSpecialistCard) {
+                    const themeName = card.dataset.theme;
+                    currentTheme = specialistThemes[themeName];
+                    if (currentTheme) {
+                        card.style.backgroundColor = currentTheme.bgColor;
+                        card.style.borderColor = currentTheme.borderColor;
+                        card.style.boxShadow = currentTheme.staticShadow; // Apply static shadow
+                        if(titleElement) titleElement.style.color = currentTheme.titleColor;
+                        if(roleElement && roleElement.tagName === 'P') roleElement.style.color = currentTheme.roleColor;
+                        
+                        const socialLinks = card.querySelectorAll('.mt-auto.pt-4 a');
+                        socialLinks.forEach(link => {
+                            link.style.color = currentTheme.socialLinkColor;
+                            link.addEventListener('mouseenter', () => link.style.color = currentTheme.socialLinkHoverColor);
+                            link.addEventListener('mouseleave', () => link.style.color = currentTheme.socialLinkColor);
+                        });
+                        // Removed continuous animation:
+                        // if (typeof card.animate === 'function') {
+                        //     card.animate({ boxShadow: currentTheme.shadowKeyframes }, 
+                        //                  { duration: 9000, iterations: Infinity, easing: 'cubic-bezier(.68,-0.55,.27,1.55)' });
+                        // }
+                    }
+                }
+
+
+                function updateCardTransform() {
+                    if (!lastMouseEvent) return;
                     const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
+                    const x = lastMouseEvent.clientX - rect.left;
+                    const y = lastMouseEvent.clientY - rect.top;
+                    const cardWidth = rect.width;
+                    const cardHeight = rect.height;
+                    const rotateX = ((y - cardHeight / 2) / (cardHeight / 2)) * -tiltStrength;
+                    const rotateY = ((x - cardWidth / 2) / (cardWidth / 2)) * tiltStrength;
 
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
+                    card.style.transform = `perspective(${perspective}) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
 
-                    const rotateX = (y - centerY) / centerY * -tiltStrength;
-                    const rotateY = (x - centerX) / centerX * tiltStrength;
+                    // Parallax for inner elements
+                    if (imgElement && parallaxStrength.img) imgElement.style.transform = `translateZ(${parallaxStrength.img}px) rotateX(${rotateX / 1.8}deg) rotateY(${rotateY / 1.8}deg) scale(1.07)`;
+                    if (titleElement && parallaxStrength.title) titleElement.style.transform = `translateZ(${parallaxStrength.title}px)`;
+                    
+                    if (roleElement && roleElement.tagName === 'P' && 
+                        (isSpecialistCard ? roleElement.classList.contains('italic') : !roleElement.classList.contains('text-gray-300')) && 
+                        parallaxStrength.role) {
+                         roleElement.style.transform = `translateZ(${parallaxStrength.role}px)`;
+                    }
+                    if (descElement && parallaxStrength.desc) descElement.style.transform = `translateZ(${parallaxStrength.desc}px)`;
+                    if (socialLinksContainer && parallaxStrength.social) socialLinksContainer.style.transform = `translateZ(${parallaxStrength.social}px)`;
+                    
+                    animationFrameId = null; 
+                }
 
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-
-                    const img = card.querySelector('.pro-img-glow');
-                    const title = card.querySelector('h3');
-                    const descriptionPara = card.querySelector(':scope > p.text-gray-300.text-sm'); 
-                    const rolePara = card.querySelector(':scope > p:not(.text-gray-300)'); 
-                    const socialLinksContainer = card.querySelector('.absolute.bottom-0');
-
-                    if(img) img.style.transform = `translateZ(${parallaxStrength.img}px) rotateX(${rotateX/2}deg) rotateY(${rotateY/2}deg) scale(1.05)`;
-                    if(title) title.style.transform = `translateZ(${parallaxStrength.title}px) rotateX(${rotateX/3}deg) rotateY(${rotateY/3}deg)`;
-                    if(descriptionPara) descriptionPara.style.transform = `translateZ(${parallaxStrength.text}px)`;
-                    if(rolePara) rolePara.style.transform = `translateZ(${parallaxStrength.text + 5}px)`; 
-                    if(socialLinksContainer) socialLinksContainer.style.transform = `translateZ(${parallaxStrength.social}px)`;
+                card.addEventListener('mousemove', (e) => {
+                    lastMouseEvent = e;
+                    if (!animationFrameId) animationFrameId = requestAnimationFrame(updateCardTransform);
+                    card.style.transition = 'transform 0.05s ease-out';
+                    [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
+                        if (el) el.style.transition = 'transform 0.05s ease-out';
+                    });
+                    if (isSpecialistCard && imgElement && currentTheme && currentTheme.imgGlowColor) {
+                        // Subtle glow, less intense than pro cards, using theme color
+                        imgElement.style.boxShadow = `0 0 8px 2px ${currentTheme.imgGlowColor.replace('0.45', '0.5')}, 0 0 15px 3px ${currentTheme.imgGlowColor.replace('0.45', '0.3')}`; 
+                    }
                 });
 
                 card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-                    
-                    const elementsToReset = [
-                        card.querySelector('.pro-img-glow'),
-                        card.querySelector('h3'),
-                        card.querySelector(':scope > p.text-gray-300.text-sm'),
-                        card.querySelector(':scope > p:not(.text-gray-300)'),
-                        card.querySelector('.absolute.bottom-0')
-                    ];
-                    
-                    elementsToReset.forEach(el => {
-                        if(el) el.style.transform = 'translateZ(0px) scale(1) rotateX(0deg) rotateY(0deg)';
+                    if (animationFrameId) { cancelAnimationFrame(animationFrameId); animationFrameId = null; }
+                    lastMouseEvent = null;
+                    card.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+                    card.style.transform = `perspective(${perspective}) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                    [imgElement, titleElement, roleElement, descElement, socialLinksContainer].forEach(el => {
+                        if (el) {
+                            el.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+                            el.style.transform = (el === imgElement) ? 'translateZ(0px) rotateX(0deg) rotateY(0deg) scale(1)' : 'translateZ(0px)';
+                        }
                     });
-                    const img = card.querySelector('.pro-img-glow');
-                    if(img) img.style.transform = 'translateZ(0px) scale(1)';
-
-                });
-
-                card.addEventListener('mouseenter', () => {
-                    card.style.transition = 'transform 0.05s ease-out, box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55)';
+                    if (isSpecialistCard && imgElement) {
+                        imgElement.style.boxShadow = 'none'; // Remove glow on mouse leave
+                    }
                 });
             });
         }
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeProCardInteractions);
-        } else {
-            initializeProCardInteractions();
-        }
+        // --- DOMContentLoaded: Initialize all scripts ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMobileMenu();
+            initializeSmoothScroll();
+            setCurrentYear();
+            
+            foundersParticles();
+            foundersFloatingCards();
+            
+            initializeCard3DEffects('.pro-card', { 
+                tiltStrength: 7, perspective: '1000px',
+                parallaxStrength: { img: 30, title: 25, role: 20, desc: 12, social: 15 }, // Restored role/name parallax for pro cards
+                isSpecialistCard: false
+            });
 
+            initializeCard3DEffects('.specialist-card', { 
+                tiltStrength: 5, perspective: '1200px',
+                parallaxStrength: { img: 20, title: 15, role: 12, desc: 8, social: 10 },
+                isSpecialistCard: true 
+            });
+        });
     </script>
+    <!-- JavaScript End -->
 </body>
 </html>
