@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
+    <!-- Add Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Optimized Google Fonts - Load only essential weights first -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700;900&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     
@@ -985,10 +988,31 @@
                     font-size: 1.8em;
                 }
             }
+            .back-button {
+            background-color: rgba(55, 65, 81, 0.7); 
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(107, 114, 128, 0.5); 
+            transition: all 0.2s ease-in-out;
+            }
+            .back-button:hover {
+            background-color: rgba(75, 85, 99, 0.8); 
+            border-color: rgba(156, 163, 175, 0.7); 
+            transform: scale(1.05);
+            }
     </style>
 </head>
 <body>
-
+    <!-- Back to Home Button -->
+    <div class="fixed top-4 left-4 z-50">
+        <a href="index.html" 
+           class="back-button orbitron inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-gray-200 hover:text-white shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+            </svg>
+            Back to Home
+        </a>
+    </div>
     <!-- Form Container --> 
     <div class="container" id="formContainer">
         <div class="header">
