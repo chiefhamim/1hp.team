@@ -1237,990 +1237,620 @@
         </div>
     </div>
 
-    <!-- Replace your entire script section with this ULTIMATE ENHANCED version: -->
-    
     <script>
-    'use strict';
+            'use strict';
     
-    // --- Performance Configuration (Exact from main site) ---
-    const PERF_CONFIG = {
-        debounceDelay: 250,
-        particleThrottleDelay: 16,
-        intersectionThreshold: 0.01,
-        maxParticleCount: 40,
-        particleDensity: 25000
-    };
-    
-    // --- Utility Functions (Exact from main site) ---
-    const debounce = (func, wait) => {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func.apply(this, args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    };
-    
-    const throttle = (func, limit) => {
-        let inThrottle;
-        return function(...args) {
-            if (!inThrottle) {
-                func.apply(this, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    };
-    
-    // 🔥 ENHANCED SUBMISSION SYSTEM VARIABLES 🔥
-    let currentApplicationData = null;
-    let isSubmissionInProgress = false;
-    let verificationCode = null;
-    let isEmailVerified = false;
-    let submissionAttempts = 0;
-    const MAX_SUBMISSION_ATTEMPTS = 3;
-    
-    // --- Word Counter Functionality ---
-    function setupWordCounter() {
-        const bioTextarea = document.getElementById('bio');
-        const wordCounter = document.getElementById('wordCounter');
-        const maxWords = 100;
-    
-        function updateWordCount() {
-            const text = bioTextarea.value.trim();
-            const words = text === '' ? 0 : text.split(/\s+/).length;
-            
-            wordCounter.textContent = `${words} / ${maxWords} words`;
-            
-            // Update styling based on word count
-            wordCounter.classList.remove('warning', 'error');
-            if (words > maxWords) {
-                wordCounter.classList.add('error');
-            } else if (words > maxWords * 0.8) {
-                wordCounter.classList.add('warning');
-            }
-        }
-    
-        bioTextarea.addEventListener('input', debounce(updateWordCount, 100));
-    }
-    
-    // --- Helper Functions for EmailJS ---
-    function getRoleDisplayName(role) {
-        const roleNames = {
-            'advisor': 'Advisor',
-            'pro': 'Pro Player',
-            'specialist': 'Specialist'
-        };
-        return roleNames[role] || role;
-    }
-    
-    function getGameDisplayName(game) {
-        const gameNames = {
-            'apex': 'Apex Legends',
-            'valorant': 'Valorant',
-            'csgo': 'CS:GO / CS2',
-            'fortnite': 'Fortnite',
-            'overwatch': 'Overwatch 2',
-            'lol': 'League of Legends',
-            'dota2': 'Dota 2',
-            'rocket-league': 'Rocket League',
-            'pubg': 'PUBG',
-            'other': 'Other'
-        };
-        return gameNames[game] || game;
-    }
-    
-    function createFormattedMessage(data) {
-        const inputMethodText = data.platform === 'pc' && data.inputMethod ? 
-            `\nInput Method: ${data.inputMethod === 'keyboard' ? 'Mouse & Keyboard' : data.inputMethod === 'controller' ? 'Controller' : 'Both'}` : '';
-        
-        return `
-    🎮 NEW CLAN APPLICATION 🎮
-    
-    👤 PERSONAL INFORMATION:
-    Real Name: ${data.realName}
-    In-Game Name: ${data.gameName}
-    Age: ${data.age} years old
-    Location: ${data.location}
-    Contact Email: ${data.contactInfo}
-    
-    🎯 GAMING INFORMATION:
-    Platform: ${data.platform ? data.platform.toUpperCase() : ''}${inputMethodText}
-    Preferred Role: ${getRoleDisplayName(data.role)}
-    Primary Game: ${getGameDisplayName(data.game)}
-    Playstyle: ${data.playstyle.charAt(0).toUpperCase() + data.playstyle.slice(1)}
-    
-    📝 BIO:
-    ${data.bio}
-    
-    🔐 VERIFICATION STATUS: ✅ Email Verified
-    📅 Submitted: ${new Date().toLocaleString()}
-    
-    🔥 HIGH-QUALITY Player Card screenshot is attached to this email! 🔥
-        `.trim();
-    }
-    
-    // 🚀 GENERATE VERIFICATION CODE
-    function generateVerificationCode() {
-        return Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit code
-    }
-    
-    // 📧 SEND VERIFICATION EMAIL
-    function sendVerificationEmail(email, code) {
-        return new Promise((resolve, reject) => {
-            const templateParams = {
-                to_email: email,
-                verification_code: code,
-                user_name: currentApplicationData.realName,
-                from_name: '1HP Gaming Clan',
-                subject: '🎮 1HP Application Verification Code'
+            // --- Performance Configuration (Exact from main site) ---
+            const PERF_CONFIG = {
+                debounceDelay: 250,
+                particleThrottleDelay: 16,
+                intersectionThreshold: 0.01,
+                maxParticleCount: 40,
+                particleDensity: 25000
             };
     
-            console.log('📧 Sending verification email to:', email);
-    
-            // Note: You'll need to create a separate EmailJS template for verification
-            // For now, we'll use a simple alert system as fallback
-            
-            // Simulate sending verification email (replace with actual EmailJS call)
-            setTimeout(() => {
-                console.log('✅ Verification email sent!');
-                resolve();
-            }, 1000);
-            
-            // Uncomment below when you have verification template set up:
-            /*
-            emailjs.send('service_b0ejnaq', 'template_verification', templateParams)
-                .then((response) => {
-                    console.log('✅ Verification email sent!', response);
-                    resolve(response);
-                })
-                .catch((error) => {
-                    console.error('❌ Verification email failed:', error);
-                    reject(error);
-                });
-            */
-        });
-    }
-    
-    // 📸 ENHANCED SCREENSHOT FUNCTION - TAKES ACTUAL PLAYER CARD SCREENSHOTS 📸
-    function takeActualPlayerCardScreenshot() {
-        return new Promise((resolve, reject) => {
-            const playerCard = document.getElementById('playerCard');
-            
-            if (!playerCard || playerCard.classList.contains('hidden')) {
-                reject(new Error('Player card not visible'));
-                return;
-            }
-    
-            console.log('📸 Taking ACTUAL HIGH-QUALITY player card screenshot...');
-    
-            // Hide action buttons before screenshot for cleaner capture
-            const actionButtons = playerCard.querySelector('.card-actions');
-            if (actionButtons) actionButtons.style.display = 'none';
-    
-            // ENHANCED html2canvas options for CRYSTAL CLEAR screenshots
-            const options = {
-                allowTaint: true,
-                useCORS: true,
-                scale: 2, // HIGH QUALITY - 2x scale for crisp images
-                backgroundColor: '#0d0d2c',
-                width: playerCard.offsetWidth,
-                height: playerCard.offsetHeight,
-                scrollX: 0,
-                scrollY: 0,
-                windowWidth: window.innerWidth,
-                windowHeight: window.innerHeight,
-                logging: false,
-                removeContainer: false,
-                foreignObjectRendering: true,
-                ignoreElements: (element) => {
-                    // Ignore unwanted elements
-                    return element.classList.contains('back-button') || 
-                           element.classList.contains('card-actions') ||
-                           element.id === 'global-particles';
-                }
+            // --- Utility Functions (Exact from main site) ---
+            const debounce = (func, wait) => {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func.apply(this, args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
             };
     
-            html2canvas(playerCard, options)
-                .then(canvas => {
-                    // Show action buttons again
-                    if (actionButtons) actionButtons.style.display = '';
-                    
-                    console.log('✅ ACTUAL SCREENSHOT captured successfully!');
-                    console.log(`📊 Canvas dimensions: ${canvas.width}x${canvas.height}`);
-                    
-                    // Convert to high-quality JPEG with intelligent compression
-                    let quality = 0.9; // Start with high quality
-                    let dataUrl = canvas.toDataURL('image/jpeg', quality);
-                    console.log(`📊 Initial screenshot size: ${(dataUrl.length / 1024).toFixed(2)} KB`);
-                    
-                    // Smart compression - reduce quality if needed but maintain visual quality
-                    while (dataUrl.length > 800000 && quality > 0.3) { // 800KB limit
-                        quality -= 0.1;
-                        dataUrl = canvas.toDataURL('image/jpeg', quality);
-                        console.log(`🔄 Compressing: Quality ${quality.toFixed(1)}, Size: ${(dataUrl.length / 1024).toFixed(2)} KB`);
+            const throttle = (func, limit) => {
+                let inThrottle;
+                return function(...args) {
+                    if (!inThrottle) {
+                        func.apply(this, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
                     }
+                };
+            };
+    
+            // Store application data
+            let currentApplicationData = null;
+    
+            // --- Word Counter Functionality ---
+            function setupWordCounter() {
+                const bioTextarea = document.getElementById('bio');
+                const wordCounter = document.getElementById('wordCounter');
+                const maxWords = 100;
+    
+                function updateWordCount() {
+                    const text = bioTextarea.value.trim();
+                    const words = text === '' ? 0 : text.split(/\s+/).length;
                     
-                    // If still too large, resize smartly
-                    if (dataUrl.length > 800000) {
-                        console.log('🔄 Resizing image for optimal size...');
-                        const img = new Image();
-                        img.onload = function() {
-                            const resizeCanvas = document.createElement('canvas');
-                            const ctx = resizeCanvas.getContext('2d');
-                            
-                            // Calculate optimal dimensions (max 1000px width)
-                            const maxWidth = 1000;
-                            const ratio = Math.min(maxWidth / img.width, maxWidth / img.height);
-                            resizeCanvas.width = img.width * ratio;
-                            resizeCanvas.height = img.height * ratio;
-                            
-                            // Draw with high quality
-                            ctx.imageSmoothingEnabled = true;
-                            ctx.imageSmoothingQuality = 'high';
-                            ctx.drawImage(img, 0, 0, resizeCanvas.width, resizeCanvas.height);
-                            
-                            // Final compression
-                            let finalQuality = 0.8;
-                            let finalDataUrl = resizeCanvas.toDataURL('image/jpeg', finalQuality);
-                            
-                            while (finalDataUrl.length > 800000 && finalQuality > 0.3) {
-                                finalQuality -= 0.1;
-                                finalDataUrl = resizeCanvas.toDataURL('image/jpeg', finalQuality);
-                            }
-                            
-                            console.log(`📏 Final optimized size: ${(finalDataUrl.length / 1024).toFixed(2)} KB, Quality: ${finalQuality.toFixed(1)}`);
-                            resolve(finalDataUrl);
-                        };
-                        img.src = dataUrl;
-                    } else {
-                        console.log(`📏 Perfect size: ${(dataUrl.length / 1024).toFixed(2)} KB, Quality: ${quality.toFixed(1)}`);
-                        resolve(dataUrl);
+                    wordCounter.textContent = `${words} / ${maxWords} words`;
+                    
+                    // Update styling based on word count
+                    wordCounter.classList.remove('warning', 'error');
+                    if (words > maxWords) {
+                        wordCounter.classList.add('error');
+                    } else if (words > maxWords * 0.8) {
+                        wordCounter.classList.add('warning');
                     }
-                })
-                .catch(error => {
-                    // Show action buttons again on error
-                    if (actionButtons) actionButtons.style.display = '';
-                    console.error('❌ Screenshot error:', error);
-                    reject(error);
+                }
+    
+                bioTextarea.addEventListener('input', debounce(updateWordCount, 100));
+            }
+    
+            // --- Player Card Functions ---
+            function showPlayerCard(data) {
+                const formContainer = document.getElementById('formContainer');
+                const playerCard = document.getElementById('playerCard');
+                const cardContent = document.getElementById('cardContent');
+            
+                // Role names mapping
+                const roleNames = {
+                    'advisor': 'Advisor',
+                    'pro': 'Pro Player',
+                    'specialist': 'Specialist'
+                };
+            
+                // Game names mapping
+                const gameNames = {
+                    'apex': 'Apex Legends',
+                    'valorant': 'Valorant',
+                    'csgo': 'CS:GO / CS2',
+                    'fortnite': 'Fortnite',
+                    'overwatch': 'Overwatch 2',
+                    'lol': 'League of Legends',
+                    'dota2': 'Dota 2',
+                    'rocket-league': 'Rocket League',
+                    'pubg': 'PUBG',
+                    'other': 'Other'
+                };
+                
+                const cardTitle = document.querySelector('.card-title');
+                if (cardTitle && data.gameName) {
+                    cardTitle.textContent = `${data.gameName}'s Card`;
+                }
+            
+                // Platform and Input Method display logic
+                let platformDisplay = data.platform ? data.platform.toUpperCase() : '';
+                let inputMethodDisplay = '';
+                
+                if (data.platform === 'pc' && data.inputMethod) {
+                    const inputMethodNames = {
+                        'keyboard': 'Mouse & Keyboard',
+                        'controller': 'Controller',
+                        'both': 'Both'
+                    };
+                    inputMethodDisplay = `
+                        <div class="card-field input-method-field">
+                            <div class="card-field-label">Input Method</div>
+                            <div class="card-field-value">${inputMethodNames[data.inputMethod]}</div>
+                        </div>`;
+                }
+                
+                // Determine playstyle colors based on selection
+                let playstyleClass = 'playstyle-field';
+                switch(data.playstyle) {
+                    case 'aggressive':
+                        playstyleClass = 'playstyle-field playstyle-aggressive';
+                        break;
+                    case 'defensive':
+                        playstyleClass = 'playstyle-field playstyle-defensive';
+                        break;
+                    case 'both':
+                        playstyleClass = 'playstyle-field playstyle-both';
+                        break;
+                    default:
+                        playstyleClass = 'playstyle-field';
+                }
+                
+                // Create card content
+                cardContent.innerHTML = `
+                    <div class="card-field name-field">
+                        <div class="card-field-label">Real Name</div>
+                        <div class="card-field-value">${data.realName}</div>
+                    </div>
+                    <div class="card-field game-name-field">
+                        <div class="card-field-label">In-Game Name</div>
+                        <div class="card-field-value">${data.gameName}</div>
+                    </div>
+                    <div class="card-field age-field">
+                        <div class="card-field-label">Age</div>
+                        <div class="card-field-value">${data.age} years old</div>
+                    </div>
+                    <div class="card-field platform-field">
+                        <div class="card-field-label">Platform</div>
+                        <div class="card-field-value">${platformDisplay}</div>
+                    </div>
+                    ${inputMethodDisplay}
+                    <div class="card-field location-field">
+                        <div class="card-field-label">Location</div>
+                        <div class="card-field-value">${data.location}</div>
+                    </div>
+                    <div class="card-field email-field">
+                        <div class="card-field-label">Contact Email</div>
+                        <div class="card-field-value">${data.contactInfo}</div>
+                    </div>
+                    <div class="card-field role-field">
+                        <div class="card-field-label">Preferred Role</div>
+                        <div class="card-field-value">${roleNames[data.role]}</div>
+                    </div>
+                    <div class="card-field game-field">
+                        <div class="card-field-label">Primary Game</div>
+                        <div class="card-field-value">${gameNames[data.game]}</div>
+                    </div>
+                    <div class="card-field ${playstyleClass}">
+                        <div class="card-field-label">Playstyle</div>
+                        <div class="card-field-value">${data.playstyle.charAt(0).toUpperCase() + data.playstyle.slice(1)}</div>
+                    </div>
+                    <div class="card-field bio-field">
+                        <div class="card-field-label">Bio</div>
+                        <div class="card-field-value">${data.bio}</div>
+                    </div>
+                `;
+            
+                // Hide form and show card
+                formContainer.classList.add('hidden');
+                playerCard.classList.remove('hidden');
+            }
+    
+            function newApplication() {
+                const formContainer = document.getElementById('formContainer');
+                const playerCard = document.getElementById('playerCard');
+                
+                // Reset form
+                document.getElementById('applicationForm').reset();
+                document.getElementById('wordCounter').textContent = '0 / 100 words';
+                document.getElementById('wordCounter').classList.remove('warning', 'error');
+                
+                // Hide input method group when resetting
+                const inputMethodGroup = document.getElementById('inputMethodGroup');
+                inputMethodGroup.classList.add('hidden');
+                
+                // Clear all radio button tracking data
+                document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.dataset.wasChecked = 'false';
                 });
-        });
-    }
-    
-    // 📧 ENHANCED EMAIL SENDING WITH ACTUAL SCREENSHOT
-    function sendApplicationEmailWithActualScreenshot(applicationData, screenshotDataUrl) {
-        return new Promise((resolve, reject) => {
-            console.log('📧 Preparing email with ACTUAL player card screenshot...');
-            console.log(`📊 Screenshot size: ${(screenshotDataUrl.length / 1024).toFixed(2)} KB`);
-            
-            // Create a canvas-based backup if screenshot is too large
-            if (screenshotDataUrl.length > 1000000) { // 1MB safety check
-                console.log('⚠️ Large screenshot detected, creating optimized version...');
                 
-                // Create minimal backup representation
-                const canvas = document.createElement('canvas');
-                canvas.width = 600;
-                canvas.height = 400;
-                const ctx = canvas.getContext('2d');
+                // Clear stored data
+                currentApplicationData = null;
                 
-                // Create styled backup card
-                const gradient = ctx.createLinearGradient(0, 0, 600, 400);
-                gradient.addColorStop(0, '#0d0d2c');
-                gradient.addColorStop(1, '#1a1a3e');
-                ctx.fillStyle = gradient;
-                ctx.fillRect(0, 0, 600, 400);
-                
-                // Add content
-                ctx.fillStyle = '#667eea';
-                ctx.font = 'bold 28px Arial';
-                ctx.textAlign = 'center';
-                ctx.fillText('1HP GAMING CLAN', 300, 60);
-                
-                ctx.fillStyle = '#ffffff';
-                ctx.font = 'bold 20px Arial';
-                ctx.fillText(`${applicationData.gameName}'s Application`, 300, 120);
-                
-                ctx.font = '16px Arial';
-                ctx.fillText(`Real Name: ${applicationData.realName}`, 300, 160);
-                ctx.fillText(`Game: ${getGameDisplayName(applicationData.game)}`, 300, 190);
-                ctx.fillText(`Role: ${getRoleDisplayName(applicationData.role)}`, 300, 220);
-                ctx.fillText(`Platform: ${applicationData.platform.toUpperCase()}`, 300, 250);
-                ctx.fillText(`Playstyle: ${applicationData.playstyle}`, 300, 280);
-                ctx.fillText(`Age: ${applicationData.age} years`, 300, 310);
-                ctx.fillText(`Location: ${applicationData.location}`, 300, 340);
-                ctx.fillText(`Submitted: ${new Date().toLocaleDateString()}`, 300, 370);
-                
-                screenshotDataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                console.log(`📊 Backup card size: ${(screenshotDataUrl.length / 1024).toFixed(2)} KB`);
-            }
-            
-            // Prepare comprehensive email template parameters
-            const templateParams = {
-                to_email: 'official.1hp.team@gmail.com',
-                from_name: applicationData.realName,
-                from_email: applicationData.contactInfo,
-                game_name: applicationData.gameName,
-                real_name: applicationData.realName,
-                age: applicationData.age,
-                platform: applicationData.platform ? applicationData.platform.toUpperCase() : '',
-                input_method: applicationData.inputMethod || 'N/A',
-                location: applicationData.location,
-                contact_email: applicationData.contactInfo,
-                preferred_role: getRoleDisplayName(applicationData.role),
-                primary_game: getGameDisplayName(applicationData.game),
-                playstyle: applicationData.playstyle.charAt(0).toUpperCase() + applicationData.playstyle.slice(1),
-                bio: applicationData.bio,
-                submission_date: new Date().toLocaleString(),
-                player_card_screenshot: screenshotDataUrl, // ACTUAL SCREENSHOT
-                verification_status: '✅ Email Verified',
-                submission_attempt: submissionAttempts + 1,
-                message: createFormattedMessage(applicationData)
-            };
-    
-            // Final size check
-            const totalSize = JSON.stringify(templateParams).length;
-            console.log(`📊 Total email payload: ${(totalSize / 1024).toFixed(2)} KB`);
-    
-            if (totalSize > 50000) { // 50KB EmailJS limit
-                console.log('⚠️ Payload too large, optimizing...');
-                templateParams.player_card_screenshot = 'Screenshot too large - Application details in message';
+                // Show form and hide card
+                playerCard.classList.add('hidden');
+                formContainer.classList.remove('hidden');
             }
     
-            console.log('🚀 Sending email with ACTUAL player card screenshot...');
-    
-            // Send email using EmailJS
-            emailjs.send('service_b0ejnaq', 'template_gp8d9ka', templateParams)
-                .then((response) => {
-                    console.log('✅ Email sent successfully with ACTUAL screenshot!', response);
-                    resolve(response);
-                })
-                .catch((error) => {
-                    console.error('❌ Email sending failed:', error);
-                    reject(error);
-                });
-        });
-    }
-    
-    // --- Player Card Functions ---
-    function showPlayerCard(data) {
-        const formContainer = document.getElementById('formContainer');
-        const playerCard = document.getElementById('playerCard');
-        const cardContent = document.getElementById('cardContent');
-    
-        // Role names mapping
-        const roleNames = {
-            'advisor': 'Advisor',
-            'pro': 'Pro Player',
-            'specialist': 'Specialist'
-        };
-    
-        // Game names mapping
-        const gameNames = {
-            'apex': 'Apex Legends',
-            'valorant': 'Valorant',
-            'csgo': 'CS:GO / CS2',
-            'fortnite': 'Fortnite',
-            'overwatch': 'Overwatch 2',
-            'lol': 'League of Legends',
-            'dota2': 'Dota 2',
-            'rocket-league': 'Rocket League',
-            'pubg': 'PUBG',
-            'other': 'Other'
-        };
-        
-        const cardTitle = document.querySelector('.card-title');
-        if (cardTitle && data.gameName) {
-            cardTitle.textContent = `${data.gameName}'s Card`;
-        }
-    
-        // Platform and Input Method display logic
-        let platformDisplay = data.platform ? data.platform.toUpperCase() : '';
-        let inputMethodDisplay = '';
-        
-        if (data.platform === 'pc' && data.inputMethod) {
-            const inputMethodNames = {
-                'keyboard': 'Mouse & Keyboard',
-                'controller': 'Controller',
-                'both': 'Both'
-            };
-            inputMethodDisplay = `
-                <div class="card-field input-method-field">
-                    <div class="card-field-label">Input Method</div>
-                    <div class="card-field-value">${inputMethodNames[data.inputMethod]}</div>
-                </div>`;
-        }
-        
-        // Determine playstyle colors based on selection
-        let playstyleClass = 'playstyle-field';
-        switch(data.playstyle) {
-            case 'aggressive':
-                playstyleClass = 'playstyle-field playstyle-aggressive';
-                break;
-            case 'defensive':
-                playstyleClass = 'playstyle-field playstyle-defensive';
-                break;
-            case 'both':
-                playstyleClass = 'playstyle-field playstyle-both';
-                break;
-            default:
-                playstyleClass = 'playstyle-field';
-        }
-        
-        // Create card content
-        cardContent.innerHTML = `
-            <div class="card-field name-field">
-                <div class="card-field-label">Real Name</div>
-                <div class="card-field-value">${data.realName}</div>
-            </div>
-            <div class="card-field game-name-field">
-                <div class="card-field-label">In-Game Name</div>
-                <div class="card-field-value">${data.gameName}</div>
-            </div>
-            <div class="card-field age-field">
-                <div class="card-field-label">Age</div>
-                <div class="card-field-value">${data.age} years old</div>
-            </div>
-            <div class="card-field platform-field">
-                <div class="card-field-label">Platform</div>
-                <div class="card-field-value">${platformDisplay}</div>
-            </div>
-            ${inputMethodDisplay}
-            <div class="card-field location-field">
-                <div class="card-field-label">Location</div>
-                <div class="card-field-value">${data.location}</div>
-            </div>
-            <div class="card-field email-field">
-                <div class="card-field-label">Contact Email</div>
-                <div class="card-field-value">${data.contactInfo}</div>
-            </div>
-            <div class="card-field role-field">
-                <div class="card-field-label">Preferred Role</div>
-                <div class="card-field-value">${roleNames[data.role]}</div>
-            </div>
-            <div class="card-field game-field">
-                <div class="card-field-label">Primary Game</div>
-                <div class="card-field-value">${gameNames[data.game]}</div>
-            </div>
-            <div class="card-field ${playstyleClass}">
-                <div class="card-field-label">Playstyle</div>
-                <div class="card-field-value">${data.playstyle.charAt(0).toUpperCase() + data.playstyle.slice(1)}</div>
-            </div>
-            <div class="card-field bio-field">
-                <div class="card-field-label">Bio</div>
-                <div class="card-field-value">${data.bio}</div>
-            </div>
-        `;
-    
-        // Hide form and show card
-        formContainer.classList.add('hidden');
-        playerCard.classList.remove('hidden');
-    }
-    
-    // 🆕 ENHANCED NEW APPLICATION FUNCTION
-    function newApplication() {
-        const formContainer = document.getElementById('formContainer');
-        const playerCard = document.getElementById('playerCard');
-        
-        // Reset form
-        document.getElementById('applicationForm').reset();
-        document.getElementById('wordCounter').textContent = '0 / 100 words';
-        document.getElementById('wordCounter').classList.remove('warning', 'error');
-        
-        // Hide input method group when resetting
-        const inputMethodGroup = document.getElementById('inputMethodGroup');
-        inputMethodGroup.classList.add('hidden');
-        
-        // Clear all radio button tracking data
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.dataset.wasChecked = 'false';
-        });
-        
-        // 🔄 RESET ALL VERIFICATION STATUS
-        isEmailVerified = false;
-        verificationCode = null;
-        isSubmissionInProgress = false;
-        submissionAttempts = 0;
-        
-        // Reset submit button completely
-        const submitBtn = document.querySelector('.btn-submit');
-        if (submitBtn) {
-            submitBtn.textContent = 'OK, Submit Now';
-            submitBtn.disabled = false;
-            submitBtn.style.display = '';
-            submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
-        }
-        
-        // Clear stored data
-        currentApplicationData = null;
-        
-        // Show form and hide card
-        playerCard.classList.add('hidden');
-        formContainer.classList.remove('hidden');
-        
-        console.log('🔄 New application started - all systems reset!');
-    }
-    
-    // 🔧 ENHANCED EDIT APPLICATION FUNCTION
-    function editApplication() {
-        const formContainer = document.getElementById('formContainer');
-        const playerCard = document.getElementById('playerCard');
-        
-        if (currentApplicationData) {
-            // Populate form with stored data
-            document.getElementById('realName').value = currentApplicationData.realName;
-            document.getElementById('gameName').value = currentApplicationData.gameName;
-            document.getElementById('age').value = currentApplicationData.age;
-            document.getElementById('location').value = currentApplicationData.location;
-            document.getElementById('contactInfo').value = currentApplicationData.contactInfo;
-            
-            // Handle role selection with proper tracking
-            if (currentApplicationData.role) {
-                const roleRadio = document.querySelector(`input[name="role"][value="${currentApplicationData.role}"]`);
-                if (roleRadio) {
-                    roleRadio.checked = true;
-                    roleRadio.dataset.wasChecked = 'true';
-                }
-            }
-            
-            document.getElementById('game').value = currentApplicationData.game;
-            
-            // Handle playstyle selection with proper tracking
-            if (currentApplicationData.playstyle) {
-                const playstyleRadio = document.querySelector(`input[name="playstyle"][value="${currentApplicationData.playstyle}"]`);
-                if (playstyleRadio) {
-                    playstyleRadio.checked = true;
-                    playstyleRadio.dataset.wasChecked = 'true';
-                }
-            }
-            
-            // Handle platform selection with proper tracking
-            if (currentApplicationData.platform) {
-                const platformRadio = document.querySelector(`input[name="platform"][value="${currentApplicationData.platform}"]`);
-                if (platformRadio) {
-                    platformRadio.checked = true;
-                    platformRadio.dataset.wasChecked = 'true';
-                }
+            function editApplication() {
+                const formContainer = document.getElementById('formContainer');
+                const playerCard = document.getElementById('playerCard');
                 
-                // Show input method if PC is selected
-                if (currentApplicationData.platform === 'pc') {
-                    const inputMethodGroup = document.getElementById('inputMethodGroup');
-                    inputMethodGroup.classList.remove('hidden');
+                if (currentApplicationData) {
+                    // Populate form with stored data
+                    document.getElementById('realName').value = currentApplicationData.realName;
+                    document.getElementById('gameName').value = currentApplicationData.gameName;
+                    document.getElementById('age').value = currentApplicationData.age;
+                    document.getElementById('location').value = currentApplicationData.location;
+                    document.getElementById('contactInfo').value = currentApplicationData.contactInfo;
                     
-                    // Set input method required
-                    document.querySelectorAll('input[name="inputMethod"]').forEach(inp => inp.required = true);
-                    
-                    // Handle input method selection with proper tracking
-                    if (currentApplicationData.inputMethod) {
-                        const inputMethodRadio = document.querySelector(`input[name="inputMethod"][value="${currentApplicationData.inputMethod}"]`);
-                        if (inputMethodRadio) {
-                            inputMethodRadio.checked = true;
-                            inputMethodRadio.dataset.wasChecked = 'true';
+                    // Handle role selection with proper tracking
+                    if (currentApplicationData.role) {
+                        const roleRadio = document.querySelector(`input[name="role"][value="${currentApplicationData.role}"]`);
+                        if (roleRadio) {
+                            roleRadio.checked = true;
+                            roleRadio.dataset.wasChecked = 'true';
                         }
                     }
-                }
-            }
-            
-            document.getElementById('bio').value = currentApplicationData.bio;
-    
-            // Update word counter
-            const bioWords = currentApplicationData.bio.split(/\s+/).length;
-            document.getElementById('wordCounter').textContent = `${bioWords} / 100 words`;
-            
-            // Update submit button if already verified
-            if (isEmailVerified) {
-                const submitBtn = document.querySelector('.btn-submit');
-                submitBtn.textContent = '🔐 Submit Verified Application';
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-            }
-        }
-        
-        // Show form and hide card
-        playerCard.classList.add('hidden');
-        formContainer.classList.remove('hidden');
-    }
-    
-    // 🔥 SHOW VERIFICATION DIALOG
-    function showVerificationDialog() {
-        const modal = document.createElement('div');
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            animation: fadeIn 0.3s ease;
-        `;
-        
-        const dialog = document.createElement('div');
-        dialog.style.cssText = `
-            background: linear-gradient(135deg, rgba(13, 13, 44, 0.95), rgba(26, 26, 62, 0.95));
-            border: 2px solid rgba(102, 126, 234, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            animation: slideIn 0.4s ease;
-        `;
-        
-        dialog.innerHTML = `
-            <div style="color: #667eea; font-size: 3em; margin-bottom: 20px;">🔐</div>
-            <h2 style="color: #ffffff; font-family: 'Orbitron', sans-serif; margin-bottom: 20px; font-size: 1.8em;">Email Verification Required</h2>
-            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 25px; line-height: 1.6;">
-                📧 We've sent a 6-digit verification code to:<br>
-                <strong style="color: #667eea;">${currentApplicationData.contactInfo}</strong>
-            </p>
-            <input type="text" id="verificationInput" placeholder="Enter 6-digit code" maxlength="6" 
-                   style="width: 100%; padding: 15px; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 10px; 
-                          background: rgba(255, 255, 255, 0.1); color: white; font-size: 1.2em; text-align: center; 
-                          margin-bottom: 25px; font-family: 'Courier New', monospace; letter-spacing: 3px;">
-            <div style="display: flex; gap: 15px; justify-content: center;">
-                <button id="verifyBtn" style="padding: 12px 30px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
-                                              color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; 
-                                              transition: all 0.3s ease;">✅ Verify</button>
-                <button id="cancelBtn" style="padding: 12px 30px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); 
-                                              color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; 
-                                              transition: all 0.3s ease;">❌ Cancel</button>
-            </div>
-            <p style="color: rgba(255, 255, 255, 0.5); margin-top: 20px; font-size: 0.9em;">
-                ⏰ Code expires in 10 minutes
-            </p>
-        `;
-        
-        // Add animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            @keyframes slideIn {
-                from { transform: translateY(-50px) scale(0.9); opacity: 0; }
-                to { transform: translateY(0) scale(1); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        modal.appendChild(dialog);
-        document.body.appendChild(modal);
-        
-        // Focus on input
-        const input = dialog.querySelector('#verificationInput');
-        setTimeout(() => input.focus(), 100);
-        
-        // Handle verification
-        dialog.querySelector('#verifyBtn').addEventListener('click', () => {
-            const code = input.value.trim();
-            if (code === verificationCode) {
-                isEmailVerified = true;
-                document.body.removeChild(modal);
-                
-                // Show success and proceed
-                showSuccessMessage('✅ Email verified successfully!');
-                setTimeout(() => {
-                    actualSubmitApplication();
-                }, 1500);
-            } else {
-                showErrorMessage('❌ Invalid verification code. Please try again.');
-                input.value = '';
-                input.focus();
-            }
-        });
-        
-        // Handle cancel
-        dialog.querySelector('#cancelBtn').addEventListener('click', () => {
-            document.body.removeChild(modal);
-            isSubmissionInProgress = false;
-            
-            const submitBtn = document.querySelector('.btn-submit');
-            submitBtn.textContent = 'OK, Submit Now';
-            submitBtn.disabled = false;
-        });
-        
-        // Handle Enter key
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                dialog.querySelector('#verifyBtn').click();
-            }
-        });
-    }
-    
-    // 🎉 SUCCESS MESSAGE FUNCTION
-    function showSuccessMessage(message) {
-        const toast = document.createElement('div');
-        toast.style.cssText = `
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-            z-index: 10001;
-            animation: slideInRight 0.5s ease;
-        `;
-        toast.textContent = message;
-        
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        document.body.appendChild(toast);
-        setTimeout(() => document.body.removeChild(toast), 3000);
-    }
-    
-    // ❌ ERROR MESSAGE FUNCTION
-    function showErrorMessage(message) {
-        const toast = document.createElement('div');
-        toast.style.cssText = `
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
-            z-index: 10001;
-            animation: slideInRight 0.5s ease;
-        `;
-        toast.textContent = message;
-        
-        document.body.appendChild(toast);
-        setTimeout(() => document.body.removeChild(toast), 4000);
-    }
-    
-    // 🚀 ULTIMATE SUBMIT APPLICATION FUNCTION
-    function submitApplication() {
-        if (!currentApplicationData) {
-            alert('No application data found. Please fill out the form first.');
-            return;
-        }
-    
-        // 🛡️ ANTI-SPAM PROTECTION
-        if (isSubmissionInProgress) {
-            showErrorMessage('⚠️ Submission already in progress. Please wait...');
-            return;
-        }
-    
-        // 🚫 MAX ATTEMPTS PROTECTION
-        if (submissionAttempts >= MAX_SUBMISSION_ATTEMPTS) {
-            showErrorMessage('🛑 Maximum submission attempts reached. Please refresh the page to try again.');
-            return;
-        }
-    
-        const submitBtn = document.querySelector('.btn-submit');
-        const originalText = submitBtn.textContent;
-        
-        // Start submission process
-        isSubmissionInProgress = true;
-        submissionAttempts++;
-        
-        if (!isEmailVerified) {
-            // 📧 STEP 1: EMAIL VERIFICATION
-            submitBtn.innerHTML = `
-                <span style="display: inline-flex; align-items: center; gap: 10px;">
-                    <div style="width: 20px; height: 20px; border: 2px solid #ffffff40; border-top: 2px solid #ffffff; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                    Sending Verification...
-                </span>
-            `;
-            submitBtn.disabled = true;
-    
-            // Generate verification code
-            verificationCode = generateVerificationCode();
-            console.log('🔐 Generated verification code:', verificationCode);
-    
-            // Simulate verification email (replace with actual email sending)
-            sendVerificationEmail(currentApplicationData.contactInfo, verificationCode)
-                .then(() => {
-                    submitBtn.innerHTML = `
-                        <span style="display: inline-flex; align-items: center; gap: 10px;">
-                            <span style="color: #f59e0b;">📧</span>
-                            Check Your Email!
-                        </span>
-                    `;
                     
-                    setTimeout(() => {
-                        // Show verification dialog with the code for demo purposes
-                        showVerificationDialog();
-                        
-                        // For demo purposes, show the code in console
-                        console.log('🔥 DEMO MODE: Verification code is:', verificationCode);
-                        showSuccessMessage(`🔥 DEMO: Your verification code is ${verificationCode}`);
-                        
-                        submitBtn.textContent = 'Enter Verification Code';
-                        submitBtn.disabled = false;
-                        isSubmissionInProgress = false;
-                    }, 2000);
-                })
-                .catch(error => {
-                    console.error('💥 Verification email error:', error);
+                    document.getElementById('game').value = currentApplicationData.game;
                     
-                    submitBtn.innerHTML = `
-                        <span style="display: inline-flex; align-items: center; gap: 10px;">
-                            <span style="color: #ef4444;">❌</span>
-                            Email Failed
-                        </span>
-                    `;
-                    
-                    setTimeout(() => {
-                        showErrorMessage('❌ Failed to send verification email. Please check your email address and try again.');
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                        isSubmissionInProgress = false;
-                    }, 2000);
-                });
-        } else {
-            // 🚀 STEP 2: ACTUAL SUBMISSION WITH VERIFICATION
-            actualSubmitApplication();
-        }
-    }
-    
-    // 🔥 ACTUAL SUBMISSION FUNCTION
-    function actualSubmitApplication() {
-        const submitBtn = document.querySelector('.btn-submit');
-        
-        isSubmissionInProgress = true;
-        
-        submitBtn.innerHTML = `
-            <span style="display: inline-flex; align-items: center; gap: 10px;">
-                <div style="width: 20px; height: 20px; border: 2px solid #ffffff40; border-top: 2px solid #ffffff; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                Taking Screenshot...
-            </span>
-        `;
-        submitBtn.disabled = true;
-    
-        console.log('🚀 Starting ULTIMATE submission with email verification + ACTUAL screenshot...');
-    
-        // Take ACTUAL high-quality screenshot
-        takeActualPlayerCardScreenshot()
-            .then(screenshotDataUrl => {
-                console.log('📸 ACTUAL Screenshot captured! Size:', (screenshotDataUrl.length / 1024).toFixed(2), 'KB');
-                
-                submitBtn.innerHTML = `
-                    <span style="display: inline-flex; align-items: center; gap: 10px;">
-                        <div style="width: 20px; height: 20px; border: 2px solid #ffffff40; border-top: 2px solid #ffffff; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                        Sending Application...
-                    </span>
-                `;
-                
-                // Send email with ACTUAL screenshot and verification status
-                return sendApplicationEmailWithActualScreenshot(currentApplicationData, screenshotDataUrl);
-            })
-            .then(() => {
-                console.log('🎉 ULTIMATE APPLICATION SUBMITTED SUCCESSFULLY!');
-                
-                // 🎊 EPIC SUCCESS ANIMATION
-                submitBtn.innerHTML = `
-                    <span style="display: inline-flex; align-items: center; gap: 10px;">
-                        <span style="color: #10b981; font-size: 1.2em;">🎉</span>
-                        SUBMITTED!
-                    </span>
-                `;
-                
-                setTimeout(() => {
-                    // Show epic success message
-                    showSuccessMessage('🎮 APPLICATION SUBMITTED SUCCESSFULLY!');
-                    
-                    const successMessage = `🎮 ULTIMATE APPLICATION SUBMITTED! 🔥
-    
-    📸 High-quality player card screenshot included!
-    🔐 Email verification completed!
-    📧 Sent to official.1hp.team@gmail.com
-    
-    We will contact you soon via email.
-    Thank you for applying to 1HP Gaming Clan!
-    
-    🎯 Your application is now in our review queue.`;
-    
-                    alert(successMessage);
-                    
-                    // 🛑 PREVENT FURTHER SUBMISSIONS
-                    submitBtn.innerHTML = `
-                        <span style="display: inline-flex; align-items: center; gap: 10px;">
-                            <span style="color: #10b981;">✅</span>
-                            ALREADY SUBMITTED
-                        </span>
-                    `;
-                    submitBtn.disabled = true;
-                    submitBtn.style.background = 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)';
-                    
-                    isSubmissionInProgress = false;
-                }, 2000);
-            })
-            .catch(error => {
-                console.error('💥 ULTIMATE submission error:', error);
-                
-                let errorMessage = '❌ There was an error submitting your application. ';
-                
-                if (error.message && error.message.includes('Player card not visible')) {
-                    errorMessage += 'Player card screenshot failed. Please try again.';
-                } else if (error.text) {
-                    errorMessage += `EmailJS Error: ${error.text}`;
-                } else if (error.message) {
-                    errorMessage += `Error: ${error.message}`;
-                } else {
-                    errorMessage += 'Please check your internet connection and try again.';
-                }
-                
-                submitBtn.innerHTML = `
-                    <span style="display: inline-flex; align-items: center; gap: 10px;">
-                        <span style="color: #ef4444;">💥</span>
-                        FAILED
-                    </span>
-                `;
-                
-                setTimeout(() => {
-                    showErrorMessage(errorMessage);
-                    
-                    // Allow retry if not max attempts
-                    if (submissionAttempts < MAX_SUBMISSION_ATTEMPTS) {
-                        submitBtn.textContent = `Retry (${MAX_SUBMISSION_ATTEMPTS - submissionAttempts} left)`;
-                        submitBtn.disabled = false;
-                        isSubmissionInProgress = false;
-                    } else {
-                        submitBtn.textContent = 'Max Attempts Reached';
-                        submitBtn.disabled = true;
+                    // Handle playstyle selection with proper tracking
+                    if (currentApplicationData.playstyle) {
+                        const playstyleRadio = document.querySelector(`input[name="playstyle"][value="${currentApplicationData.playstyle}"]`);
+                        if (playstyleRadio) {
+                            playstyleRadio.checked = true;
+                            playstyleRadio.dataset.wasChecked = 'true';
+                        }
                     }
-                }, 2000);
-            });
-    }
-    
-    // --- Radio Button Deselection Functionality ---
-    function makeRadioButtonsDeselectable() {
-        const radioGroups = ['role', 'playstyle', 'platform', 'inputMethod'];
-        
-        radioGroups.forEach(groupName => {
-            const radios = document.querySelectorAll(`input[name="${groupName}"]`);
-            
-            radios.forEach(radio => {
-                radio.addEventListener('click', function(e) {
-                    if (this.dataset.wasChecked === 'true') {
-                        this.checked = false;
-                        this.dataset.wasChecked = 'false';
+                    
+                    // Handle platform selection with proper tracking
+                    if (currentApplicationData.platform) {
+                        const platformRadio = document.querySelector(`input[name="platform"][value="${currentApplicationData.platform}"]`);
+                        if (platformRadio) {
+                            platformRadio.checked = true;
+                            platformRadio.dataset.wasChecked = 'true';
+                        }
                         
-                        if (groupName === 'platform') {
+                        // Show input method if PC is selected
+                        if (currentApplicationData.platform === 'pc') {
                             const inputMethodGroup = document.getElementById('inputMethodGroup');
-                            const inputMethodInputs = document.querySelectorAll('input[name="inputMethod"]');
+                            inputMethodGroup.classList.remove('hidden');
                             
+                            // Set input method required
+                            document.querySelectorAll('input[name="inputMethod"]').forEach(inp => inp.required = true);
+                            
+                            // Handle input method selection with proper tracking
+                            if (currentApplicationData.inputMethod) {
+                                const inputMethodRadio = document.querySelector(`input[name="inputMethod"][value="${currentApplicationData.inputMethod}"]`);
+                                if (inputMethodRadio) {
+                                    inputMethodRadio.checked = true;
+                                    inputMethodRadio.dataset.wasChecked = 'true';
+                                }
+                            }
+                        }
+                    }
+                    
+                    document.getElementById('bio').value = currentApplicationData.bio;
+    
+                    // Update word counter
+                    const bioWords = currentApplicationData.bio.split(/\s+/).length;
+                    document.getElementById('wordCounter').textContent = `${bioWords} / 100 words`;
+                }
+                
+                // Show form and hide card
+                playerCard.classList.add('hidden');
+                formContainer.classList.remove('hidden');
+            }
+    
+            function submitApplication() {
+                if (currentApplicationData) {
+                    // Here you would typically send the data to your server
+                    alert('Application submitted successfully! We will contact you soon.');
+                    
+                    // Optional: You can add additional submission logic here
+                    console.log('Final submission:', currentApplicationData);
+                    
+                    // Optionally redirect or show success message
+                    // window.location.href = 'success.html';
+                } else {
+                    alert('No application data found. Please fill out the form first.');
+                }
+            }
+    
+            // --- Radio Button Deselection Functionality ---
+            function makeRadioButtonsDeselectable() {
+                // Handle all radio button groups that should be deselectable
+                const radioGroups = ['role', 'playstyle', 'platform', 'inputMethod'];
+                
+                radioGroups.forEach(groupName => {
+                    const radios = document.querySelectorAll(`input[name="${groupName}"]`);
+                    
+                    radios.forEach(radio => {
+                        radio.addEventListener('click', function(e) {
+                            // If this radio was already checked, uncheck it
+                            if (this.dataset.wasChecked === 'true') {
+                                this.checked = false;
+                                this.dataset.wasChecked = 'false';
+                                
+                                // Special handling for platform deselection
+                                if (groupName === 'platform') {
+                                    const inputMethodGroup = document.getElementById('inputMethodGroup');
+                                    const inputMethodInputs = document.querySelectorAll('input[name="inputMethod"]');
+                                    
+                                    // Hide input method group and clear selections
+                                    inputMethodGroup.classList.add('hidden');
+                                    inputMethodInputs.forEach(inp => {
+                                        inp.required = false;
+                                        inp.checked = false;
+                                        inp.dataset.wasChecked = 'false';
+                                    });
+                                }
+                            } else {
+                                // Mark this radio as checked and unmark others in the group
+                                radios.forEach(r => r.dataset.wasChecked = 'false');
+                                this.dataset.wasChecked = 'true';
+                            }
+                        });
+                        
+                        // Track the initial state
+                        radio.addEventListener('change', function() {
+                            if (this.checked) {
+                                // Mark this radio as checked and unmark others in the group
+                                radios.forEach(r => r.dataset.wasChecked = 'false');
+                                this.dataset.wasChecked = 'true';
+                            }
+                        });
+                    });
+                });
+            }
+    
+            // --- Global Site-wide Particle Animation (Exact from main site) ---
+            function globalParticles() {
+                // Check for reduced motion preference
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
+                }
+    
+                const canvas = document.createElement('canvas');
+                canvas.id = 'global-particles';
+                Object.assign(canvas.style, {
+                    position: 'fixed',
+                    top: '0',
+                    left: '0',
+                    width: '100vw',
+                    height: '100vh',
+                    pointerEvents: 'none',
+                    zIndex: '1',
+                    opacity: '0.6'
+                });
+                document.body.prepend(canvas);
+                
+                const ctx = canvas.getContext('2d', { alpha: true });
+                if (!ctx) return;
+    
+                let animationFrameId = null;
+                let isVisible = true;
+    
+                const resizeCanvas = debounce(() => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    initializeParticles();
+                }, PERF_CONFIG.debounceDelay);
+    
+                const colors = [
+                    'rgba(253,224,71,0.12)', 'rgba(236,65,88,0.12)', 'rgba(102,75,240,0.12)',
+                    'rgba(96,165,250,0.12)', 'rgba(34,197,94,0.12)', 'rgba(249,115,22,0.12)',
+                    'rgba(14,165,233,0.12)', 'rgba(236,72,153,0.12)', 'rgba(255,255,255,0.08)',
+                    'rgba(168,85,247,0.10)'
+                ];
+    
+                let particles = [];
+    
+                function initializeParticles() {
+                    const particleCount = Math.min(
+                        PERF_CONFIG.maxParticleCount, 
+                        Math.floor((canvas.width * canvas.height) / PERF_CONFIG.particleDensity)
+                    );
+                    
+                    particles = Array.from({ length: particleCount }, () => ({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        r: 8 + Math.random() * 20,
+                        dx: (Math.random() - 0.5) * 0.3,
+                        dy: (Math.random() - 0.5) * 0.3,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        alpha: 0.1 + Math.random() * 0.3,
+                        pulse: Math.random() * Math.PI * 2,
+                        pulseSpeed: 0.01 + Math.random() * 0.02,
+                        shape: Math.floor(Math.random() * 3)
+                    }));
+                }
+    
+                function drawParticles() {
+                    if (!ctx || !isVisible) return;
+                    
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    for (const p of particles) {
+                        p.pulse += p.pulseSpeed;
+                        const pulseMultiplier = 0.8 + 0.2 * Math.sin(p.pulse);
+                        const size = p.r * pulseMultiplier;
+                        
+                        ctx.fillStyle = p.color;
+                        ctx.globalAlpha = p.alpha * pulseMultiplier;
+                        ctx.shadowColor = p.color;
+                        ctx.shadowBlur = 15;
+                        
+                        ctx.beginPath();
+                        switch (p.shape) {
+                            case 0: // Circle
+                                ctx.arc(p.x, p.y, size, 0, 2 * Math.PI);
+                                break;
+                            case 1: // Triangle
+                                ctx.moveTo(p.x, p.y - size);
+                                ctx.lineTo(p.x - size * 0.866, p.y + size * 0.5);
+                                ctx.lineTo(p.x + size * 0.866, p.y + size * 0.5);
+                                ctx.closePath();
+                                break;
+                            case 2: // Square
+                                ctx.rect(p.x - size, p.y - size, size * 2, size * 2);
+                                break;
+                        }
+                        ctx.fill();
+                    }
+                    
+                    ctx.globalAlpha = 1;
+                    ctx.shadowBlur = 0;
+                }
+    
+                function animateGlobalParticles() {
+                    if (!isVisible) return;
+                    
+                    for (const p of particles) {
+                        p.x += p.dx;
+                        p.y += p.dy;
+                        
+                        // Wrap around screen edges
+                        if (p.x + p.r < 0) p.x = canvas.width + p.r;
+                        else if (p.x - p.r > canvas.width) p.x = -p.r;
+                        if (p.y + p.r < 0) p.y = canvas.height + p.r;
+                        else if (p.y - p.r > canvas.height) p.y = -p.r;
+                    }
+                    
+                    drawParticles();
+                    animationFrameId = requestAnimationFrame(animateGlobalParticles);
+                }
+    
+                // Performance optimization: pause when page is not visible
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        isVisible = false;
+                        if (animationFrameId) {
+                            cancelAnimationFrame(animationFrameId);
+                            animationFrameId = null;
+                        }
+                    } else {
+                        isVisible = true;
+                        if (!animationFrameId) {
+                            animateGlobalParticles();
+                        }
+                    }
+                });
+    
+                // Mouse interaction with throttling
+                let mouseX = 0, mouseY = 0;
+                const handleMouseMove = throttle((e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    
+                    for (const p of particles) {
+                        const dx = mouseX - p.x;
+                        const dy = mouseY - p.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 150) {
+                            const force = (150 - distance) / 150 * 0.002;
+                            p.dx += dx * force;
+                            p.dy += dy * force;
+                            
+                            // Limit velocity
+                            const maxSpeed = 0.5;
+                            p.dx = Math.max(-maxSpeed, Math.min(maxSpeed, p.dx));
+                            p.dy = Math.max(-maxSpeed, Math.min(maxSpeed, p.dy));
+                        }
+                    }
+                }, PERF_CONFIG.particleThrottleDelay);
+                
+                // Initialize
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+                document.addEventListener('mousemove', handleMouseMove, { passive: true });
+                animateGlobalParticles();
+            }
+    
+            // Form handling with validation - UPDATED
+            document.getElementById('applicationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value.trim();
+                }
+                
+                // Check if platform is selected to determine if inputMethod is required
+                const platformSelected = data.platform;
+                const inputMethodRequired = platformSelected === 'pc';
+                
+                // Validate required fields
+                if (!data.realName || !data.gameName || !data.age || !data.location || 
+                    !data.contactInfo || !data.role || !data.game || !data.playstyle || !data.bio) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Validate platform selection
+                if (!data.platform) {
+                    alert('Please select a platform.');
+                    return;
+                }
+                
+                // Validate input method if PC is selected
+                if (inputMethodRequired && !data.inputMethod) {
+                    alert('Please select an input method for PC platform.');
+                    return;
+                }
+    
+                // Validate email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(data.contactInfo)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+    
+                // Validate bio word count
+                const bioWords = data.bio.split(/\s+/).length;
+                if (bioWords > 100) {
+                    alert('Bio must be 100 words or less. Please shorten your bio.');
+                    return;
+                }
+    
+                // Validate age
+                if (data.age < 13 || data.age > 69) {
+                    alert('Age must be between 13 and 69.');
+                    return;
+                }
+                
+                // Store application data
+                currentApplicationData = data;
+                
+                // Show player card
+                showPlayerCard(data);
+                
+                // Here you would typically send the data to a server
+                console.log('Application Data:', data);
+            });
+    
+            // Create floating particles on form interaction
+            function createFloatingParticle(x, y) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    left: ${x}px;
+                    top: ${y}px;
+                    width: ${Math.random() * 6 + 2}px;
+                    height: ${Math.random() * 6 + 2}px;
+                    background: rgba(102, 126, 234, 0.6);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    animation: particleFloat 6s ease-in-out infinite;
+                    z-index: 5;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes particleFloat {
+                        0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+                        50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+                    }
+                `;
+                if (!document.head.querySelector('style[data-particle-animation]')) {
+                    style.setAttribute('data-particle-animation', 'true');
+                    document.head.appendChild(style);
+                }
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 6000);
+            }
+    
+            // Platform selection handler
+            document.addEventListener('DOMContentLoaded', function() {
+                const platformInputs = document.querySelectorAll('input[name="platform"]');
+                const inputMethodGroup = document.getElementById('inputMethodGroup');
+                const inputMethodInputs = document.querySelectorAll('input[name="inputMethod"]');
+            
+                platformInputs.forEach(input => {
+                    input.addEventListener('change', function() {
+                        if (this.value === 'pc') {
+                            // Show input method options for PC
+                            inputMethodGroup.classList.remove('hidden');
+                            inputMethodInputs.forEach(inp => inp.required = true);
+                        } else if (this.value === 'console') {
+                            // Hide input method options for Console
                             inputMethodGroup.classList.add('hidden');
                             inputMethodInputs.forEach(inp => {
                                 inp.required = false;
@@ -2228,378 +1858,32 @@
                                 inp.dataset.wasChecked = 'false';
                             });
                         }
-                    } else {
-                        radios.forEach(r => r.dataset.wasChecked = 'false');
-                        this.dataset.wasChecked = 'true';
-                    }
-                });
-                
-                radio.addEventListener('change', function() {
-                    if (this.checked) {
-                        radios.forEach(r => r.dataset.wasChecked = 'false');
-                        this.dataset.wasChecked = 'true';
-                    }
-                });
-            });
-        });
-    }
-    
-    // --- Global Site-wide Particle Animation (Exact from main site) ---
-    function globalParticles() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            return;
-        }
-    
-        const canvas = document.createElement('canvas');
-        canvas.id = 'global-particles';
-        Object.assign(canvas.style, {
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100vw',
-            height: '100vh',
-            pointerEvents: 'none',
-            zIndex: '1',
-            opacity: '0.6'
-        });
-        document.body.prepend(canvas);
-        
-        const ctx = canvas.getContext('2d', { alpha: true });
-        if (!ctx) return;
-    
-        let animationFrameId = null;
-        let isVisible = true;
-    
-        const resizeCanvas = debounce(() => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initializeParticles();
-        }, PERF_CONFIG.debounceDelay);
-    
-        const colors = [
-            'rgba(253,224,71,0.12)', 'rgba(236,65,88,0.12)', 'rgba(102,75,240,0.12)',
-            'rgba(96,165,250,0.12)', 'rgba(34,197,94,0.12)', 'rgba(249,115,22,0.12)',
-            'rgba(14,165,233,0.12)', 'rgba(236,72,153,0.12)', 'rgba(255,255,255,0.08)',
-            'rgba(168,85,247,0.10)'
-        ];
-    
-        let particles = [];
-    
-        function initializeParticles() {
-            const particleCount = Math.min(
-                PERF_CONFIG.maxParticleCount, 
-                Math.floor((canvas.width * canvas.height) / PERF_CONFIG.particleDensity)
-            );
-            
-            particles = Array.from({ length: particleCount }, () => ({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                r: 8 + Math.random() * 20,
-                dx: (Math.random() - 0.5) * 0.3,
-                dy: (Math.random() - 0.5) * 0.3,
-                color: colors[Math.floor(Math.random() * colors.length)],
-                alpha: 0.1 + Math.random() * 0.3,
-                pulse: Math.random() * Math.PI * 2,
-                pulseSpeed: 0.01 + Math.random() * 0.02,
-                shape: Math.floor(Math.random() * 3)
-            }));
-        }
-    
-        function drawParticles() {
-            if (!ctx || !isVisible) return;
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            for (const p of particles) {
-                p.pulse += p.pulseSpeed;
-                const pulseMultiplier = 0.8 + 0.2 * Math.sin(p.pulse);
-                const size = p.r * pulseMultiplier;
-                
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = p.alpha * pulseMultiplier;
-                ctx.shadowColor = p.color;
-                ctx.shadowBlur = 15;
-                
-                ctx.beginPath();
-                switch (p.shape) {
-                    case 0:
-                        ctx.arc(p.x, p.y, size, 0, 2 * Math.PI);
-                        break;
-                    case 1:
-                        ctx.moveTo(p.x, p.y - size);
-                        ctx.lineTo(p.x - size * 0.866, p.y + size * 0.5);
-                        ctx.lineTo(p.x + size * 0.866, p.y + size * 0.5);
-                        ctx.closePath();
-                        break;
-                    case 2:
-                        ctx.rect(p.x - size, p.y - size, size * 2, size * 2);
-                        break;
-                }
-                ctx.fill();
-            }
-            
-            ctx.globalAlpha = 1;
-            ctx.shadowBlur = 0;
-        }
-    
-        function animateGlobalParticles() {
-            if (!isVisible) return;
-            
-            for (const p of particles) {
-                p.x += p.dx;
-                p.y += p.dy;
-                
-                if (p.x + p.r < 0) p.x = canvas.width + p.r;
-                else if (p.x - p.r > canvas.width) p.x = -p.r;
-                if (p.y + p.r < 0) p.y = canvas.height + p.r;
-                else if (p.y - p.r > canvas.height) p.y = -p.r;
-            }
-            
-            drawParticles();
-            animationFrameId = requestAnimationFrame(animateGlobalParticles);
-        }
-    
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                isVisible = false;
-                if (animationFrameId) {
-                    cancelAnimationFrame(animationFrameId);
-                    animationFrameId = null;
-                }
-            } else {
-                isVisible = true;
-                if (!animationFrameId) {
-                    animateGlobalParticles();
-                }
-            }
-        });
-    
-        let mouseX = 0, mouseY = 0;
-        const handleMouseMove = throttle((e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            for (const p of particles) {
-                const dx = mouseX - p.x;
-                const dy = mouseY - p.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 150) {
-                    const force = (150 - distance) / 150 * 0.002;
-                    p.dx += dx * force;
-                    p.dy += dy * force;
-                    
-                    const maxSpeed = 0.5;
-                    p.dx = Math.max(-maxSpeed, Math.min(maxSpeed, p.dx));
-                    p.dy = Math.max(-maxSpeed, Math.min(maxSpeed, p.dy));
-                }
-            }
-        }, PERF_CONFIG.particleThrottleDelay);
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-        document.addEventListener('mousemove', handleMouseMove, { passive: true });
-        animateGlobalParticles();
-    }
-    
-    // Form handling with validation
-    document.getElementById('applicationForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(this);
-        const data = {};
-        for (let [key, value] of formData.entries()) {
-            data[key] = value.trim();
-        }
-        
-        const platformSelected = data.platform;
-        const inputMethodRequired = platformSelected === 'pc';
-        
-        // Validate required fields
-        if (!data.realName || !data.gameName || !data.age || !data.location || 
-            !data.contactInfo || !data.role || !data.game || !data.playstyle || !data.bio) {
-            alert('Please fill in all required fields.');
-            return;
-        }
-        
-        if (!data.platform) {
-            alert('Please select a platform.');
-            return;
-        }
-        
-        if (inputMethodRequired && !data.inputMethod) {
-            alert('Please select an input method for PC platform.');
-            return;
-        }
-    
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.contactInfo)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-    
-        const bioWords = data.bio.split(/\s+/).length;
-        if (bioWords > 100) {
-            alert('Bio must be 100 words or less. Please shorten your bio.');
-            return;
-        }
-    
-        if (data.age < 13 || data.age > 69) {
-            alert('Age must be between 13 and 69.');
-            return;
-        }
-        
-        currentApplicationData = data;
-        showPlayerCard(data);
-        console.log('🔥 Application Data Ready for ULTIMATE Submission:', data);
-    });
-    
-    // Create floating particles on form interaction
-    function createFloatingParticle(x, y) {
-        const particle = document.createElement('div');
-        particle.style.cssText = `
-            position: absolute;
-            left: ${x}px;
-            top: ${y}px;
-            width: ${Math.random() * 6 + 2}px;
-            height: ${Math.random() * 6 + 2}px;
-            background: rgba(102, 126, 234, 0.6);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particleFloat 6s ease-in-out infinite;
-            z-index: 5;
-        `;
-        
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes particleFloat {
-                0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-                50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
-            }
-        `;
-        if (!document.head.querySelector('style[data-particle-animation]')) {
-            style.setAttribute('data-particle-animation', 'true');
-            document.head.appendChild(style);
-        }
-        
-        document.body.appendChild(particle);
-        setTimeout(() => particle.remove(), 6000);
-    }
-    
-    // Platform selection handler
-    document.addEventListener('DOMContentLoaded', function() {
-        const platformInputs = document.querySelectorAll('input[name="platform"]');
-        const inputMethodGroup = document.getElementById('inputMethodGroup');
-        const inputMethodInputs = document.querySelectorAll('input[name="inputMethod"]');
-    
-        platformInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                if (this.value === 'pc') {
-                    inputMethodGroup.classList.remove('hidden');
-                    inputMethodInputs.forEach(inp => inp.required = true);
-                } else if (this.value === 'console') {
-                    inputMethodGroup.classList.add('hidden');
-                    inputMethodInputs.forEach(inp => {
-                        inp.required = false;
-                        inp.checked = false;
-                        inp.dataset.wasChecked = 'false';
                     });
+                });
+    
+                // Initialize the deselectable radio buttons functionality
+                makeRadioButtonsDeselectable();
+            });
+    
+            // Add particle effects on form interactions
+            document.querySelectorAll('input, textarea, select').forEach(element => {
+                element.addEventListener('focus', function(e) {
+                    const rect = e.target.getBoundingClientRect();
+                    createFloatingParticle(rect.left + rect.width / 2, rect.top + rect.height / 2);
+                });
+            });
+    
+            // Initialize everything when page loads
+            document.addEventListener('DOMContentLoaded', () => {
+                try {
+                    globalParticles();
+                    setupWordCounter();
+                } catch (error) {
+                    console.error('Error initializing effects:', error);
                 }
             });
-        });
-    
-        makeRadioButtonsDeselectable();
-    });
-    
-    // Add particle effects on form interactions
-    document.querySelectorAll('input, textarea, select').forEach(element => {
-        element.addEventListener('focus', function(e) {
-            const rect = e.target.getBoundingClientRect();
-            createFloatingParticle(rect.left + rect.width / 2, rect.top + rect.height / 2);
-        });
-    });
-    
-    // Initialize everything when page loads
-    document.addEventListener('DOMContentLoaded', () => {
-        try {
-            // Add spin animation
-            if (!document.head.querySelector('#spin-animation')) {
-                const style = document.createElement('style');
-                style.id = 'spin-animation';
-                style.textContent = `
-                    @keyframes spin {
-                        0% { transform: rotate(0deg); }
-                        100% { transform: rotate(360deg); }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
             
-            // Initialize EmailJS
-            emailjs.init("rEl660N3WJGhJop5A");
-            console.log('🔥 EmailJS initialized successfully!');
-            
-            // Initialize other features
-            globalParticles();
-            setupWordCounter();
-            
-            console.log('🚀 ULTIMATE 1HP Recruitment System Ready! 🔥💎');
-            console.log('🎯 Features: Email Verification + Anti-Spam + Actual Screenshots + Epic Animations');
-        } catch (error) {
-            console.error('Error initializing ULTIMATE effects:', error);
-        }
-    });
-    
-    // 🧪 TEST FUNCTION
-    function testUltimateSystem() {
-        console.log('🧪 Testing ULTIMATE EmailJS configuration...');
-        
-        const testParams = {
-            to_email: 'official.1hp.team@gmail.com',
-            from_name: 'ULTIMATE Test User',
-            from_email: 'test@ultimate.com',
-            game_name: 'UltimateGamer2024',
-            real_name: 'ULTIMATE Test User',
-            age: '25',
-            platform: 'PC',
-            input_method: 'Mouse & Keyboard',
-            location: 'Dhaka, Bangladesh',
-            contact_email: 'test@ultimate.com',
-            preferred_role: 'Pro Player',
-            primary_game: 'Valorant',
-            playstyle: 'Aggressive',
-            bio: 'This is an ULTIMATE test bio for the enhanced system.',
-            submission_date: new Date().toLocaleString(),
-            verification_status: '✅ Email Verified (Test)',
-            submission_attempt: 1,
-            player_card_screenshot: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
-            message: '🔥 ULTIMATE TEST MESSAGE 🔥'
-        };
-    
-        emailjs.send('service_b0ejnaq', 'template_gp8d9ka', testParams)
-            .then((response) => {
-                console.log('✅ ULTIMATE test email successful:', response);
-                showSuccessMessage('🎉 ULTIMATE test email sent successfully!');
-            })
-            .catch((error) => {
-                console.error('❌ ULTIMATE test email failed:', error);
-                showErrorMessage('💥 ULTIMATE test failed: ' + (error.text || error.message));
-            });
-    }
-    
-    // Uncomment below to auto-test on page load
-    // testUltimateSystem();
-    
-    console.log('🎮 ULTIMATE 1HP Recruitment System Loaded Successfully! 🔥🚀💎');
-    console.log('🔥 Features Active:');
-    console.log('   📧 Email Verification System');
-    console.log('   🛡️ Anti-Spam Protection');
-    console.log('   📸 ACTUAL Player Card Screenshots');
-    console.log('   🎨 Epic Animations & UI');
-    console.log('   🚫 Max Attempt Limits');
-    console.log('   ✨ Enhanced Error Handling');
     </script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+</body>
 </html>
