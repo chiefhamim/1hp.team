@@ -1707,36 +1707,23 @@
                     });
                 }
                 // Handle window resize to adjust menu visibility
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(() => {
-                        const width = window.innerWidth;
-                        
-                        // Force close all menus
-                        closeAllMenus();
-                        
-                        // Show correct menu button based on actual screen size
-                        if (width >= 640 && width < 1024) {
-                            // Tablet range - ensure tablet menu is available
-                            if (tabletMenu) {
-                                tabletMenu.style.display = '';
-                                tabletMenu.classList.add('hidden');
-                            }
-                        } else if (width >= 1024) {
-                            // Desktop range - hide both menus completely
-                            if (tabletMenu) tabletMenu.style.display = 'none';
-                            if (mobileMenu) mobileMenu.style.display = 'none';
-                        } else {
-                            // Mobile range - ensure mobile menu is available
-                            if (mobileMenu) {
-                                mobileMenu.style.display = '';
-                                mobileMenu.classList.add('hidden');
-                            }
-                            if (tabletMenu) tabletMenu.style.display = 'none';
-                        }
-                    }, 150);
-                });
-
+                function initializeMobileMenu() {
+                    let resizeTimeout; // 👈 ADD THIS DECLARATION!
+                    
+                    // Mobile Menu Elements
+                    const mobileMenuButton = document.getElementById('mobile-menu-button');
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    
+                    // ...rest of your existing code...
+                    
+                    // Handle window resize to adjust menu visibility
+                    window.addEventListener('resize', () => {
+                        clearTimeout(resizeTimeout); // ✅ Now it works properly!
+                        resizeTimeout = setTimeout(() => {
+                            // ...your existing resize logic...
+                        }, 150);
+                    });
+                }
             
                 // Close menus on escape key
                 document.addEventListener('keydown', (e) => {
