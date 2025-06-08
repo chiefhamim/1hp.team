@@ -144,8 +144,15 @@
        3. FORM ELEMENTS
        ========================== */
     .form-group { margin-bottom: 25px; }
-    label { display: block; margin-bottom: 10px; font-weight: 600; color: rgba(255,255,255,0.9); font-size: 1em; }
-    .required { color: #ef4444; }
+      label { display: block; margin-bottom: 10px; font-weight: 600; color: rgba(255,255,255,0.9); font-size: 1em; }
+
+    /* Add this rule to make only the main question labels italic */
+    .form-group > label,
+    fieldset > legend > label {
+    font-style: italic;
+    font-family: 'Oswald', system-ui, sans-serif;
+    }    
+    .required { color: #ffd900; }
     input[type="text"], input[type="number"], input[type="email"], select, textarea {
         width: 100%; padding: 14px 18px; border: 2px solid rgba(255,255,255,0.1);
         border-radius: 12px; font-size: 16px; transition: all 0.3s ease;
@@ -1570,7 +1577,7 @@
       <!-- Language Preference -->
       <fieldset class="form-section">
         <legend>
-          <label>Preferred Language(s)<span class="required">*</span></label>
+          <label>Preferred Language(s) <span class="required">*</span></label>
         </legend>
         <div class="language-options" role="radiogroup" aria-labelledby="language-legend">
           <div class="language-option bangla-option">
@@ -1591,7 +1598,7 @@
       <!-- Platform and Input Configuration -->
       <fieldset class="form-section">
         <legend>
-          <label>Gaming Platform<span class="required">*</span></label>
+          <label>Gaming Platform <span class="required">*</span></label>
         </legend>
         <div class="platform-options" role="radiogroup">
           <div class="platform-option pc-option">
@@ -1635,7 +1642,7 @@
       <!-- Gaming Profile Section -->
       <fieldset class="form-section">
         <legend>
-          <label>Preferable Role in 1hp?<span class="required">*</span></label>
+          <label>Preferable Role in 1hp? <span class="required">*</span></label>
         </legend>
         <div class="role-options" role="radiogroup">
           <div class="role-option">
@@ -1840,7 +1847,7 @@
       <!-- Experience and Background -->
       <fieldset class="form-section">
         <legend>
-          <label>Ever been in a clan<span class="required">*</span></label>
+          <label>Ever been in a clan? <span class="required">*</span></label>
         </legend>
         <div class="clan-options" role="radiogroup">
           <div class="clan-option no-clan-option">
@@ -2785,70 +2792,214 @@ const FormManager = {
     },
     
     validateData(data) {
-        // Bio validation
-        if (data.bioChoice === 'yes') {
-            if (!data.bio) {
-                alert('Please write your bio or select "Prefer not to say".');
-                return false;
+        const errors = [];
+        
+        // Basic field validation
+        const requiredFields = {
+            realName: 'Real Name',
+            gameName: 'In-Game Name', 
+            age: 'Age',
+            location: 'Location',
+            contactInfo: 'Contact Email',
+            language: 'Preferred Language',
+            platform: 'Gaming Platform',
+            role: 'Preferable Role',
+            game: 'Primary Game',
+            currentLevel: 'Current Level/Rank',
+            gameExperience: 'Gaming Experience',
+            playstyle: 'Playstyle',
+            playPreference: 'Play Preference',
+            gamingFrequency: 'Gaming Frequency',
+            dailyHours: 'Daily Gaming Hours',
+            bestTime: 'Active Time',
+            communication: 'Communication Method',
+            previousClan: 'Previous Clan Experience',
+            penalty: 'Game Penalties',
+            bioChoice: 'Bio Choice'
+        };
+        
+        // Check basic required fields
+        for (const [field, label] of Object.entries(requiredFields)) {
+            if (!data[field] || data[field].toString().trim() === '') {
+                errors.push(`• ${label} is required`);
             }
-            if (data.bio.split(/\s+/).length > 100) {
-                alert('Bio must be 100 words or less.');
-                return false;
+        }
+        
+        // Conditional field validation
+        if (data.platform === 'pc' && !data.inputMethod) {
+            errors.push('• Input Method is required when PC platform is selected');
+        }
+        
+        if (data.game === 'other' && (!data.otherGame || data.otherGame.trim() === '')) {
+            errors.push('• Game Name is required when "Other" is selected');
+        }
+        
+        if (data.previousClan === 'yes') {
+            if (!data.clanDetails || !Array.isArray(data.clanDetails) || data.clanDetails.length === 0) {
+                errors.push('• Previous clan details are required when you have clan experience');
+            }
+        }
+        
+        if (data.penalty === 'yes') {
+            if (!data.penaltyDetails || !Array.isArray(data.penaltyDetails) || data.penaltyDetails.length === 0) {
+                errors.push('• Penalty details are required when you have penalty history');
+            }
+        }
+        
+        if (data.bioChoice === 'yes') {
+            if (!data.bio || data.bio.trim() === '') {
+                errors.push('• Bio is required when "Yes" is selected for bio choice');
+            } else if (data.bio.split(/\s+/).length > 100) {
+                errors.push('• Bio must be 100 words or less');
             }
         } else if (data.bioChoice === 'no') {
             data.bio = 'Prefers not to say';
         }
         
-        // Multi-select validation
-        for (const [field, config] of Object.entries(CONSTANTS.validationRules.multiSelect)) {
+        // Multi-select validation with specific minimum requirements
+        const multiSelectValidation = {
+            whyJoin: { min: 2, label: 'Why Join Our Clan (select at least 2)' },
+            gameGoals: { min: 2, label: 'Gaming Goals (select at least 2)' },
+            handleToxicity: { min: 2, label: 'Handle Toxicity (select at least 2)' },
+            clanGreatness: { min: 2, label: 'Clan Greatness Qualities (select at least 2)' },
+            extraSkills: { min: 1, label: 'Extra Skills (select at least 1)' },
+            clanDetails: { min: 1, label: 'Previous Clan Details', conditional: data.previousClan === 'yes' },
+            penaltyDetails: { min: 1, label: 'Penalty Details', conditional: data.penalty === 'yes' }
+        };
+        
+        for (const [field, config] of Object.entries(multiSelectValidation)) {
+            // Skip conditional fields if condition not met
+            if (config.conditional === false) continue;
+            
             if (!data[field] || !Array.isArray(data[field]) || data[field].length < config.min) {
-                alert(`Please select at least ${config.min} option${config.min > 1 ? 's' : ''} for "${config.name}".`);
-                return false;
+                errors.push(`• ${config.label}`);
             }
         }
         
-        // Extra skills validation
-        if (data.extraSkills) {
+        // Extra skills special validation (None vs other skills)
+        if (data.extraSkills && Array.isArray(data.extraSkills)) {
             const hasNone = data.extraSkills.includes('none');
             const hasOtherSkills = data.extraSkills.some(skill => skill !== 'none');
+            
             if (!hasNone && !hasOtherSkills) {
-                alert('Please select either "None" or at least 1 skill for "extra skills".');
-                return false;
+                errors.push('• Extra Skills: Please select either "None" or at least 1 skill');
             }
-        } else {
-            alert('Please select at least 1 option for "extra skills".');
-            return false;
+            
+            if (hasNone && hasOtherSkills) {
+                errors.push('• Extra Skills: Cannot select "None" with other skills');
+            }
         }
         
-        // Conditional validations
-        const conditionalChecks = [
-            { condition: data.platform === 'pc' && !data.inputMethod, message: 'Please select an input method for PC platform.' },
-            { condition: data.previousClan === 'yes' && (!data.clanDetails || data.clanDetails.length < 1), message: 'Please select 1 reason why you left your previous clan.' },
-            { condition: data.penalty === 'yes' && (!data.penaltyDetails || data.penaltyDetails.length < 1), message: 'Please select 1 type of penalty you received.' },
-            { condition: data.game === 'other' && !data.otherGame, message: 'Please specify the game name.' },
-            { condition: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contactInfo), message: 'Please enter a valid email address.' },
-            { condition: data.age < 13 || data.age > 69, message: 'Age must be between 13 and 69.' }
-        ];
+        // Email validation
+        if (data.contactInfo && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contactInfo)) {
+            errors.push('• Please enter a valid email address');
+        }
         
-        for (const check of conditionalChecks) {
-            if (check.condition) {
-                alert(check.message);
-                return false;
-            }
+        // Age validation
+        if (data.age && (data.age < 13 || data.age > 69)) {
+            errors.push('• Age must be between 13 and 69');
+        }
+        
+        // Show errors if any
+        if (errors.length > 0) {
+            const errorMessage = `Please complete the following required fields:\n\n${errors.join('\n')}\n\nPlease scroll up and fill in all missing information.`;
+            alert(errorMessage);
+            
+            // Scroll to first missing field
+            this.scrollToFirstError(data);
+            return false;
         }
         
         return true;
     },
     
-    showPlayerCard(data) {
-        const cardTitle = document.querySelector('.card-title');
-        if (cardTitle && data.gameName) {
-            cardTitle.textContent = `${data.gameName}'s Card`;
-        }
+    scrollToFirstError(data) {
+        // Priority order for scrolling to errors
+        const fieldPriority = [
+            { field: 'realName', element: '#realName' },
+            { field: 'gameName', element: '#gameName' },
+            { field: 'age', element: '#age' },
+            { field: 'location', element: '#location' },
+            { field: 'contactInfo', element: '#contactInfo' },
+            { field: 'language', element: 'input[name="language"]' },
+            { field: 'platform', element: 'input[name="platform"]' },
+            { field: 'inputMethod', element: 'input[name="inputMethod"]', condition: () => data.platform === 'pc' },
+            { field: 'role', element: 'input[name="role"]' },
+            { field: 'game', element: '#game' },
+            { field: 'otherGame', element: '#otherGame', condition: () => data.game === 'other' },
+            { field: 'currentLevel', element: '#currentLevel' },
+            { field: 'gameExperience', element: 'input[name="gameExperience"]' },
+            { field: 'playstyle', element: 'input[name="playstyle"]' },
+            { field: 'playPreference', element: 'input[name="playPreference"]' },
+            { field: 'gamingFrequency', element: 'input[name="gamingFrequency"]' },
+            { field: 'dailyHours', element: 'input[name="dailyHours"]' },
+            { field: 'bestTime', element: 'input[name="bestTime"]' },
+            { field: 'communication', element: 'input[name="communication"]' },
+            { field: 'previousClan', element: 'input[name="previousClan"]' },
+            { field: 'clanDetails', element: 'input[name="clanDetails"]', condition: () => data.previousClan === 'yes' },
+            { field: 'penalty', element: 'input[name="penalty"]' },
+            { field: 'penaltyDetails', element: 'input[name="penaltyDetails"]', condition: () => data.penalty === 'yes' },
+            { field: 'whyJoin', element: 'input[name="whyJoin"]' },
+            { field: 'gameGoals', element: 'input[name="gameGoals"]' },
+            { field: 'handleToxicity', element: 'input[name="handleToxicity"]' },
+            { field: 'clanGreatness', element: 'input[name="clanGreatness"]' },
+            { field: 'extraSkills', element: 'input[name="extraSkills"]' },
+            { field: 'bioChoice', element: 'input[name="bioChoice"]' },
+            { field: 'bio', element: '#bio', condition: () => data.bioChoice === 'yes' }
+        ];
         
-        DOM.cardContent.innerHTML = CardGenerator.generate(data);
+        for (const item of fieldPriority) {
+            // Skip conditional fields if condition not met
+            if (item.condition && !item.condition()) continue;
+            
+            // Check if field is missing or invalid
+            const fieldValue = data[item.field];
+            const isEmpty = !fieldValue || 
+                           (typeof fieldValue === 'string' && fieldValue.trim() === '') ||
+                           (Array.isArray(fieldValue) && fieldValue.length === 0);
+            
+            if (isEmpty) {
+                const element = document.querySelector(item.element);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Add visual emphasis
+                    const container = element.closest('.form-group') || element.closest('fieldset') || element.closest('.form-section');
+                    if (container) {
+                        container.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.5)';
+                        container.style.borderRadius = '12px';
+                        setTimeout(() => {
+                            container.style.boxShadow = '';
+                        }, 3000);
+                    }
+                    
+                    // Focus the element if it's focusable
+                    if (element.type !== 'radio' && element.type !== 'checkbox') {
+                        setTimeout(() => element.focus(), 500);
+                    }
+                    break;
+                }
+            }
+        }
+    },
+    
+    // ADD THIS MISSING METHOD:
+    showPlayerCard(data) {
+        // Generate the card content using CardGenerator
+        const cardHTML = CardGenerator.generate(data);
+        DOM.cardContent.innerHTML = cardHTML;
+        
+        // Hide form and show player card
         DOM.formContainer.classList.add('hidden');
         DOM.playerCard.classList.remove('hidden');
+        
+        // Scroll to top of the card smoothly
+        DOM.playerCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // Add a small delay for better UX
+        setTimeout(() => {
+            DOM.playerCard.focus();
+        }, 300);
     }
 };
 
