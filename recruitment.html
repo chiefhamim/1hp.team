@@ -1477,43 +1477,50 @@
       Back to Home
     </a>
   </div>
+  
   <!-- Form Container -->
   <div class="container" id="formContainer">
     <!-- Header Section -->
-    <div class="header">
+    <header class="header">
       <div class="logo-container">
-        <img src="1hp Rebrand PP_PNG.png" alt="1HP Logo" class="logo-image">
+        <img src="1hp Rebrand PP_PNG.png" alt="1HP Logo" class="logo-image" loading="lazy">
       </div>
       <div class="subtitle">Join Our Gaming Community</div>
       <div class="description">Apply to become a member of our Clan</div>
-    </div>
+    </header>
+    
     <!-- Application Form -->
-    <form id="applicationForm">
+    <form id="applicationForm" novalidate>
       <!-- Personal Information Section -->
-      <div class="form-group">
-        <label for="realName">Name <span class="required">*</span></label>
-        <input type="text" id="realName" name="realName" required placeholder="Enter your real name">
-      </div>
-      <div class="form-group">
-        <label for="gameName">In-Game Name <span class="required">*</span></label>
-        <input type="text" id="gameName" name="gameName" required placeholder="Enter your in-game name/tag">
-      </div>
-      <div class="form-group">
-        <label for="age">Age <span class="required">*</span></label>
-        <input type="number" id="age" name="age" required min="13" max="69" placeholder="Enter your age (between 13 and 69)">
-      </div>
-      <div class="form-group">
-        <label for="location">Location (Must be from Bangladesh) <span class="required">*</span></label>
-        <input type="text" id="location" name="location" required placeholder="Enter your city/location">
-      </div>
-      <div class="form-group">
-        <label for="contactInfo">Contact Email <span class="required">*</span></label>
-        <input type="email" id="contactInfo" name="contactInfo" required placeholder="example@gmail.com">
-      </div>
+      <fieldset class="form-section">
+        <div class="form-group">
+          <label for="realName">Name <span class="required">*</span></label>
+          <input type="text" id="realName" name="realName" required placeholder="Enter your real name" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="gameName">In-Game Name <span class="required">*</span></label>
+          <input type="text" id="gameName" name="gameName" required placeholder="Enter your in-game name/tag" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="age">Age <span class="required">*</span></label>
+          <input type="number" id="age" name="age" required min="13" max="69" placeholder="Enter your age (between 13 and 69)" autocomplete="age">
+        </div>
+        <div class="form-group">
+          <label for="location">Location (Must be from Bangladesh) <span class="required">*</span></label>
+          <input type="text" id="location" name="location" required placeholder="Enter your city/location" autocomplete="address-level1">
+        </div>
+        <div class="form-group">
+          <label for="contactInfo">Contact Email <span class="required">*</span></label>
+          <input type="email" id="contactInfo" name="contactInfo" required placeholder="example@gmail.com" autocomplete="email">
+        </div>
+      </fieldset>
+      
       <!-- Language Preference -->
-      <div class="form-group">
-        <label>Preferred Language(s)<span class="required">*</span></label>
-        <div class="language-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Preferred Language(s)<span class="required">*</span></label>
+        </legend>
+        <div class="language-options" role="radiogroup" aria-labelledby="language-legend">
           <div class="language-option bangla-option">
             <input type="radio" id="bangla" name="language" value="bangla" required>
             <label for="bangla">Bangla</label>
@@ -1527,11 +1534,14 @@
             <label for="bothLang">Both</label>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Platform and Input Configuration -->
-      <div class="form-group">
-        <label>Gaming Platform<span class="required">*</span></label>
-        <div class="platform-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Gaming Platform<span class="required">*</span></label>
+        </legend>
+        <div class="platform-options" role="radiogroup">
           <div class="platform-option pc-option">
             <input type="radio" id="pc" name="platform" value="pc" required>
             <div class="platform-option-content">
@@ -1547,11 +1557,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Conditional Input Method (PC Only) -->
-      <div class="form-group hidden" id="inputMethodGroup">
-        <label>Input Method <span class="required">*</span></label>
-        <div class="input-method-options">
+      <fieldset class="form-section hidden" id="inputMethodGroup">
+        <legend>
+          <label>Input Method <span class="required">*</span></label>
+        </legend>
+        <div class="input-method-options" role="radiogroup">
           <div class="input-method-option keyboard-option">
             <input type="radio" id="keyboard" name="inputMethod" value="keyboard">
             <label for="keyboard">Mouse & Keyboard</label>
@@ -1565,11 +1578,14 @@
             <label for="bothInput">Both</label>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Gaming Profile Section -->
-      <div class="form-group">
-        <label>Preferable Role in 1hp?<span class="required">*</span></label>
-        <div class="role-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Preferable Role in 1hp?<span class="required">*</span></label>
+        </legend>
+        <div class="role-options" role="radiogroup">
           <div class="role-option">
             <input type="radio" id="advisor" name="role" value="advisor" required>
             <div class="role-option-content">
@@ -1592,7 +1608,8 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <div class="form-group">
         <label for="game">Primary Game <span class="required">*</span></label>
         <select id="game" name="game" required>
@@ -1613,14 +1630,18 @@
           <input type="text" id="otherGame" name="otherGame" placeholder="Write the game name(s)">
         </div>
       </div>
+      
       <div class="form-group">
         <label for="currentLevel">Current Level/Rank <span class="required">*</span></label>
         <input type="text" id="currentLevel" name="currentLevel" required placeholder="e.g., Gold 3, Level 150, Diamond, etc.">
       </div>
+      
       <!-- NEW: Game Experience with Radio Options -->
-      <div class="form-group">
-        <label>Gaming Experience <span class="required">*</span></label>
-        <div class="game-experience-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Gaming Experience <span class="required">*</span></label>
+        </legend>
+        <div class="game-experience-options" role="radiogroup">
           <div class="game-experience-option experience-beginning">
             <input type="radio" id="exp-beginning" name="gameExperience" value="beginning" required>
             <label for="exp-beginning">Just Started</label>
@@ -1638,10 +1659,13 @@
             <label for="exp-3plus">3+ Years</label>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Playstyle <span class="required">*</span></label>
-        <div class="playstyle-options">
+      </fieldset>
+      
+      <fieldset class="form-section">
+        <legend>
+          <label>Playstyle <span class="required">*</span></label>
+        </legend>
+        <div class="playstyle-options" role="radiogroup">
           <div class="playstyle-option">
             <input type="radio" id="aggressive" name="playstyle" value="aggressive" required>
             <label for="aggressive">Aggressive</label>
@@ -1655,11 +1679,14 @@
             <label for="playstyle-both">Adaptable</label>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Gaming Habits Section -->
-      <div class="form-group">
-        <label>Play Preference <span class="required">*</span></label>
-        <div class="play-preference-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Play Preference <span class="required">*</span></label>
+        </legend>
+        <div class="play-preference-options" role="radiogroup">
           <div class="play-preference-option solo-option">
             <input type="radio" id="solo" name="playPreference" value="solo" required>
             <label for="solo">Solo</label>
@@ -1673,11 +1700,14 @@
             <label for="teams">Teams</label>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- NEW: Gaming Frequency -->
-      <div class="form-group">
-        <label>How often do you game? <span class="required">*</span></label>
-        <div class="gaming-frequency-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>How often do you game? <span class="required">*</span></label>
+        </legend>
+        <div class="gaming-frequency-options" role="radiogroup">
           <div class="gaming-frequency-option frequency-daily">
             <input type="radio" id="freq-daily" name="gamingFrequency" value="daily" required>
             <div class="gaming-frequency-option-content">
@@ -1691,11 +1721,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- NEW: Gaming Hours -->
-      <div class="form-group">
-        <label>Daily Gaming Hours <span class="required">*</span></label>
-        <div class="gaming-hours-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Daily Gaming Hours <span class="required">*</span></label>
+        </legend>
+        <div class="gaming-hours-options" role="radiogroup">
           <div class="gaming-hours-option hours-1">
             <input type="radio" id="hours-1" name="dailyHours" value="1-2" required>
             <label for="hours-1">1-2 Hours</label>
@@ -1709,10 +1742,13 @@
             <label for="hours-4plus">4+ Hours</label>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>What time are you mostly active? <span class="required">*</span></label>
-        <div class="best-time-options">
+      </fieldset>
+      
+      <fieldset class="form-section">
+        <legend>
+          <label>What time are you mostly active? <span class="required">*</span></label>
+        </legend>
+        <div class="best-time-options" role="radiogroup">
           <div class="best-time-option night-option">
             <input type="radio" id="night" name="bestTime" value="night" required>
             <label for="night">Night</label>
@@ -1726,11 +1762,14 @@
             <label for="bothTime">Flexible</label>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- NEW: Communication Style -->
-      <div class="form-group">
-        <label>Communication method (assuming you have discord) <span class="required">*</span></label>
-        <div class="communication-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Communication method (assuming you have discord) <span class="required">*</span></label>
+        </legend>
+        <div class="communication-options" role="radiogroup">
           <div class="communication-option comm-voice-chat">
             <input type="radio" id="comm-voice" name="communication" value="voice" required>
             <div class="communication-option-content">
@@ -1744,11 +1783,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Experience and Background -->
-      <div class="form-group">
-        <label>Ever been in a clan<span class="required">*</span></label>
-        <div class="clan-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Ever been in a clan<span class="required">*</span></label>
+        </legend>
+        <div class="clan-options" role="radiogroup">
           <div class="clan-option no-clan-option">
             <input type="radio" id="noClan" name="previousClan" value="no" required>
             <div class="clan-option-content">
@@ -1762,13 +1804,16 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Previous Clan Details -->
-      <div class="form-group hidden" id="clanDetailsGroup">
-        <label>What happened to your previous clan? (Select all that apply) <span class="required">*</span></label>
+      <fieldset class="form-section hidden" id="clanDetailsGroup">
+        <legend>
+          <label>What happened to your previous clan? (Select all that apply) <span class="required">*</span></label>
+        </legend>
         <div class="multi-select-container">
           <div class="multi-select-counter" id="clanDetailsCounter">Select at least 1 reason</div>
-          <div class="multi-select-options" id="clanDetailsOptions">
+          <div class="multi-select-options" id="clanDetailsOptions" role="group">
             <div class="multi-select-option multi-option-color-1" data-value="poor-management">
               <input type="checkbox" id="clan-poor" name="clanDetails" value="poor-management">
               <label for="clan-poor">Poor Management</label>
@@ -1795,11 +1840,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Behavioral Assessment -->
-      <div class="form-group">
-        <label>Ever recieved any game penalties? <span class="required">*</span></label>
-        <div class="penalty-options">
+      <fieldset class="form-section">
+        <legend>
+          <label>Ever recieved any game penalties? <span class="required">*</span></label>
+        </legend>
+        <div class="penalty-options" role="radiogroup">
           <div class="penalty-option no-penalty-option">
             <input type="radio" id="noPenalty" name="penalty" value="no" required>
             <div class="penalty-option-content">
@@ -1813,12 +1861,15 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="form-group hidden" id="penaltyDetailsGroup">
-        <label>What type of penalty did you receive? (Select all that apply) <span class="required">*</span></label>
+      </fieldset>
+      
+      <fieldset class="form-section hidden" id="penaltyDetailsGroup">
+        <legend>
+          <label>What type of penalty did you receive? (Select all that apply) <span class="required">*</span></label>
+        </legend>
         <div class="multi-select-container">
           <div class="multi-select-counter" id="penaltyDetailsCounter">Select at least 1 penalty type</div>
-          <div class="multi-select-options" id="penaltyDetailsOptions">
+          <div class="multi-select-options" id="penaltyDetailsOptions" role="group">
             <div class="multi-select-option multi-option-color-1" data-value="toxicity">
               <input type="checkbox" id="penalty-toxicity" name="penaltyDetails" value="toxicity">
               <label for="penalty-toxicity">Toxicity/Bad Behavior</label>
@@ -1849,14 +1900,17 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- NEW: Multi-Select Questions Section -->
       <!-- Why Join Clan -->
-      <div class="form-group">
-        <label>Why do you want to join 1hp? <span class="required">*</span></label>
+      <fieldset class="form-section">
+        <legend>
+          <label>Why do you want to join 1hp? <span class="required">*</span></label>
+        </legend>
         <div class="multi-select-container">
           <div class="multi-select-counter" id="whyJoinCounter">Select 2+ reasons that motivate you to join 1hp!</div>
-          <div class="multi-select-options" id="whyJoinOptions">
+          <div class="multi-select-options" id="whyJoinOptions" role="group">
             <div class="multi-select-option multi-option-color-1" data-value="teamwork">
               <input type="checkbox" id="why-teamwork" name="whyJoin" value="teamwork">
               <label for="why-teamwork">Better teamwork & coordination</label>
@@ -1891,13 +1945,16 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Game Goals -->
-      <div class="form-group">
-        <label>What are your current gaming goals? <span class="required">*</span></label>
+      <fieldset class="form-section">
+        <legend>
+          <label>What are your current gaming goals? <span class="required">*</span></label>
+        </legend>
         <div class="multi-select-container">
           <div class="multi-select-counter" id="gameGoalsCounter">Select 5+ goals you want to achieve in gaming</div>
-          <div class="multi-select-options" id="gameGoalsOptions">
+          <div class="multi-select-options" id="gameGoalsOptions" role="group">
             <div class="multi-select-option multi-option-color-1" data-value="rank-up">
               <input type="checkbox" id="goal-rank" name="gameGoals" value="rank-up">
               <label for="goal-rank">Rank up to higher tier</label>
@@ -1936,13 +1993,16 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Handle Toxicity -->
-      <div class="form-group">
-        <label>How do you handle toxic behavior or conflicts? <span class="required">*</span></label>
+      <fieldset class="form-section">
+        <legend>
+          <label>How do you handle toxic behavior or conflicts? <span class="required">*</span></label>
+        </legend>
         <div class="multi-select-container">
           <div class="multi-select-counter" id="handleToxicityCounter">Select 5+ approaches you use to handle difficult situations</div>
-          <div class="multi-select-options" id="handleToxicityOptions">
+          <div class="multi-select-options" id="handleToxicityOptions" role="group">
             <div class="multi-select-option multi-option-color-1" data-value="stay-calm">
               <input type="checkbox" id="toxicity-calm" name="handleToxicity" value="stay-calm">
               <label for="toxicity-calm">Stay calm and composed</label>
@@ -1981,13 +2041,16 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- Great Clan Qualities -->
-      <div class="form-group">
-        <label>What makes a clan great in your opinion? <span class="required">*</span></label>
+      <fieldset class="form-section">
+        <legend>
+          <label>What makes a clan great in your opinion? <span class="required">*</span></label>
+        </legend>
         <div class="multi-select-container">
           <div class="multi-select-counter" id="clanGreatnessCounter">Select 5+ qualities that define an excellent gaming clan</div>
-          <div class="multi-select-options" id="clanGreatnessOptions">
+          <div class="multi-select-options" id="clanGreatnessOptions" role="group">
             <div class="multi-select-option multi-option-color-1" data-value="communication">
               <input type="checkbox" id="greatness-communication" name="clanGreatness" value="communication">
               <label for="greatness-communication">Good communication</label>
@@ -2030,13 +2093,16 @@
             </div>
           </div>
         </div>
-      </div>
+      </fieldset>
+      
       <!-- In the Extra Skills section, update the options to include "None" -->
-      <div class="form-group">
-        <label>What extra skills can you bring to the team? <span class="required">*</span></label>
+      <fieldset class="form-section">
+        <legend>
+          <label>What extra skills can you bring to the team? <span class="required">*</span></label>
+        </legend>
         <div class="multi-select-container">
           <div class="multi-select-counter" id="extraSkillsCounter">Select at least 1 option</div>
-          <div class="multi-select-options" id="extraSkillsOptions">
+          <div class="multi-select-options" id="extraSkillsOptions" role="group">
             <div class="multi-select-option multi-option-color-1" data-value="none">
               <input type="checkbox" id="skill-none" name="extraSkills" value="none">
               <label for="skill-none">None</label>
@@ -2083,35 +2149,41 @@
             </div>
           </div>
         </div>
+      </fieldset>
+      
+      <!-- Replace the existing bio field with this: -->
+      <fieldset class="form-section">
+        <legend>
+          <label>Write a short bio? <span class="required">*</span></label>
+        </legend>
+        <div class="bio-choice-options" style="display: flex; gap: 16px; margin-top: 12px;" role="radiogroup">
+          <label class="bio-choice-option" style="flex:1; display:block; cursor:pointer; padding:16px 0; border-radius:10px; text-align:center; font-weight:700; background:rgba(255,255,255,0.07); border:2px solid rgba(255,255,255,0.13); transition:all 0.2s; position:relative;">
+            <input type="radio" id="bioYes" name="bioChoice" value="yes" required style="position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;">
+            Yes
+          </label>
+          <label class="bio-choice-option" style="flex:1; display:block; cursor:pointer; padding:16px 0; border-radius:10px; text-align:center; font-weight:700; background:rgba(255,255,255,0.07); border:2px solid rgba(255,255,255,0.13); transition:all 0.2s; position:relative;">
+            <input type="radio" id="bioNo" name="bioChoice" value="no" required style="position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;">
+            Prefer not to say
+          </label>
+        </div>
+      </fieldset>
+      
+      <!-- Conditional Bio Text Area -->
+      <div class="form-group hidden" id="bioTextGroup">
+        <label for="bio">Write your bio (Max 100 words) <span class="required">*</span></label>
+        <textarea id="bio" name="bio" placeholder="Tell us about yourself, your gaming journey, and what makes you unique..." rows="6"></textarea>
+        <div class="word-counter" id="wordCounter">0 / 100 words</div>
       </div>
-    <!-- Replace the existing bio field with this: -->
-    <div class="form-group">
-      <label>Write a short bio? <span class="required">*</span></label>
-      <div class="bio-choice-options" style="display: flex; gap: 16px; margin-top: 12px;">
-        <label class="bio-choice-option" style="flex:1; display:block; cursor:pointer; padding:16px 0; border-radius:10px; text-align:center; font-weight:700; background:rgba(255,255,255,0.07); border:2px solid rgba(255,255,255,0.13); transition:all 0.2s; position:relative;">
-          <input type="radio" id="bioYes" name="bioChoice" value="yes" required style="position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;">
-          Yes
-        </label>
-        <label class="bio-choice-option" style="flex:1; display:block; cursor:pointer; padding:16px 0; border-radius:10px; text-align:center; font-weight:700; background:rgba(255,255,255,0.07); border:2px solid rgba(255,255,255,0.13); transition:all 0.2s; position:relative;">
-          <input type="radio" id="bioNo" name="bioChoice" value="no" required style="position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;">
-          Prefer not to say
-        </label>
-      </div>
-    </div>
-    <!-- Conditional Bio Text Area -->
-    <div class="form-group hidden" id="bioTextGroup">
-      <label for="bio">Write your bio (Max 100 words) <span class="required">*</span></label>
-      <textarea id="bio" name="bio" placeholder="Tell us about yourself, your gaming journey, and what makes you unique..."></textarea>
-      <div class="word-counter" id="wordCounter">0 / 100 words</div>
-    </div>
-    <!-- Submit Button -->
-    <button type="submit" class="submit-btn">Submit Application</button>
+      
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Submit Application</button>
     </form>
-    </div>
+  </div>
+  
   <!-- Player Card Container -->
-  <div class="container player-card hidden" id="playerCard">
+  <aside class="container player-card hidden" id="playerCard">
     <div class="card-header">
-      <div class="card-title">PLAYER CARD</div>
+      <h2 class="card-title">PLAYER CARD</h2>
       <div class="card-subtitle">Application Summary</div>
     </div>
     <div class="card-content" id="cardContent">
@@ -2122,7 +2194,7 @@
       <button class="action-btn btn-edit" onclick="editApplication()">Edit Application</button>
       <button class="action-btn btn-submit" onclick="submitApplication()">OK, Submit Now</button>
     </div>
-  </div>
+  </aside>
 </body>
 
 <script>
@@ -2800,6 +2872,78 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error initializing effects:', error);
     }
 });
+
+// Find the submitApplication function and replace it with this enhanced version:
+
+async function submitApplication() {
+    if (!currentApplicationData) {
+        alert('⚠️ No application data found. Please fill out the form again.');
+        newApplication();
+        return;
+    }
+
+    // Show loading state
+    const submitButton = document.querySelector('.btn-submit');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Submitting...';
+    submitButton.disabled = true;
+
+    try {
+        console.log('Submitting application data:', currentApplicationData);
+        
+        const response = await fetch('https://email.hamim2964.workers.dev', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(currentApplicationData)
+        });
+
+        console.log('Response status:', response.status);
+        console.log('Response ok:', response.ok);
+
+        let result;
+        try {
+            result = await response.json();
+            console.log('Response data:', result);
+        } catch (parseError) {
+            console.error('Failed to parse response as JSON:', parseError);
+            const textResponse = await response.text();
+            console.log('Raw response:', textResponse);
+            throw new Error(`Server returned invalid JSON. Status: ${response.status}, Response: ${textResponse}`);
+        }
+
+        if (result.success) {
+            alert('🎉 Application submitted successfully! We will review your application and get back to you soon. Check your email for confirmation.');
+            newApplication();
+        } else {
+            throw new Error(result.error || 'Submission failed');
+        }
+    } catch (error) {
+        console.error('Full submission error:', error);
+        console.error('Error name:', error.name);
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
+        
+        let errorMessage = '❌ There was an error submitting your application. ';
+        
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            errorMessage += 'Network error - please check your internet connection.';
+        } else if (error.message.includes('CORS')) {
+            errorMessage += 'CORS error - the server is not allowing requests.';
+        } else if (error.message.includes('500')) {
+            errorMessage += 'Server error - please try again in a few minutes.';
+        } else {
+            errorMessage += `Error: ${error.message}`;
+        }
+        
+        alert(errorMessage + '\n\nPlease try again or contact us directly.');
+        
+        // Restore button state
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+    }
+}
 </script>
 
 </body>
