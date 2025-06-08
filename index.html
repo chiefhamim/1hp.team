@@ -171,26 +171,130 @@
     }
     
     /* ==============================================
-       SCROLLBAR STYLING
-       ============================================== */
-    
+    SCROLLBAR STYLING - RED & PURPLE THEME
+    ============================================== */
+
+    ::-webkit-scrollbar { 
+        width: 12px; 
+        background: linear-gradient(180deg, rgba(17, 24, 39, 0.9) 0%, rgba(31, 41, 55, 0.8) 100%);
+    }
+
+    ::-webkit-scrollbar-track { 
+        background: linear-gradient(180deg, 
+            rgba(17, 24, 39, 0.9) 0%, 
+            rgba(31, 41, 55, 0.8) 50%,
+            rgba(55, 65, 81, 0.7) 100%);
+        border-radius: 8px;
+        border: 1px solid rgba(139, 92, 246, 0.1);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb { 
+        background: linear-gradient(180deg, 
+            #ec4158 0%, 
+            #dc2626 25%, 
+            #a855f7 75%, 
+            #7c3aed 100%);
+        border-radius: 8px;
+        border: 2px solid rgba(17, 24, 39, 0.3);
+        box-shadow: 
+            0 0 10px rgba(236, 65, 88, 0.4),
+            0 0 20px rgba(168, 85, 247, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+    ::-webkit-scrollbar-thumb:hover { 
+        background: linear-gradient(180deg, 
+            #f87171 0%, 
+            #ef4444 25%, 
+            #c084fc 75%, 
+            #8b5cf6 100%);
+        box-shadow: 
+            0 0 15px rgba(236, 65, 88, 0.6),
+            0 0 30px rgba(168, 85, 247, 0.5),
+            0 0 40px rgba(236, 65, 88, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        transform: scale(1.1);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: linear-gradient(180deg, 
+            #b91c1c 0%, 
+            #991b1b 25%, 
+            #a855f7 75%, 
+            #7c3aed 100%);
+        box-shadow: 
+            0 0 20px rgba(236, 65, 88, 0.8),
+            0 0 40px rgba(168, 85, 247, 0.7),
+            inset 0 2px 4px rgba(0, 0, 0, 0.3),
+            inset 0 -2px 4px rgba(255, 255, 255, 0.1);
+        transform: scale(0.95);
+    }
+
+    /* Scrollbar corner */
+    ::-webkit-scrollbar-corner {
+        background: linear-gradient(135deg, 
+            rgba(17, 24, 39, 0.9) 0%, 
+            rgba(31, 41, 55, 0.8) 100%);
+    }
+
+        /* Firefox scrollbar support */
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: #ec4158 rgba(17, 24, 39, 0.9);
+    }
+
+    /* Enhanced scrollbar for different states */
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: linear-gradient(180deg, 
+            rgba(236, 65, 88, 0.6) 0%, 
+            rgba(220, 38, 38, 0.6) 25%, 
+            rgba(168, 85, 247, 0.6) 75%, 
+            rgba(124, 58, 237, 0.6) 100%);
+        opacity: 0.7;
+    }
+
+    /* Mobile scrollbar enhancement */
+    @media (max-width: 768px) {
     ::-webkit-scrollbar { 
         width: 8px; 
     }
     
-    ::-webkit-scrollbar-track { 
-        background: var(--color-bg-secondary); 
-    }
-    
-    ::-webkit-scrollbar-thumb { 
-        background: #4b5563; 
-        border-radius: 4px; 
-    }
-    
     ::-webkit-scrollbar-thumb:hover { 
-        background: #6b7280; 
+        transform: none; /* Disable scale on mobile */
+    }
+}
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+    ::-webkit-scrollbar-thumb { 
+        background: linear-gradient(180deg, #dc2626 0%, #8b5cf6 100%);
+        border: 2px solid #ffffff;
     }
     
+    ::-webkit-scrollbar-track { 
+        background: #000000;
+        border: 1px solid #ffffff;
+    }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+    ::-webkit-scrollbar-thumb {
+        transition: none;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        transform: none;
+    }
+    
+    ::-webkit-scrollbar-thumb:active {
+        transform: none;
+    }
+    }
     /* ==============================================
        GRADIENT TITLE EFFECTS - OPTIMIZED
        ============================================== */
@@ -290,113 +394,415 @@
     }
     
     /* ==============================================
-       ENHANCED ADVISOR CARDS
+       ENHANCED ADVISOR CARDS WITH ULTRA SMOOTH HOVER EFFECTS
        ============================================== */
     
     .advisor-card {
-        transition: all var(--transition-normal);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
         will-change: transform, box-shadow;
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
     }
     
+    /* Smooth animated background overlay */
+    .advisor-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(255, 255, 255, 0.08), 
+            transparent);
+        transition: left 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        z-index: 1;
+    }
+    
+    .advisor-card:hover::before {
+        left: 100%;
+    }
+    
+    /* Ultra smooth hover transform with gentle elevation */
     .advisor-card:hover {
-        transform: translateY(-8px);
+        transform: translateY(-10px) scale(1.02) rotateX(1deg);
         box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.3),
-            0 10px 20px rgba(0, 0, 0, 0.2);
+            0 20px 40px rgba(0, 0, 0, 0.35),
+            0 12px 25px rgba(0, 0, 0, 0.25),
+            0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        animation-play-state: paused;
     }
     
-    /* Color-specific enhanced shadows */
+    /* BLUE CARD - FORCED SYNCHRONIZATION WITH GREEN & PURPLE */
+    .advisor-card.advisor-blue {
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
+    
     .advisor-card.advisor-blue:hover {
+        transform: translateY(-10px) scale(1.02) rotateX(1deg) !important;
         box-shadow: 
-            0 4px 120px 0 rgba(34, 211, 238, 0.25),
-            8px 8px 32px 0 rgba(34, 211, 238, 0.15),
-            0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-    
-    .advisor-card.advisor-green:hover {
-        box-shadow: 
-            0 4px 120px 0 rgba(34, 197, 94, 0.25),
-            8px 8px 32px 0 rgba(34, 197, 94, 0.15),
-            0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-    
-    .advisor-card.advisor-purple:hover {
-        box-shadow: 
-            0 4px 120px 0 rgba(168, 85, 247, 0.25),
-            8px 8px 32px 0 rgba(168, 85, 247, 0.15),
-            0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Enhanced image glow effects */
-    .advisor-card:hover .advisor-img {
-        filter: brightness(1.05) contrast(1.02);
+            0 5px 120px 0 rgba(34, 211, 238, 0.3),
+            0 0 50px 0 rgba(34, 211, 238, 0.2),
+            10px 10px 35px 0 rgba(34, 211, 238, 0.15),
+            0 20px 40px rgba(0, 0, 0, 0.35) !important;
+        border-color: rgba(34, 211, 238, 0.5) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        animation: advisorBlueGlow 4s ease-in-out infinite alternate !important;
+        animation-delay: 0s !important;
     }
     
     .advisor-card.advisor-blue:hover .advisor-img {
+        filter: brightness(1.08) contrast(1.03) saturate(1.05) !important;
+        transform: scale(1.06) translateZ(8px) !important;
         box-shadow: 
-            0 0 8px 2px rgba(34, 211, 238, 0.3),
-            0 0 16px 4px rgba(34, 211, 238, 0.2);
+            0 0 20px 3px rgba(34, 211, 238, 0.35),
+            0 0 40px 6px rgba(34, 211, 238, 0.2),
+            0 0 80px 10px rgba(34, 211, 238, 0.08) !important;
+        transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
+    
+    .advisor-card.advisor-blue:hover .advisor-name {
+        filter: brightness(1.15) !important;
+        text-shadow: 
+            0 0 15px currentColor,
+            0 0 30px currentColor,
+            0 2px 6px rgba(0, 0, 0, 0.25) !important;
+        transform: translateY(-1.5px) scale(1.01) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.1s !important;
+    }
+    
+    .advisor-card.advisor-blue:hover .advisor-role-badge {
+        transform: translateY(-1px) scale(1.03) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.15s !important;
+    }
+    
+    .advisor-card.advisor-blue:hover .advisor-role-badge span {
+        backdrop-filter: blur(10px) !important;
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.06)) !important;
+        box-shadow: 
+            0 3px 12px rgba(0, 0, 0, 0.15),
+            inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
+    
+    .advisor-card.advisor-blue:hover .advisor-desc {
+        color: #f8fafc !important;
+        text-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.25),
+            0 0 6px rgba(255, 255, 255, 0.08) !important;
+        transform: translateY(-0.5px) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s !important;
+    }
+    
+    .advisor-card.advisor-blue:not(:hover) {
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    .advisor-card.advisor-blue:not(:hover) .advisor-img {
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    .advisor-card.advisor-blue:not(:hover) .advisor-name,
+    .advisor-card.advisor-blue:not(:hover) .advisor-role-badge,
+    .advisor-card.advisor-blue:not(:hover) .advisor-desc {
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    .advisor-card.advisor-blue:not(:hover) .advisor-role-badge span {
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    /* GREEN CARD - MAINTAIN EXISTING SMOOTH PARAMETERS */
+    .advisor-card.advisor-green:hover {
+        box-shadow: 
+            0 5px 120px 0 rgba(34, 197, 94, 0.3),
+            0 0 50px 0 rgba(34, 197, 94, 0.2),
+            10px 10px 35px 0 rgba(34, 197, 94, 0.15),
+            0 20px 40px rgba(0, 0, 0, 0.35);
+        border-color: rgba(34, 197, 94, 0.5);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        animation: advisorGreenGlow 4s ease-in-out infinite alternate;
     }
     
     .advisor-card.advisor-green:hover .advisor-img {
         box-shadow: 
-            0 0 8px 2px rgba(34, 197, 94, 0.3),
-            0 0 16px 4px rgba(34, 197, 94, 0.2);
+            0 0 20px 3px rgba(34, 197, 94, 0.35),
+            0 0 40px 6px rgba(34, 197, 94, 0.2),
+            0 0 80px 10px rgba(34, 197, 94, 0.08);
+        transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    /* PURPLE CARD - MAINTAIN EXISTING SMOOTH PARAMETERS */
+    .advisor-card.advisor-purple:hover {
+        box-shadow: 
+            0 5px 120px 0 rgba(168, 85, 247, 0.3),
+            0 0 50px 0 rgba(168, 85, 247, 0.2),
+            10px 10px 35px 0 rgba(168, 85, 247, 0.15),
+            0 20px 40px rgba(0, 0, 0, 0.35);
+        border-color: rgba(168, 85, 247, 0.5);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        animation: advisorPurpleGlow 4s ease-in-out infinite alternate;
     }
     
     .advisor-card.advisor-purple:hover .advisor-img {
         box-shadow: 
-            0 0 8px 2px rgba(168, 85, 247, 0.3),
-            0 0 16px 4px rgba(168, 85, 247, 0.2);
+            0 0 20px 3px rgba(168, 85, 247, 0.35),
+            0 0 40px 6px rgba(168, 85, 247, 0.2),
+            0 0 80px 10px rgba(168, 85, 247, 0.08);
+        transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     
-    /* Enhanced text effects */
+    /* Ultra smooth image effects with gentle enhancement */
+    .advisor-card:hover .advisor-img {
+        filter: brightness(1.08) contrast(1.03) saturate(1.05);
+        transform: scale(1.06) translateZ(8px);
+        transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    /* Ultra smooth cascading text effects */
     .advisor-card:hover .advisor-name {
-        filter: brightness(1.1);
+        filter: brightness(1.15);
         text-shadow: 
             0 0 15px currentColor,
-            0 2px 6px rgba(0, 0, 0, 0.2);
+            0 0 30px currentColor,
+            0 2px 6px rgba(0, 0, 0, 0.25);
+        transform: translateY(-1.5px) scale(1.01);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.1s;
+    }
+    
+    .advisor-card:hover .advisor-role-badge {
+        transform: translateY(-1px) scale(1.03);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.15s;
     }
     
     .advisor-card:hover .advisor-role-badge span {
-        backdrop-filter: blur(6px);
+        backdrop-filter: blur(10px);
         background: linear-gradient(135deg, 
-            rgba(255, 255, 255, 0.08),
-            rgba(255, 255, 255, 0.04));
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.06));
+        box-shadow: 
+            0 3px 12px rgba(0, 0, 0, 0.15),
+            inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     
     .advisor-card:hover .advisor-desc {
-        color: #f9fafb;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        color: #f8fafc;
+        text-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.25),
+            0 0 6px rgba(255, 255, 255, 0.08);
+        transform: translateY(-0.5px);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s;
     }
     
-    /* Floating animations */
+    /* Gentle floating animations */
     @keyframes advisorFloat {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-4px); }
+        0%, 100% { 
+            transform: translateY(0px) scale(1); 
+        }
+        50% { 
+            transform: translateY(-4px) scale(1.005); 
+        }
     }
     
     .advisor-card:nth-child(1) {
-        animation: advisorFloat 6s ease-in-out infinite;
+        animation: advisorFloat 8s ease-in-out infinite;
         animation-delay: 0s;
     }
     
     .advisor-card:nth-child(2) {
-        animation: advisorFloat 6s ease-in-out infinite;
-        animation-delay: 2s;
+        animation: advisorFloat 8s ease-in-out infinite;
+        animation-delay: 2.5s;
     }
     
     .advisor-card:nth-child(3) {
-        animation: advisorFloat 6s ease-in-out infinite;
-        animation-delay: 4s;
+        animation: advisorFloat 8s ease-in-out infinite;
+        animation-delay: 5s;
     }
     
     .advisor-card:hover {
         animation-play-state: paused;
     }
     
+    /* SYNCHRONIZED BREATHING GLOW ANIMATIONS - IDENTICAL TIMING */
+    @keyframes advisorBlueGlow {
+        0% { 
+            box-shadow: 
+                0 5px 120px 0 rgba(34, 211, 238, 0.3),
+                0 0 50px 0 rgba(34, 211, 238, 0.2),
+                10px 10px 35px 0 rgba(34, 211, 238, 0.15),
+                0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+        100% { 
+            box-shadow: 
+                0 6px 140px 0 rgba(34, 211, 238, 0.38),
+                0 0 60px 0 rgba(34, 211, 238, 0.28),
+                12px 12px 42px 0 rgba(34, 211, 238, 0.22),
+                0 24px 48px rgba(0, 0, 0, 0.4);
+        }
+    }
+    
+    @keyframes advisorGreenGlow {
+        0% { 
+            box-shadow: 
+                0 5px 120px 0 rgba(34, 197, 94, 0.3),
+                0 0 50px 0 rgba(34, 197, 94, 0.2),
+                10px 10px 35px 0 rgba(34, 197, 94, 0.15),
+                0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+        100% { 
+            box-shadow: 
+                0 6px 140px 0 rgba(34, 197, 94, 0.38),
+                0 0 60px 0 rgba(34, 197, 94, 0.28),
+                12px 12px 42px 0 rgba(34, 197, 94, 0.22),
+                0 24px 48px rgba(0, 0, 0, 0.4);
+        }
+    }
+    
+    @keyframes advisorPurpleGlow {
+        0% { 
+            box-shadow: 
+                0 5px 120px 0 rgba(168, 85, 247, 0.3),
+                0 0 50px 0 rgba(168, 85, 247, 0.2),
+                10px 10px 35px 0 rgba(168, 85, 247, 0.15),
+                0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+        100% { 
+            box-shadow: 
+                0 6px 140px 0 rgba(168, 85, 247, 0.38),
+                0 0 60px 0 rgba(168, 85, 247, 0.28),
+                12px 12px 42px 0 rgba(168, 85, 247, 0.22),
+                0 24px 48px rgba(0, 0, 0, 0.4);
+        }
+    }
+    
+    /* Subtle particles effect with smoother transitions */
+    .advisor-card::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 115%;
+        height: 115%;
+        background: radial-gradient(circle, 
+            rgba(255, 255, 255, 0.08) 1px, 
+            transparent 1px);
+        background-size: 25px 25px;
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 0;
+        transition: all 1.0s cubic-bezier(0.25, 0.8, 0.25, 1);
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    .advisor-card:hover::after {
+        opacity: 0.2;
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
+    }
+    
+    /* Content layering */
+    .advisor-card > * {
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Ultra smooth exit transitions */
+    .advisor-card:not(:hover) {
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .advisor-card:not(:hover) .advisor-img {
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .advisor-card:not(:hover) .advisor-name,
+    .advisor-card:not(:hover) .advisor-role-badge,
+    .advisor-card:not(:hover) .advisor-desc {
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .advisor-card:not(:hover) .advisor-role-badge span {
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Mobile optimizations */
+    @media (hover: none) and (pointer: coarse) {
+        .advisor-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            transition: all 0.4s ease-out;
+        }
+        
+        .advisor-card:hover .advisor-img {
+            transform: scale(1.03);
+            filter: brightness(1.05);
+            transition: all 0.4s ease-out;
+        }
+        
+        /* Simplified effects for mobile */
+        .advisor-card::before,
+        .advisor-card::after {
+            display: none;
+        }
+        
+        .advisor-card.advisor-blue:hover,
+        .advisor-card.advisor-green:hover,
+        .advisor-card.advisor-purple:hover {
+            animation: none;
+        }
+        
+        /* Faster transitions on mobile */
+        .advisor-card {
+            transition: all 0.4s ease-out;
+        }
+        
+        .advisor-card:not(:hover) {
+            transition: all 0.5s ease-out;
+        }
+    }
+    
+    /* Accessibility - Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .advisor-card,
+        .advisor-card *,
+        .advisor-card::before,
+        .advisor-card::after {
+            animation: none !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .advisor-card:hover {
+            transform: translateY(-6px) scale(1.01);
+        }
+        
+        .advisor-card:hover .advisor-img {
+            transform: scale(1.03);
+        }
+        
+        .advisor-card:not(:hover) {
+            transition: all 0.3s ease !important;
+        }
+    }
+    
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .advisor-card:hover {
+            border: 2px solid currentColor;
+        }
+        
+        .advisor-card::before,
+        .advisor-card::after {
+            display: none;
+        }
+    }
     /* ==============================================
-       COMPETITIVE ROSTERS SECTION
+       COMPETITIVE ROSTERS SECTION - IMPROVED ALIGNMENT
        ============================================== */
     
     .effect-title-1hp {
@@ -424,6 +830,10 @@
         transition: text-shadow var(--transition-normal);
         padding: 0.1em 0;
         will-change: background-position;
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin: 0 auto;
     }
     
     @keyframes effect-title-1hp-gradient {
@@ -431,7 +841,7 @@
         100% { background-position: 100% 50%; }
     }
     
-    /* Team subtitle effects */
+    /* Team subtitle effects - Enhanced alignment */
     .legacy-effect {
         font-family: var(--font-orbitron);
         font-weight: 700;
@@ -453,6 +863,10 @@
         letter-spacing: 0.01em;
         transition: text-shadow var(--transition-normal);
         will-change: background-position;
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin: 0 auto;
     }
     
     @keyframes legacy-gradient-move {
@@ -481,6 +895,10 @@
         letter-spacing: 0.01em;
         transition: text-shadow var(--transition-normal);
         will-change: background-position;
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin: 0 auto;
     }
     
     @keyframes youngsters-gradient-move {
@@ -491,6 +909,10 @@
     .team-subtitle-specialists {
         font-weight: 700;
         letter-spacing: 0.01em;
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin: 0 auto;
     }
     
     .clan-specialists-effect {
@@ -517,11 +939,50 @@
         transition: text-shadow 0.3s ease-out;
         padding: 0.1em 0;
         will-change: background-position;
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        line-height: 1.1;
     }
     
     @keyframes clan-specialists-gradient {
         0% { background-position: 0% 50%; }
         100% { background-position: 100% 50%; }
+    }
+    
+    /* Mobile responsive text alignment */
+    @media (max-width: 768px) {
+        .effect-title-1hp {
+            font-size: 2.5rem;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+        
+        .clan-specialists-effect {
+            font-size: 2rem;
+            letter-spacing: 0.01em;
+            line-height: 1.1;
+        }
+        
+        .legacy-effect,
+        .youngsters-effect {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+    }
+    
+    /* Tablet responsive text alignment */
+    @media (min-width: 769px) and (max-width: 1023px) {
+        .effect-title-1hp {
+            font-size: 3.5rem;
+            letter-spacing: 0.025em;
+        }
+        
+        .clan-specialists-effect {
+            font-size: 3rem;
+            letter-spacing: 0.015em;
+        }
     }
     
     /* ==============================================
@@ -2406,9 +2867,9 @@
             <!-- Esports Team Section End -->
             
             <!-- News Section Start -->
-            <section id="news" class="py-12 sm:py-16 my-14 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <section id="news" class="py-8 sm:py-12 my-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="main-section-title text-4xl sm:text-[2.6rem] leading-tight font-bold text-center mb-10 sm:mb-12 news-gradient-effect">
+                    <h2 class="main-section-title text-4xl sm:text-[2.6rem] leading-tight font-bold text-center mb-8 sm:mb-10 news-gradient-effect">
                         <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-orange-400">Latest News & Updates</span> 
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -2462,7 +2923,7 @@
                             </div>
                             <div class="p-6 flex flex-col flex-grow">
                                 <time class="text-xs text-gray-500 mb-2 font-medium tracking-wide" datetime="2023-12-05">December 5, 2023</time>
-                                <h3 class="text-xl font-bold mb-3 text-white group-hover:text-red-400 transition-colors duration-300">Welcoming Our Newest Star Player!</h3>
+                                <h3 class="text-xl font-bold mb-3 text-white group-hover:text-red-400 transition-colors duration-300">Welcoming Our Newest Member!</h3>
                                 <p class="text-gray-400 text-sm mb-4 flex-grow leading-relaxed">We're thrilled to announce the latest addition to our Apex Legends roster, INSTINCTx. Get to know them here...</p>
                                 <a href="https://www.facebook.com/photo.php?fbid=1056223615800813&set=pb.100042395546650.-2207520000&type=3" 
                                    target="_blank" 
@@ -2748,8 +3209,6 @@
             function initializeParallax() {
                 // Parallax elements configuration
                 const parallaxElements = [
-                    { selector: '#home', speed: 0.5 },
-                    { selector: '#about img', speed: 0.3 },
                     { selector: '.founders-gradient-effect', speed: 0.4 },
                     { selector: '.advisors-title', speed: 0.35 },
                     { selector: '.effect-title-1hp', speed: 0.45 },
