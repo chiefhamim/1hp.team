@@ -128,8 +128,27 @@
         ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
     
-        /* ORIGINAL EXACT TITLE STYLES FROM YOUR WORKING WEBSITE */
+        /* Touch optimization for mobile and tablet */
+        .touch-manipulation {
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
         
+        /* Responsive breakpoint optimizations */
+        @media (min-width: 640px) and (max-width: 1023px) {
+            /* Tablet-specific adjustments */
+            .tablet-enhanced {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+        }
+        
+        /* Better hover states for touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            .touch-manipulation:hover {
+                transform: scale(1.02);
+            }
+        }
         /* "INTRODUCING OURSELVES" Title Style */
         .intro-title-effect {
             font-family: 'Orbitron', sans-serif; 
@@ -680,24 +699,42 @@
                 <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
             </div>
             
-            <!-- Mobile Menu -->
-            <div class="md:hidden flex items-center flex-1 justify-center">
-                <a href="https://discord.com/invite/ksvuUyMvMb"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="flex items-center justify-center px-3 py-2 rounded-md bg-[#5865F2] hover:bg-[#4752c4] shadow-md"
-                   style="min-width:2.5rem;max-width:2.5rem;">
-                    <img src="Discord-Symbol-White.png"
-                         alt="Discord"
-                         class="h-auto w-auto"
-                         width="24"
-                         height="24"
-                         loading="lazy"
-                         decoding="async"
-                         style="min-width:1.5rem;max-width:1.5rem;display:inline-block;vertical-align:middle;">
-                </a>
+            <!-- Mobile Navigation (Small screens only) -->
+            <div class="sm:hidden flex items-center flex-1 justify-between">
+                <!-- Center - W, Discord and Join 1hp buttons -->
+                <div class="flex-1 flex justify-center items-center gap-2">
+                    <!-- W button -->
+                    <a href="achievements.html" 
+                       class="flex items-center justify-center px-3 py-2 rounded-md bg-yellow-400 hover:bg-yellow-500 shadow-md text-black font-semibold text-sm whitespace-nowrap min-h-[44px] min-w-[44px] touch-manipulation">
+                        W
+                    </a>
+                    
+                    <!-- Join 1hp button -->
+                    <a href="recruitment.html"
+                       class="flex items-center justify-center px-3 py-2 rounded-md bg-red-500 hover:bg-red-600 shadow-md text-white font-semibold text-sm whitespace-nowrap min-h-[44px] touch-manipulation">
+                        Join 1hp
+                    </a>
+                    
+                    <!-- Discord button -->
+                    <a href="https://discord.com/invite/ksvuUyMvMb"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex items-center justify-center px-3 py-2 rounded-md bg-[#5865F2] hover:bg-[#4752c4] shadow-md min-h-[44px] touch-manipulation"
+                       style="min-width:2.5rem;max-width:2.5rem;">
+                        <img src="Discord-Symbol-White.png"
+                             alt="Discord"
+                             class="h-auto w-auto"
+                             width="24"
+                             height="24"
+                             loading="lazy"
+                             decoding="async"
+                             style="min-width:1.5rem;max-width:1.5rem;display:inline-block;vertical-align:middle;">
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
                 <button id="mobile-menu-button" 
-                        class="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" 
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white min-h-[44px] min-w-[44px] touch-manipulation" 
                         aria-controls="mobile-menu" 
                         aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
@@ -709,36 +746,112 @@
                     </svg>
                 </button>
             </div>
-        </nav>
-        
-        <!-- Mobile Menu Panel -->
-        <div class="md:hidden hidden bg-gray-900/90 backdrop-blur-md" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Home</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">About</a>
-                <a href="#esports-team" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Teams</a>
-                <a href="achievements.html" class="block px-3 py-2 rounded-md text-base font-semibold text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors">Achievements</a>
-                <a href="recruitment.html" class="block px-3 py-2 rounded-md text-base font-semibold text-white bg-red-500 hover:bg-red-600 hover:text-white transition-colors">Join 1hp</a>
-                <a href="https://discord.com/invite/ksvuUyMvMb"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md">
-                    <img src="Discord-Symbol-White.png"
-                         alt="Discord"
-                         class="h-auto w-auto"
-                         width="20"
-                         height="20"
-                         loading="lazy"
-                         decoding="async"
-                         style="min-width:1.25rem;max-width:1.25rem;display:inline-block;vertical-align:middle;">
-                    <span>Join Our Discord</span>
-                </a>
-                <a href="#news" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">News</a>
-                <a href="#sponsors" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Sponsors</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
+            
+            <!-- Tablet Navigation (Medium screens) -->
+            <div class="hidden sm:flex lg:hidden items-center flex-1 justify-between">
+                <!-- Center - Enhanced buttons for tablets -->
+                <div class="flex-1 flex justify-center items-center gap-3">
+                    <!-- W button - larger for tablets -->
+                    <a href="achievements.html" 
+                       class="flex items-center justify-center px-4 py-2.5 rounded-md bg-yellow-400 hover:bg-yellow-500 shadow-md text-black font-semibold text-base whitespace-nowrap min-h-[48px] min-w-[48px] touch-manipulation">
+                        W
+                    </a>
+                    
+                    <!-- Join 1hp button - larger for tablets -->
+                    <a href="recruitment.html"
+                       class="flex items-center justify-center px-4 py-2.5 rounded-md bg-red-500 hover:bg-red-600 shadow-md text-white font-semibold text-base whitespace-nowrap min-h-[48px] touch-manipulation">
+                        Join 1hp
+                    </a>
+                    
+                    <!-- Discord button - larger for tablets -->
+                    <a href="https://discord.com/invite/ksvuUyMvMb"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex items-center justify-center px-4 py-2.5 rounded-md bg-[#5865F2] hover:bg-[#4752c4] shadow-md min-h-[48px] touch-manipulation"
+                       style="min-width:3rem;max-width:3rem;">
+                        <img src="Discord-Symbol-White.png"
+                             alt="Discord"
+                             class="h-auto w-auto"
+                             width="28"
+                             height="28"
+                             loading="lazy"
+                             decoding="async"
+                             style="min-width:1.75rem;max-width:1.75rem;display:inline-block;vertical-align:middle;">
+                    </a>
+                </div>
+                
+                <!-- Tablet menu button - larger touch target -->
+                <button id="tablet-menu-button" 
+                        class="inline-flex items-center justify-center p-3 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white min-h-[48px] min-w-[48px] touch-manipulation" 
+                        aria-controls="tablet-menu" 
+                        aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg class="hidden h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
-        </div>
-    </header>
+            </nav>
+            
+            <!-- Mobile Menu Panel -->
+            <div class="sm:hidden hidden bg-gray-900/90 backdrop-blur-md" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Home</a>
+                    <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">About</a>
+                    <a href="#esports-team" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Teams</a>
+                    <a href="achievements.html" class="block px-3 py-2 rounded-md text-base font-semibold text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors min-h-[48px] flex items-center touch-manipulation">Our Achievements</a>
+                    <a href="recruitment.html" class="block px-3 py-2 rounded-md text-base font-semibold text-white bg-red-500 hover:bg-red-600 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Join 1hp</a>
+                    <a href="https://discord.com/invite/ksvuUyMvMb"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md min-h-[48px] touch-manipulation">
+                        <img src="Discord-Symbol-White.png"
+                             alt="Discord"
+                             class="h-auto w-auto"
+                             width="20"
+                             height="20"
+                             loading="lazy"
+                             decoding="async"
+                             style="min-width:1.25rem;max-width:1.25rem;display:inline-block;vertical-align:middle;">
+                        <span>Join Our Discord</span>
+                    </a>
+                    <a href="#news" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">News</a>
+                    <a href="#sponsors" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Sponsors</a>
+                    <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Contact</a>
+                </div>
+            </div>
+            
+            <!-- Tablet Menu Panel -->
+            <div class="hidden sm:block lg:hidden hidden bg-gray-900/90 backdrop-blur-md" id="tablet-menu">
+                <div class="px-3 pt-3 pb-4 space-y-2">
+                    <a href="#home" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Home</a>
+                    <a href="#about" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">About</a>
+                    <a href="#esports-team" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Teams</a>
+                    <a href="achievements.html" class="block px-4 py-3 rounded-md text-lg font-semibold text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors min-h-[52px] flex items-center touch-manipulation">Our Achievements</a>
+                    <a href="recruitment.html" class="block px-4 py-3 rounded-md text-lg font-semibold text-white bg-red-500 hover:bg-red-600 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Join 1hp</a>
+                    <a href="https://discord.com/invite/ksvuUyMvMb"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex items-center gap-3 px-4 py-3 rounded-md text-lg font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md min-h-[52px] touch-manipulation">
+                        <img src="Discord-Symbol-White.png"
+                             alt="Discord"
+                             class="h-auto w-auto"
+                             width="24"
+                             height="24"
+                             loading="lazy"
+                             decoding="async"
+                             style="min-width:1.5rem;max-width:1.5rem;display:inline-block;vertical-align:middle;">
+                        <span>Join Our Discord</span>
+                    </a>
+                    <a href="#news" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">News</a>
+                    <a href="#sponsors" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Sponsors</a>
+                    <a href="#contact" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Contact</a>
+                </div>
+            </div>
+            </header>
     
     <!-- Hero Section with optimized background -->
     <section id="home" class="relative py-12 sm:py-16 bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('image_7d1423.png'); min-height: 65vh;">
@@ -1476,49 +1589,139 @@
                 };
             };
     
-            // --- Mobile Menu Functionality ---
+            // --- Mobile and Tablet Menu Functionality ---
             function initializeMobileMenu() {
+                // Mobile Menu Elements
                 const mobileMenuButton = document.getElementById('mobile-menu-button');
                 const mobileMenu = document.getElementById('mobile-menu');
                 
-                if (!mobileMenuButton || !mobileMenu) {
+                // Tablet Menu Elements
+                const tabletMenuButton = document.getElementById('tablet-menu-button');
+                const tabletMenu = document.getElementById('tablet-menu');
+                
+                // Initialize Mobile Menu
+                if (mobileMenuButton && mobileMenu) {
+                    const toggleMobileMenu = () => {
+                        const isHidden = mobileMenu.classList.toggle('hidden');
+                        const isExpanded = !isHidden;
+                        
+                        mobileMenuButton.setAttribute('aria-expanded', String(isExpanded));
+                        
+                        // Toggle SVG icons properly
+                        const hamburgerIcon = mobileMenuButton.querySelector('svg:first-of-type');
+                        const closeIcon = mobileMenuButton.querySelector('svg:last-of-type');
+                        
+                        if (hamburgerIcon && closeIcon) {
+                            hamburgerIcon.classList.toggle('hidden', isExpanded);
+                            closeIcon.classList.toggle('hidden', !isExpanded);
+                        }
+                    };
+            
+                    const closeMobileMenu = () => {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                            
+                            const hamburgerIcon = mobileMenuButton.querySelector('svg:first-of-type');
+                            const closeIcon = mobileMenuButton.querySelector('svg:last-of-type');
+                            
+                            if (hamburgerIcon && closeIcon) {
+                                hamburgerIcon.classList.remove('hidden');
+                                closeIcon.classList.add('hidden');
+                            }
+                        }
+                    };
+            
+                    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            
+                    // Close mobile menu when clicking on anchor links
+                    mobileMenu.addEventListener('click', (e) => {
+                        if (e.target.matches('a[href^="#"]')) {
+                            closeMobileMenu();
+                        }
+                    });
+            
+                    // Close mobile menu on escape key
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                            closeMobileMenu();
+                        }
+                    });
+                } else {
                     console.warn('Mobile menu elements not found');
-                    return;
                 }
-    
-                const toggleMenu = () => {
-                    const isHidden = mobileMenu.classList.toggle('hidden');
-                    const isExpanded = !isHidden;
+            
+                // Initialize Tablet Menu
+                if (tabletMenuButton && tabletMenu) {
+                    const toggleTabletMenu = () => {
+                        const isHidden = tabletMenu.classList.toggle('hidden');
+                        const isExpanded = !isHidden;
+                        
+                        tabletMenuButton.setAttribute('aria-expanded', String(isExpanded));
+                        
+                        // Toggle SVG icons properly
+                        const hamburgerIcon = tabletMenuButton.querySelector('svg:first-of-type');
+                        const closeIcon = tabletMenuButton.querySelector('svg:last-of-type');
+                        
+                        if (hamburgerIcon && closeIcon) {
+                            hamburgerIcon.classList.toggle('hidden', isExpanded);
+                            closeIcon.classList.toggle('hidden', !isExpanded);
+                        }
+                    };
+            
+                    const closeTabletMenu = () => {
+                        if (!tabletMenu.classList.contains('hidden')) {
+                            tabletMenu.classList.add('hidden');
+                            tabletMenuButton.setAttribute('aria-expanded', 'false');
+                            
+                            const hamburgerIcon = tabletMenuButton.querySelector('svg:first-of-type');
+                            const closeIcon = tabletMenuButton.querySelector('svg:last-of-type');
+                            
+                            if (hamburgerIcon && closeIcon) {
+                                hamburgerIcon.classList.remove('hidden');
+                                closeIcon.classList.add('hidden');
+                            }
+                        }
+                    };
+            
+                    tabletMenuButton.addEventListener('click', toggleTabletMenu);
                     
-                    mobileMenuButton.setAttribute('aria-expanded', String(isExpanded));
-                    mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
-                };
-    
-                const closeMenu = () => {
-                    if (!mobileMenu.classList.contains('hidden')) {
+                    // Close tablet menu when clicking on anchor links
+                    tabletMenu.addEventListener('click', (e) => {
+                        if (e.target.matches('a[href^="#"]')) {
+                            closeTabletMenu();
+                        }
+                    });
+            
+                    // Close tablet menu on escape key
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && !tabletMenu.classList.contains('hidden')) {
+                            closeTabletMenu();
+                        }
+                    });
+                } else {
+                    console.warn('Tablet menu elements not found');
+                }
+            
+                // Close both menus when clicking outside
+                document.addEventListener('click', (e) => {
+                    const isMobileButton = mobileMenuButton?.contains(e.target);
+                    const isMobileMenu = mobileMenu?.contains(e.target);
+                    const isTabletButton = tabletMenuButton?.contains(e.target);
+                    const isTabletMenu = tabletMenu?.contains(e.target);
+                    
+                    if (!isMobileButton && !isMobileMenu && mobileMenu && !mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
-                        mobileMenuButton.setAttribute('aria-expanded', 'false');
-                        mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
+                        if (mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
                     }
-                };
-    
-                mobileMenuButton.addEventListener('click', toggleMenu);
-    
-                // Close menu when clicking on anchor links
-                mobileMenu.addEventListener('click', (e) => {
-                    if (e.target.matches('a[href^="#"]')) {
-                        closeMenu();
-                    }
-                });
-    
-                // Close menu on escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-                        closeMenu();
+                    
+                    if (!isTabletButton && !isTabletMenu && tabletMenu && !tabletMenu.classList.contains('hidden')) {
+                        tabletMenu.classList.add('hidden');
+                        if (tabletMenuButton) tabletMenuButton.setAttribute('aria-expanded', 'false');
                     }
                 });
             }
-    
+            
             // --- Smooth Scroll for Anchor Links ---
             function initializeSmoothScroll() {
                 const smoothScrollHandler = function(e) {
@@ -1527,7 +1730,7 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if (!targetElement) return;
-    
+            
                     e.preventDefault();
                     
                     const header = document.querySelector('header.sticky');
@@ -1540,7 +1743,7 @@
                         behavior: 'smooth' 
                     });
                 };
-    
+            
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', smoothScrollHandler);
                 });
