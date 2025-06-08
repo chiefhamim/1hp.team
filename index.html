@@ -824,7 +824,8 @@
                     </div>
             
                     <!-- Tablet Menu Panel -->
-                        <div class="hidden bg-gray-900/90 backdrop-blur-md" id="tablet-menu" style="display: none;">                        <div class="px-3 pt-3 pb-4 space-y-2">
+                        <div class="hidden bg-gray-900/90 backdrop-blur-md" id="tablet-menu">
+                            <div class="px-3 pt-3 pb-4 space-y-2">
                             <a href="#home" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Home</a>
                             <a href="#about" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">About</a>
                             <a href="#esports-team" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Teams</a>
@@ -1705,30 +1706,37 @@
                         }
                     });
                 }
-            
-                // CRITICAL: Window resize listener to close menus when screen size changes
-                let resizeTimeout;
+                // Handle window resize to adjust menu visibility
                 window.addEventListener('resize', () => {
                     clearTimeout(resizeTimeout);
                     resizeTimeout = setTimeout(() => {
                         const width = window.innerWidth;
                         
-                        // Force close all menus when switching between breakpoints
-                        if (width >= 1024) { // lg breakpoint - desktop
-                            closeAllMenus();
-                        } else if (width >= 640 && width < 1024) { // sm to lg - tablet
-                            // Close mobile menu if it's open in tablet view
-                            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                                closeAllMenus();
+                        // Force close all menus
+                        closeAllMenus();
+                        
+                        // Show correct menu button based on actual screen size
+                        if (width >= 640 && width < 1024) {
+                            // Tablet range - ensure tablet menu is available
+                            if (tabletMenu) {
+                                tabletMenu.style.display = '';
+                                tabletMenu.classList.add('hidden');
                             }
-                        } else if (width < 640) { // below sm - mobile
-                            // Close tablet menu if it's open in mobile view
-                            if (tabletMenu && !tabletMenu.classList.contains('hidden')) {
-                                closeAllMenus();
+                        } else if (width >= 1024) {
+                            // Desktop range - hide both menus completely
+                            if (tabletMenu) tabletMenu.style.display = 'none';
+                            if (mobileMenu) mobileMenu.style.display = 'none';
+                        } else {
+                            // Mobile range - ensure mobile menu is available
+                            if (mobileMenu) {
+                                mobileMenu.style.display = '';
+                                mobileMenu.classList.add('hidden');
                             }
+                            if (tabletMenu) tabletMenu.style.display = 'none';
                         }
-                    }, 150); // Increased debounce time for better performance
+                    }, 150);
                 });
+
             
                 // Close menus on escape key
                 document.addEventListener('keydown', (e) => {
