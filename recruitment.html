@@ -167,7 +167,7 @@
        ========================== */
     /* --- Game Experience, Frequency, Hours, Communication, Playstyle, etc. --- */
     .game-experience-options, .gaming-hours-options, .language-options, .play-preference-options, .best-time-options, .playstyle-options, .input-method-options {
-        display: grid; gap: 12px; margin-top: 12px;
+        display: grid; gap: 12px; margin-top: 12px; margin-bottom: 25px; /* Added margin-bottom */
     }
     .game-experience-options { grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); }
     .gaming-hours-options { grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); }
@@ -176,12 +176,12 @@
     .input-method-options { grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); }
     
     .gaming-frequency-options, .communication-options, .clan-options, .penalty-options {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; margin-top: 12px;
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; margin-top: 12px; margin-bottom: 25px
     }
     .gaming-frequency-options { grid-template-columns: 1fr 1fr; }
     .communication-options { grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); }
-    .platform-options, .voice-chat-options, .voice-platform-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 12px; }
-    .role-options { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 12px; }
+    .platform-options, .voice-chat-options, .voice-platform-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 12px; margin-bottom: 25px }
+    .role-options { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 12px; margin-bottom: 25px } /* Added margin-bottom */
     
     /* --- Option Styles --- */
     .language-option, .play-preference-option, .best-time-option, .game-experience-option, .gaming-hours-option, .playstyle-option, .input-method-option,
@@ -586,7 +586,7 @@
     /* ==========================
        5. MULTI-SELECT STYLES - OPTIMIZED
        ========================== */
-    .multi-select-container { margin-top: 12px; }
+    .multi-select-container { margin-top: 12px; margin-bottom: 25px }
     .multi-select-counter {
         font-size: 0.9em; color: rgba(255,255,255,0.6); margin-bottom: 12px; text-align: center;
         padding: 8px 12px; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;
@@ -2252,41 +2252,16 @@
 <script>
 'use strict';
 
-// --- Performance Configuration ---
+// --- Constants & Configuration ---
 const PERF_CONFIG = {
     debounceDelay: 250,
     particleThrottleDelay: 16,
-    intersectionThreshold: 0.01,
     maxParticleCount: 40,
     particleDensity: 25000
 };
 
-// --- Utility Functions ---
-const debounce = (func, wait) => {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-};
-
-const throttle = (func, limit) => {
-    let inThrottle;
-    return function (...args) {
-        if (!inThrottle) {
-            func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-};
-
-// Store application data
-let currentApplicationData = null;
-
-// --- Multi-Select Handlers ---
-function setupMultiSelectHandlers() {
-    const multiSelectGroups = {
+const CONSTANTS = {
+    multiSelectGroups: {
         'whyJoin': { min: 2, counter: 'whyJoinCounter' },
         'gameGoals': { min: 2, counter: 'gameGoalsCounter' },
         'handleToxicity': { min: 2, counter: 'handleToxicityCounter' },
@@ -2294,84 +2269,26 @@ function setupMultiSelectHandlers() {
         'extraSkills': { min: 1, counter: 'extraSkillsCounter', hasNoneOption: true },
         'clanDetails': { min: 1, counter: 'clanDetailsCounter' },
         'penaltyDetails': { min: 1, counter: 'penaltyDetailsCounter' }
-    };
-
-    Object.entries(multiSelectGroups).forEach(([groupName, { min, counter, hasNoneOption }]) => {
-        const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
-        const counterElem = document.getElementById(counter);
-
-        function updateCounter() {
-            const checked = document.querySelectorAll(`input[name="${groupName}"]:checked`);
-            const checkedCount = checked.length;
-            const noneSelected = hasNoneOption && document.querySelector(`input[name="${groupName}"][value="none"]:checked`);
-            let isValid = false;
-
-            if (hasNoneOption && noneSelected) {
-                isValid = true;
-                checkboxes.forEach(cb => { if (cb.value !== 'none') cb.checked = false; });
-            } else {
-                isValid = checkedCount >= min;
-                if (checkedCount > 0 && hasNoneOption) {
-                    const noneCb = document.querySelector(`input[name="${groupName}"][value="none"]`);
-                    if (noneCb && noneCb.checked) noneCb.checked = false;
-                }
-            }
-
-            if (counterElem) {
-                counterElem.classList.remove('valid', 'invalid');
-                if (hasNoneOption && noneSelected) {
-                    counterElem.textContent = 'No additional skills selected';
-                    counterElem.classList.add('valid');
-                } else if (checkedCount === 0) {
-                    counterElem.textContent = `Select ${min === 1 ? 'at least 1' : min + '+'} option${min > 1 ? 's' : ''}`;
-                } else if (isValid) {
-                    counterElem.textContent = min === 1 ? `${checkedCount} selected` : `${checkedCount}/${min}+ selected`;
-                    counterElem.classList.add('valid');
-                } else {
-                    counterElem.textContent = `${checkedCount}/${min}+ selected`;
-                    counterElem.classList.add('invalid');
-                }
-            }
-
-            checkboxes.forEach(cb => {
-                const option = cb.closest('.multi-select-option');
-                if (option) option.classList.toggle('selected', cb.checked);
-            });
-        }
-
-        checkboxes.forEach(cb => cb.addEventListener('change', updateCounter));
-        updateCounter();
-    });
-}
-
-// --- Word Counter for Textareas ---
-function setupWordCounters() {
-    const textareas = [
-        { id: 'bio', counterId: 'wordCounter', maxWords: 100 }
-    ];
-    textareas.forEach(({ id, counterId, maxWords }) => {
-        const textarea = document.getElementById(id);
-        const wordCounter = document.getElementById(counterId);
-        if (textarea && wordCounter) {
-            textarea.addEventListener('input', debounce(() => {
-                const words = textarea.value.trim() === '' ? 0 : textarea.value.trim().split(/\s+/).length;
-                wordCounter.textContent = `${words} / ${maxWords} words`;
-                wordCounter.classList.remove('warning', 'error');
-                if (words > maxWords) wordCounter.classList.add('error');
-                else if (words > maxWords * 0.8) wordCounter.classList.add('warning');
-            }, 100));
-        }
-    });
-}
-
-// --- Multi-Select Tags for Player Card ---
-function createMultiSelectTags(selectedValues, fieldName) {
-    if (!selectedValues || selectedValues.length === 0) return '';
-    const colorMapping = [
-        'tag-color-1', 'tag-color-2', 'tag-color-3', 'tag-color-4', 'tag-color-5',
-        'tag-color-6', 'tag-color-7', 'tag-color-8', 'tag-color-9', 'tag-color-10'
-    ];
-    const labelMapping = {
+    },
+    
+    displayNames: {
+        roles: { advisor: 'Advisor', pro: 'Pro Player', specialist: 'Specialist' },
+        games: {
+            apex: 'Apex Legends', valorant: 'Valorant', csgo: 'CS:GO / CS2', 
+            fortnite: 'Fortnite', overwatch: 'Overwatch 2', lol: 'League of Legends', 
+            dota2: 'Dota 2', 'rocket-league': 'Rocket League', pubg: 'PUBG', other: 'other'
+        },
+        languages: { bangla: 'Bangla', english: 'English', both: 'Both' },
+        experience: { beginning: 'Just Started', '1year': '1+ Years', '2years': '2+ Years', '3plus': '3+ Years' },
+        frequency: { daily: 'Daily', weekly: 'Weekly' },
+        hours: { '1-2': '1-2 Hours', '2-4': '2-4 Hours', '4+': '4+ Hours' },
+        playPreference: { solo: 'Solo', friends: 'Friends', teams: 'Teams' },
+        bestTime: { night: 'Night', day: 'Day', both: 'Flexible' },
+        communication: { voice: 'Voice', text: 'Chat' },
+        inputMethod: { keyboard: 'Mouse & Keyboard', controller: 'Controller', both: 'Both' }
+    },
+    
+    labelMapping: {
         'poor-management': 'Poor Management', 'argument': 'Had an Argument', 'mutual': 'Mutually Left',
         'toxic-members': 'Toxic Members', 'inactive': 'Clan Became Inactive', 'others': 'Other Reasons',
         'toxicity': 'Toxicity/Bad Behavior', 'cheat-tools': 'Cheat Tools/Hacks', 'abusing-bugs': 'Abusing Game Bugs',
@@ -2386,262 +2303,320 @@ function createMultiSelectTags(selectedValues, fieldName) {
         'focus-game': 'Focus on the game objectives', 'take-break': 'Take breaks when frustrated', 'learn': 'Learn from mistakes',
         'report': 'Report truly toxic behavior', 'support': 'Support struggling teammates', 'communication': 'Good communication',
         'respect': 'Mutual respect', 'skill': 'High skill level', 'active': 'Active participation', 'supportive': 'Supportive environment',
-        'competitive': 'Competitive spirit', 'loyalty': 'Member loyalty', 'none': 'None', 'content-creation': 'Content creation',
+        'loyalty': 'Member loyalty', 'none': 'None', 'content-creation': 'Content creation',
         'streaming': 'Streaming experience', 'video-editing': 'Video editing', 'graphic-design': 'Graphic design',
         'discord-management': 'Discord server management', 'strategy-guides': 'Strategy guides writing', 'coaching': 'Player coaching/mentoring',
         'event-organizing': 'Event organizing', 'social-media': 'Social media management', 'recruitment': 'Member recruitment'
-    };
-    return selectedValues.map((value, i) =>
-        `<span class="selected-tag ${colorMapping[i % 10]}">${labelMapping[value] || value}</span>`
-    ).join('');
-}
+    },
+    
+    colorMapping: ['tag-color-1', 'tag-color-2', 'tag-color-3', 'tag-color-4', 'tag-color-5', 'tag-color-6', 'tag-color-7', 'tag-color-8', 'tag-color-9', 'tag-color-10'],
+    
+    validationRules: {
+        multiSelect: {
+            'whyJoin': { min: 2, name: "why you want to join our clan" },
+            'gameGoals': { min: 2, name: "current gaming goals" },
+            'handleToxicity': { min: 2, name: "how you handle toxicity" },
+            'clanGreatness': { min: 2, name: "what makes a clan great" }
+        }
+    }
+};
 
-// --- Player Card Display ---
-function showPlayerCard(data) {
-    const formContainer = document.getElementById('formContainer');
-    const playerCard = document.getElementById('playerCard');
-    const cardContent = document.getElementById('cardContent');
-    const roleNames = { advisor: 'Advisor', pro: 'Pro Player', specialist: 'Specialist' };
-    const gameNames = {
-        apex: 'Apex Legends', valorant: 'Valorant', csgo: 'CS:GO / CS2', fortnite: 'Fortnite',
-        overwatch: 'Overwatch 2', lol: 'League of Legends', dota2: 'Dota 2', 'rocket-league': 'Rocket League',
-        pubg: 'PUBG', other: 'other'
-    };
-    const languageNames = { bangla: 'Bangla', english: 'English', both: 'Both' };
-    const experienceNames = { beginning: 'Just Started', '1year': '1+ Years', '2years': '2+ Years', '3plus': '3+ Years' };
-    const frequencyNames = { daily: 'Daily', weekly: 'Weekly' };
-    const hoursNames = { '1-2': '1-2 Hours', '2-4': '2-4 Hours', '4+': '4+ Hours' };
-    const playPreferenceNames = { solo: 'Solo', friends: 'Friends', teams: 'Teams' };
-    const bestTimeNames = { night: 'Night', day: 'Day', both: 'Flexible' };
-    const communicationNames = { voice: 'Voice', text: 'Chat' };
+// --- Cached DOM Elements ---
+const DOM = {
+    form: null,
+    formContainer: null,
+    playerCard: null,
+    cardContent: null,
+    submitButton: null,
+    bioTextGroup: null,
+    bioTextarea: null,
+    wordCounter: null,
+    
+    init() {
+        this.form = document.getElementById('applicationForm');
+        this.formContainer = document.getElementById('formContainer');
+        this.playerCard = document.getElementById('playerCard');
+        this.cardContent = document.getElementById('cardContent');
+        this.submitButton = document.querySelector('.btn-submit');
+        this.bioTextGroup = document.getElementById('bioTextGroup');
+        this.bioTextarea = document.getElementById('bio');
+        this.wordCounter = document.getElementById('wordCounter');
+    }
+};
 
-    function formatClanExperience() {
+// --- State Management ---
+const AppState = {
+    currentApplicationData: null,
+    radioGroups: {},
+    
+    reset() {
+        this.currentApplicationData = null;
+    }
+};
+
+// --- Utility Functions ---
+const Utils = {
+    debounce(func, wait) {
+        let timeout;
+        return function (...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    },
+    
+    throttle(func, limit) {
+        let inThrottle;
+        return function (...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    },
+    
+    sanitizeData(data) {
+        const sanitized = { ...data };
+        Object.keys(sanitized).forEach(key => {
+            if (typeof sanitized[key] === 'string') {
+                sanitized[key] = sanitized[key].trim();
+            }
+        });
+        return sanitized;
+    },
+    
+    createCardField(className, label, value) {
+        return `<div class="${className}"><div class="card-field-label">${label}</div><div class="card-field-value">${value}</div></div>`;
+    }
+};
+
+// --- Multi-Select Management ---
+const MultiSelectManager = {
+    setup() {
+        Object.entries(CONSTANTS.multiSelectGroups).forEach(([groupName, config]) => {
+            const checkboxes = document.querySelectorAll(`input[name="${groupName}"]`);
+            const counterElem = document.getElementById(config.counter);
+            
+            if (!checkboxes.length) return;
+            
+            const updateCounter = this.createUpdateHandler(groupName, config, checkboxes, counterElem);
+            checkboxes.forEach(cb => cb.addEventListener('change', updateCounter));
+            updateCounter();
+        });
+    },
+    
+    createUpdateHandler(groupName, config, checkboxes, counterElem) {
+        return () => {
+            const checked = document.querySelectorAll(`input[name="${groupName}"]:checked`);
+            const checkedCount = checked.length;
+            const noneSelected = config.hasNoneOption && 
+                document.querySelector(`input[name="${groupName}"][value="none"]:checked`);
+            
+            let isValid = false;
+            
+            if (config.hasNoneOption && noneSelected) {
+                isValid = true;
+                checkboxes.forEach(cb => { 
+                    if (cb.value !== 'none') cb.checked = false; 
+                });
+            } else {
+                isValid = checkedCount >= config.min;
+                if (checkedCount > 0 && config.hasNoneOption) {
+                    const noneCb = document.querySelector(`input[name="${groupName}"][value="none"]`);
+                    if (noneCb?.checked) noneCb.checked = false;
+                }
+            }
+            
+            this.updateCounterDisplay(counterElem, config, checkedCount, isValid, noneSelected);
+            this.updateOptionsDisplay(checkboxes);
+        };
+    },
+    
+    updateCounterDisplay(counterElem, config, checkedCount, isValid, noneSelected) {
+        if (!counterElem) return;
+        
+        counterElem.classList.remove('valid', 'invalid');
+        
+        if (config.hasNoneOption && noneSelected) {
+            counterElem.textContent = 'No additional skills selected';
+            counterElem.classList.add('valid');
+        } else if (checkedCount === 0) {
+            counterElem.textContent = `Select ${config.min === 1 ? 'at least 1' : config.min + '+'} option${config.min > 1 ? 's' : ''}`;
+        } else {
+            counterElem.textContent = config.min === 1 ? 
+                `${checkedCount} selected` : 
+                `${checkedCount}/${config.min}+ selected`;
+            counterElem.classList.add(isValid ? 'valid' : 'invalid');
+        }
+    },
+    
+    updateOptionsDisplay(checkboxes) {
+        checkboxes.forEach(cb => {
+            const option = cb.closest('.multi-select-option');
+            option?.classList.toggle('selected', cb.checked);
+        });
+    }
+};
+
+// --- Card Generation ---
+const CardGenerator = {
+    generate(data) {
+        const fields = [
+            Utils.createCardField('card-field name-field', 'Real Name', data.realName),
+            Utils.createCardField('card-field game-name-field', 'In-Game Name', data.gameName),
+            Utils.createCardField('card-field age-field', 'Age', `${data.age} years old`),
+            Utils.createCardField(`card-field ${data.language}-lang-option`, 'Language', CONSTANTS.displayNames.languages[data.language]),
+            Utils.createCardField(`card-field ${data.platform}-option`, 'Platform', data.platform?.toUpperCase() || ''),
+            this.generateInputMethodField(data),
+            Utils.createCardField('card-field location-field', 'Location', data.location),
+            Utils.createCardField('card-field email-field', 'Contact Email', data.contactInfo),
+            Utils.createCardField(this.getRoleClass(data.role), 'Preferred Role', CONSTANTS.displayNames.roles[data.role]),
+            Utils.createCardField('card-field game-field', 'Primary Game', data.game === 'other' ? data.otherGame : CONSTANTS.displayNames.games[data.game]),
+            Utils.createCardField('card-field age-field', 'Current Level', data.currentLevel),
+            Utils.createCardField(`card-field experience-${data.gameExperience}`, 'Game Experience', CONSTANTS.displayNames.experience[data.gameExperience]),
+            Utils.createCardField(this.getPlaystyleClass(data.playstyle), 'Playstyle', data.playstyle.charAt(0).toUpperCase() + data.playstyle.slice(1)),
+            Utils.createCardField(`card-field ${data.playPreference}-option`, 'Play Preference', CONSTANTS.displayNames.playPreference[data.playPreference]),
+            Utils.createCardField(`card-field frequency-${data.gamingFrequency}`, 'Gaming Frequency', CONSTANTS.displayNames.frequency[data.gamingFrequency]),
+            Utils.createCardField(this.getHoursClass(data.dailyHours), 'Daily Hours', CONSTANTS.displayNames.hours[data.dailyHours]),
+            Utils.createCardField(this.getBestTimeClass(data.bestTime), 'Active Time', CONSTANTS.displayNames.bestTime[data.bestTime]),
+            Utils.createCardField(this.getCommunicationClass(data.communication), 'Communication', CONSTANTS.displayNames.communication[data.communication]),
+            Utils.createCardField(`card-field ${data.previousClan}-clan-option`, 'Previous Clan', this.formatClanExperience(data)),
+            Utils.createCardField(`card-field ${data.penalty}-penalty-option`, 'Game Penalties', this.formatPenaltyExperience(data)),
+            this.createMultiSelectField('Why Join Our Clan', data.whyJoin),
+            this.createMultiSelectField('Gaming Goals', data.gameGoals),
+            this.createMultiSelectField('Handle Toxicity', data.handleToxicity),
+            this.createMultiSelectField('Clan Greatness Qualities', data.clanGreatness),
+            this.createMultiSelectField('Extra Skills', data.extraSkills),
+            Utils.createCardField('card-field bio-field', 'Bio', data.bio)
+        ].filter(Boolean).join('');
+        
+        return fields;
+    },
+    
+    generateInputMethodField(data) {
+        if (data.platform !== 'pc' || !data.inputMethod) return '';
+        const className = `card-field input-${data.inputMethod}`;
+        return Utils.createCardField(className, 'Input Method', CONSTANTS.displayNames.inputMethod[data.inputMethod]);
+    },
+    
+    getRoleClass(role) {
+        return `card-field role-${role}`;
+    },
+    
+    getPlaystyleClass(playstyle) {
+        return `card-field playstyle-${playstyle}`;
+    },
+    
+    getHoursClass(hours) {
+        const mapping = { '1-2': 'hours-12', '2-4': 'hours-24', '4+': 'hours-4+' };
+        return `card-field ${mapping[hours] || ''}`;
+    },
+    
+    getBestTimeClass(time) {
+        return `card-field ${time}${time === 'both' ? '-time' : ''}-option`;
+    },
+    
+    getCommunicationClass(comm) {
+        return `card-field comm-${comm}${comm === 'text' ? '-only' : '-chat'}`;
+    },
+    
+    formatClanExperience(data) {
         if (data.previousClan === 'no') return 'First Time';
         if (data.previousClan === 'yes') {
             let result = 'Has Experience';
-            if (Array.isArray(data.clanDetails) && data.clanDetails.length)
-                result += `<div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 12px;">${createMultiSelectTags(data.clanDetails, 'clanDetails')}</div>`;
+            if (Array.isArray(data.clanDetails) && data.clanDetails.length) {
+                result += `<div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 12px;">${this.createTags(data.clanDetails)}</div>`;
+            }
             return result;
         }
         return 'Unknown';
-    }
+    },
     
-    function formatPenaltyExperience() {
+    formatPenaltyExperience(data) {
         if (data.penalty === 'no') return 'Clean Record';
         if (data.penalty === 'yes') {
             let result = 'Penalty History';
-            if (Array.isArray(data.penaltyDetails) && data.penaltyDetails.length)
-                result += `<div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 12px;">${createMultiSelectTags(data.penaltyDetails, 'penaltyDetails')}</div>`;
+            if (Array.isArray(data.penaltyDetails) && data.penaltyDetails.length) {
+                result += `<div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 12px;">${this.createTags(data.penaltyDetails)}</div>`;
+            }
             return result;
         }
         return 'Unknown';
+    },
+    
+    createMultiSelectField(label, values) {
+        return `<div class="card-field multi-select-field"><div class="card-field-label">${label}</div><div class="card-field-value">${this.createTags(values)}</div></div>`;
+    },
+    
+    createTags(selectedValues) {
+        if (!selectedValues?.length) return '';
+        return selectedValues.map((value, i) => 
+            `<span class="selected-tag ${CONSTANTS.colorMapping[i % 10]}">${CONSTANTS.labelMapping[value] || value}</span>`
+        ).join('');
     }
+};
 
-    const cardTitle = document.querySelector('.card-title');
-    if (cardTitle && data.gameName) cardTitle.textContent = `${data.gameName}'s Card`;
-
-    const languageClass = `card-field ${data.language}-lang-option`;
-    const experienceClass = `card-field experience-${data.gameExperience}`;
-    const frequencyClass = `card-field frequency-${data.gamingFrequency}`;
-    let hoursClass = 'card-field';
-    if (data.dailyHours === '1-2') hoursClass = 'card-field hours-12';
-    else if (data.dailyHours === '2-4') hoursClass = 'card-field hours-24';
-    else if (data.dailyHours === '4+') hoursClass = 'card-field hours-4+';
-
-    const playPrefClass = `card-field ${data.playPreference}-option`;
-    const bestTimeClass = `card-field ${data.bestTime}${data.bestTime === 'both' ? '-time' : ''}-option`;
-    const communicationClass = `card-field comm-${data.communication}${data.communication === 'text' ? '-only' : '-chat'}`;
-    const clanClass = `card-field ${data.previousClan}-clan-option`;
-    const penaltyClass = `card-field ${data.penalty}-penalty-option`;
-    const platformClass = `card-field ${data.platform}-option`;
-
-    let roleClass = 'card-field';
-    if (data.role === 'advisor') roleClass = 'card-field role-advisor';
-    else if (data.role === 'pro') roleClass = 'card-field role-pro';
-    else if (data.role === 'specialist') roleClass = 'card-field role-specialist';
-
-    let playstyleClass = 'card-field';
-    if (data.playstyle === 'aggressive') playstyleClass = 'card-field playstyle-aggressive';
-    else if (data.playstyle === 'defensive') playstyleClass = 'card-field playstyle-defensive';
-    else if (data.playstyle === 'both') playstyleClass = 'card-field playstyle-both';
-
-    let platformDisplay = data.platform ? data.platform.toUpperCase() : '';
-    let inputMethodDisplay = '';
-    if (data.platform === 'pc' && data.inputMethod) {
-        const inputMethodNames = { keyboard: 'Mouse & Keyboard', controller: 'Controller', both: 'Both' };
-        let inputMethodClass = 'card-field';
-        if (data.inputMethod === 'keyboard') inputMethodClass = 'card-field input-keyboard';
-        else if (data.inputMethod === 'controller') inputMethodClass = 'card-field input-controller';
-        else if (data.inputMethod === 'both') inputMethodClass = 'card-field input-both';
-        inputMethodDisplay = `
-            <div class="${inputMethodClass}">
-                <div class="card-field-label">Input Method</div>
-                <div class="card-field-value">${inputMethodNames[data.inputMethod]}</div>
-            </div>`;
-    }
-
-    cardContent.innerHTML = `
-        <div class="card-field name-field"><div class="card-field-label">Real Name</div><div class="card-field-value">${data.realName}</div></div>
-        <div class="card-field game-name-field"><div class="card-field-label">In-Game Name</div><div class="card-field-value">${data.gameName}</div></div>
-        <div class="card-field age-field"><div class="card-field-label">Age</div><div class="card-field-value">${data.age} years old</div></div>
-        <div class="${languageClass}"><div class="card-field-label">Language</div><div class="card-field-value">${languageNames[data.language]}</div></div>
-        <div class="${platformClass}"><div class="card-field-label">Platform</div><div class="card-field-value">${platformDisplay}</div></div>
-        ${inputMethodDisplay}
-        <div class="card-field location-field"><div class="card-field-label">Location</div><div class="card-field-value">${data.location}</div></div>
-        <div class="card-field email-field"><div class="card-field-label">Contact Email</div><div class="card-field-value">${data.contactInfo}</div></div>
-        <div class="${roleClass}"><div class="card-field-label">Preferred Role</div><div class="card-field-value">${roleNames[data.role]}</div></div>
-        <div class="card-field game-field"><div class="card-field-label">Primary Game</div><div class="card-field-value">${data.game === 'other' ? data.otherGame : gameNames[data.game]}</div></div>
-        <div class="card-field age-field"><div class="card-field-label">Current Level</div><div class="card-field-value">${data.currentLevel}</div></div>
-        <div class="${experienceClass}"><div class="card-field-label">Game Experience</div><div class="card-field-value">${experienceNames[data.gameExperience]}</div></div>
-        <div class="${playstyleClass}"><div class="card-field-label">Playstyle</div><div class="card-field-value">${data.playstyle.charAt(0).toUpperCase() + data.playstyle.slice(1)}</div></div>
-        <div class="${playPrefClass}"><div class="card-field-label">Play Preference</div><div class="card-field-value">${playPreferenceNames[data.playPreference]}</div></div>
-        <div class="${frequencyClass}"><div class="card-field-label">Gaming Frequency</div><div class="card-field-value">${frequencyNames[data.gamingFrequency]}</div></div>
-        <div class="${hoursClass}"><div class="card-field-label">Daily Hours</div><div class="card-field-value">${hoursNames[data.dailyHours]}</div></div>
-        <div class="${bestTimeClass}"><div class="card-field-label">Active Time</div><div class="card-field-value">${bestTimeNames[data.bestTime]}</div></div>
-        <div class="${communicationClass}"><div class="card-field-label">Communication</div><div class="card-field-value">${communicationNames[data.communication]}</div></div>
-        <div class="${clanClass}"><div class="card-field-label">Previous Clan</div><div class="card-field-value">${formatClanExperience()}</div></div>
-        <div class="${penaltyClass}"><div class="card-field-label">Game Penalties</div><div class="card-field-value">${formatPenaltyExperience()}</div></div>
-        <div class="card-field multi-select-field"><div class="card-field-label">Why Join Our Clan</div><div class="card-field-value">${createMultiSelectTags(data.whyJoin, 'whyJoin')}</div></div>
-        <div class="card-field multi-select-field"><div class="card-field-label">Gaming Goals</div><div class="card-field-value">${createMultiSelectTags(data.gameGoals, 'gameGoals')}</div></div>
-        <div class="card-field multi-select-field"><div class="card-field-label">Handle Toxicity</div><div class="card-field-value">${createMultiSelectTags(data.handleToxicity, 'handleToxicity')}</div></div>
-        <div class="card-field multi-select-field"><div class="card-field-label">Clan Greatness Qualities</div><div class="card-field-value">${createMultiSelectTags(data.clanGreatness, 'clanGreatness')}</div></div>
-        <div class="card-field multi-select-field"><div class="card-field-label">Extra Skills</div><div class="card-field-value">${createMultiSelectTags(data.extraSkills, 'extraSkills')}</div></div>
-        <div class="card-field bio-field"><div class="card-field-label">Bio</div><div class="card-field-value">${data.bio}</div></div>
-    `;
-    formContainer.classList.add('hidden');
-    playerCard.classList.remove('hidden');
-}
-
-// --- Player Card Actions ---
-function newApplication() {
-    document.getElementById('applicationForm').reset();
-    document.getElementById('formContainer').classList.remove('hidden');
-    document.getElementById('playerCard').classList.add('hidden');
-    document.getElementById('inputMethodGroup').classList.add('hidden');
-    document.getElementById('clanDetailsGroup').classList.add('hidden');
-    document.getElementById('penaltyDetailsGroup').classList.add('hidden');
-    document.getElementById('otherGameGroup').classList.add('hidden');
-    document.querySelectorAll('.word-counter').forEach(c => { c.textContent = '0 / 100 words'; c.classList.remove('warning', 'error'); });
-    document.querySelectorAll('.multi-select-counter').forEach(c => c.classList.remove('valid', 'invalid'));
-    document.querySelectorAll('.multi-select-option').forEach(o => o.classList.remove('selected'));
-    currentApplicationData = null;
-    setupMultiSelectHandlers();
-    document.getElementById('bioTextGroup').classList.add('hidden');
-    document.getElementById('bio').value = '';
-    document.getElementById('bio').required = false;
-}
-function editApplication() {
-    document.getElementById('formContainer').classList.remove('hidden');
-    document.getElementById('playerCard').classList.add('hidden');
-}
-function submitApplication() {
-    if (currentApplicationData) {
-        alert('🎉 Application submitted successfully! We will review your application and get back to you soon.');
-        newApplication();
-    } else {
-        alert('⚠️ No application data found. Please fill out the form again.');
-        newApplication();
-    }
-}
-
-// --- Deselectable Radio Buttons ---
-function makeRadioButtonsDeselectable() {
-    const radioGroups = {};
-    document.querySelectorAll('input[type="radio"]').forEach(radio => {
-        const groupName = radio.name;
-        if (!radioGroups[groupName]) radioGroups[groupName] = [];
-        radioGroups[groupName].push(radio);
-
-        radio.addEventListener('click', function () {
-            const wasChecked = this.dataset.wasChecked === 'true';
-            radioGroups[groupName].forEach(r => r.dataset.wasChecked = 'false');
-            if (wasChecked) {
-                this.checked = false;
-                this.dataset.wasChecked = 'false';
-                if (groupName === 'platform') {
-                    document.getElementById('inputMethodGroup').classList.add('hidden');
-                    document.querySelectorAll('input[name="inputMethod"]').forEach(inp => { inp.checked = false; inp.required = false; });
-                }
-                if (groupName === 'game') {
-                    document.getElementById('otherGameGroup').classList.add('hidden');
-                    document.getElementById('otherGame').value = '';
-                    document.getElementById('otherGame').required = false;
-                }
-                if (groupName === 'previousClan') {
-                    document.getElementById('clanDetailsGroup').classList.add('hidden');
-                    document.querySelectorAll('input[name="clanDetails"]').forEach(inp => { inp.checked = false; });
-                }
-                if (groupName === 'penalty') {
-                    document.getElementById('penaltyDetailsGroup').classList.add('hidden');
-                    document.querySelectorAll('input[name="penaltyDetails"]').forEach(inp => { inp.checked = false; });
-                }
-                if (groupName === 'bioChoice') {
-                    const bioTextGroup = document.getElementById('bioTextGroup');
-                    const bioTextarea = document.getElementById('bio');
-                    bioTextGroup.classList.add('hidden');
-                    bioTextarea.required = false;
-                    bioTextarea.value = '';
-                    const wordCounter = document.getElementById('wordCounter');
-                    if (wordCounter) {
-                        wordCounter.textContent = '0 / 100 words';
-                        wordCounter.classList.remove('warning', 'error');
-                    }
-                }
-            } else {
-                this.dataset.wasChecked = 'true';
-            }
+// --- Form Management ---
+const FormManager = {
+    init() {
+        this.setupConditionalFields();
+        this.setupWordCounters();
+        this.setupRadioButtons();
+        this.setupSubmission();
+    },
+    
+    setupConditionalFields() {
+        const handlers = {
+            platform: this.handlePlatformChange,
+            bioChoice: this.handleBioChoice,
+            game: this.handleGameChange,
+            previousClan: this.handleClanChange,
+            penalty: this.handlePenaltyChange
+        };
+        
+        Object.entries(handlers).forEach(([name, handler]) => {
+            document.querySelectorAll(`input[name="${name}"], select[name="${name}"]`)
+                .forEach(input => input.addEventListener('change', handler.bind(this)));
         });
-        radio.addEventListener('change', function () {
-            if (this.checked) {
-                radioGroups[groupName].forEach(r => { if (r !== this) r.dataset.wasChecked = 'false'; });
-                this.dataset.wasChecked = 'true';
+    },
+    
+    handlePlatformChange(event) {
+        const group = document.getElementById('inputMethodGroup');
+        const inputs = document.querySelectorAll('input[name="inputMethod"]');
+        
+        if (event.target.value === 'pc') {
+            group.classList.remove('hidden');
+            inputs.forEach(inp => inp.required = true);
+        } else {
+            group.classList.add('hidden');
+            inputs.forEach(inp => {
+                inp.required = false;
+                inp.checked = false;
+                inp.dataset.wasChecked = 'false';
+            });
+        }
+    },
+    
+    handleBioChoice(event) {
+        if (event.target.value === 'yes') {
+            DOM.bioTextGroup.classList.remove('hidden');
+            DOM.bioTextarea.required = true;
+        } else {
+            DOM.bioTextGroup.classList.add('hidden');
+            DOM.bioTextarea.required = false;
+            DOM.bioTextarea.value = '';
+            if (DOM.wordCounter) {
+                DOM.wordCounter.textContent = '0 / 100 words';
+                DOM.wordCounter.classList.remove('warning', 'error');
             }
-        });
-    });
-}
-
-// --- DOMContentLoaded: Setup Handlers ---
-document.addEventListener('DOMContentLoaded', function () {
-    // Platform/Input Method
-    document.querySelectorAll('input[name="platform"]').forEach(input => {
-        input.addEventListener('change', function () {
-            const group = document.getElementById('inputMethodGroup');
-            const inputs = document.querySelectorAll('input[name="inputMethod"]');
-            if (this.value === 'pc') {
-                group.classList.remove('hidden');
-                inputs.forEach(inp => inp.required = true);
-            } else if (this.value === 'console') {
-                group.classList.add('hidden');
-                inputs.forEach(inp => { inp.required = false; inp.checked = false; inp.dataset.wasChecked = 'false'; });
-            }
-        });
-    });
-    // Bio choice handler
-    document.querySelectorAll('input[name="bioChoice"]').forEach(input => {
-        input.addEventListener('change', function () {
-            const bioTextGroup = document.getElementById('bioTextGroup');
-            const bioTextarea = document.getElementById('bio');
-            if (this.value === 'yes') {
-                bioTextGroup.classList.remove('hidden');
-                bioTextarea.required = true;
-            } else {
-                bioTextGroup.classList.add('hidden');
-                bioTextarea.required = false;
-                bioTextarea.value = '';
-                const wordCounter = document.getElementById('wordCounter');
-                if (wordCounter) {
-                    wordCounter.textContent = '0 / 100 words';
-                    wordCounter.classList.remove('warning', 'error');
-                }
-            }
-        });
-    });
-    // Game selection handler
-    const gameSelect = document.getElementById('game');
-    const otherGameGroup = document.getElementById('otherGameGroup');
-    const otherGameInput = document.getElementById('otherGame');
-    gameSelect.addEventListener('change', function () {
-        if (this.value === 'other') {
+        }
+    },
+    
+    handleGameChange(event) {
+        const otherGameGroup = document.getElementById('otherGameGroup');
+        const otherGameInput = document.getElementById('otherGame');
+        
+        if (event.target.value === 'other') {
             otherGameGroup.classList.remove('hidden');
             otherGameInput.required = true;
         } else {
@@ -2649,157 +2624,389 @@ document.addEventListener('DOMContentLoaded', function () {
             otherGameInput.required = false;
             otherGameInput.value = '';
         }
-    });
-    // Previous clan handler
-    document.querySelectorAll('input[name="previousClan"]').forEach(input => {
-        input.addEventListener('change', function () {
-            const group = document.getElementById('clanDetailsGroup');
-            const inputs = document.querySelectorAll('input[name="clanDetails"]');
-            if (this.value === 'yes') {
-                group.classList.remove('hidden');
-            } else {
-                group.classList.add('hidden');
-                inputs.forEach(inp => { inp.required = false; inp.checked = false; inp.dataset.wasChecked = 'false'; });
-            }
-        });
-    });
-    // Penalty handler
-    document.querySelectorAll('input[name="penalty"]').forEach(input => {
-        input.addEventListener('change', function () {
-            const group = document.getElementById('penaltyDetailsGroup');
-            const inputs = document.querySelectorAll('input[name="penaltyDetails"]');
-            if (this.value === 'yes') {
-                group.classList.remove('hidden');
-            } else {
-                group.classList.add('hidden');
-                inputs.forEach(inp => { inp.required = false; inp.checked = false; inp.dataset.wasChecked = 'false'; });
-            }
-        });
-    });
-    makeRadioButtonsDeselectable();
-    setupMultiSelectHandlers();
-});
-
-// --- Form Submission ---
-document.getElementById('applicationForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const data = {};
-    for (let [key, value] of formData.entries()) {
-        if (data[key]) {
-            if (Array.isArray(data[key])) data[key].push(value);
-            else data[key] = [data[key], value];
+    },
+    
+    handleClanChange(event) {
+        const group = document.getElementById('clanDetailsGroup');
+        const inputs = document.querySelectorAll('input[name="clanDetails"]');
+        
+        if (event.target.value === 'yes') {
+            group.classList.remove('hidden');
         } else {
-            data[key] = value;
+            group.classList.add('hidden');
+            inputs.forEach(inp => {
+                inp.required = false;
+                inp.checked = false;
+                inp.dataset.wasChecked = 'false';
+            });
+        }
+    },
+    
+    handlePenaltyChange(event) {
+        const group = document.getElementById('penaltyDetailsGroup');
+        const inputs = document.querySelectorAll('input[name="penaltyDetails"]');
+        
+        if (event.target.value === 'yes') {
+            group.classList.remove('hidden');
+        } else {
+            group.classList.add('hidden');
+            inputs.forEach(inp => {
+                inp.required = false;
+                inp.checked = false;
+                inp.dataset.wasChecked = 'false';
+            });
+        }
+    },
+    
+    setupWordCounters() {
+        if (!DOM.bioTextarea || !DOM.wordCounter) return;
+        
+        DOM.bioTextarea.addEventListener('input', Utils.debounce(() => {
+            const words = DOM.bioTextarea.value.trim() === '' ? 0 : 
+                DOM.bioTextarea.value.trim().split(/\s+/).length;
+            DOM.wordCounter.textContent = `${words} / 100 words`;
+            DOM.wordCounter.classList.remove('warning', 'error');
+            
+            if (words > 100) DOM.wordCounter.classList.add('error');
+            else if (words > 80) DOM.wordCounter.classList.add('warning');
+        }, 100));
+    },
+    
+    setupRadioButtons() {
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            const groupName = radio.name;
+            if (!AppState.radioGroups[groupName]) AppState.radioGroups[groupName] = [];
+            AppState.radioGroups[groupName].push(radio);
+            
+            radio.addEventListener('click', this.handleRadioClick.bind(this));
+            radio.addEventListener('change', this.handleRadioChange.bind(this));
+        });
+    },
+    
+    handleRadioClick(event) {
+        const wasChecked = event.target.dataset.wasChecked === 'true';
+        const groupName = event.target.name;
+        
+        AppState.radioGroups[groupName].forEach(r => r.dataset.wasChecked = 'false');
+        
+        if (wasChecked) {
+            event.target.checked = false;
+            event.target.dataset.wasChecked = 'false';
+            this.handleRadioDeselection(groupName);
+        } else {
+            event.target.dataset.wasChecked = 'true';
+        }
+    },
+    
+    handleRadioChange(event) {
+        if (event.target.checked) {
+            const groupName = event.target.name;
+            AppState.radioGroups[groupName].forEach(r => {
+                if (r !== event.target) r.dataset.wasChecked = 'false';
+            });
+            event.target.dataset.wasChecked = 'true';
+        }
+    },
+    
+    handleRadioDeselection(groupName) {
+        const actions = {
+            platform: () => {
+                document.getElementById('inputMethodGroup').classList.add('hidden');
+                document.querySelectorAll('input[name="inputMethod"]')
+                    .forEach(inp => { inp.checked = false; inp.required = false; });
+            },
+            game: () => {
+                const otherGroup = document.getElementById('otherGameGroup');
+                const otherInput = document.getElementById('otherGame');
+                otherGroup.classList.add('hidden');
+                otherInput.value = '';
+                otherInput.required = false;
+            },
+            previousClan: () => {
+                document.getElementById('clanDetailsGroup').classList.add('hidden');
+                document.querySelectorAll('input[name="clanDetails"]')
+                    .forEach(inp => { inp.checked = false; });
+            },
+            penalty: () => {
+                document.getElementById('penaltyDetailsGroup').classList.add('hidden');
+                document.querySelectorAll('input[name="penaltyDetails"]')
+                    .forEach(inp => { inp.checked = false; });
+            },
+            bioChoice: () => {
+                DOM.bioTextGroup.classList.add('hidden');
+                DOM.bioTextarea.required = false;
+                DOM.bioTextarea.value = '';
+                if (DOM.wordCounter) {
+                    DOM.wordCounter.textContent = '0 / 100 words';
+                    DOM.wordCounter.classList.remove('warning', 'error');
+                }
+            }
+        };
+        
+        actions[groupName]?.();
+    },
+    
+    setupSubmission() {
+        DOM.form.addEventListener('submit', this.handleSubmit.bind(this));
+    },
+    
+    handleSubmit(event) {
+        event.preventDefault();
+        
+        const formData = new FormData(DOM.form);
+        const data = this.processFormData(formData);
+        
+        if (!this.validateData(data)) return;
+        
+        AppState.currentApplicationData = data;
+        this.showPlayerCard(data);
+        console.log('Application Data:', data);
+    },
+    
+    processFormData(formData) {
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            if (data[key]) {
+                data[key] = Array.isArray(data[key]) ? [...data[key], value] : [data[key], value];
+            } else {
+                data[key] = value;
+            }
+        }
+        
+        // Convert checkbox values to arrays
+        ['whyJoin', 'gameGoals', 'handleToxicity', 'clanGreatness', 'extraSkills', 'clanDetails', 'penaltyDetails']
+            .forEach(field => {
+                if (data[field] && !Array.isArray(data[field])) {
+                    data[field] = [data[field]];
+                }
+            });
+        
+        return Utils.sanitizeData(data);
+    },
+    
+    validateData(data) {
+        // Bio validation
+        if (data.bioChoice === 'yes') {
+            if (!data.bio) {
+                alert('Please write your bio or select "Prefer not to say".');
+                return false;
+            }
+            if (data.bio.split(/\s+/).length > 100) {
+                alert('Bio must be 100 words or less.');
+                return false;
+            }
+        } else if (data.bioChoice === 'no') {
+            data.bio = 'Prefers not to say';
+        }
+        
+        // Multi-select validation
+        for (const [field, config] of Object.entries(CONSTANTS.validationRules.multiSelect)) {
+            if (!data[field] || !Array.isArray(data[field]) || data[field].length < config.min) {
+                alert(`Please select at least ${config.min} option${config.min > 1 ? 's' : ''} for "${config.name}".`);
+                return false;
+            }
+        }
+        
+        // Extra skills validation
+        if (data.extraSkills) {
+            const hasNone = data.extraSkills.includes('none');
+            const hasOtherSkills = data.extraSkills.some(skill => skill !== 'none');
+            if (!hasNone && !hasOtherSkills) {
+                alert('Please select either "None" or at least 1 skill for "extra skills".');
+                return false;
+            }
+        } else {
+            alert('Please select at least 1 option for "extra skills".');
+            return false;
+        }
+        
+        // Conditional validations
+        const conditionalChecks = [
+            { condition: data.platform === 'pc' && !data.inputMethod, message: 'Please select an input method for PC platform.' },
+            { condition: data.previousClan === 'yes' && (!data.clanDetails || data.clanDetails.length < 1), message: 'Please select 1 reason why you left your previous clan.' },
+            { condition: data.penalty === 'yes' && (!data.penaltyDetails || data.penaltyDetails.length < 1), message: 'Please select 1 type of penalty you received.' },
+            { condition: data.game === 'other' && !data.otherGame, message: 'Please specify the game name.' },
+            { condition: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contactInfo), message: 'Please enter a valid email address.' },
+            { condition: data.age < 13 || data.age > 69, message: 'Age must be between 13 and 69.' }
+        ];
+        
+        for (const check of conditionalChecks) {
+            if (check.condition) {
+                alert(check.message);
+                return false;
+            }
+        }
+        
+        return true;
+    },
+    
+    showPlayerCard(data) {
+        const cardTitle = document.querySelector('.card-title');
+        if (cardTitle && data.gameName) {
+            cardTitle.textContent = `${data.gameName}'s Card`;
+        }
+        
+        DOM.cardContent.innerHTML = CardGenerator.generate(data);
+        DOM.formContainer.classList.add('hidden');
+        DOM.playerCard.classList.remove('hidden');
+    }
+};
+
+// --- Application Actions ---
+const AppActions = {
+    newApplication() {
+        DOM.form.reset();
+        DOM.formContainer.classList.remove('hidden');
+        DOM.playerCard.classList.add('hidden');
+        
+        // Hide conditional groups
+        ['inputMethodGroup', 'clanDetailsGroup', 'penaltyDetailsGroup', 'otherGameGroup', 'bioTextGroup']
+            .forEach(id => document.getElementById(id).classList.add('hidden'));
+        
+        // Reset counters and states
+        document.querySelectorAll('.word-counter').forEach(c => {
+            c.textContent = '0 / 100 words';
+            c.classList.remove('warning', 'error');
+        });
+        
+        document.querySelectorAll('.multi-select-counter').forEach(c => 
+            c.classList.remove('valid', 'invalid'));
+        
+        document.querySelectorAll('.multi-select-option').forEach(o => 
+            o.classList.remove('selected'));
+        
+        AppState.reset();
+        MultiSelectManager.setup();
+        
+        DOM.bioTextarea.value = '';
+        DOM.bioTextarea.required = false;
+    },
+    
+    editApplication() {
+        DOM.formContainer.classList.remove('hidden');
+        DOM.playerCard.classList.add('hidden');
+    },
+    
+    async submitApplication() {
+        if (!AppState.currentApplicationData) {
+            alert('⚠️ No application data found. Please fill out the form again.');
+            this.newApplication();
+            return;
+        }
+        
+        const originalText = DOM.submitButton.textContent;
+        DOM.submitButton.textContent = 'Submitting...';
+        DOM.submitButton.disabled = true;
+        
+        try {
+            const response = await fetch('https://email.hamim2964.workers.dev', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(AppState.currentApplicationData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                alert('🎉 Application submitted successfully! We will review your application and get back to you soon. Check your email for confirmation.');
+                this.newApplication();
+            } else {
+                throw new Error(result.error || 'Submission failed');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            
+            let errorMessage = '❌ There was an error submitting your application. ';
+            
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                errorMessage += 'Network error - please check your internet connection.';
+            } else if (error.message.includes('CORS')) {
+                errorMessage += 'CORS error - the server is not allowing requests.';
+            } else if (error.message.includes('500')) {
+                errorMessage += 'Server error - please try again in a few minutes.';
+            } else {
+                errorMessage += `Error: ${error.message}`;
+            }
+            
+            alert(errorMessage + '\n\nPlease try again or contact us directly.');
+            
+            DOM.submitButton.textContent = originalText;
+            DOM.submitButton.disabled = false;
         }
     }
-    // Convert single checkbox values to arrays
-    ['whyJoin', 'gameGoals', 'handleToxicity', 'clanGreatness', 'extraSkills', 'clanDetails', 'penaltyDetails'].forEach(field => {
-        if (data[field] && !Array.isArray(data[field])) data[field] = [data[field]];
-    });
-    // Clean up text fields
-    Object.keys(data).forEach(key => { if (typeof data[key] === 'string') data[key] = data[key].trim(); });
+};
 
-    // Bio validation
-    if (data.bioChoice === 'yes') {
-        if (!data.bio) return alert('Please write your bio or select "Prefer not to say".');
-        if (data.bio.split(/\s+/).length > 100) return alert('Bio must be 100 words or less.');
-    } else if (data.bioChoice === 'no') {
-        data.bio = 'Prefers not to be gay';
-    }
-
-    // Multi-select validation
-    const multiSelectValidations = {
-        'whyJoin': { min: 2, name: "why you want to join our clan" },
-        'gameGoals': { min: 2, name: "current gaming goals" },
-        'handleToxicity': { min: 2, name: "how you handle toxicity" },
-        'clanGreatness': { min: 2, name: "what makes a clan great" }
-    };
-    for (const [field, { min, name }] of Object.entries(multiSelectValidations)) {
-        if (!data[field] || !Array.isArray(data[field]) || data[field].length < min)
-            return alert(`Please select at least ${min} option${min > 1 ? 's' : ''} for "${name}".`);
-    }
-    // Extra skills validation
-    if (data.extraSkills) {
-        const hasNone = data.extraSkills.includes('none');
-        const hasOtherSkills = data.extraSkills.some(skill => skill !== 'none');
-        if (!hasNone && !hasOtherSkills)
-            return alert('Please select either "None" or at least 1 skill for "extra skills".');
-    } else {
-        return alert('Please select at least 1 option for "extra skills".');
-    }
-    // Conditional validations
-    if (data.platform === 'pc' && !data.inputMethod)
-        return alert('Please select an input method for PC platform.');
-    if (data.previousClan === 'yes' && (!data.clanDetails || data.clanDetails.length < 1))
-        return alert('Please select 1 reason why you left your previous clan.');
-    if (data.penalty === 'yes' && (!data.penaltyDetails || data.penaltyDetails.length < 1))
-        return alert('Please select 1 type of penalty you received.');
-    if (data.game === 'other' && !data.otherGame)
-        return alert('Please specify the game name.');
-    // Email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contactInfo))
-        return alert('Please enter a valid email address.');
-    // Age validation
-    if (data.age < 13 || data.age > 69)
-        return alert('Age must be between 13 and 69.');
-
-    currentApplicationData = data;
-    showPlayerCard(data);
-    console.log('Application Data:', data);
-});
-
-// --- Global Site-wide Particle Animation ---
-function globalParticles() {
-    // Check for reduced motion preference
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-    }
-
-    const canvas = document.createElement('canvas');
-    canvas.id = 'global-particles';
-    Object.assign(canvas.style, {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        width: '100vw',
-        height: '100vh',
-        pointerEvents: 'none',
-        zIndex: '1',
-        opacity: '0.6'
-    });
-    document.body.prepend(canvas);
+// --- Particle Animation (Optimized) ---
+const ParticleAnimation = {
+    canvas: null,
+    ctx: null,
+    particles: [],
+    animationFrameId: null,
+    isVisible: true,
     
-    const ctx = canvas.getContext('2d', { alpha: true });
-    if (!ctx) return;
-
-    let animationFrameId = null;
-    let isVisible = true;
-
-    const resizeCanvas = debounce(() => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        initializeParticles();
-    }, PERF_CONFIG.debounceDelay);
-
-    const colors = [
-        'rgba(253,224,71,0.12)', 'rgba(236,65,88,0.12)', 'rgba(102,75,240,0.12)',
-        'rgba(96,165,250,0.12)', 'rgba(34,197,94,0.12)', 'rgba(249,115,22,0.12)',
-        'rgba(14,165,233,0.12)', 'rgba(236,72,153,0.12)', 'rgba(255,255,255,0.08)',
-        'rgba(168,85,247,0.10)'
-    ];
-
-    let particles = [];
-
-    function initializeParticles() {
+    init() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        
+        this.createCanvas();
+        this.setupEventListeners();
+        this.resizeCanvas();
+        this.animate();
+    },
+    
+    createCanvas() {
+        this.canvas = document.createElement('canvas');
+        this.canvas.id = 'global-particles';
+        Object.assign(this.canvas.style, {
+            position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh',
+            pointerEvents: 'none', zIndex: '1', opacity: '0.6'
+        });
+        document.body.prepend(this.canvas);
+        this.ctx = this.canvas.getContext('2d', { alpha: true });
+    },
+    
+    setupEventListeners() {
+        window.addEventListener('resize', Utils.debounce(() => this.resizeCanvas(), PERF_CONFIG.debounceDelay));
+        
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.isVisible = false;
+                if (this.animationFrameId) {
+                    cancelAnimationFrame(this.animationFrameId);
+                    this.animationFrameId = null;
+                }
+            } else {
+                this.isVisible = true;
+                if (!this.animationFrameId) this.animate();
+            }
+        });
+        
+        window.addEventListener('mousemove', Utils.throttle((e) => {
+            this.handleMouseInteraction(e.clientX, e.clientY);
+        }, PERF_CONFIG.particleThrottleDelay));
+    },
+    
+    resizeCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.initializeParticles();
+    },
+    
+    initializeParticles() {
         const particleCount = Math.min(
-            PERF_CONFIG.maxParticleCount, 
-            Math.floor((canvas.width * canvas.height) / PERF_CONFIG.particleDensity)
+            PERF_CONFIG.maxParticleCount,
+            Math.floor((this.canvas.width * this.canvas.height) / PERF_CONFIG.particleDensity)
         );
         
-        particles = Array.from({ length: particleCount }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
+        const colors = [
+            'rgba(253,224,71,0.12)', 'rgba(236,65,88,0.12)', 'rgba(102,75,240,0.12)',
+            'rgba(96,165,250,0.12)', 'rgba(34,197,94,0.12)', 'rgba(249,115,22,0.12)',
+            'rgba(14,165,233,0.12)', 'rgba(236,72,153,0.12)', 'rgba(255,255,255,0.08)',
+            'rgba(168,85,247,0.10)'
+        ];
+        
+        this.particles = Array.from({ length: particleCount }, () => ({
+            x: Math.random() * this.canvas.width,
+            y: Math.random() * this.canvas.height,
             r: 8 + Math.random() * 20,
             dx: (Math.random() - 0.5) * 0.3,
             dy: (Math.random() - 0.5) * 0.3,
@@ -2809,86 +3016,73 @@ function globalParticles() {
             pulseSpeed: 0.01 + Math.random() * 0.02,
             shape: Math.floor(Math.random() * 3)
         }));
-    }
-
-    function drawParticles() {
-        if (!ctx || !isVisible) return;
+    },
+    
+    animate() {
+        if (!this.isVisible) return;
         
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.updateParticles();
+        this.drawParticles();
+        this.animationFrameId = requestAnimationFrame(() => this.animate());
+    },
+    
+    updateParticles() {
+        for (const p of this.particles) {
+            p.x += p.dx;
+            p.y += p.dy;
+            
+            if (p.x + p.r < 0) p.x = this.canvas.width + p.r;
+            else if (p.x - p.r > this.canvas.width) p.x = -p.r;
+            if (p.y + p.r < 0) p.y = this.canvas.height + p.r;
+            else if (p.y - p.r > this.canvas.height) p.y = -p.r;
+        }
+    },
+    
+    drawParticles() {
+        if (!this.ctx || !this.isVisible) return;
         
-        for (const p of particles) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        for (const p of this.particles) {
             p.pulse += p.pulseSpeed;
             const pulseMultiplier = 0.8 + 0.2 * Math.sin(p.pulse);
             const size = p.r * pulseMultiplier;
             
-            ctx.fillStyle = p.color;
-            ctx.globalAlpha = p.alpha * pulseMultiplier;
-            ctx.shadowColor = p.color;
-            ctx.shadowBlur = 15;
+            this.ctx.fillStyle = p.color;
+            this.ctx.globalAlpha = p.alpha * pulseMultiplier;
+            this.ctx.shadowColor = p.color;
+            this.ctx.shadowBlur = 15;
             
-            ctx.beginPath();
-            switch (p.shape) {
-                case 0: // Circle
-                    ctx.arc(p.x, p.y, size, 0, 2 * Math.PI);
-                    break;
-                case 1: // Triangle
-                    ctx.moveTo(p.x, p.y - size);
-                    ctx.lineTo(p.x - size * 0.866, p.y + size * 0.5);
-                    ctx.lineTo(p.x + size * 0.866, p.y + size * 0.5);
-                    ctx.closePath();
-                    break;
-                case 2: // Square
-                    ctx.rect(p.x - size, p.y - size, size * 2, size * 2);
-                    break;
-            }
-            ctx.fill();
+            this.ctx.beginPath();
+            this.drawShape(p, size);
+            this.ctx.fill();
         }
         
-        ctx.globalAlpha = 1;
-        ctx.shadowBlur = 0;
-    }
-
-    function animateGlobalParticles() {
-        if (!isVisible) return;
+        this.ctx.globalAlpha = 1;
+        this.ctx.shadowBlur = 0;
+    },
+    
+    drawShape(particle, size) {
+        const { x, y, shape } = particle;
         
-        for (const p of particles) {
-            p.x += p.dx;
-            p.y += p.dy;
-            
-            // Wrap around screen edges
-            if (p.x + p.r < 0) p.x = canvas.width + p.r;
-            else if (p.x - p.r > canvas.width) p.x = -p.r;
-            if (p.y + p.r < 0) p.y = canvas.height + p.r;
-            else if (p.y - p.r > canvas.height) p.y = -p.r;
+        switch (shape) {
+            case 0: // Circle
+                this.ctx.arc(x, y, size, 0, 2 * Math.PI);
+                break;
+            case 1: // Triangle
+                this.ctx.moveTo(x, y - size);
+                this.ctx.lineTo(x - size * 0.866, y + size * 0.5);
+                this.ctx.lineTo(x + size * 0.866, y + size * 0.5);
+                this.ctx.closePath();
+                break;
+            case 2: // Square
+                this.ctx.rect(x - size, y - size, size * 2, size * 2);
+                break;
         }
-        
-        drawParticles();
-        animationFrameId = requestAnimationFrame(animateGlobalParticles);
-    }
-
-    // Performance optimization: pause when page is not visible
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            isVisible = false;
-            if (animationFrameId) {
-                cancelAnimationFrame(animationFrameId);
-                animationFrameId = null;
-            }
-        } else {
-            isVisible = true;
-            if (!animationFrameId) {
-                animateGlobalParticles();
-            }
-        }
-    });
-
-    // Mouse interaction with throttling
-    let mouseX = 0, mouseY = 0;
-    const handleMouseMove = throttle((e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        for (const p of particles) {
+    },
+    
+    handleMouseInteraction(mouseX, mouseY) {
+        for (const p of this.particles) {
             const dx = mouseX - p.x;
             const dy = mouseY - p.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
@@ -2898,104 +3092,30 @@ function globalParticles() {
                 p.dx += dx * force;
                 p.dy += dy * force;
                 
-                // Limit velocity
                 const maxSpeed = 0.5;
                 p.dx = Math.max(-maxSpeed, Math.min(maxSpeed, p.dx));
                 p.dy = Math.max(-maxSpeed, Math.min(maxSpeed, p.dy));
             }
         }
-    }, PERF_CONFIG.particleThrottleDelay);
+    }
+};
 
-    window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Initial setup
-    resizeCanvas();
-    animateGlobalParticles();
-}
-
- // Initialize everything when page loads
+// --- Main Application Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
     try {
-        globalParticles(); // This now uses the advanced particle system
-        setupWordCounters();
-        setupMultiSelectHandlers();
+        DOM.init();
+        FormManager.init();
+        MultiSelectManager.setup();
+        ParticleAnimation.init();
     } catch (error) {
-        console.error('Error initializing effects:', error);
+        console.error('Error initializing application:', error);
     }
 });
 
-// Find the submitApplication function and replace it with this enhanced version:
-
-async function submitApplication() {
-    if (!currentApplicationData) {
-        alert('⚠️ No application data found. Please fill out the form again.');
-        newApplication();
-        return;
-    }
-
-    // Show loading state
-    const submitButton = document.querySelector('.btn-submit');
-    const originalText = submitButton.textContent;
-    submitButton.textContent = 'Submitting...';
-    submitButton.disabled = true;
-
-    try {
-        console.log('Submitting application data:', currentApplicationData);
-        
-        const response = await fetch('https://email.hamim2964.workers.dev', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(currentApplicationData)
-        });
-
-        console.log('Response status:', response.status);
-        console.log('Response ok:', response.ok);
-
-        let result;
-        try {
-            result = await response.json();
-            console.log('Response data:', result);
-        } catch (parseError) {
-            console.error('Failed to parse response as JSON:', parseError);
-            const textResponse = await response.text();
-            console.log('Raw response:', textResponse);
-            throw new Error(`Server returned invalid JSON. Status: ${response.status}, Response: ${textResponse}`);
-        }
-
-        if (result.success) {
-            alert('🎉 Application submitted successfully! We will review your application and get back to you soon. Check your email for confirmation.');
-            newApplication();
-        } else {
-            throw new Error(result.error || 'Submission failed');
-        }
-    } catch (error) {
-        console.error('Full submission error:', error);
-        console.error('Error name:', error.name);
-        console.error('Error message:', error.message);
-        console.error('Error stack:', error.stack);
-        
-        let errorMessage = '❌ There was an error submitting your application. ';
-        
-        if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            errorMessage += 'Network error - please check your internet connection.';
-        } else if (error.message.includes('CORS')) {
-            errorMessage += 'CORS error - the server is not allowing requests.';
-        } else if (error.message.includes('500')) {
-            errorMessage += 'Server error - please try again in a few minutes.';
-        } else {
-            errorMessage += `Error: ${error.message}`;
-        }
-        
-        alert(errorMessage + '\n\nPlease try again or contact us directly.');
-        
-        // Restore button state
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    }
-}
+// --- Global Functions (for HTML onclick handlers) ---
+window.newApplication = () => AppActions.newApplication();
+window.editApplication = () => AppActions.editApplication();
+window.submitApplication = () => AppActions.submitApplication();
 </script>
 
 </body>
