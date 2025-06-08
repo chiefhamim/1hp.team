@@ -412,23 +412,24 @@
         .clan-specialists-effect {
             font-family: 'Orbitron', sans-serif; 
             font-weight: 800; 
-            background: linear-gradient(110deg, #4ade80 0%, #2dd4bf 25%, #f97316 50%, #34d399 75%, #14b8a6 100%);
+            background: linear-gradient(110deg, #10b981 0%, #06d6a0 25%, #f59e0b 50%, #34d399 75%, #0891b2 100%);
             background-size: 250% auto;
-            color: #fff;
+            color: #000000;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: clan-specialists-gradient 5.5s linear infinite alternate; 
-            letter-spacing: 0.03em; 
+            animation: clan-specialists-gradient 4s ease-in-out infinite alternate; 
+            letter-spacing: 0.02em; 
             text-shadow: 
-                0 1px 1px rgba(0,0,0,0.6), 
-                0 0 1px rgba(74, 222, 128, 0.08), 
-                0 0 2px rgba(249, 115, 22, 0.04);    
+                0 1px 2px rgba(0,0,0,0.7), 
+                0 0 2px rgba(16, 185, 129, 0.12), 
+                0 0 4px rgba(245, 158, 11, 0.08);    
             position: relative;
-            transition: text-shadow 0.3s;
+            transition: text-shadow 0.3s ease-out;
             padding: 0.1em 0;
             will-change: background-position;
         }
+        
         @keyframes clan-specialists-gradient {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
@@ -453,34 +454,908 @@
             transition: text-shadow 0.3s;
             will-change: background-position;
         }
+        
         @keyframes news-gradient-move {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
-    
+
+        /* --- ENHANCED NEWS CARD STYLES --- */
+        .news-card {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            will-change: transform, box-shadow;
+            contain: layout style paint;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(30, 41, 59, 0.95) 0%, 
+                rgba(51, 65, 85, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* YELLOW THEME - First Card */
+        .news-card:nth-child(1) {
+            border-color: rgba(251, 191, 36, 0.2);
+            background: linear-gradient(135deg, 
+                rgba(45, 55, 72, 0.95) 0%, 
+                rgba(68, 64, 60, 0.9) 100%);
+        }
+
+        .news-card:nth-child(1)::before {
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(251, 191, 36, 0.4), 
+                transparent);
+        }
+
+        .news-card:nth-child(1):hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(251, 191, 36, 0.3),
+                0 0 40px rgba(251, 191, 36, 0.1);
+            border-color: rgba(251, 191, 36, 0.4);
+        }
+
+        .news-card:nth-child(1):hover h3 {
+            background: linear-gradient(135deg, #ffffff, #fbbf24);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+        }
+
+        .news-card:nth-child(1):hover time {
+            color: #fcd34d;
+            text-shadow: 0 0 10px rgba(252, 211, 77, 0.5);
+        }
+
+        .news-card:nth-child(1) .news-link {
+            background: linear-gradient(135deg, 
+                rgba(251, 191, 36, 0.1), 
+                rgba(245, 158, 11, 0.05));
+            border-color: rgba(251, 191, 36, 0.2);
+        }
+
+        .news-card:nth-child(1) .news-link:hover {
+            background: linear-gradient(135deg, 
+                rgba(251, 191, 36, 0.2), 
+                rgba(245, 158, 11, 0.1));
+            border-color: rgba(251, 191, 36, 0.4);
+            box-shadow: 
+                0 4px 15px rgba(251, 191, 36, 0.3),
+                0 0 20px rgba(251, 191, 36, 0.2);
+        }
+
+        /* RED THEME - Second Card */
+        .news-card:nth-child(2) {
+            border-color: rgba(239, 68, 68, 0.2);
+            background: linear-gradient(135deg, 
+                rgba(55, 48, 163, 0.95) 0%, 
+                rgba(75, 85, 99, 0.9) 100%);
+        }
+
+        .news-card:nth-child(2)::before {
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(239, 68, 68, 0.4), 
+                transparent);
+        }
+
+        .news-card:nth-child(2):hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(239, 68, 68, 0.3),
+                0 0 40px rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .news-card:nth-child(2):hover h3 {
+            background: linear-gradient(135deg, #ffffff, #ef4444);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+        }
+
+        .news-card:nth-child(2):hover time {
+            color: #f87171;
+            text-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+        }
+
+        .news-card:nth-child(2) .news-link {
+            background: linear-gradient(135deg, 
+                rgba(239, 68, 68, 0.1), 
+                rgba(220, 38, 38, 0.05));
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+
+        .news-card:nth-child(2) .news-link:hover {
+            background: linear-gradient(135deg, 
+                rgba(239, 68, 68, 0.2), 
+                rgba(220, 38, 38, 0.1));
+            border-color: rgba(239, 68, 68, 0.4);
+            box-shadow: 
+                0 4px 15px rgba(239, 68, 68, 0.3),
+                0 0 20px rgba(239, 68, 68, 0.2);
+        }
+
+        /* PURPLE THEME - Third Card (Original) */
+        .news-card:nth-child(3)::before {
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(139, 92, 246, 0.4), 
+                transparent);
+        }
+
+        .news-card:nth-child(3):hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(139, 92, 246, 0.3),
+                0 0 40px rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        .news-card:nth-child(3):hover h3 {
+            background: linear-gradient(135deg, #ffffff, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .news-card:nth-child(3):hover time {
+            color: #c084fc;
+            text-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
+        }
+
+        .news-card:nth-child(3) .news-link {
+            background: linear-gradient(135deg, 
+                rgba(139, 92, 246, 0.1), 
+                rgba(168, 85, 247, 0.05));
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .news-card:nth-child(3) .news-link:hover {
+            background: linear-gradient(135deg, 
+                rgba(139, 92, 246, 0.2), 
+                rgba(168, 85, 247, 0.1));
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 
+                0 4px 15px rgba(139, 92, 246, 0.3),
+                0 0 20px rgba(139, 92, 246, 0.2);
+        }
+
+        /* Enhanced image effects */
+        .news-card img {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            will-change: transform, filter;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .news-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1) contrast(1.05) saturate(1.1);
+        }
+
+        /* Enhanced content styling */
+        .news-card .p-6 {
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(135deg, 
+                rgba(17, 24, 39, 0.8) 0%, 
+                rgba(31, 41, 55, 0.9) 100%);
+        }
+
+        .news-card h3 {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Enhanced date styling */
+        .news-card time {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Enhanced description text */
+        .news-card p.text-gray-400 {
+            transition: color 0.3s ease;
+        }
+
+        .news-card:hover p.text-gray-400 {
+            color: #d1d5db;
+        }
+
+        /* Enhanced news link with glow */
+        .news-link {
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transform: translateX(5px);
+        }
+
+        .news-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .news-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Staggered animation for news cards */
+        .news-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .news-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .news-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        /* Pulse animation on load */
+        @keyframes newsCardPulse {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .news-card {
+            animation: newsCardPulse 0.6s ease-out forwards;
+        }
+
+        /* Mobile optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .news-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+            
+            .news-card::before {
+                display: none;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .news-card,
+            .news-card *,
+            .news-card::before {
+                animation: none !important;
+                transition: none !important;
+            }
+            
+            .news-card:hover {
+                transform: none;
+            }
+        }
+                /* Enhanced Image Modal Styles with Zoom */
+                .image-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background: rgba(0, 0, 0, 0.9);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease;
+                    backdrop-filter: blur(10px);
+                    cursor: zoom-out;
+                }
+        
+                .image-modal.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+        
+                .image-modal-content {
+                    position: relative;
+                    width: 90vw;
+                    height: 90vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    animation: modalZoomIn 0.3s ease-out;
+                }
+        
+                .image-modal img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    width: auto;
+                    height: auto;
+                    border-radius: 12px;
+                    box-shadow: 
+                        0 25px 50px rgba(0, 0, 0, 0.5),
+                        0 0 40px rgba(139, 92, 246, 0.3);
+                    transition: transform 0.3s ease;
+                    cursor: zoom-in;
+                    object-fit: contain;
+                }
+        
+                .image-modal img.zoomed {
+                    cursor: zoom-out;
+                    transform-origin: center;
+                }
+        
+                .image-modal-close {
+                    position: absolute;
+                    top: -15px;
+                    right: -15px;
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(139, 92, 246, 0.9);
+                    border: none;
+                    border-radius: 50%;
+                    color: white;
+                    font-size: 24px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s ease;
+                    z-index: 10001;
+                }
+        
+                .image-modal-close:hover {
+                    background: rgba(139, 92, 246, 1);
+                    transform: scale(1.1);
+                    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+                }
+        
+                /* Zoom controls */
+                .zoom-controls {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: flex;
+                    gap: 10px;
+                    background: rgba(0, 0, 0, 0.7);
+                    padding: 10px;
+                    border-radius: 25px;
+                    backdrop-filter: blur(10px);
+                    z-index: 10001;
+                }
+        
+                .zoom-btn {
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(139, 92, 246, 0.8);
+                    border: none;
+                    border-radius: 50%;
+                    color: white;
+                    font-size: 18px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s ease;
+                }
+        
+                .zoom-btn:hover {
+                    background: rgba(139, 92, 246, 1);
+                    transform: scale(1.1);
+                }
+        
+                .zoom-btn:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                    transform: none;
+                }
+        
+                .zoom-level {
+                    color: white;
+                    font-size: 14px;
+                    padding: 0 15px;
+                    display: flex;
+                    align-items: center;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 20px;
+                    min-width: 60px;
+                    justify-content: center;
+                }
+        
+                @keyframes modalZoomIn {
+                    0% {
+                        transform: scale(0.8);
+                        opacity: 0;
+                    }
+                    100% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+        
+                /* Enhanced cursor for clickable images */
+                .news-card img {
+                    cursor: pointer;
+                    position: relative;
+                }
+        
+                .news-card img::after {
+                    content: '🔍';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(0, 0, 0, 0.7);
+                    color: white;
+                    border-radius: 50%;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    pointer-events: none;
+                }
+        
+                .news-card:hover img::after {
+                    opacity: 1;
+                }
+        
+                /* Image loading indicator */
+                .image-loading {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: white;
+                    font-size: 18px;
+                    z-index: 10000;
+                }
+        
+                /* Mobile optimizations for modal */
+                @media (max-width: 768px) {
+                    .image-modal-content {
+                        width: 95vw;
+                        height: 85vh;
+                    }
+                    
+                    .image-modal-close {
+                        top: -10px;
+                        right: -10px;
+                        width: 35px;
+                        height: 35px;
+                        font-size: 20px;
+                    }
+        
+                    .zoom-controls {
+                        bottom: 10px;
+                        padding: 8px;
+                    }
+        
+                    .zoom-btn {
+                        width: 35px;
+                        height: 35px;
+                        font-size: 16px;
+                    }
+                }
+        /* --- ENHANCED SPONSORS SECTION STYLES --- */
+        /* Enhanced "Our Valued Sponsors" Title Style */
         .sponsors-gradient-effect {
             font-family: 'Orbitron', sans-serif; 
-            background: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #fbbf24 100%);
-            background-size: 200% auto;
+            font-weight: 900;
+            font-size: 4rem; /* Increased from default */
+            background: linear-gradient(110deg, 
+                #fbbf24 0%,     /* Bright gold */
+                #f59e0b 15%,    /* Rich amber */
+                #10b981 30%,    /* Emerald green */
+                #06d6a0 45%,    /* Mint green */
+                #3b82f6 60%,    /* Blue */
+                #8b5cf6 75%,    /* Purple */
+                #ec4899 90%,    /* Pink */
+                #ef4444 100%    /* Red */
+            );
+            background-size: 300% auto;
             color: #fff;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: sponsors-gradient-move 5s linear infinite alternate;
-            letter-spacing: 0em;
+            animation: sponsorsGradientFlow 6s cubic-bezier(0.25, 0.8, 0.25, 1) infinite alternate;
+            letter-spacing: 0.05em; 
             text-shadow: 
-                0 1px 1px rgba(0,0,0,0.5), 
-                0 0 2px rgba(168,85,247,0.03),  
-                0 0 3px rgba(236,72,153,0.02);    
+                0 2px 4px rgba(0,0,0,0.8),
+                0 0 0.5px rgba(251, 191, 36, 0.015),
+                0 0 1px rgba(16, 185, 129, 0.01),
+                0 0 1.5px rgba(139, 92, 246, 0.0075);
             position: relative;
-            transition: text-shadow 0.3s;
-            will-change: background-position;
+            transition: all 0.3s ease;
+            will-change: background-position, text-shadow;
+            padding: 0.2em 0;
         }
-        @keyframes sponsors-gradient-move {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+        
+        @keyframes sponsorsGradientFlow {
+            0% { 
+                background-position: 0% 50%;
+                text-shadow: 
+                    0 2px 4px rgba(0,0,0,0.8),
+                    0 0 0.5px rgba(251, 191, 36, 0.015),
+                    0 0 1px rgba(16, 185, 129, 0.01),
+                    0 0 1.5px rgba(139, 92, 246, 0.0075);
+            }
+            25% { 
+                background-position: 25% 50%;
+                text-shadow: 
+                    0 2px 4px rgba(0,0,0,0.8),
+                    0 0 0.75px rgba(16, 185, 129, 0.02),
+                    0 0 1.25px rgba(59, 130, 246, 0.015),
+                    0 0 1.75px rgba(236, 72, 153, 0.01);
+            }
+            50% { 
+                background-position: 50% 50%;
+                text-shadow: 
+                    0 2px 4px rgba(0,0,0,0.8),
+                    0 0 1px rgba(59, 130, 246, 0.025),
+                    0 0 1.5px rgba(139, 92, 246, 0.02),
+                    0 0 2px rgba(239, 68, 68, 0.0125);
+            }
+            75% { 
+                background-position: 75% 50%;
+                text-shadow: 
+                    0 2px 4px rgba(0,0,0,0.8),
+                    0 0 1.25px rgba(139, 92, 246, 0.03),
+                    0 0 1.75px rgba(236, 72, 153, 0.025),
+                    0 0 2.25px rgba(251, 191, 36, 0.015);
+            }
+            100% { 
+                background-position: 100% 50%;
+                text-shadow: 
+                    0 2px 4px rgba(0,0,0,0.8),
+                    0 0 1.5px rgba(236, 72, 153, 0.035),
+                    0 0 2px rgba(239, 68, 68, 0.03),
+                    0 0 2.5px rgba(16, 185, 129, 0.02);
+            }
         }
-       
+        
+        /* Hover effect for sponsors title */
+        .sponsors-gradient-effect:hover {
+            animation-duration: 2s;
+            letter-spacing: 0.08em;
+            text-shadow: 
+                0 3px 6px rgba(0,0,0,0.9),
+                0 0 0.75px rgba(251, 191, 36, 0.025),
+                0 0 1.5px rgba(16, 185, 129, 0.02),
+                0 0 2.25px rgba(139, 92, 246, 0.015),
+                0 0 3px rgba(236, 72, 153, 0.0125);
+        }
+        
+        /* Enhanced pulsing effect for emphasis */
+        .sponsors-gradient-effect::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(ellipse at center, 
+                rgba(251, 191, 36, 0.005) 0%, 
+                rgba(16, 185, 129, 0.004) 25%,
+                rgba(59, 130, 246, 0.003) 50%,
+                rgba(139, 92, 246, 0.002) 75%,
+                transparent 100%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sponsorsTitleAura 4s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes sponsorsTitleAura {
+            0% { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% { 
+                opacity: 0.03;
+                transform: scale(1.1);
+            }
+            100% { 
+                opacity: 0.015;
+                transform: scale(1.3);
+            }
+        }
+        
+        /* Mobile optimization for sponsors title */
+        @media (max-width: 768px) {
+            .sponsors-gradient-effect {
+                font-size: 2.5rem; /* Increased from 2rem */
+                letter-spacing: 0.03em;
+                text-shadow: 
+                    0 2px 3px rgba(0,0,0,0.7),
+                    0 0 0.4px rgba(251, 191, 36, 0.0125),
+                    0 0 0.75px rgba(16, 185, 129, 0.0075),
+                    0 0 1px rgba(139, 92, 246, 0.005);
+            }
+            
+            .sponsors-gradient-effect::before {
+                display: none; /* Disable aura on mobile for performance */
+            }
+        }
+        
+        /* Tablet optimization */
+        @media (min-width: 769px) and (max-width: 1023px) {
+            .sponsors-gradient-effect {
+                font-size: 3rem; /* Increased from 2.2rem */
+                letter-spacing: 0.04em;
+            }
+        }
+        
+        /* Desktop large screens */
+        @media (min-width: 1024px) {
+            .sponsors-gradient-effect {
+                font-size: 4.5rem; /* Even larger for big screens */
+            }
+        }
+        
+        /* Reduced motion support for sponsors title */
+        @media (prefers-reduced-motion: reduce) {
+            .sponsors-gradient-effect {
+                animation: none !important;
+                background: linear-gradient(90deg, #fbbf24, #10b981, #3b82f6, #ec4899);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            }
+            
+            .sponsors-gradient-effect::before {
+                animation: none !important;
+                opacity: 0;
+            }
+            
+            .sponsors-gradient-effect:hover {
+                animation: none !important;
+            }
+        }
+        
+        .sponsors-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, 
+                rgba(17, 24, 39, 0.95) 0%, 
+                rgba(31, 41, 55, 0.9) 50%,
+                rgba(55, 65, 81, 0.85) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                0 0 40px rgba(139, 92, 246, 0.1);
+        }
+        
+        /* Animated background particles for sponsors */
+        .sponsors-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 60% 40%, rgba(251, 191, 36, 0.08) 0%, transparent 50%);
+            animation: sponsorsBgFloat 8s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes sponsorsBgFloat {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-10px) scale(1.02); }
+        }
+        
+        /* Enhanced sponsor placeholder image */
+        .sponsor-showcase-img {
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 1rem;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(139, 92, 246, 0.1);
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(135deg, 
+                rgba(30, 41, 59, 0.8) 0%, 
+                rgba(51, 65, 85, 0.9) 100%);
+            backdrop-filter: blur(10px);
+        }
+        
+        .sponsor-showcase-img:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 50px rgba(139, 92, 246, 0.3),
+                0 0 100px rgba(139, 92, 246, 0.1);
+        }
+        
+        /* Enhanced "Become a Sponsor" button */
+        .sponsor-cta-btn {
+            background: linear-gradient(135deg, 
+                rgba(139, 92, 246, 0.9) 0%, 
+                rgba(168, 85, 247, 0.9) 50%,
+                rgba(236, 72, 153, 0.9) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            box-shadow: 
+                0 8px 25px rgba(139, 92, 246, 0.3),
+                0 0 20px rgba(139, 92, 246, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 3;
+        }
+        
+        .sponsor-cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+        
+        .sponsor-cta-btn:hover::before {
+            left: 100%;
+        }
+        
+        .sponsor-cta-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 15px 40px rgba(139, 92, 246, 0.4),
+                0 0 30px rgba(139, 92, 246, 0.3),
+                0 0 60px rgba(236, 72, 153, 0.2);
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+        
+        /* Floating sponsor icons animation */
+        .sponsor-grid {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .sponsor-logo {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            filter: grayscale(100%) brightness(0.7);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            background: rgba(17, 24, 39, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .sponsor-logo:hover {
+            filter: grayscale(0%) brightness(1.1);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        
+        /* Sponsor grid floating animation */
+        .sponsor-logo:nth-child(odd) {
+            animation: sponsorFloat1 6s ease-in-out infinite;
+        }
+        
+        .sponsor-logo:nth-child(even) {
+            animation: sponsorFloat2 6s ease-in-out infinite;
+            animation-delay: 3s;
+        }
+        
+        @keyframes sponsorFloat1 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        @keyframes sponsorFloat2 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        
+        /* Pause floating on hover */
+        .sponsor-logo:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Content positioning for sponsors */
+        .sponsors-content {
+            position: relative;
+            z-index: 2;
+            padding: 3rem 2rem;
+        }
+        
+        /* Mobile optimizations for sponsors */
+        @media (max-width: 768px) {
+            .sponsors-section {
+                margin: 1rem;
+                border-radius: 1.5rem;
+            }
+            
+            .sponsors-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .sponsor-showcase-img:hover {
+                transform: translateY(-8px) scale(1.02);
+            }
+            
+            .sponsor-cta-btn:hover {
+                transform: translateY(-3px) scale(1.02);
+            }
+        }
+        
+        /* Reduced motion support for sponsors */
+        @media (prefers-reduced-motion: reduce) {
+            .sponsors-section::before,
+            .sponsor-logo,
+            .sponsor-showcase-img,
+            .sponsor-cta-btn {
+                animation: none !important;
+                transition: none !important;
+            }
+            
+            .sponsor-showcase-img:hover,
+            .sponsor-cta-btn:hover,
+            .sponsor-logo:hover {
+                transform: none;
+            }
+        }
+        
+        /* Pulsing glow effect for "Become a Sponsor" text */
+        .sponsor-cta-glow {
+            animation: sponsorCtaGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes sponsorCtaGlow {
+            0% { 
+                text-shadow: 
+                    0 0 0.25px rgba(139, 92, 246, 0.025),
+                    0 0 0.5px rgba(139, 92, 246, 0.015),
+                    0 0 0.75px rgba(139, 92, 246, 0.005);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 0.5px rgba(139, 92, 246, 0.04),
+                    0 0 1px rgba(139, 92, 246, 0.025),
+                    0 0 1.5px rgba(139, 92, 246, 0.015);
+            }
+        }
+        
         /* Optimized Founders Card Styles */
         #founders .card {
             border-radius: 1.5rem; 
@@ -652,7 +1527,6 @@
             pointer-events: none !important;
             z-index: 1 !important;
         }
-    </style>
     </style>
 </head>
 
@@ -1360,7 +2234,7 @@
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- News Card 1 -->
-                    <article class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                    <article class="news-card bg-gray-800/90 rounded-lg overflow-hidden flex flex-col">
                         <img class="w-full h-48 object-cover" 
                              src="https://i.ibb.co/wFHhx03w/Legends-Reborn-Tournament-Top-5-Prizewinners.png" 
                              alt="Legends Reborn Tournament Winners" 
@@ -1376,7 +2250,7 @@
                             <a href="https://www.facebook.com/official1hp/posts/pfbid02tDDJMfJxq5w8fZhBREn37PRydngn3oKKz5beuBCmE8rF4QdBQ3vPXcXLCSsxHJcNl" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="font-medium text-purple-400 hover:text-purple-300 transition-colors mt-auto inline-flex items-center gap-1">
+                               class="news-link font-medium text-purple-400 hover:text-purple-300 mt-auto inline-flex items-center gap-1">
                                 Read More 
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1386,7 +2260,7 @@
                     </article>
                     
                     <!-- News Card 2 -->
-                    <article class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                    <article class="news-card bg-gray-800/90 rounded-lg overflow-hidden flex flex-col">
                         <img class="w-full h-48 object-cover" 
                              src="https://i.ibb.co/C310bs5R/1hp-member-Sign-UP-01.png" 
                              alt="New Player Announcement" 
@@ -1402,7 +2276,7 @@
                             <a href="https://www.facebook.com/photo.php?fbid=1056223615800813&set=pb.100042395546650.-2207520000&type=3" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="font-medium text-purple-400 hover:text-purple-300 transition-colors mt-auto inline-flex items-center gap-1">
+                               class="news-link font-medium text-purple-400 hover:text-purple-300 mt-auto inline-flex items-center gap-1">
                                 Read More 
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1412,7 +2286,7 @@
                     </article>
                     
                     <!-- News Card 3 -->
-                    <article class="card bg-gray-800/90 shadow-xl rounded-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+                    <article class="news-card bg-gray-800/90 rounded-lg overflow-hidden flex flex-col">
                         <img class="w-full h-48 object-cover" 
                              src="https://i.ibb.co/wNLSs47z/Legends-Reborn-Tournament-Final-Results-Points-Table.png" 
                              alt="Match Recap Image" 
@@ -1428,7 +2302,7 @@
                             <a href="https://www.youtube.com/watch?v=L6Ku_fg96BY" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="font-medium text-purple-400 hover:text-purple-300 transition-colors mt-auto inline-flex items-center gap-1">
+                               class="news-link font-medium text-purple-400 hover:text-purple-300 mt-auto inline-flex items-center gap-1">
                                 Read More 
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -1436,7 +2310,7 @@
                             </a>
                         </div>
                     </article>
-                </div> 
+                    </div>
                 <div class="flex justify-center items-center mt-10">
                     <a href="#" class="btn btn-primary bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center gap-2">
                         View All News
@@ -1448,34 +2322,56 @@
             </div>
         </section>
         <!-- News Section End -->
-    
+            
         <!-- Sponsors Section Start -->
         <section id="sponsors" class="pt-2 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="main-section-title text-4xl sm:text-[2.6rem] leading-tight font-bold text-center mb-10 sm:mb-12 sponsors-gradient-effect">
-                    Our Valued Sponsors
-                </h2>
-                <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-                    <!-- Sponsor logos would go here -->
-                    <!-- Example: <img src="sponsor-logo.png" alt="Sponsor Name" class="h-12 mx-auto filter grayscale hover:grayscale-0 transition-all"> -->
-                </div>
-                <div class="flex justify-center mt-12">
-                    <img src="https://i.ibb.co/PpZHKkW/1hp-Xcvj-Cover-4.png" 
-                         alt="1hp Xcvj Cover - Placeholder for Sponsors" 
-                         class="rounded-lg shadow-lg max-w-full h-auto transition-transform duration-300 hover:scale-105" 
-                         width="800"
-                         height="400"
-                         loading="lazy"
-                         decoding="async">
-                </div>
-                <div class="text-center mt-12">
-                    <a href="mailto:email@1hp.team?subject=Become%20a%20Sponsor%20-%201hp%20Esports" 
-                       class="btn btn-secondary bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 inline-flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                        Become a Sponsor
-                    </a>
+            <div class="sponsors-section">
+                <div class="sponsors-content">
+                    <h2 class="main-section-title text-4xl sm:text-[2.6rem] leading-tight font-bold text-center mb-10 sm:mb-12 sponsors-gradient-effect">
+                        OUR VALUED SPONSORS
+                    </h2>
+                    
+                    <!-- Sponsor Grid (when you have sponsors) -->
+                    <div class="sponsor-grid mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center mb-12">
+                        <!-- Future sponsor logos will go here -->
+                        <!-- Example structure for when you add sponsors:
+                        <div class="sponsor-logo">
+                            <img src="sponsor-logo.png" alt="Sponsor Name" class="h-12 w-auto mx-auto">
+                        </div>
+                        -->
+                    </div>
+                    
+                    <!-- Showcase Image -->
+                    <div class="flex justify-center mb-12">
+                        <img src="https://i.ibb.co/PpZHKkW/1hp-Xcvj-Cover-4.png" 
+                             alt="1hp Xcvj Cover - Join Our Sponsor Family" 
+                             class="sponsor-showcase-img max-w-full h-auto w-full max-w-4xl" 
+                             width="800"
+                             height="400"
+                             loading="lazy"
+                             decoding="async"
+                             onerror="this.onerror=null;this.src='https://placehold.co/800x400/374151/4b5563?text=Sponsor+Showcase&font=inter';">
+                    </div>
+                    
+                    <!-- Enhanced CTA -->
+                    <div class="text-center">
+                        <p class="text-gray-300 text-lg mb-6 w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 leading-relaxed sponsor-text-enhanced">
+                            Join the <span class="text-amber-300 font-semibold sponsor-highlight">1hp family</span> and become a sponsor! 
+                            <span class="text-emerald-300 font-semibold sponsor-highlight">Your brand</span> deserves to be part of our winning legacy. 
+                            <span class="text-rose-300 font-semibold sponsor-highlight">Together</span>, we'll create championship moments that inspire gamers worldwide and showcase your <span class="text-orange-300 font-semibold sponsor-highlight">commitment to excellence</span> in the esports community.
+                        </p>
+                        
+                        <a href="mailto:email@1hp.team?subject=Become%20a%20Sponsor%20-%201hp%20Esports&body=Hello%20Team%201hp%2C%0D%0A%0D%0AI%27m%20interested%20in%20becoming%20a%20sponsor%20for%201hp%20Esports.%20Please%20send%20me%20more%20information%20about%20sponsorship%20opportunities.%0D%0A%0D%0AThank%20you!" 
+                           class="sponsor-cta-btn inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-white text-lg shadow-lg transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="sponsor-cta-glow">Become a Sponsor!</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1744,7 +2640,297 @@
                     }
                 });
             }
-            
+
+            // --- Enhanced News Card Image Modal with Screen-Sized Display ---
+            function initializeNewsImageModal() {
+                // Create modal HTML with zoom controls
+                const modalHTML = `
+                    <div class="image-modal" id="imageModal">
+                        <div class="image-modal-content">
+                            <button class="image-modal-close" id="modalClose">&times;</button>
+                            <img id="modalImage" src="" alt="">
+                            <div class="image-loading" id="imageLoading">Loading...</div>
+                            <div class="zoom-controls" id="zoomControls">
+                                <button class="zoom-btn" id="zoomOut">-</button>
+                                <div class="zoom-level" id="zoomLevel">100%</div>
+                                <button class="zoom-btn" id="zoomIn">+</button>
+                                <button class="zoom-btn" id="zoomReset">⌂</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Add modal to body
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+                
+                const modal = document.getElementById('imageModal');
+                const modalImage = document.getElementById('modalImage');
+                const modalClose = document.getElementById('modalClose');
+                const imageLoading = document.getElementById('imageLoading');
+                const zoomControls = document.getElementById('zoomControls');
+                const zoomIn = document.getElementById('zoomIn');
+                const zoomOut = document.getElementById('zoomOut');
+                const zoomReset = document.getElementById('zoomReset');
+                const zoomLevel = document.getElementById('zoomLevel');
+                
+                let currentZoom = 1;
+                let isDragging = false;
+                let dragStart = { x: 0, y: 0 };
+                let imagePos = { x: 0, y: 0 };
+                let naturalSize = { width: 0, height: 0 };
+                let displaySize = { width: 0, height: 0 };
+                
+                // Function to calculate screen-fit zoom
+                function calculateScreenFitZoom() {
+                    const containerWidth = modal.offsetWidth * 0.9; // 90vw
+                    const containerHeight = modal.offsetHeight * 0.9; // 90vh
+                    
+                    const scaleX = containerWidth / naturalSize.width;
+                    const scaleY = containerHeight / naturalSize.height;
+                    
+                    // Use the smaller scale to ensure the entire image fits on screen
+                    return Math.min(scaleX, scaleY, 1); // Don't scale up beyond 100%
+                }
+                
+                // Function to update zoom
+                function updateZoom(newZoom) {
+                    currentZoom = Math.max(0.1, Math.min(5, newZoom));
+                    
+                    // Calculate the actual display size
+                    const screenFitZoom = calculateScreenFitZoom();
+                    const actualZoom = currentZoom * screenFitZoom;
+                    
+                    modalImage.style.transform = `scale(${actualZoom}) translate(${imagePos.x / actualZoom}px, ${imagePos.y / actualZoom}px)`;
+                    zoomLevel.textContent = `${Math.round(currentZoom * 100)}%`;
+                    
+                    // Update cursor and draggability
+                    if (currentZoom > 1) {
+                        modalImage.classList.add('zoomed');
+                        modalImage.style.cursor = 'grab';
+                        modal.style.cursor = 'default';
+                    } else {
+                        modalImage.classList.remove('zoomed');
+                        modalImage.style.cursor = 'zoom-in';
+                        modal.style.cursor = 'zoom-out';
+                        imagePos = { x: 0, y: 0 }; // Reset position when zoomed out
+                    }
+                    
+                    // Update button states
+                    zoomOut.disabled = currentZoom <= 0.1;
+                    zoomIn.disabled = currentZoom >= 5;
+                }
+                
+                // Function to open modal
+                function openModal(imageSrc, imageAlt) {
+                    modal.classList.add('active');
+                    imageLoading.style.display = 'block';
+                    modalImage.style.display = 'none';
+                    zoomControls.style.display = 'none';
+                    
+                    // Reset zoom and position
+                    currentZoom = 1;
+                    imagePos = { x: 0, y: 0 };
+                    
+                    // Preload image to get natural dimensions
+                    const tempImage = new Image();
+                    tempImage.onload = function() {
+                        // Store natural dimensions
+                        naturalSize.width = tempImage.naturalWidth;
+                        naturalSize.height = tempImage.naturalHeight;
+                        
+                        // Set image source and show it
+                        modalImage.src = imageSrc;
+                        modalImage.alt = imageAlt;
+                        modalImage.style.display = 'block';
+                        imageLoading.style.display = 'none';
+                        zoomControls.style.display = 'flex';
+                        
+                        // Wait for next frame to ensure image is rendered
+                        requestAnimationFrame(() => {
+                            // Update zoom to fit screen perfectly
+                            updateZoom(1); // Start at 100% of screen-fit size
+                        });
+                    };
+                    tempImage.onerror = function() {
+                        imageLoading.textContent = 'Failed to load image';
+                    };
+                    tempImage.src = imageSrc;
+                    
+                    // Prevent body scroll
+                    document.body.style.overflow = 'hidden';
+                }
+                
+                // Function to close modal
+                function closeModal() {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    // Reset modal content after transition
+                    setTimeout(() => {
+                        modalImage.src = '';
+                        modalImage.alt = '';
+                        modalImage.style.transform = 'scale(1) translate(0px, 0px)';
+                        imageLoading.style.display = 'block';
+                        imageLoading.textContent = 'Loading...';
+                        zoomControls.style.display = 'none';
+                        currentZoom = 1;
+                        imagePos = { x: 0, y: 0 };
+                        naturalSize = { width: 0, height: 0 };
+                    }, 300);
+                }
+                
+                // Add click handlers to all news card images
+                const newsCardImages = document.querySelectorAll('.news-card img');
+                newsCardImages.forEach(img => {
+                    img.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openModal(img.src, img.alt);
+                    });
+                    
+                    // Add visual feedback
+                    img.style.cursor = 'pointer';
+                    img.title = 'Click to view full size';
+                });
+                
+                // Zoom controls
+                zoomIn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    updateZoom(currentZoom + 0.25);
+                });
+                
+                zoomOut.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    updateZoom(currentZoom - 0.25);
+                });
+                
+                zoomReset.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    imagePos = { x: 0, y: 0 };
+                    updateZoom(1);
+                });
+                
+                // Mouse wheel zoom
+                modal.addEventListener('wheel', (e) => {
+                    if (e.target === modalImage || modalImage.contains(e.target)) {
+                        e.preventDefault();
+                        const zoomDelta = e.deltaY > 0 ? -0.1 : 0.1;
+                        updateZoom(currentZoom + zoomDelta);
+                    }
+                }, { passive: false });
+                
+                // Click to zoom on image
+                modalImage.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (currentZoom === 1) {
+                        updateZoom(2);
+                    } else {
+                        imagePos = { x: 0, y: 0 };
+                        updateZoom(1);
+                    }
+                });
+                
+                // Drag functionality for zoomed images
+                modalImage.addEventListener('mousedown', (e) => {
+                    if (currentZoom > 1) {
+                        isDragging = true;
+                        const actualZoom = currentZoom * calculateScreenFitZoom();
+                        dragStart.x = e.clientX - imagePos.x;
+                        dragStart.y = e.clientY - imagePos.y;
+                        modalImage.style.cursor = 'grabbing';
+                        e.preventDefault();
+                    }
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (isDragging && currentZoom > 1) {
+                        imagePos.x = e.clientX - dragStart.x;
+                        imagePos.y = e.clientY - dragStart.y;
+                        
+                        const actualZoom = currentZoom * calculateScreenFitZoom();
+                        modalImage.style.transform = `scale(${actualZoom}) translate(${imagePos.x / actualZoom}px, ${imagePos.y / actualZoom}px)`;
+                    }
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        if (currentZoom > 1) {
+                            modalImage.style.cursor = 'grab';
+                        }
+                    }
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    if (modal.classList.contains('active') && naturalSize.width > 0) {
+                        updateZoom(currentZoom); // Recalculate for new screen size
+                    }
+                });
+                
+                // Close modal events
+                modalClose.addEventListener('click', closeModal);
+                
+                // Close on backdrop click (but not on zoom controls)
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+                
+                // Close on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('active')) {
+                        closeModal();
+                    }
+                });
+                
+                // Touch/swipe support for mobile
+                let touchStartY = 0;
+                modal.addEventListener('touchstart', (e) => {
+                    touchStartY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                modal.addEventListener('touchend', (e) => {
+                    const touchEndY = e.changedTouches[0].clientY;
+                    const swipeDistance = touchStartY - touchEndY;
+                    
+                    // Close modal on upward swipe (> 100px)
+                    if (Math.abs(swipeDistance) > 100 && swipeDistance > 0) {
+                        closeModal();
+                    }
+                }, { passive: true });
+                
+                // Pinch to zoom for mobile
+                let initialDistance = 0;
+                let initialZoom = 1;
+                
+                modal.addEventListener('touchstart', (e) => {
+                    if (e.touches.length === 2) {
+                        const touch1 = e.touches[0];
+                        const touch2 = e.touches[1];
+                        initialDistance = Math.hypot(
+                            touch2.clientX - touch1.clientX,
+                            touch2.clientY - touch1.clientY
+                        );
+                        initialZoom = currentZoom;
+                    }
+                }, { passive: true });
+                
+                modal.addEventListener('touchmove', (e) => {
+                    if (e.touches.length === 2) {
+                        e.preventDefault();
+                        const touch1 = e.touches[0];
+                        const touch2 = e.touches[1];
+                        const currentDistance = Math.hypot(
+                            touch2.clientX - touch1.clientX,
+                            touch2.clientY - touch1.clientY
+                        );
+                        const scale = currentDistance / initialDistance;
+                        updateZoom(initialZoom * scale);
+                    }
+                }, { passive: false });
+            }
             // --- Smooth Scroll for Anchor Links ---
             function initializeSmoothScroll() {
                 const smoothScrollHandler = function(e) {
@@ -2358,6 +3544,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // PRO CARDS: Enhanced function with full glow effects
         initializeProCardInteractions();
+        
+        // NEWS IMAGE MODAL: Click to view images
+        initializeNewsImageModal();
 
     } catch (error) {
         console.error('Error initializing website features:', error);
