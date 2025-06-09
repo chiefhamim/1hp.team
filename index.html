@@ -49,6 +49,994 @@
     
     <style>
     /* ==============================================
+       MODERN PROFESSIONAL HEADER NAVIGATION SYSTEM
+       Enhanced with Official Discord Animation & Optimized Performance
+       ============================================== */
+    
+    /* ==============================================
+       NAVIGATION LINKS - Enhanced Minimalist Design
+       ============================================== */
+    .nav-link-enhanced {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.5rem;
+        color: #cbd5e1;
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-decoration: none;
+        background: transparent;
+        border: 1px solid transparent;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        z-index: 1;
+    }
+    
+    .nav-link-enhanced::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, 
+            rgba(59, 130, 246, 0.1) 0%, 
+            rgba(147, 51, 234, 0.1) 50%,
+            rgba(236, 72, 153, 0.1) 100%);
+        border-radius: 0.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+    
+    .nav-link-enhanced::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #3b82f6, #9333ea, #ec4899);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+        border-radius: 1px;
+    }
+    
+    .nav-link-enhanced:hover {
+        color: #ffffff;
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.2);
+        transform: translateY(-1px);
+    }
+    
+    .nav-link-enhanced:hover::before {
+        opacity: 1;
+    }
+    
+    .nav-link-enhanced:hover::after {
+        width: 80%;
+    }
+    
+    /* ==============================================
+       PREMIUM BUTTON SYSTEM - Achievement & Recruitment
+       ============================================== */
+    
+    /* Achievement Button - Premium Gold Theme */
+    .achievement-btn-enhanced {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #92400e 100%);
+        color: #000000;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-decoration: none;
+        border: 1px solid rgba(245, 158, 11, 0.5);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 
+            0 6px 20px rgba(245, 158, 11, 0.3),
+            0 0 15px rgba(245, 158, 11, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        white-space: nowrap;
+    }
+    
+    .achievement-btn-enhanced::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(255, 255, 255, 0.4), 
+            transparent);
+        transition: left 0.7s ease;
+    }
+    
+    .achievement-btn-enhanced:hover::before {
+        left: 100%;
+    }
+    
+    .achievement-btn-enhanced:hover {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+        color: #000000;
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 
+            0 12px 35px rgba(245, 158, 11, 0.4),
+            0 0 25px rgba(245, 158, 11, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        border-color: rgba(251, 191, 36, 0.6);
+    }
+    
+    /* Recruitment Button - Modern Red Gradient */
+    .recruitment-btn-enhanced {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-decoration: none;
+        border: 1px solid rgba(220, 38, 38, 0.5);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 
+            0 6px 20px rgba(220, 38, 38, 0.3),
+            0 0 15px rgba(220, 38, 38, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        white-space: nowrap;
+    }
+    
+    .recruitment-btn-enhanced::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(255, 255, 255, 0.3), 
+            transparent);
+        transition: left 0.7s ease;
+    }
+    
+    .recruitment-btn-enhanced:hover::before {
+        left: 100%;
+    }
+    
+    .recruitment-btn-enhanced:hover {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 
+            0 12px 35px rgba(220, 38, 38, 0.4),
+            0 0 25px rgba(220, 38, 38, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        border-color: rgba(239, 68, 68, 0.6);
+    }
+    
+    /* ==============================================
+       DISCORD BUTTON - Enhanced Official Animation Style
+       ============================================== */
+    .discord-btn-enhanced {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, #5865F2 0%, #4338ca 50%, #3730a3 100%);
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-decoration: none;
+        border: 1px solid rgba(88, 101, 242, 0.5);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 
+            0 6px 20px rgba(88, 101, 242, 0.3),
+            0 0 15px rgba(88, 101, 242, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        white-space: nowrap;
+        min-width: 0;
+    }
+    
+    /* ENHANCED Discord Icon - Official Discord Animation Style */
+    .discord-icon {
+        width: 1.2rem !important;
+        height: 1.2rem !important;
+        min-width: 1.2rem;
+        max-width: 1.2rem;
+        display: inline-block;
+        vertical-align: middle;
+        flex-shrink: 0;
+        object-fit: contain;
+        aspect-ratio: 1;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-origin: center;
+        filter: brightness(1);
+    }
+    
+    /* Official Discord Animation - Wobble & Scale Effect */
+    .discord-btn-enhanced:hover .discord-icon {
+        animation: discord-official-wobble 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: brightness(1.1) drop-shadow(0 0 8px rgba(88, 101, 242, 0.4));
+    }
+    
+    @keyframes discord-official-wobble {
+        0% { 
+            transform: rotate(0deg) scale(1);
+            filter: brightness(1);
+        }
+        10% { 
+            transform: rotate(-10deg) scale(1.05);
+            filter: brightness(1.05);
+        }
+        20% { 
+            transform: rotate(10deg) scale(1.1);
+            filter: brightness(1.08);
+        }
+        30% { 
+            transform: rotate(-8deg) scale(1.08);
+            filter: brightness(1.06);
+        }
+        40% { 
+            transform: rotate(8deg) scale(1.12);
+            filter: brightness(1.1);
+        }
+        50% { 
+            transform: rotate(-5deg) scale(1.15);
+            filter: brightness(1.12);
+        }
+        60% { 
+            transform: rotate(5deg) scale(1.12);
+            filter: brightness(1.1);
+        }
+        70% { 
+            transform: rotate(-3deg) scale(1.08);
+            filter: brightness(1.08);
+        }
+        80% { 
+            transform: rotate(3deg) scale(1.05);
+            filter: brightness(1.05);
+        }
+        90% { 
+            transform: rotate(-1deg) scale(1.02);
+            filter: brightness(1.03);
+        }
+        100% { 
+            transform: rotate(0deg) scale(1.15);
+            filter: brightness(1.1) drop-shadow(0 0 8px rgba(88, 101, 242, 0.4));
+        }
+    }
+    
+    /* Additional Discord Pulse Effect */
+    .discord-btn-enhanced::after {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border: 2px solid rgba(88, 101, 242, 0.6);
+        border-radius: 0.875rem;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: all 0.4s ease;
+    }
+    
+    .discord-btn-enhanced:hover::after {
+        opacity: 1;
+        transform: scale(1.05);
+        animation: discord-pulse-ring 2s ease-in-out infinite;
+    }
+    
+    @keyframes discord-pulse-ring {
+        0% {
+            transform: scale(1.05);
+            opacity: 0.8;
+            border-color: rgba(88, 101, 242, 0.6);
+        }
+        50% {
+            transform: scale(1.12);
+            opacity: 0.4;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+        100% {
+            transform: scale(1.05);
+            opacity: 0.8;
+            border-color: rgba(88, 101, 242, 0.6);
+        }
+    }
+    
+    .discord-btn-enhanced::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent, 
+            rgba(255, 255, 255, 0.25), 
+            transparent);
+        transition: left 0.7s ease;
+    }
+    
+    .discord-btn-enhanced:hover::before {
+        left: 100%;
+    }
+    
+    .discord-btn-enhanced:hover {
+        background: linear-gradient(135deg, #6366f1 0%, #5865F2 50%, #4338ca 100%);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 
+            0 12px 35px rgba(88, 101, 242, 0.4),
+            0 0 25px rgba(88, 101, 242, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        border-color: rgba(99, 102, 241, 0.6);
+    }
+    
+    /* ==============================================
+       MOBILE NAVIGATION SYSTEM - Enhanced & Optimized
+       ============================================== */
+    
+    /* Mobile Menu Buttons - Streamlined Design */
+    .menu-button-enhanced,
+    .tablet-menu-button-enhanced {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.625rem;
+        border-radius: 0.5rem;
+        color: #cbd5e1;
+        background: rgba(30, 41, 59, 0.8);
+        border: 1px solid rgba(71, 85, 105, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+        min-height: 44px;
+        min-width: 44px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .tablet-menu-button-enhanced {
+        padding: 0.75rem;
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    .menu-button-enhanced:hover,
+    .tablet-menu-button-enhanced:hover {
+        color: #ffffff;
+        background: rgba(59, 130, 246, 0.2);
+        border-color: rgba(59, 130, 246, 0.4);
+        box-shadow: 
+            0 4px 12px rgba(59, 130, 246, 0.2),
+            0 0 20px rgba(59, 130, 246, 0.1);
+        transform: translateY(-1px) scale(1.02);
+    }
+    
+    /* ==============================================
+       MOBILE BUTTON SYSTEM - Enhanced Discord Integration
+       ============================================== */
+    
+    /* Base Mobile Buttons */
+    .mobile-achievement-btn,
+    .mobile-recruitment-btn,
+    .mobile-discord-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.6rem 0.9rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        min-height: 44px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 
+            0 4px 15px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        text-align: center;
+        white-space: nowrap;
+    }
+    
+    .mobile-achievement-btn {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: #000000;
+        min-width: 60px;
+        font-weight: 700;
+        letter-spacing: 0.025em;
+    }
+    
+    .mobile-recruitment-btn {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.015em;
+    }
+    
+    .mobile-discord-btn {
+        background: linear-gradient(135deg, #5865F2 0%, #4338ca 100%);
+        color: #ffffff;
+        min-width: 44px;
+        width: 44px;
+        padding: 0.6rem;
+    }
+    
+    /* Mobile Discord Button Enhancement */
+    .mobile-discord-btn img {
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px;
+        max-width: 18px;
+        flex-shrink: 0;
+        object-fit: contain;
+        aspect-ratio: 1;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-origin: center;
+        filter: brightness(1);
+    }
+    
+    .mobile-discord-btn:hover img {
+        animation: discord-mobile-wobble 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: brightness(1.1) drop-shadow(0 0 6px rgba(88, 101, 242, 0.4));
+    }
+    
+    @keyframes discord-mobile-wobble {
+        0% { transform: rotate(0deg) scale(1); }
+        15% { transform: rotate(-8deg) scale(1.05); }
+        30% { transform: rotate(8deg) scale(1.1); }
+        45% { transform: rotate(-5deg) scale(1.08); }
+        60% { transform: rotate(5deg) scale(1.12); }
+        75% { transform: rotate(-2deg) scale(1.05); }
+        90% { transform: rotate(2deg) scale(1.02); }
+        100% { transform: rotate(0deg) scale(1.2); }
+    }
+    
+    /* Mobile Button Hover Effects */
+    .mobile-achievement-btn:hover {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 
+            0 8px 20px rgba(245, 158, 11, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .mobile-recruitment-btn:hover {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 
+            0 8px 20px rgba(220, 38, 38, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .mobile-discord-btn:hover {
+        background: linear-gradient(135deg, #6366f1 0%, #5865F2 100%);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 
+            0 8px 20px rgba(88, 101, 242, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    /* ==============================================
+       TABLET BUTTON SYSTEM - Enhanced Discord Integration  
+       ============================================== */
+    
+    .tablet-achievement-btn,
+    .tablet-recruitment-btn,
+    .tablet-discord-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        min-height: 48px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 
+            0 6px 20px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        text-align: center;
+        white-space: nowrap;
+    }
+    
+    .tablet-achievement-btn {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        color: #000000;
+        min-width: 70px;
+        font-weight: 700;
+        letter-spacing: 0.025em;
+    }
+    
+    .tablet-recruitment-btn {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.015em;
+    }
+    
+    .tablet-discord-btn {
+        background: linear-gradient(135deg, #5865F2 0%, #4338ca 100%);
+        color: #ffffff;
+        min-width: 48px;
+        width: 48px;
+        padding: 0.75rem;
+    }
+    
+    /* Tablet Discord Button Enhancement */
+    .tablet-discord-btn img {
+        width: 22px !important;
+        height: 22px !important;
+        min-width: 22px;
+        max-width: 22px;
+        flex-shrink: 0;
+        object-fit: contain;
+        aspect-ratio: 1;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-origin: center;
+        filter: brightness(1);
+    }
+    
+    .tablet-discord-btn:hover img {
+        animation: discord-tablet-wobble 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: brightness(1.1) drop-shadow(0 0 8px rgba(88, 101, 242, 0.4));
+    }
+    
+    @keyframes discord-tablet-wobble {
+        0% { transform: rotate(0deg) scale(1); }
+        12% { transform: rotate(-10deg) scale(1.05); }
+        25% { transform: rotate(10deg) scale(1.1); }
+        37% { transform: rotate(-6deg) scale(1.08); }
+        50% { transform: rotate(6deg) scale(1.15); }
+        62% { transform: rotate(-3deg) scale(1.1); }
+        75% { transform: rotate(3deg) scale(1.05); }
+        87% { transform: rotate(-1deg) scale(1.02); }
+        100% { transform: rotate(0deg) scale(1.25); }
+    }
+    
+    .tablet-achievement-btn:hover,
+    .tablet-recruitment-btn:hover,
+    .tablet-discord-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+    }
+    
+    .tablet-achievement-btn:hover {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        box-shadow: 
+            0 12px 30px rgba(245, 158, 11, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .tablet-recruitment-btn:hover {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        box-shadow: 
+            0 12px 30px rgba(220, 38, 38, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .tablet-discord-btn:hover {
+        background: linear-gradient(135deg, #6366f1 0%, #5865F2 100%);
+        box-shadow: 
+            0 12px 30px rgba(88, 101, 242, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    /* ==============================================
+       MENU SYSTEM - Mobile & Tablet Links
+       ============================================== */
+    
+    /* Menu Links */
+    .mobile-menu-link,
+    .tablet-menu-link {
+        display: flex;
+        align-items: center;
+        padding: 0.875rem 1.25rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        background: transparent;
+        border: 1px solid transparent;
+        margin-bottom: 0.25rem;
+    }
+    
+    .tablet-menu-link {
+        padding: 1rem 1.5rem;
+        font-size: 1.125rem;
+    }
+    
+    .mobile-menu-link::before,
+    .tablet-menu-link::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, 
+            rgba(59, 130, 246, 0.1) 0%, 
+            rgba(147, 51, 234, 0.1) 100%);
+        border-radius: 0.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+    }
+    
+    .mobile-menu-link:hover::before,
+    .tablet-menu-link:hover::before {
+        opacity: 1;
+    }
+    
+    .mobile-menu-link:hover,
+    .tablet-menu-link:hover {
+        color: #ffffff;
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.2);
+        transform: translateX(4px);
+    }
+    
+    /* Special Menu Items */
+    .mobile-menu-special,
+    .tablet-menu-special {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        padding: 0.875rem 1.25rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 
+            0 4px 15px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        margin-bottom: 0.25rem;
+    }
+    
+    .tablet-menu-special {
+        padding: 1rem 1.5rem;
+        font-size: 1.125rem;
+        gap: 0.75rem;
+    }
+    
+    .mobile-menu-special.achievement,
+    .tablet-menu-special.achievement {
+        color: #000000;
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+    
+    .mobile-menu-special.recruitment,
+    .tablet-menu-special.recruitment {
+        color: #ffffff;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    }
+    
+    .mobile-menu-special.discord,
+    .tablet-menu-special.discord {
+        color: #ffffff;
+        background: linear-gradient(135deg, #5865F2 0%, #4338ca 100%);
+    }
+    
+    /* Menu Discord Icons Enhancement */
+    .mobile-menu-special.discord img,
+    .tablet-menu-special.discord img {
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px;
+        max-width: 18px;
+        flex-shrink: 0;
+        object-fit: contain;
+        aspect-ratio: 1;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-origin: center;
+        filter: brightness(1);
+    }
+    
+    .tablet-menu-special.discord img {
+        width: 22px !important;
+        height: 22px !important;
+        min-width: 22px;
+        max-width: 22px;
+    }
+    
+    .mobile-menu-special.discord:hover img,
+    .tablet-menu-special.discord:hover img {
+        animation: discord-menu-wobble 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: brightness(1.1) drop-shadow(0 0 6px rgba(88, 101, 242, 0.4));
+    }
+    
+    @keyframes discord-menu-wobble {
+        0% { transform: rotate(0deg) scale(1); }
+        20% { transform: rotate(-6deg) scale(1.03); }
+        40% { transform: rotate(6deg) scale(1.08); }
+        60% { transform: rotate(-4deg) scale(1.05); }
+        80% { transform: rotate(4deg) scale(1.1); }
+        100% { transform: rotate(0deg) scale(1.15); }
+    }
+    
+    .mobile-menu-special:hover,
+    .tablet-menu-special:hover {
+        transform: translateX(8px) scale(1.02);
+    }
+    
+    .mobile-menu-special.achievement:hover,
+    .tablet-menu-special.achievement:hover {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        box-shadow: 
+            0 8px 25px rgba(245, 158, 11, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .mobile-menu-special.recruitment:hover,
+    .tablet-menu-special.recruitment:hover {
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        box-shadow: 
+            0 8px 25px rgba(220, 38, 38, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .mobile-menu-special.discord:hover,
+    .tablet-menu-special.discord:hover {
+        background: linear-gradient(135deg, #6366f1 0%, #5865F2 100%);
+        box-shadow: 
+            0 8px 25px rgba(88, 101, 242, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    /* ==============================================
+       ENHANCED PARTICLE & GLOW EFFECTS
+       ============================================== */
+    
+    .btn-glow-layer {
+        position: absolute;
+        inset: -3px;
+        background: linear-gradient(45deg, 
+            rgba(245, 158, 11, 0.8), 
+            rgba(251, 191, 36, 0.6), 
+            rgba(245, 158, 11, 0.8));
+        border-radius: 0.85rem;
+        opacity: 0;
+        filter: blur(15px);
+        transition: opacity 0.4s ease;
+        z-index: -1;
+    }
+    
+    .achievement-btn-enhanced:hover .btn-glow-layer {
+        opacity: 0.7;
+        animation: btn-glow-breathe 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes btn-glow-breathe {
+        0% { transform: scale(0.95); filter: blur(15px) brightness(1); }
+        100% { transform: scale(1.05); filter: blur(10px) brightness(1.2); }
+    }
+    
+    .btn-pulse-ring {
+        position: absolute;
+        inset: -4px;
+        border: 2px solid rgba(220, 38, 38, 0.6);
+        border-radius: 0.9rem;
+        opacity: 0;
+        animation: none;
+    }
+    
+    .recruitment-btn-enhanced:hover .btn-pulse-ring {
+        opacity: 1;
+        animation: pulse-ring-modern 2s ease-out infinite;
+    }
+    
+    @keyframes pulse-ring-modern {
+        0% {
+            transform: scale(1);
+            opacity: 0.8;
+            border-color: rgba(220, 38, 38, 0.6);
+        }
+        50% {
+            transform: scale(1.15);
+            opacity: 0.4;
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+        100% {
+            transform: scale(1.3);
+            opacity: 0;
+            border-color: rgba(248, 113, 113, 0.2);
+        }
+    }
+    
+    .btn-wave-effect {
+        position: absolute;
+        inset: -3px;
+        background: linear-gradient(45deg, 
+            rgba(88, 101, 242, 0.8), 
+            rgba(99, 102, 241, 0.6), 
+            rgba(88, 101, 242, 0.8));
+        border-radius: 0.85rem;
+        opacity: 0;
+        filter: blur(12px);
+        transition: opacity 0.4s ease;
+        z-index: -1;
+    }
+    
+    .discord-btn-enhanced:hover .btn-wave-effect {
+        opacity: 0.6;
+        animation: wave-flow-modern 3s ease-in-out infinite;
+    }
+    
+    @keyframes wave-flow-modern {
+        0%, 100% { 
+            transform: scale(1) rotate(0deg);
+            filter: blur(12px) brightness(1);
+            opacity: 0.6;
+        }
+        33% { 
+            transform: scale(1.05) rotate(120deg);
+            filter: blur(8px) brightness(1.2);
+            opacity: 0.4;
+        }
+        66% { 
+            transform: scale(1.1) rotate(240deg);
+            filter: blur(10px) brightness(1.1);
+            opacity: 0.5;
+        }
+    }
+    
+    /* Modern Button Particles */
+    .btn-particles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        border-radius: 0.75rem;
+    }
+    
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 100%);
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    }
+    
+    .achievement-btn-enhanced:hover .particle,
+    .recruitment-btn-enhanced:hover .particle {
+        animation: particles-float-modern 3s ease-in-out infinite;
+    }
+    
+    .particle:nth-child(1) { top: 15%; left: 15%; animation-delay: 0s; }
+    .particle:nth-child(2) { top: 85%; left: 85%; animation-delay: 0.6s; }
+    .particle:nth-child(3) { top: 60%; left: 25%; animation-delay: 1.2s; }
+    .particle:nth-child(4) { top: 25%; left: 75%; animation-delay: 1.8s; }
+    .particle:nth-child(5) { top: 75%; left: 50%; animation-delay: 2.4s; }
+    
+    @keyframes particles-float-modern {
+        0% {
+            opacity: 0;
+            transform: translateY(0px) scale(0) rotate(0deg);
+        }
+        25% {
+            opacity: 0.8;
+            transform: translateY(-10px) scale(0.5) rotate(90deg);
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(-25px) scale(1) rotate(180deg);
+        }
+        75% {
+            opacity: 0.6;
+            transform: translateY(-35px) scale(0.8) rotate(270deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-50px) scale(0) rotate(360deg);
+        }
+    }
+    
+    /* ==============================================
+       RESPONSIVE OPTIMIZATIONS
+       ============================================== */
+    @media (max-width: 768px) {
+        .nav-link-enhanced,
+        .achievement-btn-enhanced,
+        .recruitment-btn-enhanced,
+        .discord-btn-enhanced {
+            font-size: 0.8rem;
+            padding: 0.625rem 1rem;
+        }
+        
+        .btn-particles,
+        .btn-glow-layer,
+        .btn-wave-effect {
+            display: none; /* Disable complex effects on small screens */
+        }
+        
+        /* Ensure Discord icon doesn't get too small */
+        .discord-icon {
+            width: 1rem !important;
+            height: 1rem !important;
+            min-width: 1rem;
+            max-width: 1rem;
+        }
+        
+        /* Optimize button text on mobile */
+        .mobile-achievement-btn {
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .mobile-recruitment-btn {
+            font-size: 0.75rem;
+        }
+    }
+    
+    /* ==============================================
+       REDUCED MOTION SUPPORT
+       ============================================== */
+    @media (prefers-reduced-motion: reduce) {
+        .nav-link-enhanced,
+        .achievement-btn-enhanced,
+        .recruitment-btn-enhanced,
+        .discord-btn-enhanced,
+        .mobile-achievement-btn,
+        .mobile-recruitment-btn,
+        .mobile-discord-btn,
+        .tablet-achievement-btn,
+        .tablet-recruitment-btn,
+        .tablet-discord-btn,
+        .menu-button-enhanced,
+        .tablet-menu-button-enhanced {
+            transition: opacity 0.2s ease, transform 0.2s ease !important;
+        }
+        
+        .btn-glow-layer,
+        .btn-wave-effect,
+        .btn-particles,
+        .btn-pulse-ring {
+            animation: none !important;
+            opacity: 0 !important;
+        }
+        
+        .discord-icon,
+        .mobile-discord-btn img,
+        .tablet-discord-btn img,
+        .mobile-menu-special.discord img,
+        .tablet-menu-special.discord img {
+            transition: none !important;
+            animation: none !important;
+        }
+        
+        .discord-btn-enhanced:hover .discord-icon,
+        .mobile-discord-btn:hover img,
+        .tablet-discord-btn:hover img,
+        .mobile-menu-special.discord:hover img,
+        .tablet-menu-special.discord:hover img {
+            transform: scale(1.05) !important;
+        }
+    }
+     
+    /* ==============================================
        CRITICAL PATH CSS - OPTIMIZED
        ============================================== */
     
@@ -2173,509 +3161,772 @@
     }
     
     /* ==============================================
-       SPECIALIST CARDS - INDEPENDENT CSS STYLING
-       ============================================== */
-    
-    /* Base Specialist Card Styling - copied from current Tailwind classes */
-    .specialist-card {
-        /* Layout and Structure */
-        border-radius: 1rem; /* rounded-2xl */
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 1.5rem 2rem; /* p-6 lg:p-8 */
+           SPECIALIST CARDS - ENHANCED SPREADING GLOW EFFECTS
+           ============================================== */
         
-        /* Size constraints */
-        min-height: 480px;
-        width: 100%;
-        max-width: 320px;
-        
-        /* Border and Shadow */
-        border-width: 1px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        
-        /* Transitions - copied from current hover:scale-105 hover:-translate-y-2 */
-        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-        will-change: transform, box-shadow;
-    }
-    
-    /* Theme-specific backgrounds and colors - copied from current Tailwind gradients */
-    .specialist-card[data-theme="yellow"] {
-        background: linear-gradient(to bottom right, rgba(133, 77, 14, 0.3), rgba(146, 64, 14, 0.2));
-        border-color: rgba(250, 204, 21, 0.25);
-        --specialist-theme-color: #facc15;
-        --specialist-theme-glow: rgba(250, 204, 21, 0.4);
-    }
-    
-    .specialist-card[data-theme="purple"] {
-        background: linear-gradient(to bottom right, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.2));
-        border-color: rgba(168, 85, 247, 0.25);
-        --specialist-theme-color: #a855f7;
-        --specialist-theme-glow: rgba(168, 85, 247, 0.4);
-    }
-    
-    .specialist-card[data-theme="pink"] {
-        background: linear-gradient(to bottom right, rgba(131, 24, 67, 0.3), rgba(157, 23, 77, 0.2));
-        border-color: rgba(236, 72, 153, 0.25);
-        --specialist-theme-color: #ec4899;
-        --specialist-theme-glow: rgba(236, 72, 153, 0.4);
-    }
-    
-    .specialist-card[data-theme="cyan"] {
-        background: linear-gradient(to bottom right, rgba(22, 78, 99, 0.3), rgba(21, 94, 117, 0.2));
-        border-color: rgba(56, 189, 248, 0.25);
-        --specialist-theme-color: #38bdf8;
-        --specialist-theme-glow: rgba(56, 189, 248, 0.4);
-    }
-    
-    /* Hover Effects - copied from current hover:shadow-*-400/40 hover:scale-105 hover:-translate-y-2 */
-    .specialist-card[data-theme="yellow"]:hover {
-        box-shadow: 0 25px 50px -12px rgba(250, 204, 21, 0.4);
-        transform: scale(1.05) translateY(-0.5rem);
-    }
-    
-    .specialist-card[data-theme="purple"]:hover {
-        box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.4);
-        transform: scale(1.05) translateY(-0.5rem);
-    }
-    
-    .specialist-card[data-theme="pink"]:hover {
-        box-shadow: 0 25px 50px -12px rgba(236, 72, 153, 0.4);
-        transform: scale(1.05) translateY(-0.5rem);
-    }
-    
-    .specialist-card[data-theme="cyan"]:hover {
-        box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.4);
-        transform: scale(1.05) translateY(-0.5rem);
-    }
-    
-    /* Image Container - copied from current .relative.mb-4.group */
-    .specialist-card .relative.mb-4.group,
-    .specialist-card .relative.mb-4 {
-        position: relative;
-        margin-bottom: 1rem;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    
-    /* Image Styling - copied from current Tailwind classes */
-    .specialist-card img {
-        width: 6rem; /* w-24 */
-        height: 6rem; /* h-24 */
-        object-fit: cover;
-        border-radius: 50%;
-        border: 4px solid var(--specialist-theme-color, #facc15);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        user-select: none;
-        pointer-events: none;
-        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    
-    /* Large screens image sizing - copied from lg:w-28 lg:h-28 */
-    @media (min-width: 1024px) {
-        .specialist-card img {
-            width: 7rem; /* lg:w-28 */
-            height: 7rem; /* lg:h-28 */
-        }
-    }
-    
-    /* Image hover effect - copied from group-hover:scale-110 */
-    .specialist-card:hover img {
-        transform: scale(1.1);
-    }
-    
-    /* Title Styling - copied from current text-xl font-bold mb-2 text-*-400 */
-    .specialist-card h4 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--specialist-theme-color, #facc15);
-        transition: color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    
-    /* Title hover effect - copied from hover:text-*-300 */
-    .specialist-card[data-theme="yellow"]:hover h4 {
-        color: #fde047; /* hover:text-yellow-300 */
-    }
-    
-    .specialist-card[data-theme="purple"]:hover h4 {
-        color: #c084fc; /* hover:text-purple-300 */
-    }
-    
-    .specialist-card[data-theme="pink"]:hover h4 {
-        color: #f9a8d4; /* hover:text-pink-300 */
-    }
-    
-    .specialist-card[data-theme="cyan"]:hover h4 {
-        color: #67e8f9; /* hover:text-cyan-300 */
-    }
-    
-    /* Role Badge Styling - copied from current Tailwind classes */
-    .specialist-card p.font-medium.mb-3.italic {
-        font-weight: 500;
-        margin-bottom: 0.75rem;
-        font-style: italic;
-        font-size: 0.875rem;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-    }
-    
-    /* Theme-specific role badge colors */
-    .specialist-card[data-theme="yellow"] p.font-medium.mb-3.italic {
-        color: #fef3c7; /* text-yellow-200 */
-        background-color: rgba(133, 77, 14, 0.3); /* bg-yellow-900/30 */
-    }
-    
-    .specialist-card[data-theme="purple"] p.font-medium.mb-3.italic {
-        color: #e9d5ff; /* text-purple-200 */
-        background-color: rgba(88, 28, 135, 0.3); /* bg-purple-900/30 */
-    }
-    
-    .specialist-card[data-theme="pink"] p.font-medium.mb-3.italic {
-        color: #fbcfe8; /* text-pink-200 */
-        background-color: rgba(131, 24, 67, 0.3); /* bg-pink-900/30 */
-    }
-    
-    .specialist-card[data-theme="cyan"] p.font-medium.mb-3.italic {
-        color: #cffafe; /* text-cyan-200 */
-        background-color: rgba(22, 78, 99, 0.3); /* bg-cyan-900/30 */
-    }
-    
-    /* Description Text - copied from current text-gray-300 text-sm leading-relaxed */
-    .specialist-card p.text-gray-300.text-sm {
-        color: #d1d5db; /* text-gray-300 */
-        font-size: 0.875rem; /* text-sm */
-        line-height: 1.625; /* leading-relaxed */
-        flex-grow: 1;
-    }
-    
-    /* Social Links Container - copied from current styling */
-    .specialist-card .w-full.flex.flex-col.items-center.gap-2.mt-auto.pt-2,
-    .specialist-card .w-full.flex.justify-center.mt-auto.pt-2 {
-        width: 100%;
-        display: flex;
-        margin-top: auto;
-        padding-top: 0.5rem;
-    }
-    
-    .specialist-card .w-full.flex.flex-col.items-center.gap-2.mt-auto.pt-2 {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .specialist-card .w-full.flex.justify-center.mt-auto.pt-2 {
-        justify-content: center;
-    }
-    
-    /* Social Links - copied from current styling with theme colors */
-    .specialist-card a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: 500;
-        font-size: 0.875rem;
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.5rem;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        color: var(--specialist-theme-color, #facc15);
-    }
-    
-    /* Social link hover effects with theme-specific colors */
-    .specialist-card[data-theme="yellow"] a:hover {
-        color: #fde047;
-        transform: scale(1.05);
-    }
-    
-    .specialist-card[data-theme="purple"] a:hover {
-        color: #c084fc;
-        transform: scale(1.05);
-    }
-    
-    .specialist-card[data-theme="pink"] a:hover {
-        color: #f9a8d4;
-        transform: scale(1.05);
-    }
-    
-    .specialist-card[data-theme="cyan"] a:hover {
-        color: #67e8f9;
-        transform: scale(1.05);
-    }
-    
-    /* SVG Icons in social links */
-    .specialist-card a svg {
-        width: 1rem;
-        height: 1rem;
-    }
-    
-    /* Glow overlay effect - copied from current absolute inset-0 bg-*-400/20 opacity-0 group-hover:opacity-100 */
-    .specialist-card .relative.mb-4.group::after,
-    .specialist-card .relative.mb-4::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        opacity: 0;
-        transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        filter: blur(0.75rem);
-    }
-    
-    .specialist-card[data-theme="yellow"] .relative.mb-4::after {
-        background-color: rgba(250, 204, 21, 0.2);
-    }
-    
-    .specialist-card[data-theme="purple"] .relative.mb-4::after {
-        background-color: rgba(168, 85, 247, 0.2);
-    }
-    
-    .specialist-card[data-theme="pink"] .relative.mb-4::after {
-        background-color: rgba(236, 72, 153, 0.2);
-    }
-    
-    .specialist-card[data-theme="cyan"] .relative.mb-4::after {
-        background-color: rgba(56, 189, 248, 0.2);
-    }
-    
-    /* Show glow on hover */
-    .specialist-card:hover .relative.mb-4::after {
-        opacity: 1;
-    }
-    
-    /* Grid container - copied from current grid classes */
-    .specialist-card-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        justify-items: center;
-    }
-    
-    @media (min-width: 640px) {
-        .specialist-card-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    
-    @media (min-width: 1024px) {
-        .specialist-card-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 1023px) {
+        /* Base Specialist Card Styling - copied from current Tailwind classes */
         .specialist-card {
-            padding: 1.5rem; /* p-6 for smaller screens */
+            /* Layout and Structure */
+            border-radius: 1rem; /* rounded-2xl */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem 2rem; /* p-6 lg:p-8 */
+            
+            /* Size constraints */
+            min-height: 480px;
+            width: 100%;
+            max-width: 320px;
+            
+            /* Border and Shadow */
+            border-width: 1px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            /* Transitions - copied from current hover:scale-105 hover:-translate-y-2 */
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            will-change: transform, box-shadow;
+            
+            /* Subtle card glow base */
+            position: relative;
         }
-    }
+        
+        /* Enhanced radial glow overlay for cards - wider spread */
+        .specialist-card::before {
+            content: "";
+            position: absolute;
+            inset: -8px; /* Increased from -2px for wider spread */
+            border-radius: 1.5rem; /* Larger radius for better coverage */
+            background: 
+                /* Multiple layered gradients for better spreading effect */
+                radial-gradient(circle at center, var(--specialist-theme-glow, rgba(250, 204, 21, 0.15)) 0%, transparent 50%),
+                radial-gradient(circle at center, var(--specialist-theme-glow, rgba(250, 204, 21, 0.08)) 20%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(3px); /* Add blur for softer glow */
+        }
+        
+        /* Theme-specific backgrounds and colors - enhanced with stronger glow */
+        .specialist-card[data-theme="yellow"] {
+            background: linear-gradient(to bottom right, rgba(133, 77, 14, 0.3), rgba(146, 64, 14, 0.2));
+            border-color: rgba(250, 204, 21, 0.25);
+            --specialist-theme-color: #facc15;
+            --specialist-theme-glow: rgba(250, 204, 21, 0.15);
+        }
+        
+        .specialist-card[data-theme="purple"] {
+            background: linear-gradient(to bottom right, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.2));
+            border-color: rgba(168, 85, 247, 0.25);
+            --specialist-theme-color: #a855f7;
+            --specialist-theme-glow: rgba(168, 85, 247, 0.15);
+        }
+        
+        .specialist-card[data-theme="pink"] {
+            background: linear-gradient(to bottom right, rgba(131, 24, 67, 0.3), rgba(157, 23, 77, 0.2));
+            border-color: rgba(236, 72, 153, 0.25);
+            --specialist-theme-color: #ec4899;
+            --specialist-theme-glow: rgba(236, 72, 153, 0.15);
+        }
+        
+        .specialist-card[data-theme="cyan"] {
+            background: linear-gradient(to bottom right, rgba(22, 78, 99, 0.3), rgba(21, 94, 117, 0.2));
+            border-color: rgba(56, 189, 248, 0.25);
+            --specialist-theme-color: #38bdf8;
+            --specialist-theme-glow: rgba(56, 189, 248, 0.15);
+        }
+        
+        /* Enhanced Hover Effects with multi-layered spreading glow */
+        .specialist-card[data-theme="yellow"]:hover {
+            box-shadow: 
+                /* Base shadow */
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                /* Multi-layer spreading glow */
+                0 0 20px 5px rgba(250, 204, 21, 0.3),
+                0 0 40px 10px rgba(250, 204, 21, 0.2),
+                0 0 60px 15px rgba(250, 204, 21, 0.15),
+                0 0 80px 20px rgba(250, 204, 21, 0.1),
+                0 0 100px 25px rgba(250, 204, 21, 0.05);
+            transform: scale(1.05) translateY(-0.5rem);
+        }
+        
+        .specialist-card[data-theme="yellow"]:hover::before {
+            opacity: 1;
+        }
+        
+        .specialist-card[data-theme="purple"]:hover {
+            box-shadow: 
+                /* Base shadow */
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                /* Multi-layer spreading glow */
+                0 0 20px 5px rgba(168, 85, 247, 0.3),
+                0 0 40px 10px rgba(168, 85, 247, 0.2),
+                0 0 60px 15px rgba(168, 85, 247, 0.15),
+                0 0 80px 20px rgba(168, 85, 247, 0.1),
+                0 0 100px 25px rgba(168, 85, 247, 0.05);
+            transform: scale(1.05) translateY(-0.5rem);
+        }
+        
+        .specialist-card[data-theme="purple"]:hover::before {
+            opacity: 1;
+        }
+        
+        .specialist-card[data-theme="pink"]:hover {
+            box-shadow: 
+                /* Base shadow */
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                /* Multi-layer spreading glow */
+                0 0 20px 5px rgba(236, 72, 153, 0.3),
+                0 0 40px 10px rgba(236, 72, 153, 0.2),
+                0 0 60px 15px rgba(236, 72, 153, 0.15),
+                0 0 80px 20px rgba(236, 72, 153, 0.1),
+                0 0 100px 25px rgba(236, 72, 153, 0.05);
+            transform: scale(1.05) translateY(-0.5rem);
+        }
+        
+        .specialist-card[data-theme="pink"]:hover::before {
+            opacity: 1;
+        }
+        
+        .specialist-card[data-theme="cyan"]:hover {
+            box-shadow: 
+                /* Base shadow */
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                /* Multi-layer spreading glow */
+                0 0 20px 5px rgba(56, 189, 248, 0.3),
+                0 0 40px 10px rgba(56, 189, 248, 0.2),
+                0 0 60px 15px rgba(56, 189, 248, 0.15),
+                0 0 80px 20px rgba(56, 189, 248, 0.1),
+                0 0 100px 25px rgba(56, 189, 248, 0.05);
+            transform: scale(1.05) translateY(-0.5rem);
+        }
+        
+        .specialist-card[data-theme="cyan"]:hover::before {
+            opacity: 1;
+        }
+        
+        /* Image Container - copied from current .relative.mb-4.group */
+        .specialist-card .relative.mb-4.group,
+        .specialist-card .relative.mb-4 {
+            position: relative;
+            margin-bottom: 1rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        /* Image Styling - enhanced with spreading glow capability */
+        .specialist-card img {
+            width: 6rem; /* w-24 */
+            height: 6rem; /* h-24 */
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--specialist-theme-color, #facc15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            user-select: none;
+            pointer-events: none;
+            transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                        box-shadow 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+        
+        /* Large screens image sizing - copied from lg:w-28 lg:h-28 */
+        @media (min-width: 1024px) {
+            .specialist-card img {
+                width: 7rem; /* lg:w-28 */
+                height: 7rem; /* lg:h-28 */
+            }
+        }
+        /* OPTION 4: Morphing Border with Pulse Scale */
+.specialist-card img {
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+}
+
+.specialist-card:hover img {
+    transform: scale(1.12);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow: 
+        /* Base shadow */
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        
+        /* Organic spreading glow */
+        0 0 25px 5px var(--specialist-theme-glow, rgba(250, 204, 21, 0.4)),
+        0 0 50px 10px var(--specialist-theme-glow, rgba(250, 204, 21, 0.25)),
+        0 0 75px 15px var(--specialist-theme-glow, rgba(250, 204, 21, 0.15)),
+        0 0 100px 20px var(--specialist-theme-glow, rgba(250, 204, 21, 0.08));
     
-    /* Remove any JavaScript control classes or conflicting styles */
-    .specialist-card.disable-user-interaction img {
-        user-select: none;
-        pointer-events: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+    filter: brightness(1.15) contrast(1.08);
+    animation: morphing-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes morphing-pulse {
+    0% { 
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: scale(1.12);
     }
+    25% { 
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: scale(1.15);
+    }
+    50% { 
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: scale(1.18);
+    }
+    75% { 
+        border-radius: 40% 60% 60% 40% / 40% 50% 60% 50%;
+        transform: scale(1.15);
+    }
+    100% { 
+        border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+        transform: scale(1.12);
+    }
+}
+
+/* OPTION 7: Elegant Floating with Soft Pulse */
+.specialist-card img {
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+}
+
+.specialist-card:hover img {
+    transform: scale(1.12) translateY(-8px);
+    box-shadow: 
+        /* Elegant floating shadow */
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        
+        /* Soft professional glow */
+        0 0 30px 8px var(--specialist-theme-glow, rgba(250, 204, 21, 0.4)),
+        0 0 60px 15px var(--specialist-theme-glow, rgba(250, 204, 21, 0.25)),
+        0 0 90px 20px var(--specialist-theme-glow, rgba(250, 204, 21, 0.12)),
+        
+        /* Inner rim light */
+        inset 0 0 20px var(--specialist-theme-glow, rgba(250, 204, 21, 0.15));
+    
+    filter: brightness(1.1) contrast(1.04);
+    animation: elegant-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes elegant-pulse {
+    0% { 
+        transform: scale(1.12) translateY(-8px);
+        filter: brightness(1.1) contrast(1.04);
+    }
+    100% { 
+        transform: scale(1.16) translateY(-12px);
+        filter: brightness(1.15) contrast(1.06);
+    }
+}
+
+        /* Title Styling - copied from current text-xl font-bold mb-2 text-*-400 */
+        .specialist-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--specialist-theme-color, #facc15);
+            transition: color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        /* Title hover effect - copied from hover:text-*-300 */
+        .specialist-card[data-theme="yellow"]:hover h4 {
+            color: #fde047; /* hover:text-yellow-300 */
+        }
+        
+        .specialist-card[data-theme="purple"]:hover h4 {
+            color: #c084fc; /* hover:text-purple-300 */
+        }
+        
+        .specialist-card[data-theme="pink"]:hover h4 {
+            color: #f9a8d4; /* hover:text-pink-300 */
+        }
+        
+        .specialist-card[data-theme="cyan"]:hover h4 {
+            color: #67e8f9; /* hover:text-cyan-300 */
+        }
+        
+        /* Role Badge Styling - copied from current Tailwind classes */
+        .specialist-card p.font-medium.mb-3.italic {
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            font-style: italic;
+            font-size: 0.875rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+        
+        /* Theme-specific role badge colors */
+        .specialist-card[data-theme="yellow"] p.font-medium.mb-3.italic {
+            color: #fef3c7; /* text-yellow-200 */
+            background-color: rgba(133, 77, 14, 0.3); /* bg-yellow-900/30 */
+        }
+        
+        .specialist-card[data-theme="purple"] p.font-medium.mb-3.italic {
+            color: #e9d5ff; /* text-purple-200 */
+            background-color: rgba(88, 28, 135, 0.3); /* bg-purple-900/30 */
+        }
+        
+        .specialist-card[data-theme="pink"] p.font-medium.mb-3.italic {
+            color: #fbcfe8; /* text-pink-200 */
+            background-color: rgba(131, 24, 67, 0.3); /* bg-pink-900/30 */
+        }
+        
+        .specialist-card[data-theme="cyan"] p.font-medium.mb-3.italic {
+            color: #cffafe; /* text-cyan-200 */
+            background-color: rgba(22, 78, 99, 0.3); /* bg-cyan-900/30 */
+        }
+        
+        /* Description Text - copied from current text-gray-300 text-sm leading-relaxed */
+        .specialist-card p.text-gray-300.text-sm {
+            color: #d1d5db; /* text-gray-300 */
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.625; /* leading-relaxed */
+            flex-grow: 1;
+        }
+        
+        /* Social Links Container - copied from current styling */
+        .specialist-card .w-full.flex.flex-col.items-center.gap-2.mt-auto.pt-2,
+        .specialist-card .w-full.flex.justify-center.mt-auto.pt-2 {
+            width: 100%;
+            display: flex;
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
+        
+        .specialist-card .w-full.flex.flex-col.items-center.gap-2.mt-auto.pt-2 {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .specialist-card .w-full.flex.justify-center.mt-auto.pt-2 {
+            justify-content: center;
+        }
+        
+        /* Social Links - copied from current styling with theme colors */
+        .specialist-card a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            color: var(--specialist-theme-color, #facc15);
+        }
+        
+        /* Social link hover effects with theme-specific colors */
+        .specialist-card[data-theme="yellow"] a:hover {
+            color: #fde047;
+            transform: scale(1.05);
+        }
+        
+        .specialist-card[data-theme="purple"] a:hover {
+            color: #c084fc;
+            transform: scale(1.05);
+        }
+        
+        .specialist-card[data-theme="pink"] a:hover {
+            color: #f9a8d4;
+            transform: scale(1.05);
+        }
+        
+        .specialist-card[data-theme="cyan"] a:hover {
+            color: #67e8f9;
+            transform: scale(1.05);
+        }
+        
+        /* SVG Icons in social links */
+        .specialist-card a svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        /* Enhanced spreading background glow effect around image */
+        .specialist-card .relative.mb-4.group::after,
+        .specialist-card .relative.mb-4::after {
+            content: "";
+            position: absolute;
+            inset: -20px; /* Increased from -4px for much wider spread */
+            border-radius: 50%;
+            background: 
+                /* Multiple overlapping radial gradients for natural light spreading */
+                radial-gradient(circle at center, var(--specialist-theme-glow, rgba(250, 204, 21, 0.2)) 0%, transparent 40%),
+                radial-gradient(circle at center, var(--specialist-theme-glow, rgba(250, 204, 21, 0.15)) 10%, transparent 55%),
+                radial-gradient(circle at center, var(--specialist-theme-glow, rgba(250, 204, 21, 0.1)) 20%, transparent 70%),
+                radial-gradient(circle at center, var(--specialist-theme-glow, rgba(250, 204, 21, 0.05)) 30%, transparent 85%);
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(4px); /* Add blur for ultra-soft spreading effect */
+        }
+        
+        /* Additional outer glow layer for even wider spread */
+        .specialist-card .relative.mb-4.group::before,
+        .specialist-card .relative.mb-4::before {
+            content: "";
+            position: absolute;
+            inset: -35px; /* Even wider spread for ambient glow */
+            border-radius: 50%;
+            background: radial-gradient(circle at center, var(--specialist-theme-glow, rgba(250, 204, 21, 0.08)) 0%, transparent 80%);
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: -2;
+            pointer-events: none;
+            filter: blur(8px); /* Heavy blur for ultra-soft ambient glow */
+        }
+        
+        /* Enhanced theme-specific background glow colors with stronger opacity */
+        .specialist-card[data-theme="yellow"] .relative.mb-4::after {
+            background: 
+                radial-gradient(circle at center, rgba(250, 204, 21, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at center, rgba(250, 204, 21, 0.18) 10%, transparent 55%),
+                radial-gradient(circle at center, rgba(250, 204, 21, 0.12) 20%, transparent 70%),
+                radial-gradient(circle at center, rgba(250, 204, 21, 0.06) 30%, transparent 85%);
+        }
+        
+        .specialist-card[data-theme="purple"] .relative.mb-4::after {
+            background: 
+                radial-gradient(circle at center, rgba(168, 85, 247, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at center, rgba(168, 85, 247, 0.18) 10%, transparent 55%),
+                radial-gradient(circle at center, rgba(168, 85, 247, 0.12) 20%, transparent 70%),
+                radial-gradient(circle at center, rgba(168, 85, 247, 0.06) 30%, transparent 85%);
+        }
+        
+        .specialist-card[data-theme="pink"] .relative.mb-4::after {
+            background: 
+                radial-gradient(circle at center, rgba(236, 72, 153, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at center, rgba(236, 72, 153, 0.18) 10%, transparent 55%),
+                radial-gradient(circle at center, rgba(236, 72, 153, 0.12) 20%, transparent 70%),
+                radial-gradient(circle at center, rgba(236, 72, 153, 0.06) 30%, transparent 85%);
+        }
+        
+        .specialist-card[data-theme="cyan"] .relative.mb-4::after {
+            background: 
+                radial-gradient(circle at center, rgba(56, 189, 248, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at center, rgba(56, 189, 248, 0.18) 10%, transparent 55%),
+                radial-gradient(circle at center, rgba(56, 189, 248, 0.12) 20%, transparent 70%),
+                radial-gradient(circle at center, rgba(56, 189, 248, 0.06) 30%, transparent 85%);
+        }
+        
+        /* Show all glow layers on hover */
+        .specialist-card:hover .relative.mb-4::after,
+        .specialist-card:hover .relative.mb-4::before {
+            opacity: 1;
+        }
+        
+        /* Grid container - copied from current grid classes */
+        .specialist-card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            justify-items: center;
+        }
+        
+        @media (min-width: 640px) {
+            .specialist-card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .specialist-card-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1023px) {
+            .specialist-card {
+                padding: 1.5rem; /* p-6 for smaller screens */
+            }
+        }
+        
+        /* Remove any JavaScript control classes or conflicting styles */
+        .specialist-card.disable-user-interaction img {
+            user-select: none;
+            pointer-events: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        /* Enhanced reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .specialist-card::before,
+            .specialist-card .relative.mb-4::after,
+            .specialist-card .relative.mb-4::before {
+                transition: none !important;
+                filter: none !important;
+            }
+            
+            .specialist-card:hover img {
+                transform: scale(1.05) !important; /* Remove rotation, keep subtle scale */
+            }
+            
+            .specialist-card:hover {
+                box-shadow: 
+                    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                    0 0 20px 5px var(--specialist-theme-glow, rgba(250, 204, 21, 0.2)) !important;
+            }
+        }
+        
+        /* Mobile optimizations - reduce glow intensity for performance */
+        @media (max-width: 768px) {
+            .specialist-card .relative.mb-4::after {
+                inset: -15px; /* Slightly smaller spread on mobile */
+                filter: blur(2px); /* Less blur for better performance */
+            }
+            
+            .specialist-card .relative.mb-4::before {
+                inset: -25px; /* Smaller ambient glow on mobile */
+                filter: blur(4px);
+            }
+            
+            .specialist-card:hover img {
+                box-shadow: 
+                    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                    0 0 15px 3px var(--specialist-theme-glow, rgba(250, 204, 21, 0.3)),
+                    0 0 30px 6px var(--specialist-theme-glow, rgba(250, 204, 21, 0.15)); /* Reduced layers on mobile */
+            }
+        }
     </style>
 
 <body>
-    <!-- Header with optimized classes -->
-    <header class="bg-gray-900/80 backdrop-blur-md shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-            <!-- Logo with optimized loading -->
-            <a href="index.html" class="flex-shrink-0" title="Go to Home">
-                <img class="h-10 w-auto" 
-                     src="1hp Rebrand PP_PNG.png" 
-                     alt="1hp Esports Logo"
-                     width="150" 
-                     height="50"
-                     loading="eager"
-                     decoding="async"
-                     onerror="this.onerror=null;this.src='https://placehold.co/150x50/7c3aed/ffffff?text=1hp+Logo&font=inter';">
-            </a>
-            
-            <!-- Desktop Navigation - ONLY visible on lg screens and up -->
-            <div class="hidden lg:flex flex-1 items-center justify-center space-x-4">
-                <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Home</a>
-                <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">About</a>
-                <a href="#esports-team" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Teams</a>
-                <a href="achievements.html" class="px-3 py-2 rounded-md text-sm font-semibold text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors">Our Achievements</a>
-                <a href="recruitment.html" class="px-3 py-2 rounded-md text-sm font-semibold text-white bg-red-500 hover:bg-red-600 hover:text-white transition-colors">Join 1hp</a>
-                <a href="https://discord.com/invite/ksvuUyMvMb"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md whitespace-nowrap min-w-0">
-                    <img src="Discord-Symbol-White.png"
-                         alt="Discord"
-                         class="h-auto w-auto"
-                         width="20"
-                         height="20"
-                         loading="lazy"
-                         decoding="async"
-                         style="min-width:1.25rem;max-width:1.25rem;display:inline-block;vertical-align:middle;">
-                    <span class="hidden sm:inline">Join Our Discord</span>
-                    <span class="inline sm:hidden">Discord</span>
-                </a>
-                <a href="#news" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">News</a>
-                <a href="#sponsors" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Sponsors</a>
-                <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">Contact</a>
-            </div>
-            
-            <!-- Mobile Navigation - ONLY visible below sm (< 640px) -->
-            <div class="flex items-center flex-1 justify-between sm:hidden">
-                <!-- Center - W, Discord and Join 1hp buttons -->
-                <div class="flex-1 flex justify-center items-center gap-2">
-                    <!-- W button -->
-                    <a href="achievements.html" 
-                       class="flex items-center justify-center px-3 py-2 rounded-md bg-yellow-400 hover:bg-yellow-500 shadow-md text-black font-semibold text-sm whitespace-nowrap min-h-[44px] min-w-[44px] touch-manipulation">
-                        W
-                    </a>
-                    
-                    <!-- Join 1hp button -->
-                    <a href="recruitment.html"
-                       class="flex items-center justify-center px-3 py-2 rounded-md bg-red-500 hover:bg-red-600 shadow-md text-white font-semibold text-sm whitespace-nowrap min-h-[44px] touch-manipulation">
-                        Join 1hp
-                    </a>
-                    
-                    <!-- Discord button -->
-                    <a href="https://discord.com/invite/ksvuUyMvMb"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="flex items-center justify-center px-3 py-2 rounded-md bg-[#5865F2] hover:bg-[#4752c4] shadow-md min-h-[44px] touch-manipulation"
-                       style="min-width:2.5rem;max-width:2.5rem;">
-                        <img src="Discord-Symbol-White.png"
-                             alt="Discord"
-                             class="h-auto w-auto"
-                             width="24"
-                             height="24"
-                             loading="lazy"
-                             decoding="async"
-                             style="min-width:1.5rem;max-width:1.5rem;display:inline-block;vertical-align:middle;">
-                    </a>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <button id="mobile-menu-button" 
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white min-h-[44px] min-w-[44px] touch-manipulation" 
-                        aria-controls="mobile-menu" 
-                        aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            
-            <!-- Tablet Navigation - ONLY visible between sm and lg (640px - 1023px) -->
-            <div class="hidden sm:flex lg:hidden items-center flex-1 justify-between">
-                <!-- Center - Enhanced buttons for tablets -->
-                <div class="flex-1 flex justify-center items-center gap-3">
-                    <!-- W button - larger for tablets -->
-                    <a href="achievements.html" 
-                       class="flex items-center justify-center px-4 py-2.5 rounded-md bg-yellow-400 hover:bg-yellow-500 shadow-md text-black font-semibold text-base whitespace-nowrap min-h-[48px] min-w-[48px] touch-manipulation">
-                        W
-                    </a>
-                    
-                    <!-- Join 1hp button - larger for tablets -->
-                    <a href="recruitment.html"
-                       class="flex items-center justify-center px-4 py-2.5 rounded-md bg-red-500 hover:bg-red-600 shadow-md text-white font-semibold text-base whitespace-nowrap min-h-[48px] touch-manipulation">
-                        Join 1hp
-                    </a>
-                    
-                    <!-- Discord button - larger for tablets -->
-                    <a href="https://discord.com/invite/ksvuUyMvMb"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="flex items-center justify-center px-4 py-2.5 rounded-md bg-[#5865F2] hover:bg-[#4752c4] shadow-md min-h-[48px] touch-manipulation"
-                       style="min-width:3rem;max-width:3rem;">
-                        <img src="Discord-Symbol-White.png"
-                             alt="Discord"
-                             class="h-auto w-auto"
-                             width="28"
-                             height="28"
-                             loading="lazy"
-                             decoding="async"
-                             style="min-width:1.75rem;max-width:1.75rem;display:inline-block;vertical-align:middle;">
-                    </a>
-                </div>
-                
-                <!-- Tablet menu button - larger touch target -->
-                <button id="tablet-menu-button" 
-                        class="inline-flex items-center justify-center p-3 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white min-h-[48px] min-w-[48px] touch-manipulation" 
-                        aria-controls="tablet-menu" 
-                        aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    <svg class="hidden h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </nav>
+<!-- Enhanced Header with Insane Styling -->
+<header class="bg-gray-900/80 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-purple-500/20">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <!-- Logo with optimized loading -->
+        <a href="index.html" class="flex-shrink-0" title="Go to Home">
+            <img class="h-10 w-auto" 
+                 src="1hp Rebrand PP_PNG.png" 
+                 alt="1hp Esports Logo"
+                 width="150" 
+                 height="50"
+                 loading="eager"
+                 decoding="async"
+                 onerror="this.onerror=null;this.src='https://placehold.co/150x50/7c3aed/ffffff?text=1hp+Logo&font=inter';">
+        </a>
         
-        <!-- Mobile Menu Panel -->
-        <div class="hidden bg-gray-900/90 backdrop-blur-md sm:hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Home</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">About</a>
-                <a href="#esports-team" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Teams</a>
-                <a href="achievements.html" class="block px-3 py-2 rounded-md text-base font-medium text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors min-h-[48px] flex items-center touch-manipulation">Our Achievements</a>
-                <a href="recruitment.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-red-500 hover:bg-red-600 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Join 1hp</a>
-                <a href="https://discord.com/invite/ksvuUyMvMb"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md min-h-[48px] touch-manipulation">
-                    <img src="Discord-Symbol-White.png"
-                         alt="Discord"
-                         class="h-auto w-auto"
-                         width="20"
-                         height="20"
-                         loading="lazy"
-                         decoding="async"
-                         style="min-width:1.25rem;max-width:1.25rem;display:inline-block;vertical-align:middle;">
-                    <span>Join Our Discord</span>
-                </a>
-                <a href="#news" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">News</a>
-                <a href="#sponsors" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Sponsors</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[48px] flex items-center touch-manipulation">Contact</a>
-            </div>
+        <!-- Enhanced Desktop Navigation - ONLY visible on lg screens and up -->
+        <div class="hidden lg:flex flex-1 items-center justify-center space-x-2">
+            <a href="#home" class="nav-link-enhanced">
+                <span class="nav-link-text">Home</span>
+                <div class="nav-link-glow"></div>
+            </a>
+            <a href="#about" class="nav-link-enhanced">
+                <span class="nav-link-text">About</span>
+                <div class="nav-link-glow"></div>
+            </a>
+            <a href="#esports-team" class="nav-link-enhanced">
+                <span class="nav-link-text">Teams</span>
+                <div class="nav-link-glow"></div>
+            </a>
+            <a href="achievements.html" class="achievement-btn-enhanced">
+                <span class="btn-text">Our Achievements</span>
+                <div class="btn-glow-layer"></div>
+                <div class="btn-particles">
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                </div>
+            </a>
+            <a href="recruitment.html" class="recruitment-btn-enhanced">
+                <span class="btn-text">Join 1hp</span>
+                <div class="btn-glow-layer"></div>
+                <div class="btn-pulse-ring"></div>
+                <div class="btn-particles">
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                </div>
+            </a>
+            <a href="https://discord.com/invite/ksvuUyMvMb"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="discord-btn-enhanced">
+                <img src="Discord-Symbol-White.png"
+                     alt="Discord"
+                     class="discord-icon"
+                     width="20"
+                     height="20"
+                     loading="lazy"
+                     decoding="async">
+                <span class="btn-text hidden sm:inline">Join Our Discord</span>
+                <span class="btn-text inline sm:hidden">Discord</span>
+                <div class="btn-glow-layer"></div>
+                <div class="btn-wave-effect"></div>
+            </a>
+            <a href="#news" class="nav-link-enhanced">
+                <span class="nav-link-text">News</span>
+                <div class="nav-link-glow"></div>
+            </a>
+            <a href="#sponsors" class="nav-link-enhanced">
+                <span class="nav-link-text">Sponsors</span>
+                <div class="nav-link-glow"></div>
+            </a>
+            <a href="#contact" class="nav-link-enhanced">
+                <span class="nav-link-text">Contact</span>
+                <div class="nav-link-glow"></div>
+            </a>
         </div>
-
-        <!-- Tablet Menu Panel -->
-        <div class="hidden bg-gray-900/90 backdrop-blur-md" id="tablet-menu">
-            <div class="px-3 pt-3 pb-4 space-y-2">
-                <a href="#home" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Home</a>
-                <a href="#about" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">About</a>
-                <a href="#esports-team" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Teams</a>
-                <a href="achievements.html" class="block px-4 py-3 rounded-md text-lg font-semibold text-black bg-yellow-400 hover:bg-yellow-500 hover:text-black transition-colors min-h-[52px] flex items-center touch-manipulation">Our Achievements</a>
-                <a href="recruitment.html" class="block px-4 py-3 rounded-md text-lg font-semibold text-white bg-red-500 hover:bg-red-600 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Join 1hp</a>
+        
+        <!-- Mobile Navigation - ONLY visible below sm (< 640px) -->
+        <div class="flex items-center flex-1 justify-between sm:hidden">
+            <!-- Center - Enhanced mobile buttons -->
+            <div class="flex-1 flex justify-center items-center gap-2">
+                <!-- W button -->
+                <a href="achievements.html" 
+                   class="mobile-achievement-btn">
+                    <span>W</span>
+                    <div class="mobile-btn-glow"></div>
+                </a>
+                
+                <!-- Join 1hp button -->
+                <a href="recruitment.html"
+                   class="mobile-recruitment-btn">
+                    <span>Join 1hp</span>
+                    <div class="mobile-btn-glow"></div>
+                </a>
+                
+                <!-- Discord button -->
                 <a href="https://discord.com/invite/ksvuUyMvMb"
                    target="_blank"
                    rel="noopener noreferrer"
-                   class="flex items-center gap-3 px-4 py-3 rounded-md text-lg font-medium text-white bg-[#5865F2] hover:bg-[#4752c4] transition-colors shadow-md min-h-[52px] touch-manipulation">
+                   class="mobile-discord-btn">
                     <img src="Discord-Symbol-White.png"
                          alt="Discord"
-                         class="h-auto w-auto"
                          width="24"
                          height="24"
                          loading="lazy"
-                         decoding="async"
-                         style="min-width:1.5rem;max-width:1.5rem;display:inline-block;vertical-align:middle;">
-                    <span>Join Our Discord</span>
+                         decoding="async">
+                    <div class="mobile-btn-glow"></div>
                 </a>
-                <a href="#news" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">News</a>
-                <a href="#sponsors" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Sponsors</a>
-                <a href="#contact" class="block px-4 py-3 rounded-md text-lg font-medium text-gray-300 hover:bg-gray-700 hover:text-white transition-colors min-h-[52px] flex items-center touch-manipulation">Contact</a>
             </div>
+            
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" 
+                    class="menu-button-enhanced" 
+                    aria-controls="mobile-menu" 
+                    aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <div class="menu-btn-glow"></div>
+            </button>
         </div>
-    </header>
+        
+        <!-- Enhanced Tablet Navigation - ONLY visible between sm and lg (640px - 1023px) -->
+        <div class="hidden sm:flex lg:hidden items-center flex-1 justify-between">
+            <!-- Center - Enhanced buttons for tablets -->
+            <div class="flex-1 flex justify-center items-center gap-3">
+                <!-- W button - tablet enhanced -->
+                <a href="achievements.html" 
+                   class="tablet-achievement-btn">
+                    <span>W</span>
+                    <div class="tablet-btn-glow"></div>
+                </a>
+                
+                <!-- Join 1hp button - tablet enhanced -->
+                <a href="recruitment.html"
+                   class="tablet-recruitment-btn">
+                    <span>Join 1hp</span>
+                    <div class="tablet-btn-glow"></div>
+                </a>
+                
+                <!-- Discord button - tablet enhanced -->
+                <a href="https://discord.com/invite/ksvuUyMvMb"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="tablet-discord-btn">
+                    <img src="Discord-Symbol-White.png"
+                         alt="Discord"
+                         width="28"
+                         height="28"
+                         loading="lazy"
+                         decoding="async">
+                    <div class="tablet-btn-glow"></div>
+                </a>
+            </div>
+            
+            <!-- Tablet menu button - enhanced -->
+            <button id="tablet-menu-button" 
+                    class="tablet-menu-button-enhanced" 
+                    aria-controls="tablet-menu" 
+                    aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg class="hidden h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <div class="tablet-menu-btn-glow"></div>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu Panel -->
+    <div class="hidden bg-gray-900/90 backdrop-blur-md sm:hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#home" class="mobile-menu-link">Home</a>
+            <a href="#about" class="mobile-menu-link">About</a>
+            <a href="#esports-team" class="mobile-menu-link">Teams</a>
+            <a href="achievements.html" class="mobile-menu-special achievement">Our Achievements</a>
+            <a href="recruitment.html" class="mobile-menu-special recruitment">Join 1hp</a>
+            <a href="https://discord.com/invite/ksvuUyMvMb"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="mobile-menu-special discord">
+                <img src="Discord-Symbol-White.png"
+                     alt="Discord"
+                     width="20"
+                     height="20"
+                     loading="lazy"
+                     decoding="async">
+                <span>Join Our Discord</span>
+            </a>
+            <a href="#news" class="mobile-menu-link">News</a>
+            <a href="#sponsors" class="mobile-menu-link">Sponsors</a>
+            <a href="#contact" class="mobile-menu-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- Tablet Menu Panel -->
+    <div class="hidden bg-gray-900/90 backdrop-blur-md" id="tablet-menu">
+        <div class="px-3 pt-3 pb-4 space-y-2">
+            <a href="#home" class="tablet-menu-link">Home</a>
+            <a href="#about" class="tablet-menu-link">About</a>
+            <a href="#esports-team" class="tablet-menu-link">Teams</a>
+            <a href="achievements.html" class="tablet-menu-special achievement">Our Achievements</a>
+            <a href="recruitment.html" class="tablet-menu-special recruitment">Join 1hp</a>
+            <a href="https://discord.com/invite/ksvuUyMvMb"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="tablet-menu-special discord">
+                <img src="Discord-Symbol-White.png"
+                     alt="Discord"
+                     width="24"
+                     height="24"
+                     loading="lazy"
+                     decoding="async">
+                <span>Join Our Discord</span>
+            </a>
+            <a href="#news" class="tablet-menu-link">News</a>
+            <a href="#sponsors" class="tablet-menu-link">Sponsors</a>
+            <a href="#contact" class="tablet-menu-link">Contact</a>
+        </div>
+    </div>
+</header>
 
     <!-- Hero Section with optimized background -->
     <section id="home" class="relative py-12 sm:py-16 bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('image_7d1423.png'); min-height: 65vh;">
