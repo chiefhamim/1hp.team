@@ -452,7 +452,7 @@
     }
     
     /* ==============================================
-       ENHANCED ADVISOR CARDS WITH ULTRA SMOOTH HOVER EFFECTS
+       ENHANCED ADVISOR CARDS WITH UNIFIED SMOOTH HOVER EFFECTS
        ============================================== */
     
     .advisor-card {
@@ -461,6 +461,7 @@
         position: relative;
         overflow: hidden;
         transform-style: preserve-3d;
+        animation-play-state: paused;
     }
     
     /* Smooth animated background overlay */
@@ -483,100 +484,71 @@
         left: 100%;
     }
     
-    /* Ultra smooth hover transform with gentle elevation */
+    /* UNIFIED HOVER EFFECTS - ALL CARDS IDENTICAL */
     .advisor-card:hover {
         transform: translateY(-10px) scale(1.02) rotateX(1deg);
-        box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.35),
-            0 12px 25px rgba(0, 0, 0, 0.25),
-            0 4px 12px rgba(0, 0, 0, 0.15);
         transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-        animation-play-state: paused;
     }
     
-    /* BLUE CARD - FORCED SYNCHRONIZATION WITH GREEN & PURPLE */
-    .advisor-card.advisor-blue {
-        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    }
-    
+    /* BLUE CARD - UNIFIED WITH OTHERS */
     .advisor-card.advisor-blue:hover {
-        transform: translateY(-10px) scale(1.02) rotateX(1deg) !important;
         box-shadow: 
             0 5px 120px 0 rgba(34, 211, 238, 0.3),
             0 0 50px 0 rgba(34, 211, 238, 0.2),
             10px 10px 35px 0 rgba(34, 211, 238, 0.15),
-            0 20px 40px rgba(0, 0, 0, 0.35) !important;
-        border-color: rgba(34, 211, 238, 0.5) !important;
-        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-        animation: advisorBlueGlow 4s ease-in-out infinite alternate !important;
-        animation-delay: 0s !important;
+            0 20px 40px rgba(0, 0, 0, 0.35);
+        border-color: rgba(34, 211, 238, 0.5);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        animation: advisorBlueGlow 4s ease-in-out infinite alternate;
     }
     
     .advisor-card.advisor-blue:hover .advisor-img {
-        filter: brightness(1.08) contrast(1.03) saturate(1.05) !important;
-        transform: scale(1.06) translateZ(8px) !important;
+        filter: brightness(1.08) contrast(1.03) saturate(1.05);
+        transform: scale(1.06) translateZ(8px);
         box-shadow: 
             0 0 20px 3px rgba(34, 211, 238, 0.35),
             0 0 40px 6px rgba(34, 211, 238, 0.2),
-            0 0 80px 10px rgba(34, 211, 238, 0.08) !important;
-        transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+            0 0 80px 10px rgba(34, 211, 238, 0.08);
+        transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     
     .advisor-card.advisor-blue:hover .advisor-name {
-        filter: brightness(1.15) !important;
+        filter: brightness(1.15);
         text-shadow: 
             0 0 15px currentColor,
             0 0 30px currentColor,
-            0 2px 6px rgba(0, 0, 0, 0.25) !important;
-        transform: translateY(-1.5px) scale(1.01) !important;
-        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.1s !important;
+            0 2px 6px rgba(0, 0, 0, 0.25);
+        transform: translateY(-1.5px) scale(1.01);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.1s;
     }
     
     .advisor-card.advisor-blue:hover .advisor-role-badge {
-        transform: translateY(-1px) scale(1.03) !important;
-        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.15s !important;
+        transform: translateY(-1px) scale(1.03);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.15s;
     }
     
     .advisor-card.advisor-blue:hover .advisor-role-badge span {
-        backdrop-filter: blur(10px) !important;
+        backdrop-filter: blur(10px);
         background: linear-gradient(135deg, 
             rgba(255, 255, 255, 0.12),
-            rgba(255, 255, 255, 0.06)) !important;
+            rgba(255, 255, 255, 0.06));
         box-shadow: 
             0 3px 12px rgba(0, 0, 0, 0.15),
-            inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+            inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     
     .advisor-card.advisor-blue:hover .advisor-desc {
-        color: #f8fafc !important;
+        color: #f8fafc;
         text-shadow: 
             0 1px 3px rgba(0, 0, 0, 0.25),
-            0 0 6px rgba(255, 255, 255, 0.08) !important;
-        transform: translateY(-0.5px) !important;
-        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s !important;
+            0 0 6px rgba(255, 255, 255, 0.08);
+        transform: translateY(-0.5px);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s;
     }
     
-    .advisor-card.advisor-blue:not(:hover) {
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-    
-    .advisor-card.advisor-blue:not(:hover) .advisor-img {
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-    
-    .advisor-card.advisor-blue:not(:hover) .advisor-name,
-    .advisor-card.advisor-blue:not(:hover) .advisor-role-badge,
-    .advisor-card.advisor-blue:not(:hover) .advisor-desc {
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-    
-    .advisor-card.advisor-blue:not(:hover) .advisor-role-badge span {
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-    
-    /* GREEN CARD - MAINTAIN EXISTING SMOOTH PARAMETERS */
+    /* GREEN CARD - MAINTAIN CONSISTENCY */
     .advisor-card.advisor-green:hover {
         box-shadow: 
             0 5px 120px 0 rgba(34, 197, 94, 0.3),
@@ -589,6 +561,8 @@
     }
     
     .advisor-card.advisor-green:hover .advisor-img {
+        filter: brightness(1.08) contrast(1.03) saturate(1.05);
+        transform: scale(1.06) translateZ(8px);
         box-shadow: 
             0 0 20px 3px rgba(34, 197, 94, 0.35),
             0 0 40px 6px rgba(34, 197, 94, 0.2),
@@ -596,7 +570,43 @@
         transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     
-    /* PURPLE CARD - MAINTAIN EXISTING SMOOTH PARAMETERS */
+    .advisor-card.advisor-green:hover .advisor-name {
+        filter: brightness(1.15);
+        text-shadow: 
+            0 0 15px currentColor,
+            0 0 30px currentColor,
+            0 2px 6px rgba(0, 0, 0, 0.25);
+        transform: translateY(-1.5px) scale(1.01);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.1s;
+    }
+    
+    .advisor-card.advisor-green:hover .advisor-role-badge {
+        transform: translateY(-1px) scale(1.03);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.15s;
+    }
+    
+    .advisor-card.advisor-green:hover .advisor-role-badge span {
+        backdrop-filter: blur(10px);
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.06));
+        box-shadow: 
+            0 3px 12px rgba(0, 0, 0, 0.15),
+            inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .advisor-card.advisor-green:hover .advisor-desc {
+        color: #f8fafc;
+        text-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.25),
+            0 0 6px rgba(255, 255, 255, 0.08);
+        transform: translateY(-0.5px);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s;
+    }
+    
+    /* PURPLE CARD - MAINTAIN CONSISTENCY */
     .advisor-card.advisor-purple:hover {
         box-shadow: 
             0 5px 120px 0 rgba(168, 85, 247, 0.3),
@@ -609,11 +619,49 @@
     }
     
     .advisor-card.advisor-purple:hover .advisor-img {
+        filter: brightness(1.08) contrast(1.03) saturate(1.05);
+        transform: scale(1.06) translateZ(8px);
         box-shadow: 
             0 0 20px 3px rgba(168, 85, 247, 0.35),
             0 0 40px 6px rgba(168, 85, 247, 0.2),
             0 0 80px 10px rgba(168, 85, 247, 0.08);
         transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .advisor-card.advisor-purple:hover .advisor-name {
+        filter: brightness(1.15);
+        text-shadow: 
+            0 0 15px currentColor,
+            0 0 30px currentColor,
+            0 2px 6px rgba(0, 0, 0, 0.25);
+        transform: translateY(-1.5px) scale(1.01);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.1s;
+    }
+    
+    .advisor-card.advisor-purple:hover .advisor-role-badge {
+        transform: translateY(-1px) scale(1.03);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.15s;
+    }
+    
+    .advisor-card.advisor-purple:hover .advisor-role-badge span {
+        backdrop-filter: blur(10px);
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.06));
+        box-shadow: 
+            0 3px 12px rgba(0, 0, 0, 0.15),
+            inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .advisor-card.advisor-purple:hover .advisor-desc {
+        color: #f8fafc;
+        text-shadow: 
+            0 1px 3px rgba(0, 0, 0, 0.25),
+            0 0 6px rgba(255, 255, 255, 0.08);
+        transform: translateY(-0.5px);
+        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s;
     }
     
     /* Ultra smooth image effects with gentle enhancement */
@@ -660,118 +708,7 @@
         transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0.2s;
     }
     
-    /* Gentle floating animations */
-    @keyframes advisorFloat {
-        0%, 100% { 
-            transform: translateY(0px) scale(1); 
-        }
-        50% { 
-            transform: translateY(-4px) scale(1.005); 
-        }
-    }
-    
-    .advisor-card:nth-child(1) {
-        animation: advisorFloat 8s ease-in-out infinite;
-        animation-delay: 0s;
-    }
-    
-    .advisor-card:nth-child(2) {
-        animation: advisorFloat 8s ease-in-out infinite;
-        animation-delay: 2.5s;
-    }
-    
-    .advisor-card:nth-child(3) {
-        animation: advisorFloat 8s ease-in-out infinite;
-        animation-delay: 5s;
-    }
-    
-    .advisor-card:hover {
-        animation-play-state: paused;
-    }
-    
-    /* SYNCHRONIZED BREATHING GLOW ANIMATIONS - IDENTICAL TIMING */
-    @keyframes advisorBlueGlow {
-        0% { 
-            box-shadow: 
-                0 5px 120px 0 rgba(34, 211, 238, 0.3),
-                0 0 50px 0 rgba(34, 211, 238, 0.2),
-                10px 10px 35px 0 rgba(34, 211, 238, 0.15),
-                0 20px 40px rgba(0, 0, 0, 0.35);
-        }
-        100% { 
-            box-shadow: 
-                0 6px 140px 0 rgba(34, 211, 238, 0.38),
-                0 0 60px 0 rgba(34, 211, 238, 0.28),
-                12px 12px 42px 0 rgba(34, 211, 238, 0.22),
-                0 24px 48px rgba(0, 0, 0, 0.4);
-        }
-    }
-    
-    @keyframes advisorGreenGlow {
-        0% { 
-            box-shadow: 
-                0 5px 120px 0 rgba(34, 197, 94, 0.3),
-                0 0 50px 0 rgba(34, 197, 94, 0.2),
-                10px 10px 35px 0 rgba(34, 197, 94, 0.15),
-                0 20px 40px rgba(0, 0, 0, 0.35);
-        }
-        100% { 
-            box-shadow: 
-                0 6px 140px 0 rgba(34, 197, 94, 0.38),
-                0 0 60px 0 rgba(34, 197, 94, 0.28),
-                12px 12px 42px 0 rgba(34, 197, 94, 0.22),
-                0 24px 48px rgba(0, 0, 0, 0.4);
-        }
-    }
-    
-    @keyframes advisorPurpleGlow {
-        0% { 
-            box-shadow: 
-                0 5px 120px 0 rgba(168, 85, 247, 0.3),
-                0 0 50px 0 rgba(168, 85, 247, 0.2),
-                10px 10px 35px 0 rgba(168, 85, 247, 0.15),
-                0 20px 40px rgba(0, 0, 0, 0.35);
-        }
-        100% { 
-            box-shadow: 
-                0 6px 140px 0 rgba(168, 85, 247, 0.38),
-                0 0 60px 0 rgba(168, 85, 247, 0.28),
-                12px 12px 42px 0 rgba(168, 85, 247, 0.22),
-                0 24px 48px rgba(0, 0, 0, 0.4);
-        }
-    }
-    
-    /* Subtle particles effect with smoother transitions */
-    .advisor-card::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 115%;
-        height: 115%;
-        background: radial-gradient(circle, 
-            rgba(255, 255, 255, 0.08) 1px, 
-            transparent 1px);
-        background-size: 25px 25px;
-        transform: translate(-50%, -50%) rotate(0deg);
-        opacity: 0;
-        transition: all 1.0s cubic-bezier(0.25, 0.8, 0.25, 1);
-        pointer-events: none;
-        z-index: 0;
-    }
-    
-    .advisor-card:hover::after {
-        opacity: 0.2;
-        transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
-    }
-    
-    /* Content layering */
-    .advisor-card > * {
-        position: relative;
-        z-index: 2;
-    }
-    
-    /* Ultra smooth exit transitions */
+    /* UNIFIED EXIT TRANSITIONS - ALL CARDS */
     .advisor-card:not(:hover) {
         transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -788,76 +725,6 @@
     
     .advisor-card:not(:hover) .advisor-role-badge span {
         transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* Mobile optimizations */
-    @media (hover: none) and (pointer: coarse) {
-        .advisor-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            transition: all 0.4s ease-out;
-        }
-        
-        .advisor-card:hover .advisor-img {
-            transform: scale(1.03);
-            filter: brightness(1.05);
-            transition: all 0.4s ease-out;
-        }
-        
-        /* Simplified effects for mobile */
-        .advisor-card::before,
-        .advisor-card::after {
-            display: none;
-        }
-        
-        .advisor-card.advisor-blue:hover,
-        .advisor-card.advisor-green:hover,
-        .advisor-card.advisor-purple:hover {
-            animation: none;
-        }
-        
-        /* Faster transitions on mobile */
-        .advisor-card {
-            transition: all 0.4s ease-out;
-        }
-        
-        .advisor-card:not(:hover) {
-            transition: all 0.5s ease-out;
-        }
-    }
-    
-    /* Accessibility - Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-        .advisor-card,
-        .advisor-card *,
-        .advisor-card::before,
-        .advisor-card::after {
-            animation: none !important;
-            transition: all 0.3s ease !important;
-        }
-        
-        .advisor-card:hover {
-            transform: translateY(-6px) scale(1.01);
-        }
-        
-        .advisor-card:hover .advisor-img {
-            transform: scale(1.03);
-        }
-        
-        .advisor-card:not(:hover) {
-            transition: all 0.3s ease !important;
-        }
-    }
-    
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .advisor-card:hover {
-            border: 2px solid currentColor;
-        }
-        
-        .advisor-card::before,
-        .advisor-card::after {
-            display: none;
-        }
     }
     /* ==============================================
        COMPETITIVE ROSTERS SECTION - IMPROVED ALIGNMENT
@@ -1820,244 +1687,346 @@
                 0 0 1.5px rgba(139, 92, 246, 0.015);
         }
     }
+     
+/* ==============================================
+   OPTIMIZED FOUNDERS CARD SYSTEM - ENHANCED HOVER ONLY
+   ============================================== */
+
+#founders .card {
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg), var(--shadow-md);
+    border: 1.5px solid transparent;
+    position: relative;
+    overflow: hidden;
+    padding: 2.5rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 430px;
+    background: var(--color-bg-card);
+    will-change: transform, box-shadow;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    contain: layout style;
+}
+
+/* Optimized card backgrounds using CSS custom properties */
+#founders .card[data-shadow*="255,206,65"] { 
+    background: radial-gradient(ellipse 80% 40% at 50% 0%, #ffce41cc 0%, var(--color-bg-card) 80%),
+               linear-gradient(180deg, var(--color-bg-card) 60%, #181825 100%);
+    --founder-theme-color: var(--theme-yellow); 
+    --founder-glow: #ffce4140;
+}
+
+#founders .card[data-shadow*="236,65,88"] { 
+    background: radial-gradient(ellipse 80% 40% at 50% 0%, #ec4158cc 0%, var(--color-bg-card) 80%),
+               linear-gradient(180deg, var(--color-bg-card) 60%, #181825 100%);
+    --founder-theme-color: var(--theme-red); 
+    --founder-glow: #ec415840;
+}
+
+#founders .card[data-shadow*="102,75,240"] { 
+    background: radial-gradient(ellipse 80% 40% at 50% 0%, #664bf0cc 0%, var(--color-bg-card) 80%),
+               linear-gradient(180deg, var(--color-bg-card) 60%, #181825 100%);
+    --founder-theme-color: var(--theme-purple); 
+    --founder-glow: #664bf040;
+}
+
+/* ENHANCED SMOOTH OUTER GLOW EFFECTS - HOVER ONLY */
+#founders .card:hover, 
+#founders .card:focus-within {
+    transform: translateY(-12px) scale(1.03) rotateX(2deg);
     
-    /* ==============================================
-       OPTIMIZED FOUNDERS CARD SYSTEM
-       ============================================== */
+    /* MULTI-LAYER OUTER GLOW WITH SMOOTH TRANSITIONS */
+    box-shadow: 
+        /* Inner border glow */
+        0 0 0 2px var(--founder-theme-color, #fff) inset,
+        
+        /* Primary outer glow */
+        0 0 12px 2px var(--founder-theme-color, #fff),
+        0 0 24px 4px var(--founder-theme-color, #fff),
+        
+        /* Secondary outer glow */
+        0 0 36px 6px var(--founder-glow, rgba(255,255,255,0.15)),
+        0 0 48px 8px var(--founder-glow, rgba(255,255,255,0.12)),
+        
+        /* Tertiary outer glow */
+        0 0 72px 10px var(--founder-glow, rgba(255,255,255,0.08)),
+        0 0 96px 12px var(--founder-glow, rgba(255,255,255,0.06)),
+        
+        /* Ambient outer glow */
+        0 0 120px 15px var(--founder-glow, rgba(255,255,255,0.04)),
+        0 0 180px 20px var(--founder-glow, rgba(255,255,255,0.02)),
+        
+        /* Depth shadow */
+        0 30px 60px 0 rgba(0,0,0,0.4);
     
-    #founders .card {
-        border-radius: var(--radius-2xl);
-        box-shadow: var(--shadow-lg), var(--shadow-md);
-        border: 1.5px solid transparent;
-        position: relative;
-        overflow: hidden;
-        padding: 2.5rem 1.5rem 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        min-height: 430px;
-        background: var(--color-bg-card);
-        will-change: transform, box-shadow;
-        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-        contain: layout style;
+    /* Smooth transition with custom easing */
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 10;
+}
+
+/* ENHANCED SMOOTH EXIT TRANSITION */
+#founders .card:not(:hover):not(:focus-within) {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        /* Subtle resting glow */
+        0 0 0 1px var(--founder-theme-color, #fff) inset,
+        0 0 4px 1px var(--founder-glow, rgba(255,255,255,0.06)),
+        0 0 12px 2px var(--founder-glow, rgba(255,255,255,0.04)),
+        
+        /* Base card shadow */
+        var(--shadow-lg), 
+        var(--shadow-md);
+}
+
+/* PULSING AMBIENT GLOW ANIMATION - HOVER ACTIVATED */
+#founders .card::after {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border-radius: calc(var(--radius-2xl) + 18px);
+    background: radial-gradient(ellipse at center, 
+        var(--founder-glow, rgba(255,255,255,0.03)) 0%, 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: founder-ambient-pulse 3s ease-in-out infinite alternate paused;
+    pointer-events: none;
+    z-index: -1;
+}
+
+#founders .card:hover::after {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+@keyframes founder-ambient-pulse {
+    0% { 
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% { 
+        transform: scale(1.2);
+        opacity: 0.5;
+    }
+}
+
+/* Enhanced border animation - smoother and more visible */
+#founders .card::before { 
+    content: ""; 
+    position: absolute; 
+    inset: 1px; 
+    border-radius: calc(var(--radius-2xl) + 1px); 
+    background: linear-gradient(135deg, 
+        var(--founder-theme-color, #fff) 0%, 
+        transparent 25%,
+        var(--founder-theme-color, #fff) 50%,
+        transparent 75%,
+        var(--founder-theme-color, #fff) 100%);
+    background-size: 400% 400%;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0; 
+    transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: founder-border-anim 2s ease-in-out infinite paused; 
+    z-index: 1;
+    will-change: opacity, background-position;
+}
+
+#founders .card:hover::before { 
+    opacity: 0.5; 
+    animation-play-state: running; 
+}
+
+@keyframes founder-border-anim {
+    0% { 
+        background-position: 0% 50%; 
+    }
+    50% { 
+        background-position: 100% 50%; 
+    }
+    100% { 
+        background-position: 0% 50%; 
+    }
+}
+
+/* REFINED IMAGE HOVER EFFECT - ENHANCED NOTICEABLE ROTATION */
+#founders .founder-img-wrap { 
+    margin-bottom: 1.25rem; 
+    position: relative;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+    animation: founder-noticeable-rotation 3s ease-in-out infinite alternate;
+}
+
+/* ENHANCED NOTICEABLE ROTATION ANIMATION - INCREASED FROM SUBTLE */
+@keyframes founder-noticeable-rotation {
+    0% { 
+        transform: rotate(-8deg);
+    }
+    100% { 
+        transform: rotate(8deg);
+    }
+}
+
+/* ENHANCED IMAGE WITH SOFT ELEVATION */
+#founders .founder-img {
+    width: 8.5rem; 
+    height: 8.5rem; 
+    object-fit: cover; 
+    border-radius: 50%;
+    border: 4px solid #fff; 
+    box-shadow: 0 4px 20px 0 var(--founder-glow, rgba(255,255,255,0.15)); 
+    background: #fff; 
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, box-shadow, filter;
+    position: relative;
+    z-index: 2;
+}
+
+/* ELEGANT FLOATING HOVER EFFECT */
+#founders .card:hover .founder-img {
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: 
+        0 12px 40px 0 var(--founder-glow, rgba(255,255,255,0.3)),
+        0 6px 20px 0 var(--founder-glow, rgba(255,255,255,0.2)),
+        0 0 30px 5px var(--founder-glow, rgba(255,255,255,0.15));
+    filter: brightness(1.1) contrast(1.03) saturate(1.1);
+    border-color: var(--founder-theme-color, #fff);
+}
+
+/* PAUSE ROTATION ON HOVER */
+#founders .card:hover .founder-img-wrap {
+    animation-play-state: paused;
+}
+
+#founders .founder-name {
+    font-size: 1.4rem; 
+    font-family: var(--font-montserrat); 
+    font-weight: 800;
+    margin-bottom: 0.35rem; 
+    letter-spacing: 0.02em;
+    background: linear-gradient(120deg, var(--theme-yellow) 0%, var(--theme-red) 50%, var(--theme-purple) 100%);
+    background-size: 200% auto; 
+    background-position: 50% 50%; 
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: transform;
+}
+
+#founders .card:hover .founder-name { 
+    transform: translateY(-3px) scale(1.02);
+    animation: founders-gradient-move 3s ease-in-out infinite alternate; 
+}
+
+#founders .founder-role {
+    font-size: 1.05rem; 
+    font-weight: 700; 
+    margin-bottom: 0.75rem; 
+    letter-spacing: 0.015em; 
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: color, transform;
+}
+
+#founders .card[data-shadow*="255,206,65"] .founder-role { color: #FFF9E6; }
+#founders .card[data-shadow*="236,65,88"] .founder-role { color: #FFDDE1; }
+#founders .card[data-shadow*="102,75,240"] .founder-role { color: #E9E3FF; }
+
+#founders .card:hover .founder-role { 
+    color: var(--founder-theme-color) !important;
+    transform: translateY(-2px) scale(1.01);
+}
+
+#founders .founder-desc {
+    font-size: 0.98rem; 
+    color: var(--color-text-secondary); 
+    opacity: 0.95; 
+    margin-bottom: 0;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: color, opacity, transform;
+}
+
+#founders .card:hover .founder-desc { 
+    color: var(--color-text-primary); 
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+/* Reset animations when not hovered - UPDATED */
+#founders .card:not(:hover)::after,
+#founders .card:not(:hover)::before {
+    animation-play-state: paused;
+    opacity: 0;
+}
+
+/* Mobile optimizations - REDUCED EFFECTS FOR PERFORMANCE */
+@media (hover: none) and (pointer: coarse) {
+    #founders .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 
+            0 0 0 2px var(--founder-theme-color, #fff) inset,
+            0 0 12px 2px var(--founder-theme-color, #fff),
+            0 0 24px 4px var(--founder-glow, rgba(255,255,255,0.12)),
+            0 0 48px 8px var(--founder-glow, rgba(255,255,255,0.08)),
+            0 25px 50px 0 rgba(0,0,0,0.35);
+    }
+
+    #founders .card:hover .founder-img {
+        transform: translateY(-4px) scale(1.05);
+    }
+
+    /* Reduce rotation animation intensity on mobile but still noticeable */
+    #founders .founder-img-wrap {
+        animation: founder-noticeable-rotation-mobile 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes founder-noticeable-rotation-mobile {
+        0% { 
+            transform: rotate(-5deg);
+        }
+        100% { 
+            transform: rotate(5deg);
+        }
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    #founders .card,
+    #founders .card *,
+    #founders .card::before,
+    #founders .card::after,
+    #founders .founder-img-wrap {
+        animation: none !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important;
     }
     
-    /* Optimized card backgrounds using CSS custom properties */
-    #founders .card[data-shadow*="255,206,65"] { 
-        background: radial-gradient(ellipse 80% 40% at 50% 0%, #ffce41cc 0%, var(--color-bg-card) 80%),
-                   linear-gradient(180deg, var(--color-bg-card) 60%, #181825 100%);
-        --founder-theme-color: var(--theme-yellow); 
-        --founder-glow: #ffce4140;
-    }
-    
-    #founders .card[data-shadow*="236,65,88"] { 
-        background: radial-gradient(ellipse 80% 40% at 50% 0%, #ec4158cc 0%, var(--color-bg-card) 80%),
-                   linear-gradient(180deg, var(--color-bg-card) 60%, #181825 100%);
-        --founder-theme-color: var(--theme-red); 
-        --founder-glow: #ec415840;
-    }
-    
-    #founders .card[data-shadow*="102,75,240"] { 
-        background: radial-gradient(ellipse 80% 40% at 50% 0%, #664bf0cc 0%, var(--color-bg-card) 80%),
-                   linear-gradient(180deg, var(--color-bg-card) 60%, #181825 100%);
-        --founder-theme-color: var(--theme-purple); 
-        --founder-glow: #664bf040;
-    }
-    
-    #founders .card:hover, 
-    #founders .card:focus-within {
-        transform: translateY(-8px) scale(1.01);
-        box-shadow: 0 0 0 2px var(--founder-theme-color, #fff) inset,
-                    0 4px 15px 3px var(--founder-theme-color, #fff2),
-                    0 6px 22px 8px var(--founder-glow, rgba(255,255,255,0.12)),
-                    0 20px 40px 0 rgba(0,0,0,0.4);
-        z-index: 10;
-    }
-    
-    #founders .card::before { 
-        content: ""; 
-        position: absolute; 
-        inset: 1px; 
-        border-radius: calc(var(--radius-2xl) + 1px); 
-        background: linear-gradient(135deg, var(--founder-theme-color, #fff), transparent, var(--founder-theme-color, #fff));
-        background-size: 400% 400%;
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask-composite: exclude;
-        opacity: 0; 
-        transition: opacity 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-        animation: founder-border-anim 3s linear infinite paused; 
-        z-index: 1;
-        will-change: opacity, background-position;
-    }
-    
-    #founders .card:hover::before { 
-        opacity: 0.25; 
-        animation-play-state: running; 
-    }
-    
-    #founders .founder-img-wrap { 
-        margin-bottom: 1.25rem; 
-        transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-        will-change: transform;
-    }
-    
-    /* Slower, smoother movement */
-    #founders .card:hover .founder-img-wrap { 
-        transform: translateY(-20px);
-        animation: founder-img-float 3s ease-in-out infinite alternate;
-    }
-    
-    /* Floating animation for images */
- 
-    #founders .founder-img {
-        width: 8.5rem; 
-        height: 8.5rem; 
-        object-fit: cover; 
-        border-radius: 50%;
-        border: 4px solid #fff; 
-        box-shadow: 0 4px 20px 0 var(--founder-glow, rgba(255,255,255,0.15)); 
-        background: #fff; 
-        transition: all 3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        will-change: transform, box-shadow;
+    #founders .card:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 
+            0 0 0 2px var(--founder-theme-color, #fff) inset,
+            0 0 8px 2px var(--founder-glow, rgba(255,255,255,0.15)),
+            var(--shadow-lg);
     }
     
     #founders .card:hover .founder-img {
-        transform: scale(1.03);
-        box-shadow: 0 6px 25px 0 var(--founder-glow, rgba(255,255,255,0.2));
-        filter: brightness(1.02);
+        transform: translateY(-3px) scale(1.03);
+        filter: brightness(1.08);
     }
     
-    #founders .founder-name {
-        font-size: 1.4rem; 
-        font-family: var(--font-montserrat); 
-        font-weight: 800;
-        margin-bottom: 0.35rem; 
-        letter-spacing: 0.02em;
-        background: linear-gradient(120deg, var(--theme-yellow) 0%, var(--theme-red) 50%, var(--theme-purple) 100%);
-        background-size: 200% auto; 
-        background-position: 50% 50%; 
-        background-clip: text; 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent;
-        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-        will-change: transform;
-    }
-    
-    #founders .card:hover .founder-name { 
-        transform: translateY(-2px);
-        animation: founders-gradient-move 4s ease-in-out infinite alternate; 
-    }
-    
-    #founders .founder-role {
-        font-size: 1.05rem; 
-        font-weight: 700; 
-        margin-bottom: 0.75rem; 
-        letter-spacing: 0.015em; 
-        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-        will-change: color, transform;
-    }
-    
-    #founders .card[data-shadow*="255,206,65"] .founder-role { color: #FFF9E6; }
-    #founders .card[data-shadow*="236,65,88"] .founder-role { color: #FFDDE1; }
-    #founders .card[data-shadow*="102,75,240"] .founder-role { color: #E9E3FF; }
-    
-    #founders .card:hover .founder-role { 
-        color: var(--founder-theme-color) !important;
-        transform: translateY(-1px);
-    }
-    
-    #founders .founder-desc {
-        font-size: 0.98rem; 
-        color: var(--color-text-secondary); 
-        opacity: 0.95; 
-        margin-bottom: 0;
-        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-        will-change: color, opacity, transform;
-    }
-    
-    #founders .card:hover .founder-desc { 
-        color: var(--color-text-primary); 
-        opacity: 1;
-        transform: translateY(-1px);
-    }
-    
-    /* Reset animation when not hovered */
-    #founders .card:not(:hover) .founder-img-wrap {
+    #founders .card:hover::after,
+    #founders .card:hover::before {
+        opacity: 0;
         animation: none;
     }
-    
-    /* Smooth exit transitions */
-    #founders .card:not(:hover) {
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* Mobile optimizations */
-    @media (hover: none) and (pointer: coarse) {
-        #founders .card:hover .founder-img-wrap {
-            transform: translateY(-6px);
-            animation: founder-img-float-mobile 2s ease-in-out infinite alternate;
-        }
-    }
-    
-    /* Mobile floating animation - gentler */
-    @keyframes founder-img-float-mobile {
-        0% { 
-            transform: translateY(-6px); 
-        }
-        100% { 
-            transform: translateY(-3px); 
-        }
-    }
-    
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        #founders .card,
-        #founders .card *,
-        #founders .card::before {
-            animation: none !important;
-            transition: none !important;
-        }
-        
-        #founders .card:hover {
-            transform: none;
-        }
-        
-        #founders .card:hover .founder-img-wrap {
-            transform: none;
-            animation: none;
-        }
-    }
-    
-    /* ==============================================
-       Z-INDEX MANAGEMENT
-       ============================================== */
-    
-    header {
-        position: relative;
-        z-index: 60;
-    }
-    
-    .card {
-        position: relative;
-        z-index: 5;
-    }
-    
-    section {
-        position: relative;
-        z-index: 2;
-    }
-    
-    #global-particles {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        pointer-events: none !important;
-        z-index: 1 !important;
-    }
-    
+}
     /* ==============================================
        RESPONSIVE BREAKPOINTS
        ============================================== */
@@ -2201,6 +2170,313 @@
         .news-card:hover {
             transform: none;
         }
+    }
+    
+    /* ==============================================
+       SPECIALIST CARDS - INDEPENDENT CSS STYLING
+       ============================================== */
+    
+    /* Base Specialist Card Styling - copied from current Tailwind classes */
+    .specialist-card {
+        /* Layout and Structure */
+        border-radius: 1rem; /* rounded-2xl */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 2rem; /* p-6 lg:p-8 */
+        
+        /* Size constraints */
+        min-height: 480px;
+        width: 100%;
+        max-width: 320px;
+        
+        /* Border and Shadow */
+        border-width: 1px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        
+        /* Transitions - copied from current hover:scale-105 hover:-translate-y-2 */
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        will-change: transform, box-shadow;
+    }
+    
+    /* Theme-specific backgrounds and colors - copied from current Tailwind gradients */
+    .specialist-card[data-theme="yellow"] {
+        background: linear-gradient(to bottom right, rgba(133, 77, 14, 0.3), rgba(146, 64, 14, 0.2));
+        border-color: rgba(250, 204, 21, 0.25);
+        --specialist-theme-color: #facc15;
+        --specialist-theme-glow: rgba(250, 204, 21, 0.4);
+    }
+    
+    .specialist-card[data-theme="purple"] {
+        background: linear-gradient(to bottom right, rgba(88, 28, 135, 0.3), rgba(107, 33, 168, 0.2));
+        border-color: rgba(168, 85, 247, 0.25);
+        --specialist-theme-color: #a855f7;
+        --specialist-theme-glow: rgba(168, 85, 247, 0.4);
+    }
+    
+    .specialist-card[data-theme="pink"] {
+        background: linear-gradient(to bottom right, rgba(131, 24, 67, 0.3), rgba(157, 23, 77, 0.2));
+        border-color: rgba(236, 72, 153, 0.25);
+        --specialist-theme-color: #ec4899;
+        --specialist-theme-glow: rgba(236, 72, 153, 0.4);
+    }
+    
+    .specialist-card[data-theme="cyan"] {
+        background: linear-gradient(to bottom right, rgba(22, 78, 99, 0.3), rgba(21, 94, 117, 0.2));
+        border-color: rgba(56, 189, 248, 0.25);
+        --specialist-theme-color: #38bdf8;
+        --specialist-theme-glow: rgba(56, 189, 248, 0.4);
+    }
+    
+    /* Hover Effects - copied from current hover:shadow-*-400/40 hover:scale-105 hover:-translate-y-2 */
+    .specialist-card[data-theme="yellow"]:hover {
+        box-shadow: 0 25px 50px -12px rgba(250, 204, 21, 0.4);
+        transform: scale(1.05) translateY(-0.5rem);
+    }
+    
+    .specialist-card[data-theme="purple"]:hover {
+        box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.4);
+        transform: scale(1.05) translateY(-0.5rem);
+    }
+    
+    .specialist-card[data-theme="pink"]:hover {
+        box-shadow: 0 25px 50px -12px rgba(236, 72, 153, 0.4);
+        transform: scale(1.05) translateY(-0.5rem);
+    }
+    
+    .specialist-card[data-theme="cyan"]:hover {
+        box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.4);
+        transform: scale(1.05) translateY(-0.5rem);
+    }
+    
+    /* Image Container - copied from current .relative.mb-4.group */
+    .specialist-card .relative.mb-4.group,
+    .specialist-card .relative.mb-4 {
+        position: relative;
+        margin-bottom: 1rem;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    /* Image Styling - copied from current Tailwind classes */
+    .specialist-card img {
+        width: 6rem; /* w-24 */
+        height: 6rem; /* h-24 */
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--specialist-theme-color, #facc15);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        user-select: none;
+        pointer-events: none;
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    /* Large screens image sizing - copied from lg:w-28 lg:h-28 */
+    @media (min-width: 1024px) {
+        .specialist-card img {
+            width: 7rem; /* lg:w-28 */
+            height: 7rem; /* lg:h-28 */
+        }
+    }
+    
+    /* Image hover effect - copied from group-hover:scale-110 */
+    .specialist-card:hover img {
+        transform: scale(1.1);
+    }
+    
+    /* Title Styling - copied from current text-xl font-bold mb-2 text-*-400 */
+    .specialist-card h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--specialist-theme-color, #facc15);
+        transition: color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    /* Title hover effect - copied from hover:text-*-300 */
+    .specialist-card[data-theme="yellow"]:hover h4 {
+        color: #fde047; /* hover:text-yellow-300 */
+    }
+    
+    .specialist-card[data-theme="purple"]:hover h4 {
+        color: #c084fc; /* hover:text-purple-300 */
+    }
+    
+    .specialist-card[data-theme="pink"]:hover h4 {
+        color: #f9a8d4; /* hover:text-pink-300 */
+    }
+    
+    .specialist-card[data-theme="cyan"]:hover h4 {
+        color: #67e8f9; /* hover:text-cyan-300 */
+    }
+    
+    /* Role Badge Styling - copied from current Tailwind classes */
+    .specialist-card p.font-medium.mb-3.italic {
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+        font-style: italic;
+        font-size: 0.875rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+    }
+    
+    /* Theme-specific role badge colors */
+    .specialist-card[data-theme="yellow"] p.font-medium.mb-3.italic {
+        color: #fef3c7; /* text-yellow-200 */
+        background-color: rgba(133, 77, 14, 0.3); /* bg-yellow-900/30 */
+    }
+    
+    .specialist-card[data-theme="purple"] p.font-medium.mb-3.italic {
+        color: #e9d5ff; /* text-purple-200 */
+        background-color: rgba(88, 28, 135, 0.3); /* bg-purple-900/30 */
+    }
+    
+    .specialist-card[data-theme="pink"] p.font-medium.mb-3.italic {
+        color: #fbcfe8; /* text-pink-200 */
+        background-color: rgba(131, 24, 67, 0.3); /* bg-pink-900/30 */
+    }
+    
+    .specialist-card[data-theme="cyan"] p.font-medium.mb-3.italic {
+        color: #cffafe; /* text-cyan-200 */
+        background-color: rgba(22, 78, 99, 0.3); /* bg-cyan-900/30 */
+    }
+    
+    /* Description Text - copied from current text-gray-300 text-sm leading-relaxed */
+    .specialist-card p.text-gray-300.text-sm {
+        color: #d1d5db; /* text-gray-300 */
+        font-size: 0.875rem; /* text-sm */
+        line-height: 1.625; /* leading-relaxed */
+        flex-grow: 1;
+    }
+    
+    /* Social Links Container - copied from current styling */
+    .specialist-card .w-full.flex.flex-col.items-center.gap-2.mt-auto.pt-2,
+    .specialist-card .w-full.flex.justify-center.mt-auto.pt-2 {
+        width: 100%;
+        display: flex;
+        margin-top: auto;
+        padding-top: 0.5rem;
+    }
+    
+    .specialist-card .w-full.flex.flex-col.items-center.gap-2.mt-auto.pt-2 {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .specialist-card .w-full.flex.justify-center.mt-auto.pt-2 {
+        justify-content: center;
+    }
+    
+    /* Social Links - copied from current styling with theme colors */
+    .specialist-card a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        color: var(--specialist-theme-color, #facc15);
+    }
+    
+    /* Social link hover effects with theme-specific colors */
+    .specialist-card[data-theme="yellow"] a:hover {
+        color: #fde047;
+        transform: scale(1.05);
+    }
+    
+    .specialist-card[data-theme="purple"] a:hover {
+        color: #c084fc;
+        transform: scale(1.05);
+    }
+    
+    .specialist-card[data-theme="pink"] a:hover {
+        color: #f9a8d4;
+        transform: scale(1.05);
+    }
+    
+    .specialist-card[data-theme="cyan"] a:hover {
+        color: #67e8f9;
+        transform: scale(1.05);
+    }
+    
+    /* SVG Icons in social links */
+    .specialist-card a svg {
+        width: 1rem;
+        height: 1rem;
+    }
+    
+    /* Glow overlay effect - copied from current absolute inset-0 bg-*-400/20 opacity-0 group-hover:opacity-100 */
+    .specialist-card .relative.mb-4.group::after,
+    .specialist-card .relative.mb-4::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        filter: blur(0.75rem);
+    }
+    
+    .specialist-card[data-theme="yellow"] .relative.mb-4::after {
+        background-color: rgba(250, 204, 21, 0.2);
+    }
+    
+    .specialist-card[data-theme="purple"] .relative.mb-4::after {
+        background-color: rgba(168, 85, 247, 0.2);
+    }
+    
+    .specialist-card[data-theme="pink"] .relative.mb-4::after {
+        background-color: rgba(236, 72, 153, 0.2);
+    }
+    
+    .specialist-card[data-theme="cyan"] .relative.mb-4::after {
+        background-color: rgba(56, 189, 248, 0.2);
+    }
+    
+    /* Show glow on hover */
+    .specialist-card:hover .relative.mb-4::after {
+        opacity: 1;
+    }
+    
+    /* Grid container - copied from current grid classes */
+    .specialist-card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        justify-items: center;
+    }
+    
+    @media (min-width: 640px) {
+        .specialist-card-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .specialist-card-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1023px) {
+        .specialist-card {
+            padding: 1.5rem; /* p-6 for smaller screens */
+        }
+    }
+    
+    /* Remove any JavaScript control classes or conflicting styles */
+    .specialist-card.disable-user-interaction img {
+        user-select: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
     }
     </style>
 
@@ -2436,7 +2712,7 @@
             <!-- Option 1: Vibrant Rainbow Gradient (Current Active) -->
             <p class="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500 bg-clip-text text-transparent font-semibold leading-relaxed tracking-wide" 
                style="text-shadow: 0 2px 4px rgba(0,0,0,0.3); font-size: 1.15rem; line-height: 1.8;">
-                Our journey began on January 26, 2020. 1hp set out to become the most respected esports team in Bangladesh. Since then, we've emerged & respected as a top org in the Apex Legends scene, driven by our passion, teamwork, and commitment to excellence.
+                Our journey began on January 26, 2020. 1hp set out to become the reputed esports team in Bangladesh. Since then, we've emerged & respected as a top org in the Apex Legends scene, driven by our passion, teamwork, and commitment to excellence.
             </p>
             <!-- Option 2: Warm Orange to Red Gradient -->
             <p class="bg-gradient-to-r from-orange-300 via-pink-400 to-red-400 bg-clip-text text-transparent font-semibold leading-relaxed tracking-wide" 
@@ -3227,10 +3503,10 @@
 
 
             <!-- JavaScript Start -->
-    <script>
+            <script>
             'use strict';
             
-            // --- Performance Configuration ---
+            // --- PERFORMANCE CONFIGURATION ---
             const PERF_CONFIG = {
                 debounceDelay: 250,
                 particleThrottleDelay: 16,
@@ -3239,22 +3515,18 @@
                 particleDensity: 25000
             };
             
-            // --- Utility Functions ---
+            // --- UTILITY FUNCTIONS ---
             const debounce = (func, wait) => {
                 let timeout;
-                return function executedFunction(...args) {
-                    const later = () => {
-                        clearTimeout(timeout);
-                        func.apply(this, args);
-                    };
+                return (...args) => {
                     clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
+                    timeout = setTimeout(() => func.apply(this, args), wait);
                 };
             };
             
             const throttle = (func, limit) => {
                 let inThrottle;
-                return function(...args) {
+                return (...args) => {
                     if (!inThrottle) {
                         func.apply(this, args);
                         inThrottle = true;
@@ -3263,12 +3535,1080 @@
                 };
             };
             
-            // --- PARALLAX SCROLLING EFFECT (RESTORED) ---
-            function initializeParallax() {
-                // Parallax elements configuration
-                const parallaxElements = [
-                ];
+            // --- MENU SYSTEM (Consolidated Mobile/Tablet) ---
+            class MenuManager {
+                constructor() {
+                    this.menus = new Map();
+                    this.resizeTimeout = null;
+                    this.init();
+                }
             
+                init() {
+                    // Register menus
+                    this.registerMenu('mobile', 'mobile-menu-button', 'mobile-menu');
+                    this.registerMenu('tablet', 'tablet-menu-button', 'tablet-menu');
+                    
+                    this.setupEventListeners();
+                }
+            
+                registerMenu(type, buttonId, menuId) {
+                    const button = document.getElementById(buttonId);
+                    const menu = document.getElementById(menuId);
+                    
+                    if (button && menu) {
+                        this.menus.set(type, { button, menu });
+                        this.setupMenuToggle(type);
+                    }
+                }
+            
+                setupMenuToggle(type) {
+                    const { button, menu } = this.menus.get(type);
+                    
+                    button.addEventListener('click', () => this.toggleMenu(type));
+                    menu.addEventListener('click', (e) => {
+                        if (e.target.matches('a[href^="#"]')) {
+                            this.closeAllMenus();
+                        }
+                    });
+                }
+            
+                toggleMenu(activeType) {
+                    // Close other menus first
+                    this.menus.forEach((menuData, type) => {
+                        if (type !== activeType) {
+                            this.closeMenu(type);
+                        }
+                    });
+            
+                    // Toggle active menu
+                    const { button, menu } = this.menus.get(activeType);
+                    const isHidden = menu.classList.toggle('hidden');
+                    const isExpanded = !isHidden;
+                    
+                    this.updateMenuState(button, isExpanded);
+                }
+            
+                closeMenu(type) {
+                    const menuData = this.menus.get(type);
+                    if (!menuData) return;
+                    
+                    const { button, menu } = menuData;
+                    if (!menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                        this.updateMenuState(button, false);
+                    }
+                }
+            
+                closeAllMenus() {
+                    this.menus.forEach((_, type) => this.closeMenu(type));
+                }
+            
+                updateMenuState(button, isExpanded) {
+                    button.setAttribute('aria-expanded', String(isExpanded));
+                    
+                    const hamburgerIcon = button.querySelector('svg:first-of-type');
+                    const closeIcon = button.querySelector('svg:last-of-type');
+                    
+                    if (hamburgerIcon && closeIcon) {
+                        hamburgerIcon.classList.toggle('hidden', isExpanded);
+                        closeIcon.classList.toggle('hidden', !isExpanded);
+                    }
+                }
+            
+                setupEventListeners() {
+                    // Responsive resize handler
+                    window.addEventListener('resize', () => {
+                        clearTimeout(this.resizeTimeout);
+                        this.resizeTimeout = setTimeout(() => {
+                            const width = window.innerWidth;
+                            
+                            if (width >= 1024) {
+                                this.closeAllMenus();
+                            } else if (width >= 640 && width < 1024) {
+                                this.closeMenu('mobile');
+                            } else if (width < 640) {
+                                this.closeMenu('tablet');
+                            }
+                        }, 150);
+                    });
+            
+                    // Global close handlers
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') {
+                            this.closeAllMenus();
+                        }
+                    });
+            
+                    document.addEventListener('click', (e) => {
+                        const isMenuRelated = Array.from(this.menus.values()).some(({ button, menu }) => 
+                            button?.contains(e.target) || menu?.contains(e.target)
+                        );
+                        
+                        if (!isMenuRelated) {
+                            this.closeAllMenus();
+                        }
+                    });
+                }
+            }
+            
+            // --- PARTICLE ANIMATION SYSTEM (Consolidated) ---
+            class ParticleSystem {
+                constructor(target, options = {}) {
+                    this.target = target;
+                    this.options = {
+                        colors: options.colors || [
+                            'rgba(253,224,71,0.12)', 'rgba(236,65,88,0.12)', 'rgba(102,75,240,0.12)',
+                            'rgba(96,165,250,0.12)', 'rgba(34,197,94,0.12)', 'rgba(249,115,22,0.12)',
+                            'rgba(14,165,233,0.12)', 'rgba(236,72,153,0.12)', 'rgba(255,255,255,0.08)',
+                            'rgba(168,85,247,0.10)'
+                        ],
+                        particleCount: options.particleCount || PERF_CONFIG.maxParticleCount,
+                        isGlobal: options.isGlobal || false,
+                        opacity: options.opacity || '0.6',
+                        ...options
+                    };
+                    
+                    this.canvas = null;
+                    this.ctx = null;
+                    this.particles = [];
+                    this.animationFrameId = null;
+                    this.isVisible = true;
+                    this.observer = null;
+                    
+                    this.init();
+                }
+            
+                init() {
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    
+                    this.createCanvas();
+                    this.setupParticles();
+                    this.setupEventListeners();
+                    this.startAnimation();
+                }
+            
+                createCanvas() {
+                    this.canvas = document.createElement('canvas');
+                    
+                    if (this.options.isGlobal) {
+                        this.canvas.id = 'global-particles';
+                        Object.assign(this.canvas.style, {
+                            position: 'fixed',
+                            top: '0',
+                            left: '0',
+                            width: '100vw',
+                            height: '100vh',
+                            pointerEvents: 'none',
+                            zIndex: '1',
+                            opacity: this.options.opacity
+                        });
+                        document.body.prepend(this.canvas);
+                    } else {
+                        Object.assign(this.canvas.style, {
+                            position: 'absolute',
+                            top: '0',
+                            left: '0',
+                            width: '100%',
+                            height: '100%',
+                            pointerEvents: 'none',
+                            zIndex: '0',
+                            opacity: this.options.opacity
+                        });
+                        this.target.style.position = 'relative';
+                        this.target.prepend(this.canvas);
+                    }
+            
+                    this.ctx = this.canvas.getContext('2d', { alpha: true });
+                    this.resizeCanvas();
+                }
+            
+                resizeCanvas() {
+                    if (this.options.isGlobal) {
+                        this.canvas.width = window.innerWidth;
+                        this.canvas.height = window.innerHeight;
+                    } else {
+                        this.canvas.width = this.target.offsetWidth;
+                        this.canvas.height = this.target.offsetHeight;
+                    }
+                    this.setupParticles();
+                }
+            
+                setupParticles() {
+                    const count = this.options.isGlobal 
+                        ? Math.min(this.options.particleCount, Math.floor((this.canvas.width * this.canvas.height) / PERF_CONFIG.particleDensity))
+                        : this.options.particleCount;
+            
+                    this.particles = Array.from({ length: count }, () => ({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        r: 8 + Math.random() * (this.options.isGlobal ? 20 : 18),
+                        dx: (Math.random() - 0.5) * (this.options.isGlobal ? 0.3 : 0.2),
+                        dy: (Math.random() - 0.5) * (this.options.isGlobal ? 0.3 : 0.2),
+                        color: this.options.colors[Math.floor(Math.random() * this.options.colors.length)],
+                        alpha: 0.1 + Math.random() * 0.3,
+                        pulse: Math.random() * Math.PI * 2,
+                        pulseSpeed: 0.01 + Math.random() * 0.02,
+                        shape: this.options.isGlobal ? Math.floor(Math.random() * 3) : 0
+                    }));
+                }
+            
+                drawParticles() {
+                    if (!this.ctx || !this.isVisible) return;
+                    
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    
+                    for (const p of this.particles) {
+                        if (this.options.isGlobal) {
+                            p.pulse += p.pulseSpeed;
+                            const pulseMultiplier = 0.8 + 0.2 * Math.sin(p.pulse);
+                            const size = p.r * pulseMultiplier;
+                            
+                            this.ctx.fillStyle = p.color;
+                            this.ctx.globalAlpha = p.alpha * pulseMultiplier;
+                        } else {
+                            this.ctx.fillStyle = p.color;
+                            this.ctx.globalAlpha = p.alpha;
+                        }
+                        
+                        this.ctx.shadowColor = p.color;
+                        this.ctx.shadowBlur = this.options.isGlobal ? 15 : 20;
+                        
+                        this.ctx.beginPath();
+                        
+                        if (this.options.isGlobal && p.shape > 0) {
+                            const size = this.options.isGlobal ? p.r * (0.8 + 0.2 * Math.sin(p.pulse)) : p.r;
+                            switch (p.shape) {
+                                case 1: // Triangle
+                                    this.ctx.moveTo(p.x, p.y - size);
+                                    this.ctx.lineTo(p.x - size * 0.866, p.y + size * 0.5);
+                                    this.ctx.lineTo(p.x + size * 0.866, p.y + size * 0.5);
+                                    this.ctx.closePath();
+                                    break;
+                                case 2: // Square
+                                    this.ctx.rect(p.x - size, p.y - size, size * 2, size * 2);
+                                    break;
+                            }
+                        } else {
+                            const size = this.options.isGlobal ? p.r * (0.8 + 0.2 * Math.sin(p.pulse)) : p.r;
+                            this.ctx.arc(p.x, p.y, size, 0, 2 * Math.PI);
+                        }
+                        
+                        this.ctx.fill();
+                    }
+                    
+                    this.ctx.globalAlpha = 1;
+                    this.ctx.shadowBlur = 0;
+                }
+            
+                animateParticles() {
+                    if (!this.isVisible) return;
+                    
+                    for (const p of this.particles) {
+                        p.x += p.dx;
+                        p.y += p.dy;
+                        
+                        // Wrap around edges
+                        if (p.x + p.r < 0) p.x = this.canvas.width + p.r;
+                        else if (p.x - p.r > this.canvas.width) p.x = -p.r;
+                        if (p.y + p.r < 0) p.y = this.canvas.height + p.r;
+                        else if (p.y - p.r > this.canvas.height) p.y = -p.r;
+                    }
+                    
+                    this.drawParticles();
+                    this.animationFrameId = requestAnimationFrame(() => this.animateParticles());
+                }
+            
+                startAnimation() {
+                    if (this.options.isGlobal) {
+                        this.animateParticles();
+                    } else {
+                        // Use intersection observer for non-global particles
+                        this.observer = new IntersectionObserver(entries => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    if (!this.animationFrameId) this.animateParticles();
+                                } else {
+                                    this.stopAnimation();
+                                }
+                            });
+                        }, { threshold: PERF_CONFIG.intersectionThreshold });
+                        
+                        this.observer.observe(this.target);
+                    }
+                }
+            
+                stopAnimation() {
+                    if (this.animationFrameId) {
+                        cancelAnimationFrame(this.animationFrameId);
+                        this.animationFrameId = null;
+                    }
+                }
+            
+                setupEventListeners() {
+                    const debouncedResize = debounce(() => this.resizeCanvas(), PERF_CONFIG.debounceDelay);
+                    window.addEventListener('resize', debouncedResize);
+            
+                    if (this.options.isGlobal) {
+                        // Visibility change handler
+                        document.addEventListener('visibilitychange', () => {
+                            this.isVisible = !document.hidden;
+                            if (this.isVisible && !this.animationFrameId) {
+                                this.animateParticles();
+                            } else if (!this.isVisible) {
+                                this.stopAnimation();
+                            }
+                        });
+            
+                        // Mouse interaction
+                        let mouseX = 0, mouseY = 0;
+                        const handleMouseMove = throttle((e) => {
+                            mouseX = e.clientX;
+                            mouseY = e.clientY;
+                            
+                            for (const p of this.particles) {
+                                const dx = mouseX - p.x;
+                                const dy = mouseY - p.y;
+                                const distance = Math.sqrt(dx * dx + dy * dy);
+                                
+                                if (distance < 150) {
+                                    const force = (150 - distance) / 150 * 0.002;
+                                    p.dx += dx * force;
+                                    p.dy += dy * force;
+                                    
+                                    const maxSpeed = 0.5;
+                                    p.dx = Math.max(-maxSpeed, Math.min(maxSpeed, p.dx));
+                                    p.dy = Math.max(-maxSpeed, Math.min(maxSpeed, p.dy));
+                                }
+                            }
+                        }, PERF_CONFIG.particleThrottleDelay);
+            
+                        document.addEventListener('mousemove', handleMouseMove, { passive: true });
+                    }
+                }
+            }
+            
+            // --- ENHANCED IMAGE MODAL ---
+            class ImageModal {
+                constructor() {
+                    this.modal = null;
+                    this.modalImage = null;
+                    this.currentZoom = 1;
+                    this.baseZoom = 1;
+                    this.isDragging = false;
+                    this.dragStart = { x: 0, y: 0 };
+                    this.imagePos = { x: 0, y: 0 };
+                    this.naturalSize = { width: 0, height: 0 };
+                    this.touchState = { lastTap: 0, initialDistance: 0, initialZoom: 1 };
+                    
+                    this.init();
+                }
+            
+                init() {
+                    this.createModal();
+                    this.setupEventListeners();
+                    this.attachToImages();
+                }
+            
+                createModal() {
+                    const modalHTML = `
+                        <div class="image-modal" id="imageModal">
+                            <div class="image-modal-content">
+                                <button class="image-modal-close" id="modalClose">&times;</button>
+                                <img id="modalImage" src="" alt="">
+                                <div class="image-loading" id="imageLoading">Loading...</div>
+                                <div class="zoom-controls" id="zoomControls">
+                                    <button class="zoom-btn" id="zoomOut">-</button>
+                                    <div class="zoom-level" id="zoomLevel">100%</div>
+                                    <button class="zoom-btn" id="zoomIn">+</button>
+                                    <button class="zoom-btn" id="zoomReset">⌂</button>
+                                    <button class="zoom-btn" id="zoomFit">⤢</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.insertAdjacentHTML('beforeend', modalHTML);
+                    
+                    // Cache DOM elements
+                    this.modal = document.getElementById('imageModal');
+                    this.modalImage = document.getElementById('modalImage');
+                    this.imageLoading = document.getElementById('imageLoading');
+                    this.zoomControls = document.getElementById('zoomControls');
+                    
+                    // Cache control elements
+                    this.controls = {
+                        close: document.getElementById('modalClose'),
+                        zoomIn: document.getElementById('zoomIn'),
+                        zoomOut: document.getElementById('zoomOut'),
+                        zoomReset: document.getElementById('zoomReset'),
+                        zoomFit: document.getElementById('zoomFit'),
+                        zoomLevel: document.getElementById('zoomLevel')
+                    };
+                }
+            
+                calculateBaseZoom() {
+                    if (this.naturalSize.width === 0 || this.naturalSize.height === 0) return 1;
+                    
+                    const containerWidth = this.modal.offsetWidth * 0.9;
+                    const containerHeight = this.modal.offsetHeight * 0.9;
+                    
+                    const scaleX = containerWidth / this.naturalSize.width;
+                    const scaleY = containerHeight / this.naturalSize.height;
+                    
+                    return Math.min(scaleX, scaleY);
+                }
+            
+                updateZoom(newZoom) {
+                    this.currentZoom = Math.max(0.1, Math.min(10, newZoom));
+                    
+                    const actualScale = this.baseZoom * this.currentZoom;
+                    this.modalImage.style.transform = `scale(${actualScale}) translate(${this.imagePos.x / actualScale}px, ${this.imagePos.y / actualScale}px)`;
+                    
+                    this.controls.zoomLevel.textContent = `${Math.round(this.currentZoom * 100)}%`;
+                    
+                    // Update UI state
+                    this.modalImage.classList.toggle('zoomed', this.currentZoom > 1);
+                    this.modalImage.style.cursor = this.currentZoom > 1 ? 'grab' : 'zoom-in';
+                    this.modal.style.cursor = this.currentZoom > 1 ? 'default' : 'zoom-out';
+                    
+                    if (this.currentZoom <= 1) {
+                        this.imagePos = { x: 0, y: 0 };
+                    }
+                    
+                    // Update button states
+                    this.controls.zoomOut.disabled = this.currentZoom <= 0.1;
+                    this.controls.zoomIn.disabled = this.currentZoom >= 10;
+                    
+                    this.updateButtonTitles();
+                }
+            
+                updateButtonTitles() {
+                    const increment = this.currentZoom >= 5 ? 0.5 : 0.25;
+                    this.controls.zoomOut.title = `Zoom out (${Math.round((this.currentZoom - increment) * 100)}%)`;
+                    this.controls.zoomIn.title = `Zoom in (${Math.round((this.currentZoom + increment) * 100)}%)`;
+                    this.controls.zoomReset.title = 'Reset to fit screen (100%)';
+                    this.controls.zoomFit.title = 'Fit to current screen size';
+                }
+            
+                openModal(imageSrc, imageAlt) {
+                    this.modal.classList.add('active');
+                    this.imageLoading.style.display = 'block';
+                    this.modalImage.style.display = 'none';
+                    this.zoomControls.style.display = 'none';
+                    
+                    this.resetState();
+                    
+                    const tempImage = new Image();
+                    tempImage.onload = () => {
+                        this.naturalSize = { width: tempImage.naturalWidth, height: tempImage.naturalHeight };
+                        this.baseZoom = this.calculateBaseZoom();
+                        
+                        this.modalImage.src = imageSrc;
+                        this.modalImage.alt = imageAlt;
+                        this.modalImage.style.display = 'block';
+                        this.imageLoading.style.display = 'none';
+                        this.zoomControls.style.display = 'flex';
+                        
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                this.updateZoom(1);
+                                this.addSizeInfo();
+                            });
+                        });
+                    };
+                    tempImage.onerror = () => {
+                        this.imageLoading.textContent = 'Failed to load image';
+                    };
+                    tempImage.src = imageSrc;
+                    
+                    document.body.style.overflow = 'hidden';
+                }
+            
+                closeModal() {
+                    this.modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    setTimeout(() => {
+                        this.resetModal();
+                    }, 300);
+                }
+            
+                resetState() {
+                    this.currentZoom = 1;
+                    this.baseZoom = 1;
+                    this.imagePos = { x: 0, y: 0 };
+                    this.naturalSize = { width: 0, height: 0 };
+                }
+            
+                resetModal() {
+                    this.modalImage.src = '';
+                    this.modalImage.alt = '';
+                    this.modalImage.style.transform = 'scale(1) translate(0px, 0px)';
+                    this.imageLoading.style.display = 'block';
+                    this.imageLoading.textContent = 'Loading...';
+                    this.zoomControls.style.display = 'none';
+                    this.resetState();
+                    
+                    const sizeInfo = this.zoomControls.querySelector('.size-info');
+                    if (sizeInfo) sizeInfo.remove();
+                }
+            
+                addSizeInfo() {
+                    const existingSizeInfo = this.zoomControls.querySelector('.size-info');
+                    if (existingSizeInfo) existingSizeInfo.remove();
+                    
+                    const sizeInfo = document.createElement('div');
+                    sizeInfo.className = 'size-info';
+                    sizeInfo.style.cssText = `
+                        color: white; font-size: 12px; padding: 0 10px; display: flex;
+                        align-items: center; background: rgba(0, 0, 0, 0.5);
+                        border-radius: 15px; white-space: nowrap;
+                    `;
+                    
+                    const fitPercentage = Math.round(this.baseZoom * 100);
+                    sizeInfo.textContent = `${this.naturalSize.width}×${this.naturalSize.height}px (${fitPercentage}% to fit)`;
+                    
+                    this.zoomControls.appendChild(sizeInfo);
+                }
+            
+                setupEventListeners() {
+                    // Control buttons
+                    this.controls.close.addEventListener('click', () => this.closeModal());
+                    
+                    this.controls.zoomIn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const increment = this.currentZoom >= 5 ? 0.5 : 0.25;
+                        this.updateZoom(this.currentZoom + increment);
+                    });
+                    
+                    this.controls.zoomOut.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const decrement = this.currentZoom >= 5 ? 0.5 : 0.25;
+                        this.updateZoom(this.currentZoom - decrement);
+                    });
+                    
+                    this.controls.zoomReset.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.imagePos = { x: 0, y: 0 };
+                        this.updateZoom(1);
+                    });
+                    
+                    this.controls.zoomFit.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.imagePos = { x: 0, y: 0 };
+                        this.baseZoom = this.calculateBaseZoom();
+                        this.updateZoom(1);
+                        this.addSizeInfo();
+                    });
+            
+                    // Modal interactions
+                    this.modal.addEventListener('click', (e) => {
+                        if (e.target === this.modal) this.closeModal();
+                    });
+            
+                    this.modal.addEventListener('wheel', (e) => {
+                        if (e.target === this.modalImage || this.modalImage.contains(e.target)) {
+                            e.preventDefault();
+                            let zoomDelta = e.deltaY > 0 ? -0.15 : 0.15;
+                            if (this.currentZoom >= 5) zoomDelta *= 2;
+                            this.updateZoom(this.currentZoom + zoomDelta);
+                        }
+                    }, { passive: false });
+            
+                    // Image interactions
+                    this.modalImage.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (this.currentZoom === 1) {
+                            this.updateZoom(2);
+                        } else if (this.currentZoom >= 2 && this.currentZoom < 5) {
+                            this.updateZoom(5);
+                        } else {
+                            this.imagePos = { x: 0, y: 0 };
+                            this.updateZoom(1);
+                        }
+                    });
+            
+                    // Drag functionality
+                    this.setupDragHandlers();
+                    
+                    // Touch handlers
+                    this.setupTouchHandlers();
+                    
+                    // Keyboard controls
+                    this.setupKeyboardHandlers();
+                    
+                    // Window resize
+                    window.addEventListener('resize', debounce(() => {
+                        if (this.modal.classList.contains('active') && this.naturalSize.width > 0) {
+                            const oldZoom = this.currentZoom;
+                            this.baseZoom = this.calculateBaseZoom();
+                            this.updateZoom(oldZoom);
+                        }
+                    }, 200));
+                }
+            
+                setupDragHandlers() {
+                    this.modalImage.addEventListener('mousedown', (e) => {
+                        if (this.currentZoom > 1) {
+                            this.isDragging = true;
+                            this.dragStart.x = e.clientX - this.imagePos.x;
+                            this.dragStart.y = e.clientY - this.imagePos.y;
+                            this.modalImage.style.cursor = 'grabbing';
+                            e.preventDefault();
+                        }
+                    });
+            
+                    document.addEventListener('mousemove', (e) => {
+                        if (this.isDragging && this.currentZoom > 1) {
+                            this.imagePos.x = e.clientX - this.dragStart.x;
+                            this.imagePos.y = e.clientY - this.dragStart.y;
+                            
+                            const actualScale = this.baseZoom * this.currentZoom;
+                            this.modalImage.style.transform = `scale(${actualScale}) translate(${this.imagePos.x / actualScale}px, ${this.imagePos.y / actualScale}px)`;
+                        }
+                    });
+            
+                    document.addEventListener('mouseup', () => {
+                        if (this.isDragging) {
+                            this.isDragging = false;
+                            if (this.currentZoom > 1) {
+                                this.modalImage.style.cursor = 'grab';
+                            }
+                        }
+                    });
+                }
+            
+                setupTouchHandlers() {
+                    let touchStartX = 0, touchStartY = 0;
+            
+                    // Swipe to close
+                    this.modal.addEventListener('touchstart', (e) => {
+                        if (e.touches.length === 1) {
+                            touchStartY = e.touches[0].clientY;
+                            touchStartX = e.touches[0].clientX;
+                        }
+                    }, { passive: true });
+            
+                    this.modal.addEventListener('touchend', (e) => {
+                        if (e.changedTouches.length === 1) {
+                            const touchEndY = e.changedTouches[0].clientY;
+                            const touchEndX = e.changedTouches[0].clientX;
+                            const swipeDistanceY = touchStartY - touchEndY;
+                            const swipeDistanceX = Math.abs(touchStartX - touchEndX);
+                            
+                            if (Math.abs(swipeDistanceY) > 100 && swipeDistanceY > 0 && swipeDistanceX < 50) {
+                                this.closeModal();
+                            }
+                        }
+                    }, { passive: true });
+            
+                    // Pinch to zoom
+                    this.modal.addEventListener('touchstart', (e) => {
+                        if (e.touches.length === 2) {
+                            e.preventDefault();
+                            const touch1 = e.touches[0];
+                            const touch2 = e.touches[1];
+                            this.touchState.initialDistance = Math.hypot(
+                                touch2.clientX - touch1.clientX,
+                                touch2.clientY - touch1.clientY
+                            );
+                            this.touchState.initialZoom = this.currentZoom;
+                        }
+                    }, { passive: false });
+            
+                    this.modal.addEventListener('touchmove', (e) => {
+                        if (e.touches.length === 2) {
+                            e.preventDefault();
+                            const touch1 = e.touches[0];
+                            const touch2 = e.touches[1];
+                            const currentDistance = Math.hypot(
+                                touch2.clientX - touch1.clientX,
+                                touch2.clientY - touch1.clientY
+                            );
+                            const scale = currentDistance / this.touchState.initialDistance;
+                            this.updateZoom(this.touchState.initialZoom * scale);
+                        }
+                    }, { passive: false });
+            
+                    // Double tap to zoom
+                    this.modalImage.addEventListener('touchend', (e) => {
+                        const currentTime = Date.now();
+                        const tapLength = currentTime - this.touchState.lastTap;
+                        if (tapLength < 500 && tapLength > 0) {
+                            e.preventDefault();
+                            if (this.currentZoom === 1) {
+                                this.updateZoom(3);
+                            } else if (this.currentZoom <= 3) {
+                                this.updateZoom(7);
+                            } else {
+                                this.imagePos = { x: 0, y: 0 };
+                                this.updateZoom(1);
+                            }
+                        }
+                        this.touchState.lastTap = currentTime;
+                    });
+                }
+            
+                setupKeyboardHandlers() {
+                    document.addEventListener('keydown', (e) => {
+                        if (!this.modal.classList.contains('active')) return;
+                        
+                        switch(e.key) {
+                            case 'Escape':
+                                this.closeModal();
+                                break;
+                            case '+':
+                            case '=':
+                                e.preventDefault();
+                                const increment = this.currentZoom >= 5 ? 0.5 : 0.25;
+                                this.updateZoom(this.currentZoom + increment);
+                                break;
+                            case '-':
+                                e.preventDefault();
+                                const decrement = this.currentZoom >= 5 ? 0.5 : 0.25;
+                                this.updateZoom(this.currentZoom - decrement);
+                                break;
+                            case '0':
+                                e.preventDefault();
+                                this.imagePos = { x: 0, y: 0 };
+                                this.updateZoom(1);
+                                break;
+                            case 'f':
+                            case 'F':
+                                e.preventDefault();
+                                this.imagePos = { x: 0, y: 0 };
+                                this.baseZoom = this.calculateBaseZoom();
+                                this.updateZoom(1);
+                                break;
+                        }
+                    });
+                }
+            
+                attachToImages() {
+                    document.querySelectorAll('.news-card img').forEach(img => {
+                        img.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            this.openModal(img.src, img.alt);
+                        });
+                        
+                        img.style.cursor = 'pointer';
+                        img.title = 'Click to view full size';
+                    });
+                }
+            }
+            
+            // --- CARD ANIMATION SYSTEMS ---
+            class FloatingCardAnimator {
+                constructor() {
+                    this.animationPatterns = [
+                        {
+                            keyframes: [
+                                { transform: 'translateY(0px) rotate(0deg)' },
+                                { transform: 'translateY(-8px) rotate(0.5deg)' },
+                                { transform: 'translateY(0px) rotate(0deg)' }
+                            ],
+                            duration: 4200,
+                            easing: 'cubic-bezier(0.4, 0, 0.6, 1)'
+                        },
+                        {
+                            keyframes: [
+                                { transform: 'translate(0px, 0px) rotate(0deg)' },
+                                { transform: 'translate(3px, -7px) rotate(-0.3deg)' },
+                                { transform: 'translate(0px, 0px) rotate(0deg)' }
+                            ],
+                            duration: 3800,
+                            easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)'
+                        },
+                        {
+                            keyframes: [
+                                { transform: 'translate(0px, 0px) rotate(0deg)' },
+                                { transform: 'translate(-2px, -4px) rotate(0.4deg)' },
+                                { transform: 'translate(2px, -8px) rotate(-0.2deg)' },
+                                { transform: 'translate(-1px, -4px) rotate(0.3deg)' },
+                                { transform: 'translate(0px, 0px) rotate(0deg)' }
+                            ],
+                            duration: 5000,
+                            easing: 'cubic-bezier(0.68, -0.55, 0.27, 1.55)'
+                        },
+                        {
+                            keyframes: [
+                                { transform: 'translateY(0px) rotate(0deg)' },
+                                { transform: 'translateY(-5px) rotate(-0.4deg)' },
+                                { transform: 'translateY(-9px) rotate(0deg)' },
+                                { transform: 'translateY(-5px) rotate(0.4deg)' },
+                                { transform: 'translateY(0px) rotate(0deg)' }
+                            ],
+                            duration: 4500,
+                            easing: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
+                        }
+                    ];
+                }
+            
+                animateCards(selector) {
+                    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    
+                    const cards = document.querySelectorAll(selector);
+                    
+                    cards.forEach((card, i) => {
+                        try {
+                            const pattern = this.animationPatterns[i % this.animationPatterns.length];
+                            const delay = i * 300;
+                            
+                            setTimeout(() => {
+                                card.animate(pattern.keyframes, {
+                                    duration: pattern.duration,
+                                    iterations: Infinity,
+                                    direction: 'alternate',
+                                    easing: pattern.easing
+                                });
+                            }, delay);
+            
+                            this.setupHoverHandlers(card, pattern);
+                        } catch (error) {
+                            console.warn('Enhanced animation not supported for cards:', error);
+                            this.fallbackAnimation(card, i);
+                        }
+                    });
+            
+                    this.animateSection(selector);
+                }
+            
+                setupHoverHandlers(card, pattern) {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.animation = 'none';
+                        card.style.transform = 'translateY(-12px) scale(1.02)';
+                        card.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                    });
+            
+                    card.addEventListener('mouseleave', () => {
+                        card.style.animation = '';
+                        card.style.transform = '';
+                        card.style.transition = '';
+                        
+                        setTimeout(() => {
+                            card.animate(pattern.keyframes, {
+                                duration: pattern.duration,
+                                iterations: Infinity,
+                                direction: 'alternate',
+                                easing: pattern.easing
+                            });
+                        }, 100);
+                    });
+                }
+            
+                fallbackAnimation(card, index) {
+                    card.animate([
+                        { transform: 'translateY(0px)' },
+                        { transform: `translateY(${index % 2 === 0 ? -6 : 6}px)` },
+                        { transform: 'translateY(0px)' }
+                    ], {
+                        duration: 4000 + index * 100,
+                        iterations: Infinity,
+                        direction: 'alternate',
+                        easing: 'ease-in-out'
+                    });
+                }
+            
+                animateSection(selector) {
+                    const section = document.querySelector(selector.split(' ')[0]);
+                    if (!section) return;
+            
+                    try {
+                        section.animate([
+                            { transform: 'scale(1)' },
+                            { transform: 'scale(1.005)' },
+                            { transform: 'scale(1)' }
+                        ], {
+                            duration: 8000,
+                            iterations: Infinity,
+                            direction: 'alternate',
+                            easing: 'cubic-bezier(0.4, 0, 0.6, 1)'
+                        });
+                    } catch (error) {
+                        console.warn('Section breathing animation not supported:', error);
+                    }
+                }
+            }
+            
+            // --- PRO CARD INTERACTION SYSTEM ---
+            class ProCardInteractionSystem {
+                constructor() {
+                    this.themeColors = {
+                        blue: { primary: '#60a5fa', glow: '#60a5fa66', secondary: '#1e3a8a44' },
+                        red: { primary: '#ec4158', glow: '#ec415866', secondary: '#991b1b44' },
+                        purple: { primary: '#664bf0', glow: '#664bf066', secondary: '#581c8744' },
+                        yellow: { primary: '#ffce41', glow: '#ffce4166', secondary: '#b4530944' },
+                        green: { primary: '#9ef06c', glow: '#86e14f66', secondary: '#86e14f44' },
+                        orange: { primary: '#f84f29', glow: '#f84f2966', secondary: '#f84f2944' }
+                    };
+                    
+                    this.tiltStrength = 8;
+                    this.parallaxStrength = { img: 40, title: 25, text: 15, social: 20 };
+                }
+            
+                init() {
+                    const proCards = document.querySelectorAll('.pro-card');
+                    
+                    proCards.forEach(card => {
+                        this.setupCard(card);
+                        this.setupMouseHandlers(card);
+                    });
+                }
+            
+                setupCard(card) {
+                    const img = card.querySelector('img');
+                    if (img && !img.classList.contains('pro-img-glow')) {
+                        img.classList.add('pro-img-glow');
+                    }
+                }
+            
+                setupMouseHandlers(card) {
+                    card.addEventListener('mousemove', (e) => this.handleMouseMove(card, e));
+                    card.addEventListener('mouseleave', () => this.handleMouseLeave(card));
+                    card.addEventListener('mouseenter', () => this.handleMouseEnter(card));
+                }
+            
+                handleMouseMove(card, e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / centerY * -this.tiltStrength;
+                    const rotateY = (x - centerX) / centerX * this.tiltStrength;
+            
+                    const theme = this.getTheme(card);
+                    
+                    this.apply3DTransform(card, rotateX, rotateY, theme);
+                    this.applyGlowEffects(card, rotateX, rotateY, theme);
+                }
+            
+                handleMouseLeave(card) {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    card.style.boxShadow = '0 2px 8px 0 rgba(0,0,0,0.18)';
+                    
+                    this.resetElements(card);
+                }
+            
+                handleMouseEnter(card) {
+                    card.style.transition = 'transform 0.05s ease-out, box-shadow 0.0s cubic-bezier(.68,-0.55,.27,1.55)';
+                }
+            
+                getTheme(card) {
+                    const neonTheme = card.dataset.neon || 'blue';
+                    return this.themeColors[neonTheme] || this.themeColors.blue;
+                }
+            
+                apply3DTransform(card, rotateX, rotateY, theme) {
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+                    card.style.boxShadow = `
+                        0 0 2px 0.1px ${theme.primary},
+                        0 0 75px 0.1px ${theme.primary}dd,
+                        0 0 7.5px 0.1px ${theme.primary}aa,
+                        0 4px 16px 0 rgba(0,0,0,0.4)
+                    `;
+                }
+            
+                applyGlowEffects(card, rotateX, rotateY, theme) {
+                    const elements = {
+                        img: card.querySelector('.pro-img-glow'),
+                        title: card.querySelector('h3'),
+                        description: card.querySelector(':scope > p.text-gray-300.text-sm'),
+                        role: card.querySelector(':scope > p:not(.text-gray-300)'),
+                        social: card.querySelector('.absolute.bottom-0')
+                    };
+            
+                    if (elements.img) {
+                        elements.img.style.transform = `translateZ(${this.parallaxStrength.img}px) rotateX(${rotateX/2}deg) rotateY(${rotateY/2}deg) scale(1.05)`;
+                        elements.img.style.boxShadow = `
+                            0 0 150px 8px ${theme.glow.replace('66', 'cc')},
+                            0 0 200px 5px ${theme.secondary},
+                            0 5px 8px 5px rgba(0,0,0,0.4),
+                            inset 0 0 15px 2px ${theme.glow.replace('66', '33')}
+                        `;
+                    }
+            
+                    if (elements.title) {
+                        elements.title.style.transform = `translateZ(${this.parallaxStrength.title}px) rotateX(${rotateX/3}deg) rotateY(${rotateY/3}deg)`;
+                        elements.title.style.textShadow = `0 2px 8px rgba(0,0,0,0.6)`;
+                    }
+            
+                    if (elements.description) {
+                        elements.description.style.transform = `translateZ(${this.parallaxStrength.text}px)`;
+                        elements.description.style.textShadow = `0 2px 8px rgba(0,0,0,0.4), 0 1px 4px ${theme.primary}22`;
+                    }
+            
+                    if (elements.role) {
+                        elements.role.style.transform = `translateZ(${this.parallaxStrength.text + 5}px)`;
+                        elements.role.style.textShadow = `
+                            0 5px 10px rgba(0,0,0,0.5), 
+                            0 1px 6px ${theme.primary}33,
+                            0 4px 8px rgba(0,0,0,0.3)
+                        `;
+                    }
+            
+                    if (elements.social) {
+                        elements.social.style.transform = `translateZ(${this.parallaxStrength.social}px)`;
+                        elements.social.style.textShadow = `0 3px 10px rgba(0,0,0,0.5), 0 1px 6px ${theme.primary}33`;
+                    }
+                }
+            
+                resetElements(card) {
+                    const elementsToReset = [
+                        card.querySelector('.pro-img-glow'),
+                        card.querySelector('h3'),
+                        card.querySelector(':scope > p.text-gray-300.text-sm'),
+                        card.querySelector(':scope > p:not(.text-gray-300)'),
+                        card.querySelector('.absolute.bottom-0')
+                    ];
+                    
+                    elementsToReset.forEach(el => {
+                        if (el) {
+                            el.style.transform = 'translateZ(0px) scale(1) rotateX(0deg) rotateY(0deg)';
+                            el.style.textShadow = '';
+                            if (el.classList.contains('pro-img-glow')) {
+                                el.style.boxShadow = '0 0 0 0 transparent';
+                            }
+                        }
+                    });
+                }
+            }
+
+            // --- UTILITY FUNCTIONS ---
+            function initializeSmoothScroll() {
+                const smoothScrollHandler = function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#' || !targetId.startsWith('#')) return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (!targetElement) return;
+            
+                    e.preventDefault();
+                    
+                    const header = document.querySelector('header.sticky');
+                    const headerOffset = header?.offsetHeight || 0;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                };
+            
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', smoothScrollHandler);
+                });
+            }
+            
+            function setCurrentYear() {
+                const currentYearElement = document.getElementById('currentYear');
+                if (currentYearElement) {
+                    currentYearElement.textContent = new Date().getFullYear();
+                }
+            }
+            
+            // Simplified parallax (empty but functional structure maintained)
+            function initializeParallax() {
+                const parallaxElements = [];
                 let ticking = false;
             
                 function updateParallax() {
@@ -3282,7 +4622,6 @@
                                 const elementHeight = element.offsetHeight;
                                 const windowHeight = window.innerHeight;
                                 
-                                // Only apply parallax if element is in viewport
                                 if (scrollTop + windowHeight > elementTop && scrollTop < elementTop + elementHeight) {
                                     const yPos = -(scrollTop - elementTop) * speed;
                                     element.style.transform = `translate3d(0, ${yPos}px, 0)`;
@@ -3301,1097 +4640,53 @@
                     }
                 }
             
-                // Throttled scroll handler
                 const parallaxHandler = throttle(requestTick, 16);
-                
-                // Initialize parallax
                 window.addEventListener('scroll', parallaxHandler, { passive: true });
-                
-                // Initial call
                 updateParallax();
             }
             
-            // --- Mobile Menu (Complete with resize handling) ---
-            function initializeMobileMenu() {
-                let resizeTimeout;
-                
-                // Mobile Menu Elements
-                const mobileMenuButton = document.getElementById('mobile-menu-button');
-                const mobileMenu = document.getElementById('mobile-menu');
-                
-                // Tablet Menu Elements  
-                const tabletMenuButton = document.getElementById('tablet-menu-button');
-                const tabletMenu = document.getElementById('tablet-menu');
-                
-                // Function to close all menus
-                const closeAllMenus = () => {
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                        if (mobileMenuButton) {
-                            mobileMenuButton.setAttribute('aria-expanded', 'false');
-                            const hamburgerIcon = mobileMenuButton.querySelector('svg:first-of-type');
-                            const closeIcon = mobileMenuButton.querySelector('svg:last-of-type');
-                            if (hamburgerIcon && closeIcon) {
-                                hamburgerIcon.classList.remove('hidden');
-                                closeIcon.classList.add('hidden');
-                            }
-                        }
-                    }
-                    
-                    if (tabletMenu && !tabletMenu.classList.contains('hidden')) {
-                        tabletMenu.classList.add('hidden');
-                        if (tabletMenuButton) {
-                            tabletMenuButton.setAttribute('aria-expanded', 'false');
-                            const hamburgerIcon = tabletMenuButton.querySelector('svg:first-of-type');
-                            const closeIcon = tabletMenuButton.querySelector('svg:last-of-type');
-                            if (hamburgerIcon && closeIcon) {
-                                hamburgerIcon.classList.remove('hidden');
-                                closeIcon.classList.add('hidden');
-                            }
-                        }
-                    }
-                };
-            
-                // Initialize Mobile Menu
-                if (mobileMenuButton && mobileMenu) {
-                    const toggleMobileMenu = () => {
-                        // Close tablet menu first
-                        if (tabletMenu && !tabletMenu.classList.contains('hidden')) {
-                            tabletMenu.classList.add('hidden');
-                            if (tabletMenuButton) {
-                                tabletMenuButton.setAttribute('aria-expanded', 'false');
-                                const hamburgerIcon = tabletMenuButton.querySelector('svg:first-of-type');
-                                const closeIcon = tabletMenuButton.querySelector('svg:last-of-type');
-                                if (hamburgerIcon && closeIcon) {
-                                    hamburgerIcon.classList.remove('hidden');
-                                    closeIcon.classList.add('hidden');
-                                }
-                            }
-                        }
-                        
-                        const isHidden = mobileMenu.classList.toggle('hidden');
-                        const isExpanded = !isHidden;
-                        
-                        mobileMenuButton.setAttribute('aria-expanded', String(isExpanded));
-                        
-                        const hamburgerIcon = mobileMenuButton.querySelector('svg:first-of-type');
-                        const closeIcon = mobileMenuButton.querySelector('svg:last-of-type');
-                        
-                        if (hamburgerIcon && closeIcon) {
-                            hamburgerIcon.classList.toggle('hidden', isExpanded);
-                            closeIcon.classList.toggle('hidden', !isExpanded);
-                        }
-                    };
-            
-                    mobileMenuButton.addEventListener('click', toggleMobileMenu);
-            
-                    mobileMenu.addEventListener('click', (e) => {
-                        if (e.target.matches('a[href^="#"]')) {
-                            closeAllMenus();
-                        }
-                    });
-                }
-            
-                // Initialize Tablet Menu
-                if (tabletMenuButton && tabletMenu) {
-                    const toggleTabletMenu = () => {
-                        // Close mobile menu first
-                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                            mobileMenu.classList.add('hidden');
-                            if (mobileMenuButton) {
-                                mobileMenuButton.setAttribute('aria-expanded', 'false');
-                                const hamburgerIcon = mobileMenuButton.querySelector('svg:first-of-type');
-                                const closeIcon = mobileMenuButton.querySelector('svg:last-of-type');
-                                if (hamburgerIcon && closeIcon) {
-                                    hamburgerIcon.classList.remove('hidden');
-                                    closeIcon.classList.add('hidden');
-                                }
-                            }
-                        }
-                        
-                        const isHidden = tabletMenu.classList.toggle('hidden');
-                        const isExpanded = !isHidden;
-                        
-                        tabletMenuButton.setAttribute('aria-expanded', String(isExpanded));
-                        
-                        const hamburgerIcon = tabletMenuButton.querySelector('svg:first-of-type');
-                        const closeIcon = tabletMenuButton.querySelector('svg:last-of-type');
-                        
-                        if (hamburgerIcon && closeIcon) {
-                            hamburgerIcon.classList.toggle('hidden', isExpanded);
-                            closeIcon.classList.toggle('hidden', !isExpanded);
-                        }
-                    };
-            
-                    tabletMenuButton.addEventListener('click', toggleTabletMenu);
-                    
-                    tabletMenu.addEventListener('click', (e) => {
-                        if (e.target.matches('a[href^="#"]')) {
-                            closeAllMenus();
-                        }
-                    });
-                }
-            
-                // Handle window resize to adjust menu visibility
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(() => {
-                        const width = window.innerWidth;
-                        
-                        // Auto-close menus when screen size changes
-                        if (width >= 1024) {
-                            // Desktop - close all mobile/tablet menus
-                            closeAllMenus();
-                        } else if (width >= 640 && width < 1024) {
-                            // Tablet - close mobile menu if open
-                            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                                closeAllMenus();
-                            }
-                        } else if (width < 640) {
-                            // Mobile - close tablet menu if open
-                            if (tabletMenu && !tabletMenu.classList.contains('hidden')) {
-                                closeAllMenus();
-                            }
-                        }
-                    }, 150);
-                });
-            
-                // Close menus on escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        closeAllMenus();
-                    }
-                });
-            
-                // Close menus when clicking outside
-                document.addEventListener('click', (e) => {
-                    const isMobileButton = mobileMenuButton?.contains(e.target);
-                    const isMobileMenu = mobileMenu?.contains(e.target);
-                    const isTabletButton = tabletMenuButton?.contains(e.target);
-                    const isTabletMenu = tabletMenu?.contains(e.target);
-                    
-                    if (!isMobileButton && !isMobileMenu && !isTabletButton && !isTabletMenu) {
-                        closeAllMenus();
-                    }
-                });
-            }
-            
-            // --- Enhanced News Card Image Modal with Screen-Sized Display ---
-            function initializeNewsImageModal() {
-                // Create modal HTML with zoom controls
-                const modalHTML = `
-                    <div class="image-modal" id="imageModal">
-                        <div class="image-modal-content">
-                            <button class="image-modal-close" id="modalClose">&times;</button>
-                            <img id="modalImage" src="" alt="">
-                            <div class="image-loading" id="imageLoading">Loading...</div>
-                            <div class="zoom-controls" id="zoomControls">
-                                <button class="zoom-btn" id="zoomOut">-</button>
-                                <div class="zoom-level" id="zoomLevel">100%</div>
-                                <button class="zoom-btn" id="zoomIn">+</button>
-                                <button class="zoom-btn" id="zoomReset">⌂</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                // Add modal to body
-                document.body.insertAdjacentHTML('beforeend', modalHTML);
-                
-                const modal = document.getElementById('imageModal');
-                const modalImage = document.getElementById('modalImage');
-                const modalClose = document.getElementById('modalClose');
-                const imageLoading = document.getElementById('imageLoading');
-                const zoomControls = document.getElementById('zoomControls');
-                const zoomIn = document.getElementById('zoomIn');
-                const zoomOut = document.getElementById('zoomOut');
-                const zoomReset = document.getElementById('zoomReset');
-                const zoomLevel = document.getElementById('zoomLevel');
-                
-                let currentZoom = 1;
-                let isDragging = false;
-                let dragStart = { x: 0, y: 0 };
-                let imagePos = { x: 0, y: 0 };
-                let naturalSize = { width: 0, height: 0 };
-                let displaySize = { width: 0, height: 0 };
-                
-                // Function to calculate screen-fit zoom
-                function calculateScreenFitZoom() {
-                    const containerWidth = modal.offsetWidth * 0.9; // 90vw
-                    const containerHeight = modal.offsetHeight * 0.9; // 90vh
-                    
-                    const scaleX = containerWidth / naturalSize.width;
-                    const scaleY = containerHeight / naturalSize.height;
-                    
-                    // Use the smaller scale to ensure the entire image fits on screen
-                    return Math.min(scaleX, scaleY, 1); // Don't scale up beyond 100%
-                }
-                
-                // Function to update zoom
-                function updateZoom(newZoom) {
-                    currentZoom = Math.max(0.1, Math.min(5, newZoom));
-                    
-                    // Calculate the actual display size
-                    const screenFitZoom = calculateScreenFitZoom();
-                    const actualZoom = currentZoom * screenFitZoom;
-                    
-                    modalImage.style.transform = `scale(${actualZoom}) translate(${imagePos.x / actualZoom}px, ${imagePos.y / actualZoom}px)`;
-                    zoomLevel.textContent = `${Math.round(currentZoom * 100)}%`;
-                    
-                    // Update cursor and draggability
-                    if (currentZoom > 1) {
-                        modalImage.classList.add('zoomed');
-                        modalImage.style.cursor = 'grab';
-                        modal.style.cursor = 'default';
-                    } else {
-                        modalImage.classList.remove('zoomed');
-                        modalImage.style.cursor = 'zoom-in';
-                        modal.style.cursor = 'zoom-out';
-                        imagePos = { x: 0, y: 0 }; // Reset position when zoomed out
-                    }
-                    
-                    // Update button states
-                    zoomOut.disabled = currentZoom <= 0.1;
-                    zoomIn.disabled = currentZoom >= 5;
-                }
-                
-                // Function to open modal
-                function openModal(imageSrc, imageAlt) {
-                    modal.classList.add('active');
-                    imageLoading.style.display = 'block';
-                    modalImage.style.display = 'none';
-                    zoomControls.style.display = 'none';
-                    
-                    // Reset zoom and position
-                    currentZoom = 1;
-                    imagePos = { x: 0, y: 0 };
-                    
-                    // Preload image to get natural dimensions
-                    const tempImage = new Image();
-                    tempImage.onload = function() {
-                        // Store natural dimensions
-                        naturalSize.width = tempImage.naturalWidth;
-                        naturalSize.height = tempImage.naturalHeight;
-                        
-                        // Set image source and show it
-                        modalImage.src = imageSrc;
-                        modalImage.alt = imageAlt;
-                        modalImage.style.display = 'block';
-                        imageLoading.style.display = 'none';
-                        zoomControls.style.display = 'flex';
-                        
-                        // Wait for next frame to ensure image is rendered
-                        requestAnimationFrame(() => {
-                            // Update zoom to fit screen perfectly
-                            updateZoom(1); // Start at 100% of screen-fit size
-                        });
-                    };
-                    tempImage.onerror = function() {
-                        imageLoading.textContent = 'Failed to load image';
-                    };
-                    tempImage.src = imageSrc;
-                    
-                    // Prevent body scroll
-                    document.body.style.overflow = 'hidden';
-                }
-                
-                // Function to close modal
-                function closeModal() {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                    
-                    // Reset modal content after transition
-                    setTimeout(() => {
-                        modalImage.src = '';
-                        modalImage.alt = '';
-                        modalImage.style.transform = 'scale(1) translate(0px, 0px)';
-                        imageLoading.style.display = 'block';
-                        imageLoading.textContent = 'Loading...';
-                        zoomControls.style.display = 'none';
-                        currentZoom = 1;
-                        imagePos = { x: 0, y: 0 };
-                        naturalSize = { width: 0, height: 0 };
-                    }, 300);
-                }
-                
-                // Add click handlers to all news card images
-                const newsCardImages = document.querySelectorAll('.news-card img');
-                newsCardImages.forEach(img => {
-                    img.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        openModal(img.src, img.alt);
-                    });
-                    
-                    // Add visual feedback
-                    img.style.cursor = 'pointer';
-                    img.title = 'Click to view full size';
-                });
-                
-                // Zoom controls
-                zoomIn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    updateZoom(currentZoom + 0.25);
-                });
-                
-                zoomOut.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    updateZoom(currentZoom - 0.25);
-                });
-                
-                zoomReset.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    imagePos = { x: 0, y: 0 };
-                    updateZoom(1);
-                });
-                
-                // Mouse wheel zoom
-                modal.addEventListener('wheel', (e) => {
-                    if (e.target === modalImage || modalImage.contains(e.target)) {
-                        e.preventDefault();
-                        const zoomDelta = e.deltaY > 0 ? -0.1 : 0.1;
-                        updateZoom(currentZoom + zoomDelta);
-                    }
-                }, { passive: false });
-                
-                // Click to zoom on image
-                modalImage.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (currentZoom === 1) {
-                        updateZoom(2);
-                    } else {
-                        imagePos = { x: 0, y: 0 };
-                        updateZoom(1);
-                    }
-                });
-                
-                // Drag functionality for zoomed images
-                modalImage.addEventListener('mousedown', (e) => {
-                    if (currentZoom > 1) {
-                        isDragging = true;
-                        const actualZoom = currentZoom * calculateScreenFitZoom();
-                        dragStart.x = e.clientX - imagePos.x;
-                        dragStart.y = e.clientY - imagePos.y;
-                        modalImage.style.cursor = 'grabbing';
-                        e.preventDefault();
-                    }
-                });
-                
-                document.addEventListener('mousemove', (e) => {
-                    if (isDragging && currentZoom > 1) {
-                        imagePos.x = e.clientX - dragStart.x;
-                        imagePos.y = e.clientY - dragStart.y;
-                        
-                        const actualZoom = currentZoom * calculateScreenFitZoom();
-                        modalImage.style.transform = `scale(${actualZoom}) translate(${imagePos.x / actualZoom}px, ${imagePos.y / actualZoom}px)`;
-                    }
-                });
-                
-                document.addEventListener('mouseup', () => {
-                    if (isDragging) {
-                        isDragging = false;
-                        if (currentZoom > 1) {
-                            modalImage.style.cursor = 'grab';
-                        }
-                    }
-                });
-                
-                // Handle window resize
-                window.addEventListener('resize', () => {
-                    if (modal.classList.contains('active') && naturalSize.width > 0) {
-                        updateZoom(currentZoom); // Recalculate for new screen size
-                    }
-                });
-                
-                // Close modal events
-                modalClose.addEventListener('click', closeModal);
-                
-                // Close on backdrop click (but not on zoom controls)
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        closeModal();
-                    }
-                });
-                
-                // Close on escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && modal.classList.contains('active')) {
-                        closeModal();
-                    }
-                });
-                
-                // Touch/swipe support for mobile
-                let touchStartY = 0;
-                modal.addEventListener('touchstart', (e) => {
-                    touchStartY = e.touches[0].clientY;
-                }, { passive: true });
-                
-                modal.addEventListener('touchend', (e) => {
-                    const touchEndY = e.changedTouches[0].clientY;
-                    const swipeDistance = touchStartY - touchEndY;
-                    
-                    // Close modal on upward swipe (> 100px)
-                    if (Math.abs(swipeDistance) > 100 && swipeDistance > 0) {
-                        closeModal();
-                    }
-                }, { passive: true });
-                
-                // Pinch to zoom for mobile
-                let initialDistance = 0;
-                let initialZoom = 1;
-                
-                modal.addEventListener('touchstart', (e) => {
-                    if (e.touches.length === 2) {
-                        const touch1 = e.touches[0];
-                        const touch2 = e.touches[1];
-                        initialDistance = Math.hypot(
-                            touch2.clientX - touch1.clientX,
-                            touch2.clientY - touch1.clientY
-                        );
-                        initialZoom = currentZoom;
-                    }
-                }, { passive: true });
-                
-                modal.addEventListener('touchmove', (e) => {
-                    if (e.touches.length === 2) {
-                        e.preventDefault();
-                        const touch1 = e.touches[0];
-                        const touch2 = e.touches[1];
-                        const currentDistance = Math.hypot(
-                            touch2.clientX - touch1.clientX,
-                            touch2.clientY - touch1.clientY
-                        );
-                        const scale = currentDistance / initialDistance;
-                        updateZoom(initialZoom * scale);
-                    }
-                }, { passive: false });
-            }
-            
-            // --- Smooth Scroll for Anchor Links ---
-            function initializeSmoothScroll() {
-                const smoothScrollHandler = function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#' || !targetId.startsWith('#')) return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (!targetElement) return;
-            
-                    e.preventDefault();
-                    
-                    const header = document.querySelector('header.sticky');
-                    const headerOffset = header?.offsetHeight || 0;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({ 
-                        top: offsetPosition, 
-                        behavior: 'smooth' 
-                    });
-                };
-            
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', smoothScrollHandler);
-                });
-            }
-            
-            // --- Set Current Year in Footer ---
-            function setCurrentYear() {
-                const currentYearElement = document.getElementById('currentYear');
-                if (currentYearElement) {
-                    currentYearElement.textContent = new Date().getFullYear();
-                }
-            }
-            
-            // --- Global Site-wide Particle Animation ---
-            function globalParticles() {
-                // Check for reduced motion preference
-                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    return;
-                }
-            
-                const canvas = document.createElement('canvas');
-                canvas.id = 'global-particles';
-                Object.assign(canvas.style, {
-                    position: 'fixed',
-                    top: '0',
-                    left: '0',
-                    width: '100vw',
-                    height: '100vh',
-                    pointerEvents: 'none',
-                    zIndex: '1',
-                    opacity: '0.6'
-                });
-                document.body.prepend(canvas);
-                
-                const ctx = canvas.getContext('2d', { alpha: true });
-                if (!ctx) return;
-            
-                let animationFrameId = null;
-                let isVisible = true;
-            
-                const resizeCanvas = debounce(() => {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                    initializeParticles();
-                }, PERF_CONFIG.debounceDelay);
-            
-                const colors = [
-                    'rgba(253,224,71,0.12)', 'rgba(236,65,88,0.12)', 'rgba(102,75,240,0.12)',
-                    'rgba(96,165,250,0.12)', 'rgba(34,197,94,0.12)', 'rgba(249,115,22,0.12)',
-                    'rgba(14,165,233,0.12)', 'rgba(236,72,153,0.12)', 'rgba(255,255,255,0.08)',
-                    'rgba(168,85,247,0.10)'
-                ];
-            
-                let particles = [];
-            
-                function initializeParticles() {
-                    const particleCount = Math.min(
-                        PERF_CONFIG.maxParticleCount, 
-                        Math.floor((canvas.width * canvas.height) / PERF_CONFIG.particleDensity)
-                    );
-                    
-                    particles = Array.from({ length: particleCount }, () => ({
-                        x: Math.random() * canvas.width,
-                        y: Math.random() * canvas.height,
-                        r: 8 + Math.random() * 20,
-                        dx: (Math.random() - 0.5) * 0.3,
-                        dy: (Math.random() - 0.5) * 0.3,
-                        color: colors[Math.floor(Math.random() * colors.length)],
-                        alpha: 0.1 + Math.random() * 0.3,
-                        pulse: Math.random() * Math.PI * 2,
-                        pulseSpeed: 0.01 + Math.random() * 0.02,
-                        shape: Math.floor(Math.random() * 3)
-                    }));
-                }
-            
-                function drawParticles() {
-                    if (!ctx || !isVisible) return;
-                    
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    
-                    for (const p of particles) {
-                        p.pulse += p.pulseSpeed;
-                        const pulseMultiplier = 0.8 + 0.2 * Math.sin(p.pulse);
-                        const size = p.r * pulseMultiplier;
-                        
-                        ctx.fillStyle = p.color;
-                        ctx.globalAlpha = p.alpha * pulseMultiplier;
-                        ctx.shadowColor = p.color;
-                        ctx.shadowBlur = 15;
-                        
-                        ctx.beginPath();
-                        switch (p.shape) {
-                            case 0: // Circle
-                                ctx.arc(p.x, p.y, size, 0, 2 * Math.PI);
-                                break;
-                            case 1: // Triangle
-                                ctx.moveTo(p.x, p.y - size);
-                                ctx.lineTo(p.x - size * 0.866, p.y + size * 0.5);
-                                ctx.lineTo(p.x + size * 0.866, p.y + size * 0.5);
-                                ctx.closePath();
-                                break;
-                            case 2: // Square
-                                ctx.rect(p.x - size, p.y - size, size * 2, size * 2);
-                                break;
-                        }
-                        ctx.fill();
-                    }
-                    
-                    ctx.globalAlpha = 1;
-                    ctx.shadowBlur = 0;
-                }
-            
-                function animateGlobalParticles() {
-                    if (!isVisible) return;
-                    
-                    for (const p of particles) {
-                        p.x += p.dx;
-                        p.y += p.dy;
-                        
-                        // Wrap around screen edges
-                        if (p.x + p.r < 0) p.x = canvas.width + p.r;
-                        else if (p.x - p.r > canvas.width) p.x = -p.r;
-                        if (p.y + p.r < 0) p.y = canvas.height + p.r;
-                        else if (p.y - p.r > canvas.height) p.y = -p.r;
-                    }
-                    
-                    drawParticles();
-                    animationFrameId = requestAnimationFrame(animateGlobalParticles);
-                }
-            
-                // Performance optimization: pause when page is not visible
-                document.addEventListener('visibilitychange', () => {
-                    if (document.hidden) {
-                        isVisible = false;
-                        if (animationFrameId) {
-                            cancelAnimationFrame(animationFrameId);
-                            animationFrameId = null;
-                        }
-                    } else {
-                        isVisible = true;
-                        if (!animationFrameId) {
-                            animateGlobalParticles();
-                        }
-                    }
-                });
-            
-                // Mouse interaction with throttling
-                let mouseX = 0, mouseY = 0;
-                const handleMouseMove = throttle((e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    
-                    for (const p of particles) {
-                        const dx = mouseX - p.x;
-                        const dy = mouseY - p.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        
-                        if (distance < 150) {
-                            const force = (150 - distance) / 150 * 0.002;
-                            p.dx += dx * force;
-                            p.dy += dy * force;
-                            
-                            // Limit velocity
-                            const maxSpeed = 0.5;
-                            p.dx = Math.max(-maxSpeed, Math.min(maxSpeed, p.dx));
-                            p.dy = Math.max(-maxSpeed, Math.min(maxSpeed, p.dy));
-                        }
-                    }
-                }, PERF_CONFIG.particleThrottleDelay);
-            
-                // Initialize
-                resizeCanvas();
-                window.addEventListener('resize', resizeCanvas);
-                document.addEventListener('mousemove', handleMouseMove, { passive: true });
-                animateGlobalParticles();
-            }
-            
-            // --- Founders Section: Background Particle Animation ---
-            function foundersParticles() {
-                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    return;
-                }
-            
-                const section = document.getElementById('founders');
-                if (!section) return;
-            
-                const canvas = document.createElement('canvas');
-                Object.assign(canvas.style, {
-                    position: 'absolute',
-                    top: '0',
-                    left: '0',
-                    width: '100%',
-                    height: '100%',
-                    pointerEvents: 'none',
-                    zIndex: '0',
-                    opacity: '0.4'
-                });
-            
-                section.style.position = 'relative';
-                section.prepend(canvas);
-            
-                const ctx = canvas.getContext('2d', { alpha: true });
-                if (!ctx) return;
-            
-                let animationFrameId = null;
-            
-                const resizeCanvas = debounce(() => {
-                    canvas.width = section.offsetWidth;
-                    canvas.height = section.offsetHeight;
-                }, PERF_CONFIG.debounceDelay);
-            
-                const colors = [
-                    'rgba(253,224,71,0.25)', 'rgba(236,65,88,0.25)', 
-                    'rgba(102,75,240,0.25)', 'rgba(255,255,255,0.15)'
-                ];
-            
-                const particles = Array.from({ length: 15 }, () => ({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    r: 12 + Math.random() * 18,
-                    dx: (Math.random() - 0.5) * 0.2,
-                    dy: (Math.random() - 0.5) * 0.2,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    alpha: 0.2 + Math.random() * 0.3
-                }));
-            
-                function drawFoundersParticles() {
-                    if (!ctx) return;
-                    
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    
-                    for (const p of particles) {
-                        ctx.beginPath();
-                        ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-                        ctx.fillStyle = p.color;
-                        ctx.globalAlpha = p.alpha;
-                        ctx.shadowColor = p.color;
-                        ctx.shadowBlur = 20;
-                        ctx.fill();
-                    }
-                    
-                    ctx.globalAlpha = 1;
-                    ctx.shadowBlur = 0;
-                }
-            
-                function animateFoundersParticles() {
-                    for (const p of particles) {
-                        p.x += p.dx;
-                        p.y += p.dy;
-                        
-                        if (p.x + p.r < 0) p.x = canvas.width + p.r;
-                        else if (p.x - p.r > canvas.width) p.x = -p.r;
-                        if (p.y + p.r < 0) p.y = canvas.height + p.r;
-                        else if (p.y - p.r > canvas.height) p.y = -p.r;
-                    }
-                    
-                    drawFoundersParticles();
-                    animationFrameId = requestAnimationFrame(animateFoundersParticles);
-                }
-            
-                const observer = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            if (!animationFrameId) animateFoundersParticles();
-                        } else {
-                            if (animationFrameId) {
-                                cancelAnimationFrame(animationFrameId);
-                                animationFrameId = null;
-                            }
-                        }
-                    });
-                }, { threshold: PERF_CONFIG.intersectionThreshold });
-            
-                resizeCanvas();
-                window.addEventListener('resize', resizeCanvas);
-                observer.observe(section);
-            }
-            
-            // --- Founders Section: Floating Card Animation ---
-            function foundersFloatingCards() {
-                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    return;
-                }
-            
-                const cards = document.querySelectorAll('#founders .card');
-                
-                cards.forEach((card, i) => {
-                    try {
-                        card.animate([
-                            { transform: 'translateY(0px)' },
-                            { transform: `translateY(${i % 2 === 0 ? -6 : 6}px)` },
-                            { transform: 'translateY(0px)' }
-                        ], {
-                            duration: 4000 + i * 100,
-                            iterations: Infinity,
-                            direction: 'alternate',
-                            easing: 'ease-in-out'
-                        });
-                    } catch (error) {
-                        console.warn('Animation not supported for founder cards:', error);
-                    }
-                });
-            }
-            
-            // --- Card 3D Effects (Specialist Cards) ---
-            function initializeCard3DEffects(selector, config) {
-                const cards = document.querySelectorAll(selector);
-                if (cards.length === 0) return;
-            
-                const { tiltStrength, perspective, parallaxStrength, isSpecialistCard } = config;
-            
-                const specialistThemes = {
-                    yellow: {
-                        bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(250,204,21,0.1)',
-                        titleColor: '#facc15', roleColor: '#fde68a',
-                        staticShadow: '0 4px 120px 0 rgba(253,224,71,0.25), 8px 8px 32px 0 rgba(253,224,71,0.15)',
-                        socialLinkColor: '#facc15', socialLinkHoverColor: '#fde047',
-                        imgGlowColor: 'rgba(250, 204, 21, 0.45)'
-                    },
-                    purple: {
-                        bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(168,85,247,0.1)',
-                        titleColor: '#a855f7', roleColor: '#d8b4fe',
-                        staticShadow: '0 4px 120px 0 rgba(168,85,247,0.25), 8px 8px 32px 0 rgba(168,85,247,0.15)',
-                        socialLinkColor: '#a855f7', socialLinkHoverColor: '#c084fc',
-                        imgGlowColor: 'rgba(168, 85, 247, 0.45)'
-                    },
-                    pink: {
-                        bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(236,72,153,0.1)',
-                        titleColor: '#ec4899', roleColor: '#fbcfe8',
-                        staticShadow: '0 4px 120px 0 rgba(236,72,153,0.25), 8px 8px 32px 0 rgba(236,72,153,0.15)',
-                        socialLinkColor: '#ec4899', socialLinkHoverColor: '#f9a8d4',
-                        imgGlowColor: 'rgba(236, 72, 153, 0.45)'
-                    },
-                    cyan: {
-                        bgColor: 'rgba(24,31,42,0.9)', borderColor: 'rgba(14,165,233,0.1)',
-                        titleColor: '#38bdf8', roleColor: '#7dd3fc',
-                        staticShadow: '0 4px 120px 0 rgba(14,165,233,0.25), 8px 8px 32px 0 rgba(14,165,233,0.15)',
-                        socialLinkColor: '#38bdf8', socialLinkHoverColor: '#67e8f9',
-                        imgGlowColor: 'rgba(14, 165, 233, 0.45)'
-                    }
-                };
-            
-                // SPECIALIST CARDS ONLY
-                if (isSpecialistCard) {
-                    cards.forEach(card => {
-                        const elements = {
-                            img: card.querySelector('img'),
-                            title: card.querySelector('h4'),
-                            desc: card.querySelector('p.text-gray-300.text-sm'),
-                            social: card.querySelector('.mt-auto.pt-4')
-                        };
-            
-                        elements.role = elements.title?.nextElementSibling || null;
-            
-                        const themeName = card.dataset.theme;
-                        const currentTheme = specialistThemes[themeName];
-                        
-                        if (currentTheme) {
-                            applySpecialistTheme(card, elements, currentTheme);
-                        }
-            
-                        function applySpecialistTheme(card, elements, theme) {
-                            Object.assign(card.style, {
-                                backgroundColor: theme.bgColor,
-                                borderColor: theme.borderColor,
-                                boxShadow: theme.staticShadow,
-                                transition: 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)'
-                            });
-            
-                            if (elements.title) elements.title.style.color = theme.titleColor;
-                            if (elements.role?.tagName === 'P') elements.role.style.color = theme.roleColor;
-                            if (elements.img) elements.img.style.transition = 'box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-            
-                            const socialLinks = card.querySelectorAll('.mt-auto.pt-4 a');
-                            socialLinks.forEach(link => {
-                                link.style.color = theme.socialLinkColor;
-                                link.addEventListener('mouseenter', () => link.style.color = theme.socialLinkHoverColor);
-                                link.addEventListener('mouseleave', () => link.style.color = theme.socialLinkColor);
-                            });
-                        }
-            
-                        // SPECIALIST CARDS: Simple hover effect only
-                        card.addEventListener('mousemove', () => {
-                            if (currentTheme) {
-                                card.style.transform = 'translateY(-10px) scale(1.03)';
-                                if (elements.img && currentTheme.imgGlowColor) {
-                                    elements.img.style.boxShadow = `0 0 4px 4px ${currentTheme.imgGlowColor.replace('0.45', '0.7')}, 0 0 100px 10px ${currentTheme.imgGlowColor.replace('0.45', '0.5')}`;
-                                }
-                            }
-                        });
-            
-                        card.addEventListener('mouseleave', () => {
-                            card.style.transform = 'translateY(0px) scale(1)';
-                            if (elements.img) elements.img.style.boxShadow = 'none';
-                        });
-                    });
-                }
-            }
-            
-            // --- PRO CARDS: Enhanced 3D interactions with glow effects ---
-            function initializeProCardInteractions() {
-                const proCards = document.querySelectorAll('.pro-card');
-                const tiltStrength = 8; 
-                const parallaxStrength = {
-                    img: 40, 
-                    title: 25, 
-                    text: 15,  
-                    social: 20 
-                };
-            
-                proCards.forEach(card => {
-                    // Add pro-img-glow class to images if missing
-                    const img = card.querySelector('img');
-                    if (img && !img.classList.contains('pro-img-glow')) {
-                        img.classList.add('pro-img-glow');
-                    }
-            
-                    card.addEventListener('mousemove', (e) => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-            
-                        const centerX = rect.width / 2;
-                        const centerY = rect.height / 2;
-            
-                        const rotateX = (y - centerY) / centerY * -tiltStrength;
-                        const rotateY = (x - centerX) / centerX * tiltStrength;
-            
-                        // Get card theme color for glow effects
-                        const neonTheme = card.dataset.neon;
-                        let proNeonColor = '#60a5fa'; // default blue
-                        let imgGlowColor = '#60a5fa66'; // default blue with alpha
-                        
-                        switch(neonTheme) {
-                            case 'blue':
-                                proNeonColor = '#60a5fa';
-                                imgGlowColor = '#60a5fa66';
-                                break;
-                            case 'red':
-                                proNeonColor = '#ec4158';
-                                imgGlowColor = '#ec415866';
-                                break;
-                            case 'purple':
-                                proNeonColor = '#664bf0';
-                                imgGlowColor = '#664bf066';
-                                break;
-                            case 'yellow':
-                                proNeonColor = '#ffce41';
-                                imgGlowColor = '#ffce4166';
-                                break;
-                            case 'green':
-                                proNeonColor = '#9ef06c';
-                                imgGlowColor = '#86e14f66';
-                                break;
-                            case 'orange':
-                                proNeonColor = '#f84f29';
-                                imgGlowColor = '#f84f2966';
-                                break;
-                        }
-            
-                        // Apply 3D transform to card with enhanced glow
-                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
-                        
-                        // ENHANCED CARD GLOW EFFECTS
-                        card.style.boxShadow = `
-                            0 0 2px 0.1px ${proNeonColor},
-                            0 0 75px 0.1px ${proNeonColor}dd,
-                            0 0 7.5px 0.1px ${proNeonColor}aa,
-                            0 4px 16px 0 rgba(0,0,0,0.4)
-                        `;
-            
-                        const proImg = card.querySelector('.pro-img-glow');
-                        const title = card.querySelector('h3');
-                        const descriptionPara = card.querySelector(':scope > p.text-gray-300.text-sm'); 
-                        const rolePara = card.querySelector(':scope > p:not(.text-gray-300)'); 
-                        const socialLinksContainer = card.querySelector('.absolute.bottom-0');
-            
-                        // ENHANCED IMAGE GLOW with secondary color
-                        if(proImg) {
-                            proImg.style.transform = `translateZ(${parallaxStrength.img}px) rotateX(${rotateX/2}deg) rotateY(${rotateY/2}deg) scale(1.05)`;
-                            
-                            // Get secondary glow color based on theme
-                            let secondaryGlow = '#1e3a8a44';
-                            switch(neonTheme) {
-                                case 'blue': secondaryGlow = '#1e3a8a44'; break;
-                                case 'red': secondaryGlow = '#991b1b44'; break;
-                                case 'purple': secondaryGlow = '#581c8744'; break;
-                                case 'yellow': secondaryGlow = '#b4530944'; break;
-                                case 'green': secondaryGlow = '#86e14f44'; break;
-                                case 'orange': secondaryGlow = '#f84f2944'; break;
-                            }
-                            
-                            // RADIAL GLOW EFFECT for images
-                            proImg.style.boxShadow = `
-                                0 0 150px 8px ${imgGlowColor.replace('66', 'cc')},
-                                0 0 200px 5px ${secondaryGlow},
-                                0 5px 8px 5px rgba(0,0,0,0.4),
-                                inset 0 0 15px 2px ${imgGlowColor.replace('66', '33')}
-                            `;
-                        }
-                        
-                        // ENHANCED TEXT GLOW EFFECTS
-                        if(title) {
-                            title.style.transform = `translateZ(${parallaxStrength.title}px) rotateX(${rotateX/3}deg) rotateY(${rotateY/3}deg)`;
-                            title.style.textShadow = `
-                                4 4px 12px rgba(0,0,0,0.6), 
-                                4 2px 8px ${proNeonColor}44,
-                                4 6px 15px rgba(0,0,0,0.3),
-                                4 2 20px ${proNeonColor}22
-                            `;
-                        }
-                        
-                        if(descriptionPara) {
-                            descriptionPara.style.transform = `translateZ(${parallaxStrength.text}px)`;
-                            descriptionPara.style.textShadow = `0 2px 8px rgba(0,0,0,0.4), 0 1px 4px ${proNeonColor}22`;
-                        }
-                        
-                        if(rolePara) {
-                            rolePara.style.transform = `translateZ(${parallaxStrength.text + 5}px)`;
-                            rolePara.style.textShadow = `
-                                0 5px 10px rgba(0,0,0,0.5), 
-                                0 1px 6px ${proNeonColor}33,
-                                0 4px 8px rgba(0,0,0,0.3)
-                            `;
-                        }
-                        
-                        if(socialLinksContainer) {
-                            socialLinksContainer.style.transform = `translateZ(${parallaxStrength.social}px)`;
-                            socialLinksContainer.style.textShadow = `0 3px 10px rgba(0,0,0,0.5), 0 1px 6px ${proNeonColor}33`;
-                        }
-                    });
-            
-                    card.addEventListener('mouseleave', () => {
-                        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-                        
-                        // Reset card glow
-                        card.style.boxShadow = '0 2px 8px 0 rgba(0,0,0,0.18)';
-                        
-                        const elementsToReset = [
-                            card.querySelector('.pro-img-glow'),
-                            card.querySelector('h3'),
-                            card.querySelector(':scope > p.text-gray-300.text-sm'),
-                            card.querySelector(':scope > p:not(.text-gray-300)'),
-                            card.querySelector('.absolute.bottom-0')
-                        ];
-                        
-                        elementsToReset.forEach(el => {
-                            if(el) {
-                                el.style.transform = 'translateZ(0px) scale(1) rotateX(0deg) rotateY(0deg)';
-                                el.style.textShadow = 'none';
-                            }
-                        });
-                        
-                        // Reset image glow specifically
-                        const proImg = card.querySelector('.pro-img-glow');
-                        if(proImg) {
-                            proImg.style.transform = 'translateZ(0px) scale(1)';
-                            proImg.style.boxShadow = '0 0 0 0 transparent';
-                        }
-                    });
-            
-                    card.addEventListener('mouseenter', () => {
-                        card.style.transition = 'transform 0.05s ease-out, box-shadow 0.0s cubic-bezier(.68,-0.55,.27,1.55)';
-                    });
-                });
-            }
-            
-            // --- Initialize Everything ---
+            // --- INITIALIZATION ---
             document.addEventListener('DOMContentLoaded', () => {
                 try {
-                    // Core functionality
-                    initializeMobileMenu();
+                    // Initialize core systems
+                    new MenuManager();
                     initializeSmoothScroll();
                     setCurrentYear();
-            
-                    // PARALLAX EFFECT (RESTORED)
                     initializeParallax();
             
-                    // Visual effects (can fail gracefully)
-                    globalParticles();
-                    foundersParticles();
-                    foundersFloatingCards();
-            
-                    // Card effects - SPECIALIST CARDS ONLY
-                    initializeCard3DEffects('.specialist-card', {
-                        tiltStrength: 8,
-                        perspective: '1200px',
-                        parallaxStrength: { img: 25, title: 20, role: 15, desc: 12, social: 15 },
-                        isSpecialistCard: true
+                    // Initialize particle systems
+                    new ParticleSystem(document.body, { 
+                        isGlobal: true, 
+                        opacity: '0.6' 
                     });
-            
-                    // PRO CARDS: Enhanced function with full glow effects
-                    initializeProCardInteractions();
                     
-                    // NEWS IMAGE MODAL: Click to view images
-                    initializeNewsImageModal();
+                    const foundersSection = document.getElementById('founders');
+                    if (foundersSection) {
+                        new ParticleSystem(foundersSection, {
+                            colors: [
+                                'rgba(253,224,71,0.25)', 'rgba(236,65,88,0.25)', 
+                                'rgba(102,75,240,0.25)', 'rgba(255,255,255,0.15)'
+                            ],
+                            particleCount: 15,
+                            opacity: '0.4'
+                        });
+                    }
+            
+                    // Initialize animations
+                    const cardAnimator = new FloatingCardAnimator();
+            
+                    // Initialize interactions
+                    const proCardSystem = new ProCardInteractionSystem();
+                    proCardSystem.init();
+                    
+                    // Initialize modal
+                    new ImageModal();
             
                 } catch (error) {
                     console.error('Error initializing website features:', error);
                 }
             });
-    </script>
-            
-        <!-- JavaScript End -->
+            </script>
+            <!-- JavaScript End -->
 </body>
 </html>
