@@ -52,7 +52,157 @@
        MODERN PROFESSIONAL HEADER NAVIGATION SYSTEM
        Enhanced with Official Discord Animation & Optimized Performance
        ============================================== */
-    
+    /* ==============================================
+           COMPLETE 1HP ESPORTS LOGO STYLING
+============================================== */
+        
+        .complete-1hp-logo {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            padding: 8rem 3rem 1rem 3rem; /* Top: 4rem, Right: 3rem, Bottom: 2rem, Left: 3rem */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        /* Main 1hp Logo Styling */
+        .main-logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(2.4); /* Group size control - 100% of original */
+        }
+        
+        .main-letter {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        /* Main logo positioning - Updated for better spacing */
+        .main-1 {
+            margin-right: +1rem;
+        }
+        
+        .main-h {
+            margin: 0;
+            z-index: 0;
+        }
+        
+        .main-p {
+            margin-left: +1rem;
+        }
+        
+        /* Subtitle ESPORTS Styling with Group Size Control */
+        .subtitle-logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.02rem;
+            margin-top: 8.2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(1.85); /* Group size control - 85% of original */
+        }
+        
+        .subtitle-letter {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        /* Individual subtitle letter positioning for tight spacing */
+        .sub-e { margin-right: +0.1rem; }
+        .sub-s { margin: 0 +0.1rem; }
+        .sub-s2 { margin: 0 +0.1rem; }
+        .sub-p2 { margin: 0 +0.1rem; }
+        .sub-o { margin: 0 +0.1rem; }
+        .sub-r { margin: 0 +0.1rem; }
+        .sub-t { margin-left: +0.1rem; }
+
+/* Enhanced CTA Buttons - Latest News and Meet The Team */
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.2),
+        0 0 15px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    border: 1px solid transparent;
+    backdrop-filter: blur(10px);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.7s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* PRIMARY BUTTON - Option 1: Vibrant Orange-Red */
+.btn-primary {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
+    color: #ffffff;
+    border-color: rgba(249, 115, 22, 0.5);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 12px 35px rgba(249, 115, 22, 0.4),
+        0 0 25px rgba(249, 115, 22, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(251, 146, 60, 0.6);
+}
+
+/* SECONDARY BUTTON - Option 1: Emerald Green */
+.btn-secondary {
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+    color: #ffffff;
+    border-color: rgba(5, 150, 105, 0.5);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 12px 35px rgba(5, 150, 105, 0.4),
+        0 0 25px rgba(5, 150, 105, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(16, 185, 129, 0.6);
+}
+        
     /* ==============================================
        NAVIGATION LINKS - Enhanced Minimalist Design
        ============================================== */
@@ -4217,23 +4367,148 @@
 </header>
 
     <!-- Hero Section with optimized background -->
-    <section id="home" class="relative py-12 sm:py-16 bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('image_7d1423.png'); min-height: 65vh;">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <img src="https://i.ibb.co/ZR2JjTMk/1hp-Rebrand-Cover-Photo.png" 
-                 alt="1hp Esports Cover" 
-                 class="mx-auto mb-6 max-w-xl w-full h-auto" 
-                 width="800"
-                 height="200"
-                 loading="eager"
-                 decoding="async"
-                 onerror="this.onerror=null;this.src='https://placehold.co/800x200/111827/ffffff?text=1hp+Esports+Cover&font=inter';">
-            <div class="mt-8 sm:mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#news" class="btn btn-primary text-lg bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold text-white shadow-md hover:shadow-lg transition-all duration-300">Latest News</a>
-                <a href="#esports-team" class="btn btn-secondary text-lg bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300">Meet The Team</a>
+    <!-- Complete 1hp Esports Logo -->
+<div class="logo-enhanced complete-logo cursor-pointer" id="logoContainer">
+    <div class="complete-1hp-logo" id="completeLogo">
+        
+        <!-- Main 1hp Logo -->
+        <div class="main-logo">
+            <!-- Number 1 -->
+            <div class="main-letter main-1">
+                <img src="1hp Letters/SVG/L_1.svg" 
+                     alt="1" 
+                     class="main-svg"
+                     width="40" 
+                     height="50"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+            
+            <!-- Letter H -->
+            <div class="main-letter main-h">
+                <img src="1hp Letters/SVG/L_H.svg" 
+                     alt="H" 
+                     class="main-svg"
+                     width="45" 
+                     height="50"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+            
+            <!-- Letter P -->
+            <div class="main-letter main-p">
+                <img src="1hp Letters/SVG/L_P.svg" 
+                     alt="P" 
+                     class="main-svg"
+                     width="40" 
+                     height="50"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
             </div>
         </div>
+        
+        <!-- ESPORTS Subtitle -->
+        <div class="subtitle-logo">
+            <!-- E -->
+            <div class="subtitle-letter sub-e">
+                <img src="1hp Letters/SVG/E.svg" 
+                     alt="E" 
+                     class="subtitle-svg"
+                     width="18" 
+                     height="22"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+            
+            <!-- S (using S_2.svg) -->
+            <div class="subtitle-letter sub-s">
+                <img src="1hp Letters/SVG/S_2.svg" 
+                     alt="S" 
+                     class="subtitle-svg"
+                     width="18" 
+                     height="22"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+            
+            <!-- P -->
+            <div class="subtitle-letter sub-p2">
+                <img src="1hp Letters/SVG/P.svg" 
+                     alt="P" 
+                     class="subtitle-svg"
+                     width="18" 
+                     height="22"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+            
+            <!-- O -->
+            <div class="subtitle-letter sub-o">
+                <img src="1hp Letters/SVG/O.svg" 
+                     alt="O" 
+                     class="subtitle-svg"
+                     width="18" 
+                     height="22"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+            
+            <!-- R -->
+            <div class="subtitle-letter sub-r">
+                <img src="1hp Letters/SVG/R.svg" 
+                     alt="R" 
+                     class="subtitle-svg"
+                     width="18" 
+                     height="22"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+            
+            <!-- T -->
+            <div class="subtitle-letter sub-t">
+                <img src="1hp Letters/SVG/T.svg" 
+                     alt="T" 
+                     class="subtitle-svg"
+                     width="18" 
+                     height="22"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+            
+            <!-- S (using S.svg) -->
+            <div class="subtitle-letter sub-s2">
+                <img src="1hp Letters/SVG/S.svg" 
+                     alt="S" 
+                     class="subtitle-svg"
+                     width="18" 
+                     height="22"
+                     loading="eager"
+                     decoding="async"
+                     onerror="this.style.display='none';">
+            </div>
+        </div>
+            <div class="mt-8 sm:mt-10 w-full">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
+                    <a href="#news" class="btn btn-primary w-full sm:w-auto min-w-0 sm:max-w-none">
+                <span class="btn-text-enhanced">Latest News</span>
+                    </a>
+                <a href="#esports-team" class="btn btn-secondary w-full sm:w-auto min-w-0 sm:max-w-none">
+                <span class="btn-text-enhanced">Meet The Team</span>
+            </a>
+        </div>
+</div>
+        </div>
     </section>
-    
+    </header>
     <!-- About Us Section with optimized image -->
     <section id="about" class="pt-12 pb-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center text-lg space-y-6">
@@ -4261,7 +4536,7 @@
     </section>
     
     <!-- Introducing Ourselves Title -->
-    <div class="w-full flex justify-center mt-10 mb-6 sm:mt-12 sm:mb-8"> 
+    <div class="w-full flex justify-center" style="padding: rem 3rem 1rem 3rem;"> 
         <h2 class="main-section-title text-4xl sm:text-5xl lg:text-7xl font-extrabold text-center intro-title-effect tracking-tight">
             <span class="uppercase">INTRODUCING OURSELVES</span>
         </h2>
@@ -4739,8 +5014,8 @@
             <!-- Esports Team Section End -->
             
             <!-- News Section Start -->
-            <section id="news" class="py-8 sm:py-12 my-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <section id="news" class="mx-auto max-w-7xl" style="padding: 1rem 3rem 1rem 3rem;">
+                <div class="container mx-auto">
                     <h2 class="main-section-title text-4xl sm:text-[2.6rem] leading-tight font-bold text-center mb-8 sm:mb-10 news-gradient-effect">
                         <span class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-orange-400">Latest News & Updates</span> 
                     </h2>
