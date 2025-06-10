@@ -74,25 +74,216 @@
         /* --- Main Achievements Title --- */
         .achievements-main-title {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 700; 
-            background: linear-gradient(120deg, #818cf8 0%, #60a5fa 20%, #ec4158 40%, #ffce41 60%, #a855f7 80%, #664bf0 100%);
-            background-size: 250% auto;
-            color: #fff;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            background: linear-gradient(135deg, 
+                #ffd700 0%, 
+                #ff6b35 25%, 
+                #8a2be2 50%, 
+                #dc143c 75%, 
+                #ffcc00 100%);
+            background-size: 200% 200%;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: achievements-title-gradient-anim 5s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+            color: transparent;
+            text-align: center;
+            letter-spacing: 0.15em;
+            line-height: 1.2;
+            position: relative;
+            margin: 0;
+            padding: 1rem 0;
+            animation: professional-gradient 8s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.05)) 
+                    drop-shadow(0 0 8px rgba(255, 107, 53, 0.05))
+                    drop-shadow(0 0 12px rgba(138, 43, 226, 0.05));
             text-shadow: 
-              0 2px 3px rgba(0, 0, 0, 0.25), 
-              0 0 1.5px rgba(102, 75, 240, 0.001), 
-              0 0 2px rgba(255, 206, 65, 0.0008), 
-              0 0 2.5px rgba(236, 65, 88, 0.0005); 
-            letter-spacing: 0.01em; 
-            padding: 0.1em 0;
+                0 0 10px rgba(255, 215, 0, 0.05),
+                0 0 20px rgba(255, 107, 53, 0.05),
+                0 0 30px rgba(138, 43, 226, 0.05),
+                inset 0 1px 2px rgba(220, 20, 60, 0.05);
         }
-        @keyframes achievements-title-gradient-anim {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+
+        .achievements-main-title::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.05) 0%, 
+                rgba(255, 107, 53, 0.05) 25%, 
+                rgba(138, 43, 226, 0.05) 50%, 
+                rgba(220, 20, 60, 0.05) 75%, 
+                rgba(255, 204, 0, 0.05) 100%);
+            background-size: 200% 200%;
+            border-radius: 12px;
+            z-index: -1;
+            animation: professional-glow 6s ease-in-out infinite alternate;
+            filter: blur(20px);
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.05),
+                0 0 40px rgba(255, 107, 53, 0.05),
+                inset 0 0 15px rgba(138, 43, 226, 0.05);
+        }
+
+        .achievements-main-title::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #ffd700 20%, 
+                #dc143c 50%, 
+                #8a2be2 80%, 
+                transparent 100%);
+            border-radius: 2px;
+            animation: professional-underline 4s ease-in-out infinite;
+            box-shadow: 
+                0 0 5px rgba(255, 215, 0, 0.05),
+                0 2px 4px rgba(220, 20, 60, 0.05);
+        }
+
+        .achievements-main-title:hover {
+            animation-play-state: paused;
+            transform: translateY(-2px);
+            transition: transform 0.3s ease-out;
+            filter: drop-shadow(0 3px 6px rgba(255, 215, 0, 0.05)) 
+                    drop-shadow(0 0 12px rgba(255, 107, 53, 0.05))
+                    drop-shadow(0 0 18px rgba(138, 43, 226, 0.05));
+            text-shadow: 
+                0 0 15px rgba(255, 215, 0, 0.05),
+                0 0 25px rgba(255, 107, 53, 0.05),
+                0 0 35px rgba(138, 43, 226, 0.05),
+                inset 0 1px 3px rgba(220, 20, 60, 0.05);
+        }
+
+        @keyframes professional-gradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            25% {
+                background-position: 100% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            75% {
+                background-position: 0% 100%;
+            }
+        }
+
+        @keyframes professional-glow {
+            0% {
+                opacity: 0.3;
+                background-position: 0% 50%;
+                box-shadow: 
+                    0 0 15px rgba(255, 215, 0, 0.05),
+                    0 0 30px rgba(255, 107, 53, 0.05),
+                    inset 0 0 10px rgba(138, 43, 226, 0.05);
+            }
+            50% {
+                opacity: 0.6;
+                background-position: 100% 50%;
+                box-shadow: 
+                    0 0 25px rgba(255, 215, 0, 0.05),
+                    0 0 50px rgba(255, 107, 53, 0.05),
+                    inset 0 0 20px rgba(138, 43, 226, 0.05);
+            }
+            100% {
+                opacity: 0.3;
+                background-position: 0% 50%;
+                box-shadow: 
+                    0 0 15px rgba(255, 215, 0, 0.05),
+                    0 0 30px rgba(255, 107, 53, 0.05),
+                    inset 0 0 10px rgba(138, 43, 226, 0.05);
+            }
+        }
+
+        @keyframes professional-underline {
+            0%, 100% {
+                opacity: 1;
+                transform: translateX(-50%) scaleX(1);
+                box-shadow: 
+                    0 0 3px rgba(255, 215, 0, 0.05),
+                    0 1px 2px rgba(220, 20, 60, 0.05);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateX(-50%) scaleX(1.1);
+                box-shadow: 
+                    0 0 6px rgba(255, 215, 0, 0.05),
+                    0 2px 4px rgba(220, 20, 60, 0.05);
+            }
+        }
+
+        /* Professional subtitle styling */
+        .achievements-subtitle {
+            font-family: 'Electrolize', sans-serif;
+            font-weight: 400;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #a0aec0;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            position: relative;
+        }
+
+        .achievements-subtitle .year-range {
+            color: #68d391;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .achievements-main-title {
+                letter-spacing: 0.1em;
+                padding: 0.75rem 0;
+            }
+            
+            .achievements-main-title::after {
+                width: 80%;
+                height: 2px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .achievements-main-title {
+                letter-spacing: 0.05em;
+                padding: 0.5rem 0;
+                filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.05));
+                text-shadow: 
+                    0 0 8px rgba(255, 215, 0, 0.05),
+                    0 0 15px rgba(255, 107, 53, 0.05);
+            }
+            
+            .achievements-main-title::before {
+                display: none; /* Remove glow on very small screens for cleaner look */
+            }
+            
+            .achievements-main-title::after {
+                width: 90%;
+                height: 2px;
+            }
+        }
+
+        /* Enhanced container styling */
+        .achievements-header {
+            position: relative;
+            padding: 2rem 0;
+            background: linear-gradient(180deg, 
+                rgba(17, 24, 39, 0.8) 0%, 
+                rgba(17, 24, 39, 0.4) 50%, 
+                rgba(17, 24, 39, 0.8) 100%);
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* Global Particles Container */
@@ -226,71 +417,87 @@
         color: var(--current-neon-color); 
         text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
     }
-
-        .achievement-card__date {
-            font-size: 0.95rem; 
-            color: #B2B9C5;  
-            font-family: 'Montserrat', sans-serif; 
-            font-weight: 600; 
-            margin-bottom: 0.75rem; 
-            transition: color 0.3s ease-out, text-shadow 0.3s ease-out; 
-            text-shadow: none; 
-        }
-        .achievement-card:hover .achievement-card__date {
-            color: var(--current-neon-color); 
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
-        }
+                .achievement-card__date {
+                    font-size: 0.95rem; 
+                    color: #B2B9C5;  
+                    font-family: 'Montserrat', sans-serif; 
+                    font-weight: 600; 
+                    margin-bottom: 0.75rem; 
+                    transition: all 0.3s ease-out; 
+                    text-shadow: none; 
+                    cursor: pointer;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 0.375rem;
+                    border: 1px solid transparent;
+                }
+                .achievement-card:hover .achievement-card__date {
+                    color: var(--current-neon-color); 
+                    text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+                    background-color: rgba(0,0,0,0.2);
+                    border-color: var(--current-neon-color);
+                    transform: scale(1.05);
+                }
+                
+                .achievement-card__details {
+                    margin-bottom: 4rem; 
+                    flex-grow: 1; 
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start; 
+                }
+                .achievement-card__description {
+                    font-size: 0.9rem;
+                    color: #C5C9D3; 
+                    margin-top: 0.5rem;
+                    text-align: justify;
+                    line-height: 1.5;
+                    flex-grow: 1;
+                    transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
+                    text-shadow: none; 
+                }
+                .achievement-card:hover .achievement-card__description {
+                    color: #FFFFFF; 
+                    text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+                }
         
-        .achievement-card__details {
-            margin-bottom: 4rem; 
-            flex-grow: 1; 
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; 
-        }
-        .achievement-card__description {
-            font-size: 0.9rem;
-            color: #C5C9D3; 
-            margin-top: 0.5rem;
-            text-align: justify;
-            line-height: 1.5;
-            flex-grow: 1;
-            transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
-            text-shadow: none; 
-        }
-        .achievement-card:hover .achievement-card__description {
-            color: #FFFFFF; 
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
-        }
-
-        .achievement-card__placement-container {
-            position: absolute;
-            bottom: 1rem; 
-            left: 1.25rem;
-            right: 1.25rem;
-            text-align: center;
-        }
-        .achievement-card__placement {
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 1.75rem; 
-            font-weight: 700; 
-            letter-spacing: 0.025em;
-            display: inline-block; 
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
-            color: #9CA3AF; 
-            transition: color 0.3s ease-out, text-shadow 0.3s ease-out; 
-        }
-        .achievement-card__placement sup { 
-            font-size: 0.6em; 
-            line-height: 0; 
-            position: relative;
-            vertical-align: baseline;
-            top: -0.5em; 
-        }
-        .achievement-card:hover .achievement-card__placement {
-            color: var(--current-neon-color); 
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
-        }
+                .achievement-card__placement-container {
+                    position: absolute;
+                    bottom: 1rem; 
+                    left: 1.25rem;
+                    right: 1.25rem;
+                    text-align: center;
+                }
+                .achievement-card__placement {
+                    font-family: 'Orbitron', sans-serif; 
+                    font-size: 1.75rem; 
+                    font-weight: 700; 
+                    letter-spacing: 0.025em;
+                    display: inline-block; 
+                    text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
+                    color: #9CA3AF; 
+                    transition: all 0.3s ease-out; 
+                    background-color: rgba(0,0,0,0.3);
+                    border: 2px solid rgba(156, 163, 175, 0.3);
+                    border-radius: 1.5rem;
+                    padding: 0.5rem 1rem;
+                    backdrop-filter: blur(3px);
+                    -webkit-backdrop-filter: blur(3px);
+                }
+                .achievement-card__placement sup { 
+                    font-size: 0.6em; 
+                    line-height: 0; 
+                    position: relative;
+                    vertical-align: baseline;
+                    top: -0.5em; 
+                }
+                .achievement-card:hover .achievement-card__placement {
+                    color: var(--current-neon-color); 
+                    text-shadow: 1px 1px 5px rgba(0,0,0,0.4); 
+                    border-color: var(--current-neon-color);
+                    background-color: rgba(0,0,0,0.5);
+                    box-shadow: 0 0 15px -3px var(--current-neon-color);
+                    transform: scale(1.05);
+                }
         
         .modal-bg {
             background: rgba(17, 24, 39, 0.9); 
@@ -633,11 +840,11 @@
             { id: 5, badge: "#5", date: "2020-08-17", title: "ESPG - Apex Legends Summer 2020 - Runner-Up Rhapsody", placement: "2nd Place", images: ["ESPG.jpg"], year: 2020, description: "Another stellar second-place finish in the ESPG Summer tournament, showcasing our consistent ability to reach grand finals." },
             { id: 6, badge: "#6", date: "2020-09-08", title: "AORUS Tri-Nation Series by Sa.W - Regional Powerhouse", placement: "2nd Place", images: ["TRI_NATION.png"], year: 2020, description: "Competing against top teams from three nations, our strong performance secured us the runner-up spot, solidifying our regional reputation." },
             { id: 7, badge: "#7", date: "2020-11-25", title: "Team Hyperion X (THX) Tournament - Bronze Battle", placement: "3rd Place", images: ["THX_APEX.png"], year: 2020, description: "A hard-fought battle in the THX Tournament saw us clinch third place, a testament to our resilience and strategic gameplay." },
-            { id: 8, badge: "#8", date: "2020-12-18", title: "Custom Indian Community Tournament - Champions of the Grid!", placement: "1st Place", prize: "$15 Steam Gift Card", images: ["CICT.png"], year: 2020, description: "Capping off a successful year with another championship title in the vibrant Indian community tournament, earning a well-deserved prize." },
+            { id: 8, badge: "#8", date: "2020-12-18", title: "Custom Indian Community Tournament - Champions of the Grid!", placement: "1st Place", images: ["CICT.png"], year: 2020, description: "Capping off a successful year with another championship title in the vibrant Indian community tournament, earning a well-deserved prize." },
             // 2021
             { id: 9, badge: "#9", date: "2021-05-09", title: "WALTON x Sa.W Community League - Unrivaled Apex Prowess", placement: "1st Place", images: ["WALTON.png"], year: 2021, description: "Victorious in the WALTON x Sa.W League, we reaffirmed our position as formidable contenders in the Apex Legends scene." },
             { id: 10, badge: "#10", date: "2021-08-19", title: "Akada Gaming Custom Tournament (India) - Back-to-Back Crowns", placement: "1st Place", images: ["AKADA.png", "AKADA_2.png"], year: 2021, description: "A flawless victory at the Akada Gaming Tournament, marking our second consecutive championship title in India!" },
-            { id: 11, badge: "#11", date: "2021-09-05", title: "Lenovo x Intel Rise of LEGION - Epic Grand Finals", placement: "2nd Place", prize: "$1000", images: ["LENOVO.png", "LENOVO_2.png"], year: 2021, description: "A thrilling second-place finish in the high-stakes Lenovo x Intel tournament, demonstrating our ability to perform under pressure and secure significant winnings." },
+            { id: 11, badge: "#11", date: "2021-09-05", title: "Lenovo x Intel Rise of LEGION - Epic Grand Finals", placement: "2nd Place", images: ["LENOVO.png", "LENOVO_2.png"], year: 2021, description: "A thrilling second-place finish in the high-stakes Lenovo x Intel tournament, demonstrating our ability to perform under pressure and secure significant winnings." },
             { id: 12, badge: "#12", date: "2021-11-08", title: "Range WARMASTERS Apex Legends - Strategic Second", placement: "2nd Place", images: ["RWM.png"], year: 2021, description: "Our strategic depth shone through as we claimed the runner-up position in the challenging Range WARMASTERS event." },
             // 2022
             { id: 13, badge: "#13", date: "2022-10-10", title: "Crossfire Tournament - Champion by Kills!", placement: "Tied (Champion by Kills)", images: ["CFT.png"], year: 2022, description: "A dominant performance leading to a championship by total kills, showcasing our aggressive and effective gameplay." },
