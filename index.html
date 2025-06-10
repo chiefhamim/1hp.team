@@ -426,9 +426,8 @@
     }
     
     /* ==============================================
-       MOBILE BUTTON SYSTEM - Enhanced Discord Integration
+       MOBILE BUTTON SYSTEM - Enhanced Discord Integration with Proportional W Button
        ============================================== */
-    
     /* Base Mobile Buttons */
     .mobile-achievement-btn,
     .mobile-recruitment-btn,
@@ -456,8 +455,12 @@
     .mobile-achievement-btn {
         background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         color: #000000;
-        min-width: 60px;
-        font-weight: 700;
+        /* UPDATED: Match Discord's square dimensions with enhanced font */
+        min-width: 44px;
+        width: 44px;
+        padding: 0.6rem;
+        font-weight: 800; /* Changed from 700 to 800 (bold) */
+        font-size: 0.915rem; /* Changed from 0.8rem to 0.815rem (+1px equivalent) */
         letter-spacing: 0.025em;
     }
     
@@ -476,63 +479,8 @@
         padding: 0.6rem;
     }
     
-    /* Mobile Discord Button Enhancement */
-    .mobile-discord-btn img {
-        width: 18px !important;
-        height: 18px !important;
-        min-width: 18px;
-        max-width: 18px;
-        flex-shrink: 0;
-        object-fit: contain;
-        aspect-ratio: 1;
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transform-origin: center;
-        filter: brightness(1);
-    }
-    
-    .mobile-discord-btn:hover img {
-        animation: discord-mobile-wobble 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        filter: brightness(1.1) drop-shadow(0 0 6px rgba(88, 101, 242, 0.4));
-    }
-    
-    @keyframes discord-mobile-wobble {
-        0% { transform: rotate(0deg) scale(1); }
-        15% { transform: rotate(-8deg) scale(1.05); }
-        30% { transform: rotate(8deg) scale(1.1); }
-        45% { transform: rotate(-5deg) scale(1.08); }
-        60% { transform: rotate(5deg) scale(1.12); }
-        75% { transform: rotate(-2deg) scale(1.05); }
-        90% { transform: rotate(2deg) scale(1.02); }
-        100% { transform: rotate(0deg) scale(1.2); }
-    }
-    
-    /* Mobile Button Hover Effects */
-    .mobile-achievement-btn:hover {
-        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 
-            0 8px 20px rgba(245, 158, 11, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
-    
-    .mobile-recruitment-btn:hover {
-        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 
-            0 8px 20px rgba(220, 38, 38, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-    
-    .mobile-discord-btn:hover {
-        background: linear-gradient(135deg, #6366f1 0%, #5865F2 100%);
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 
-            0 8px 20px rgba(88, 101, 242, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-    
     /* ==============================================
-       TABLET BUTTON SYSTEM - Enhanced Discord Integration  
+       TABLET BUTTON SYSTEM - Enhanced Discord Integration with Proportional W Button  
        ============================================== */
     
     .tablet-achievement-btn,
@@ -561,8 +509,12 @@
     .tablet-achievement-btn {
         background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         color: #000000;
-        min-width: 70px;
-        font-weight: 700;
+        /* UPDATED: Match Discord's square dimensions with enhanced font */
+        min-width: 48px;
+        width: 48px;
+        padding: 0.75rem;
+        font-weight: 800; /* Changed from 700 to 800 (bold) */
+        font-size: 0.965rem; /* Changed from 0.95rem to 0.965rem (+1px equivalent) */
         letter-spacing: 0.025em;
     }
     
@@ -804,7 +756,7 @@
     }
     
     /* ==============================================
-       ENHANCED PARTICLE & GLOW EFFECTS
+       FALLEN STARS PARTICLE & GLOW EFFECTS - SMOOTH NO JITTER
        ============================================== */
     
     .btn-glow-layer {
@@ -900,7 +852,7 @@
         }
     }
     
-    /* Modern Button Particles */
+    /* FALLEN STARS PARTICLE SYSTEM */
     .btn-particles {
         position: absolute;
         inset: 0;
@@ -909,48 +861,296 @@
         border-radius: 0.75rem;
     }
     
-    .particle {
+    /* Different Star Sizes and Shapes */
+    .star-particle {
         position: absolute;
+        pointer-events: none;
+        opacity: 0;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+        transition: none; /* Remove all transitions for smoothest motion */
+    }
+    
+    /* Large Stars */
+    .star-particle.large {
+        width: 12px;
+        height: 12px;
+        background: linear-gradient(45deg, 
+            rgba(255, 255, 255, 1) 0%, 
+            rgba(255, 223, 0, 0.9) 50%, 
+            rgba(255, 255, 255, 1) 100%);
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        filter: drop-shadow(0 0 12px rgba(255, 223, 0, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 1));
+    }
+    
+    /* Medium Stars */
+    .star-particle.medium {
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(45deg, 
+            rgba(255, 255, 255, 0.95) 0%, 
+            rgba(173, 216, 230, 0.9) 50%, 
+            rgba(255, 255, 255, 0.95) 100%);
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        filter: drop-shadow(0 0 8px rgba(173, 216, 230, 0.7)) drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+    }
+    
+    /* Small Stars */
+    .star-particle.small {
         width: 4px;
         height: 4px;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 100%);
+        background: linear-gradient(45deg, 
+            rgba(255, 255, 255, 0.9) 0%, 
+            rgba(255, 182, 193, 0.8) 50%, 
+            rgba(255, 255, 255, 0.9) 100%);
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        filter: drop-shadow(0 0 6px rgba(255, 182, 193, 0.6)) drop-shadow(0 0 2px rgba(255, 255, 255, 0.7));
+    }
+    
+    /* Tiny Sparkles */
+    .star-particle.tiny {
+        width: 2px;
+        height: 2px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 100%);
         border-radius: 50%;
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+    }
+    
+    /* Star Trail Effect */
+    .star-particle::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        width: 20px;
+        height: 1px;
+        background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.8) 0%, 
+            rgba(255, 255, 255, 0.4) 50%, 
+            transparent 100%);
+        transform: translateY(-50%);
         opacity: 0;
-        pointer-events: none;
-        box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+        transition: none; /* Remove transition for smoothest effect */
     }
     
-    .achievement-btn-enhanced:hover .particle,
-    .recruitment-btn-enhanced:hover .particle {
-        animation: particles-float-modern 3s ease-in-out infinite;
+    .star-particle.large::before {
+        width: 30px;
+        height: 1.5px;
+        background: linear-gradient(90deg, 
+            rgba(255, 223, 0, 0.9) 0%, 
+            rgba(255, 223, 0, 0.5) 30%, 
+            rgba(255, 255, 255, 0.3) 70%, 
+            transparent 100%);
     }
     
-    .particle:nth-child(1) { top: 15%; left: 15%; animation-delay: 0s; }
-    .particle:nth-child(2) { top: 85%; left: 85%; animation-delay: 0.6s; }
-    .particle:nth-child(3) { top: 60%; left: 25%; animation-delay: 1.2s; }
-    .particle:nth-child(4) { top: 25%; left: 75%; animation-delay: 1.8s; }
-    .particle:nth-child(5) { top: 75%; left: 50%; animation-delay: 2.4s; }
+    .star-particle.medium::before {
+        width: 20px;
+        height: 1px;
+        background: linear-gradient(90deg, 
+            rgba(173, 216, 230, 0.8) 0%, 
+            rgba(173, 216, 230, 0.4) 40%, 
+            rgba(255, 255, 255, 0.2) 80%, 
+            transparent 100%);
+    }
     
-    @keyframes particles-float-modern {
+    /* Fallen Stars Animation - Triggered on Hover - SMOOTH LINEAR MOTION */
+    .achievement-btn-enhanced:hover .star-particle,
+    .recruitment-btn-enhanced:hover .star-particle {
+        animation: fallen-stars-smooth 2.2s linear infinite;
+    }
+    
+    .discord-btn-enhanced:hover .star-particle {
+        animation: fallen-stars-discord-smooth 2.2s linear infinite;
+    }
+    
+    /* Show trails during animation - INSTANT */
+    .achievement-btn-enhanced:hover .star-particle::before,
+    .recruitment-btn-enhanced:hover .star-particle::before,
+    .discord-btn-enhanced:hover .star-particle::before {
+        opacity: 1;
+    }
+    
+    /* Scattered Star Positions - STAGGERED BUT NO DELAYS TO PREVENT JITTER */
+    .star-particle:nth-child(1) { top: 8%; left: 12%; animation-delay: 0s; }
+    .star-particle:nth-child(2) { top: 25%; left: 78%; animation-delay: 0.1s; }
+    .star-particle:nth-child(3) { top: 15%; left: 45%; animation-delay: 0.2s; }
+    .star-particle:nth-child(4) { top: 35%; left: 20%; animation-delay: 0.3s; }
+    .star-particle:nth-child(5) { top: 12%; left: 88%; animation-delay: 0.4s; }
+    .star-particle:nth-child(6) { top: 28%; left: 60%; animation-delay: 0.5s; }
+    .star-particle:nth-child(7) { top: 5%; left: 35%; animation-delay: 0.6s; }
+    .star-particle:nth-child(8) { top: 22%; left: 8%; animation-delay: 0.7s; }
+    
+    /* SMOOTH Fallen Stars Animation - LINEAR FOR NO JITTER */
+    @keyframes fallen-stars-smooth {
         0% {
-            opacity: 0;
-            transform: translateY(0px) scale(0) rotate(0deg);
+            opacity: 1; /* Start visible immediately */
+            transform: translateY(-15px) translateX(-8px) scale(0.8) rotate(0deg);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)) brightness(1.2);
         }
         25% {
-            opacity: 0.8;
-            transform: translateY(-10px) scale(0.5) rotate(90deg);
+            opacity: 1;
+            transform: translateY(20px) translateX(10px) scale(1.1) rotate(90deg);
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1)) brightness(1.4);
         }
         50% {
             opacity: 1;
-            transform: translateY(-25px) scale(1) rotate(180deg);
+            transform: translateY(50px) translateX(25px) scale(1.2) rotate(180deg);
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1)) brightness(1.5);
         }
         75% {
-            opacity: 0.6;
-            transform: translateY(-35px) scale(0.8) rotate(270deg);
+            opacity: 0.8;
+            transform: translateY(75px) translateX(35px) scale(1) rotate(270deg);
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) brightness(1.2);
         }
         100% {
             opacity: 0;
-            transform: translateY(-50px) scale(0) rotate(360deg);
+            transform: translateY(100px) translateX(45px) scale(0.3) rotate(360deg);
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3)) brightness(0.8);
+        }
+    }
+    
+    /* Discord-specific SMOOTH fallen stars with blue tint - LINEAR FOR NO JITTER */
+    @keyframes fallen-stars-discord-smooth {
+        0% {
+            opacity: 1; /* Start visible immediately */
+            transform: translateY(-18px) translateX(-10px) scale(0.9) rotate(0deg);
+            filter: drop-shadow(0 0 8px rgba(88, 101, 242, 0.9)) brightness(1.3);
+        }
+        25% {
+            opacity: 1;
+            transform: translateY(22px) translateX(12px) scale(1.2) rotate(90deg);
+            filter: drop-shadow(0 0 15px rgba(99, 102, 241, 1)) brightness(1.5);
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(55px) translateX(28px) scale(1.4) rotate(180deg);
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 1)) brightness(1.6);
+        }
+        75% {
+            opacity: 0.7;
+            transform: translateY(80px) translateX(38px) scale(1.1) rotate(270deg);
+            filter: drop-shadow(0 0 15px rgba(88, 101, 242, 0.7)) brightness(1.3);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(105px) translateX(50px) scale(0.2) rotate(360deg);
+            filter: drop-shadow(0 0 3px rgba(88, 101, 242, 0.2)) brightness(0.7);
+        }
+    }
+    
+    /* Twinkling Effect for Static Stars - SMOOTHER */
+    @keyframes star-twinkle {
+        0%, 100% { 
+            opacity: 0.3;
+            transform: scale(1);
+            filter: brightness(1);
+        }
+        50% { 
+            opacity: 1;
+            transform: scale(1.2);
+            filter: brightness(1.5);
+        }
+    }
+    
+    /* Add subtle twinkling when not actively animating */
+    .star-particle {
+        animation: star-twinkle 3s ease-in-out infinite;
+    }
+    
+    /* Override twinkling during main animation - FORCE SMOOTH LINEAR */
+    .achievement-btn-enhanced:hover .star-particle,
+    .recruitment-btn-enhanced:hover .star-particle,
+    .discord-btn-enhanced:hover .star-particle {
+        animation: fallen-stars-smooth 2.2s linear infinite !important;
+        transition: none !important;
+    }
+    
+    .discord-btn-enhanced:hover .star-particle {
+        animation: fallen-stars-discord-smooth 2.2s linear infinite !important;
+        transition: none !important;
+    }
+    
+    /* Constellation Pattern Background */
+    .btn-particles::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: 
+            radial-gradient(1px 1px at 15px 25px, rgba(255, 255, 255, 0.3), transparent),
+            radial-gradient(1px 1px at 75px 15px, rgba(255, 255, 255, 0.2), transparent),
+            radial-gradient(1px 1px at 45px 35px, rgba(255, 255, 255, 0.25), transparent),
+            radial-gradient(1px 1px at 25px 50px, rgba(255, 255, 255, 0.2), transparent),
+            radial-gradient(1px 1px at 85px 45px, rgba(255, 255, 255, 0.3), transparent);
+        background-size: 100px 60px;
+        background-repeat: repeat;
+        opacity: 0;
+        transition: opacity 0.3s ease; /* Faster constellation transition */
+        animation: constellation-glow 4s ease-in-out infinite alternate;
+    }
+    
+    .achievement-btn-enhanced:hover .btn-particles::after,
+    .recruitment-btn-enhanced:hover .btn-particles::after,
+    .discord-btn-enhanced:hover .btn-particles::after {
+        opacity: 0.6;
+    }
+    
+    @keyframes constellation-glow {
+        0% { opacity: 0.3; }
+        100% { opacity: 0.8; }
+    }
+    
+    /* Enhanced Mobile Performance */
+    @media (max-width: 768px) {
+        .star-particle.large { width: 10px; height: 10px; }
+        .star-particle.medium { width: 6px; height: 6px; }
+        .star-particle.small { width: 3px; height: 3px; }
+        .star-particle.tiny { width: 1.5px; height: 1.5px; }
+        
+        .star-particle::before {
+            width: 15px;
+        }
+        
+        .star-particle.large::before {
+            width: 20px;
+        }
+        
+        /* Even faster mobile animations */
+        .achievement-btn-enhanced:hover .star-particle,
+        .recruitment-btn-enhanced:hover .star-particle {
+            animation: fallen-stars-smooth 1.8s linear infinite !important;
+        }
+        
+        .discord-btn-enhanced:hover .star-particle {
+            animation: fallen-stars-discord-smooth 1.8s linear infinite !important;
+        }
+        
+        .btn-particles::after {
+            display: none; /* Disable constellation on mobile */
+        }
+    }
+    
+    /* Reduced Motion Support */
+    @media (prefers-reduced-motion: reduce) {
+        .star-particle {
+            animation: none !important;
+            transition: none !important;
+        }
+        
+        .star-particle::before {
+            opacity: 0 !important;
+        }
+        
+        .btn-particles::after {
+            animation: none !important;
+            opacity: 0.3 !important;
+        }
+        
+        .achievement-btn-enhanced:hover .star-particle,
+        .recruitment-btn-enhanced:hover .star-particle,
+        .discord-btn-enhanced:hover .star-particle {
+            opacity: 1 !important;
+            transform: scale(1.1) !important;
+            animation: none !important;
+            transition: none !important;
         }
     }
     
@@ -2242,155 +2442,236 @@
     
     .image-modal-content {
         position: relative;
-        width: 90vw;
-        height: 90vh;
+        width: 100vw;
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         animation: modalZoomIn var(--transition-normal) ease-out;
+        padding: 20px; /* Add padding for better mobile experience */
     }
-    
+
     .image-modal img {
-        max-width: 100%;
-        max-height: 100%;
+        /* Make sure image respects both width and height constraints */
+        max-width: min(90vw, 100%);
+        max-height: min(90vh, 100%);
         width: auto;
         height: auto;
         border-radius: 12px;
         box-shadow: 
             0 25px 50px rgba(0, 0, 0, 0.5),
-            0 0 40px rgba(139, 92, 246, 0.3);
+            0 0 40px rgba(231, 224, 236, 0.3);
         transition: transform var(--transition-normal);
         cursor: zoom-in;
         object-fit: contain;
+        /* Force the image to scale properly */
+        display: block;
     }
-    
-    .image-modal img.zoomed {
-        cursor: zoom-out;
-        transform-origin: center;
-    }
-    
-    .image-modal-close {
-        position: absolute;
-        top: -15px;
-        right: -15px;
-        width: 40px;
-        height: 40px;
-        background: rgba(139, 92, 246, 0.9);
-        border: none;
-        border-radius: 50%;
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all var(--transition-normal);
-        z-index: 10001;
-    }
-    
-    .image-modal-close:hover {
-        background: rgba(139, 92, 246, 1);
-        transform: scale(1.1);
-        box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-    }
-    
-    .zoom-controls {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 10px;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 10px;
-        border-radius: 25px;
-        backdrop-filter: blur(10px);
-        z-index: 10001;
-    }
-    
-    .zoom-btn {
-        width: 40px;
-        height: 40px;
-        background: rgba(139, 92, 246, 0.8);
-        border: none;
-        border-radius: 50%;
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all var(--transition-normal);
-    }
-    
-    .zoom-btn:hover {
-        background: rgba(139, 92, 246, 1);
-        transform: scale(1.1);
-    }
-    
-    .zoom-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        transform: none;
-    }
-    
-    .zoom-level {
-        color: white;
-        font-size: 14px;
-        padding: 0 15px;
-        display: flex;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        min-width: 60px;
-        justify-content: center;
-    }
-    
-    @keyframes modalZoomIn {
-        0% {
-            transform: scale(0.8);
-            opacity: 0;
+
+    /* Enhanced mobile-specific adjustments */
+    @media (max-width: 768px) {
+        .image-modal-content {
+            padding: 5px;
+            width: 100vw;
+            height: 100vh;
         }
-        100% {
-            transform: scale(1);
+        
+        .image-modal img {
+            /* More aggressive mobile constraints */
+            max-width: min(98vw, 100%);
+            max-height: min(85vh, 100%);
+            border-radius: 8px;
+            /* Ensure minimum size for readability */
+            min-width: 50vw;
+            min-height: auto;
+        }
+        
+        .image-modal-close {
+            top: 5px;
+            right: 5px;
+            width: 35px;
+            height: 35px;
+            font-size: 20px;
+        }
+        
+        .zoom-controls {
+            bottom: 10px;
+            padding: 6px;
+        }
+        
+        .zoom-btn {
+            width: 35px;
+            height: 35px;
+            font-size: 16px;
+        }
+    }
+
+    /* Very small mobile screens */
+    @media (max-width: 480px) {
+        .image-modal img {
+            max-width: min(99vw, 100%);
+            max-height: min(80vh, 100%);
+            min-width: 60vw; /* Ensure larger minimum on very small screens */
+        }
+    }
+        
+        .image-modal img.zoomed {
+            cursor: zoom-out;
+            transform-origin: center;
+        }
+        
+        .image-modal-close {
+            position: absolute;
+            top: 15px;  /* Changed from -15px to 15px */
+            right: 15px; /* Changed from -15px to 15px */
+            width: 40px;
+            height: 40px;
+            background: rgba(139, 92, 246, 0.9);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+            z-index: 10001;
+        }
+        
+        .image-modal-close:hover {
+            background: rgb(246, 141, 92);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+        
+        /* Enhanced mobile adjustments - make sure mobile overrides work properly */
+        @media (max-width: 768px) {
+            .image-modal-close {
+                top: 10px;  /* Ensure it's always visible on mobile */
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+            }
+        }
+        
+        /* Very small mobile screens */
+        @media (max-width: 480px) {
+            .image-modal-close {
+                top: 8px;
+                right: 8px;
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+            }
+        }
+        
+        /* Ensure close button is always accessible in fullscreen */
+        @media (max-width: 100vw) {
+            .image-modal-close {
+                top: max(10px, env(safe-area-inset-top, 10px));
+                right: max(10px, env(safe-area-inset-right, 10px));
+            }
+        }
+        
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            z-index: 10001;
+        }
+        
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(139, 92, 246, 0.8);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .zoom-btn:hover {
+            background: rgba(139, 92, 246, 1);
+            transform: scale(1.1);
+        }
+        
+        .zoom-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .zoom-level {
+            color: white;
+            font-size: 14px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            min-width: 60px;
+            justify-content: center;
+        }
+        
+        @keyframes modalZoomIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .news-card img::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+            pointer-events: none;
+        }
+        
+        .news-card:hover img::after {
             opacity: 1;
         }
-    }
-    
-    .news-card img::after {
-        content: '🔍';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity var(--transition-normal);
-        pointer-events: none;
-    }
-    
-    .news-card:hover img::after {
-        opacity: 1;
-    }
-    
-    .image-loading {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        font-size: 18px;
-        z-index: 10000;
-    }
+        
+        .image-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            z-index: 10000;
+        }
     
     /* ==============================================
        SPONSORS SECTION OPTIMIZATIONS
@@ -3699,10 +3980,10 @@
 <header class="bg-gray-900/80 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-purple-500/20">
     <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <!-- Logo with optimized loading -->
-        <a href="index.html" class="flex-shrink-0" title="Go to Home">
+        <a href="index.html" class="flex-shrink-0 logo-enhanced" title="Go to Home">
             <img class="h-10 w-auto" 
-                 src="1hp Rebrand PP_PNG.png" 
-                 alt="1hp Esports Logo"
+                 src="1hp_no_esports.png" 
+                 alt="1hp Logo"
                  width="150" 
                  height="50"
                  loading="eager"
@@ -3728,11 +4009,14 @@
                 <span class="btn-text">Our Achievements</span>
                 <div class="btn-glow-layer"></div>
                 <div class="btn-particles">
-                    <span class="particle"></span>
-                    <span class="particle"></span>
-                    <span class="particle"></span>
-                    <span class="particle"></span>
-                    <span class="particle"></span>
+                    <span class="star-particle large"></span>
+                    <span class="star-particle medium"></span>
+                    <span class="star-particle small"></span>
+                    <span class="star-particle tiny"></span>
+                    <span class="star-particle medium"></span>
+                    <span class="star-particle small"></span>
+                    <span class="star-particle large"></span>
+                    <span class="star-particle tiny"></span>
                 </div>
             </a>
             <a href="recruitment.html" class="recruitment-btn-enhanced">
@@ -3740,10 +4024,14 @@
                 <div class="btn-glow-layer"></div>
                 <div class="btn-pulse-ring"></div>
                 <div class="btn-particles">
-                    <span class="particle"></span>
-                    <span class="particle"></span>
-                    <span class="particle"></span>
-                    <span class="particle"></span>
+                    <span class="star-particle large"></span>
+                    <span class="star-particle medium"></span>
+                    <span class="star-particle small"></span>
+                    <span class="star-particle tiny"></span>
+                    <span class="star-particle medium"></span>
+                    <span class="star-particle small"></span>
+                    <span class="star-particle large"></span>
+                    <span class="star-particle tiny"></span>
                 </div>
             </a>
             <a href="https://discord.com/invite/ksvuUyMvMb"
@@ -4601,7 +4889,7 @@
                             <p class="text-gray-300 text-lg mb-8 max-w-4xl mx-auto leading-relaxed">
                                 Join the <span class="text-amber-300 font-bold bg-amber-300/10 px-1 py-1 rounded-md">1hp family</span> and become a sponsor! 
                                 <span class="text-emerald-300 font-bold bg-emerald-300/10 px-1 py-1 rounded-md">Your brand</span> deserves to a be part of our legacy. 
-                                <span class="text-rose-300 font-bold bg-rose-300/10 px-1 py-1 rounded-md">Together</span>, we'll create championship moments that inspire gamers worldwide and showcase your 
+                                Together we'll create championship moments that inspire gamers worldwide and showcase your 
                                 <span class="text-orange-300 font-bold bg-orange-300/10 px-1 py-1 rounded-md">commitment to excellence</span> in the esports community.
                             </p>
                             
@@ -5200,13 +5488,36 @@
                 calculateBaseZoom() {
                     if (this.naturalSize.width === 0 || this.naturalSize.height === 0) return 1;
                     
-                    const containerWidth = this.modal.offsetWidth * 0.9;
-                    const containerHeight = this.modal.offsetHeight * 0.9;
+                    // Get screen dimensions
+                    const screenWidth = window.innerWidth;
+                    const screenHeight = window.innerHeight;
                     
-                    const scaleX = containerWidth / this.naturalSize.width;
-                    const scaleY = containerHeight / this.naturalSize.height;
+                    // Use responsive percentages based on screen size
+                    let viewportPercent;
+                    if (screenWidth <= 768) {
+                        viewportPercent = 0.95; // Mobile - 95% of screen
+                    } else if (screenWidth <= 1024) {
+                        viewportPercent = 0.90; // Tablet - 90% of screen  
+                    } else {
+                        viewportPercent = 0.85; // Desktop - 85% of screen
+                    }
                     
-                    return Math.min(scaleX, scaleY);
+                    const targetWidth = screenWidth * viewportPercent;
+                    const targetHeight = screenHeight * viewportPercent;
+                    
+                    // Calculate scale to fit within screen bounds
+                    const scaleX = targetWidth / this.naturalSize.width;
+                    const scaleY = targetHeight / this.naturalSize.height;
+                    
+                    // Use the smaller scale to ensure image fits completely
+                    const scale = Math.min(scaleX, scaleY);
+                    
+                    // For mobile, ensure minimum readable size
+                    if (screenWidth <= 768) {
+                        return Math.max(scale, 0.3); // Minimum 30% of original size on mobile
+                    }
+                    
+                    return Math.max(scale, 0.1); // Minimum 10% for other devices
                 }
             
                 updateZoom(newZoom) {
@@ -5256,14 +5567,23 @@
                         
                         this.modalImage.src = imageSrc;
                         this.modalImage.alt = imageAlt;
-                        this.modalImage.style.display = 'block';
-                        this.imageLoading.style.display = 'none';
-                        this.zoomControls.style.display = 'flex';
                         
+                        // Force immediate size calculation
                         requestAnimationFrame(() => {
+                            this.modalImage.style.display = 'block';
+                            this.imageLoading.style.display = 'none';
+                            this.zoomControls.style.display = 'flex';
+                            
+                            // Force the browser to apply the new baseZoom
                             requestAnimationFrame(() => {
                                 this.updateZoom(1);
                                 this.addSizeInfo();
+                                
+                                // For mobile, ensure the image is properly sized
+                                if (window.innerWidth <= 768) {
+                                    const actualScale = this.baseZoom;
+                                    this.modalImage.style.transform = `scale(${actualScale})`;
+                                }
                             });
                         });
                     };
