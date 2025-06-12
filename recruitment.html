@@ -95,10 +95,10 @@
     --section8: #6ee7b7;  /* Mint */
     --section9: #fbbf24;  /* Amber */
     --section10: #818cf8; /* Indigo */
-    --section11: #f3f4f6; /* Gray */
-    --section12: #a1a1aa; /* Stone */
-    --section13: #e0e7ef; /* Slate */
-    --section14: #e0e7ef; /* Slate */
+    --section11: #f97316; /* Orange */
+    --section12: #84cc16; /* Lime */
+    --section13: #06b6d4; /* Cyan */
+    --section14: #8b5cf6; /* Violet */
 
     /* Animation & Sizing */
     --border-radius-sm: 8px;
@@ -121,7 +121,7 @@ html {
 
 body {
     font-family: 'Gotham Pro', system-ui, -apple-system, sans-serif;
-    background: linear-gradient(170deg, var(--c-dark-1) 0%, var(--c-dark-2) 100%);
+    background: linear-gradient(170deg, #0d0d2c 0%, #1a1a3a 100%);
     color: var(--c-text-light);
     min-height: 100vh;
     overflow-x: hidden;
@@ -138,22 +138,128 @@ body {
 /* ==========================================================================
    2. SCROLLBAR STYLING
    ========================================================================== */
-::-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background: var(--c-dark-2);
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--c-secondary), var(--c-primary));
-    border-radius: 5px;
-    transition: background var(--transition-fast);
-}
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, var(--c-accent), var(--c-secondary));
+
+    ::-webkit-scrollbar { 
+        width: 12px; 
+        background: linear-gradient(180deg, rgba(17, 24, 39, 0.9) 0%, rgba(31, 41, 55, 0.8) 100%);
+    }
+
+    ::-webkit-scrollbar-track { 
+        background: linear-gradient(180deg, 
+            rgba(17, 24, 39, 0.9) 0%, 
+            rgba(31, 41, 55, 0.8) 50%,
+            rgba(55, 65, 81, 0.7) 100%);
+        border-radius: 8px;
+        border: 1px solid rgba(139, 92, 246, 0.1);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb { 
+        background: linear-gradient(180deg, 
+            #ec4158 0%, 
+            #dc2626 25%, 
+            #a855f7 75%, 
+            #7c3aed 100%);
+        border-radius: 8px;
+        border: 2px solid rgba(17, 24, 39, 0.3);
+        box-shadow: 
+            0 0 10px rgba(236, 65, 88, 0.4),
+            0 0 20px rgba(168, 85, 247, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+    ::-webkit-scrollbar-thumb:hover { 
+        background: linear-gradient(180deg, 
+            #f87171 0%, 
+            #ef4444 25%, 
+            #c084fc 75%, 
+            #8b5cf6 100%);
+        box-shadow: 
+            0 0 15px rgba(236, 65, 88, 0.6),
+            0 0 30px rgba(168, 85, 247, 0.5),
+            0 0 40px rgba(236, 65, 88, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        transform: scale(1.1);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: linear-gradient(180deg, 
+            #b91c1c 0%, 
+            #991b1b 25%, 
+            #a855f7 75%, 
+            #7c3aed 100%);
+        box-shadow: 
+            0 0 20px rgba(236, 65, 88, 0.8),
+            0 0 40px rgba(168, 85, 247, 0.7),
+            inset 0 2px 4px rgba(0, 0, 0, 0.3),
+            inset 0 -2px 4px rgba(255, 255, 255, 0.1);
+        transform: scale(0.95);
+    }
+
+    /* Scrollbar corner */
+    ::-webkit-scrollbar-corner {
+        background: linear-gradient(135deg, 
+            rgba(17, 24, 39, 0.9) 0%, 
+            rgba(31, 41, 55, 0.8) 100%);
+    }
+
+        /* Firefox scrollbar support */
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: #ec4158 rgba(17, 24, 39, 0.9);
+    }
+
+    /* Enhanced scrollbar for different states */
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: linear-gradient(180deg, 
+            rgba(236, 65, 88, 0.6) 0%, 
+            rgba(220, 38, 38, 0.6) 25%, 
+            rgba(168, 85, 247, 0.6) 75%, 
+            rgba(124, 58, 237, 0.6) 100%);
+        opacity: 0.7;
+    }
+
+    /* Mobile scrollbar enhancement */
+    @media (max-width: 768px) {
+    ::-webkit-scrollbar { 
+        width: 8px; 
+    }
+    
+    ::-webkit-scrollbar-thumb:hover { 
+        transform: none; /* Disable scale on mobile */
+    }
+}
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+    ::-webkit-scrollbar-thumb { 
+        background: linear-gradient(180deg, #dc2626 0%, #8b5cf6 100%);
+        border: 2px solid #ffffff;
+    }
+    
+    ::-webkit-scrollbar-track { 
+        background: #000000;
+        border: 1px solid #ffffff;
+    }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+    ::-webkit-scrollbar-thumb {
+        transition: none;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        transform: none;
+    }
+    
+    ::-webkit-scrollbar-thumb:active {
+        transform: none;
+    }
+    }
 /* ==========================================================================
    3. MAIN CONTAINER & HEADER
    ========================================================================== */
@@ -254,7 +360,15 @@ header p {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--section-color, var(--c-primary));
-    text-shadow: 0 0 2px hsla(from var(--section-color, var(--c-primary)) h s l / 0.5);
+    
+    /* Enhanced drop shadow effects */
+    text-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.5),
+        0 6px 12px rgba(0, 0, 0, 0.3),
+        0 12px 24px rgba(0, 0, 0, 0.2),
+        0 0 1px hsla(from var(--section-color, var(--c-primary)) h s l / 0.6),
+        0 0 1px hsla(from var(--section-color, var(--c-primary)) h s l / 0.3);
+    
     padding-left: 1rem;
 }
 
@@ -271,7 +385,7 @@ header p {
     font-weight: 700;
     color: var(--section-color, var(--c-primary));
     font-size: 1.07rem;
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Gotham Pro', system-ui, sans-serif;
     letter-spacing: 0.5px;
     text-shadow: 0 0 1px hsla(from var(--section-color, var(--c-primary)) h s l / 0.5);
     text-align: center;
@@ -279,7 +393,7 @@ header p {
 
 .required {
     color: var(--c-warning);
-    font-weight: 800;
+    font-weight: 100;
 }
 
 /* ==========================================================================
@@ -384,7 +498,7 @@ select option {
 
 .space-y-2 > label span {
     color: var(--c-text-light);
-    font-weight: 500;
+    font-weight: 200;
     font-size: 1rem;
     line-height: 1.4;
     cursor: pointer;
@@ -408,7 +522,7 @@ select option {
 
 .space-y-2 > label:has(input:checked) span {
     color: var(--section-color, var(--c-primary));
-    font-weight: 600;
+    font-weight: 200;
 }
 
 /* ==========================================================================
@@ -498,7 +612,7 @@ button[type="submit"]:active {
 }
 
 .player-card-header {
-    background: linear-gradient(135deg, #818cf8 0%, #c084fc 25%, #f472b6 50%, #fb923c 75%, #facc15 100%);
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 25%, #ff8a80 50%, #ff5722 75%, #e91e63 100%);background: linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #9b59b6 50%, #e74c3c 75%, #f39c12 100%);
     padding: 30px 40px;
     text-align: center;
     position: relative;
@@ -525,7 +639,7 @@ button[type="submit"]:active {
 }
 
 .card-close:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 0, 0, 0.2);
     transform: scale(1.1) rotate(90deg);
 }
 
@@ -535,21 +649,15 @@ button[type="submit"]:active {
     top: -50%; left: -50%;
     width: 200%; height: 200%;
     background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%);
-    animation: headerShine 5s linear infinite;
-}
-
-@keyframes headerShine {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
 
 .player-card-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 900;
     color: white;
     margin: 0;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
     position: relative;
     z-index: 1;
 }
@@ -585,20 +693,20 @@ button[type="submit"]:active {
 }
 
 /* Card Section Theming */
-.card-section:nth-child(1) { --section-color: var(--section1); }
-.card-section:nth-child(2) { --section-color: var(--section2); }
-.card-section:nth-child(3) { --section-color: var(--section3); }
-.card-section:nth-child(4) { --section-color: var(--section4); }
-.card-section:nth-child(5) { --section-color: var(--section5); }
-.card-section:nth-child(6) { --section-color: var(--section6); }
-.card-section:nth-child(7) { --section-color: var(--section7); }
-.card-section:nth-child(8) { --section-color: var(--section8); }
-.card-section:nth-child(9) { --section-color: var(--section9); }
-.card-section:nth-child(10){ --section-color: var(--section10); }
-.card-section:nth-child(11){ --section-color: var(--section11); }
-.card-section:nth-child(12){ --section-color: var(--section12); }
-.card-section:nth-child(13){ --section-color: var(--section13); }
-.card-section:nth-child(14){ --section-color: var(--section14); }
+.card-section:nth-child(1) { --section-color: var(--section1); }  /* Personal Information */
+.card-section:nth-child(2) { --section-color: var(--section2); }  /* Gaming Profile */
+.card-section:nth-child(3) { --section-color: var(--section3); }  /* Gaming Habits */
+.card-section:nth-child(4) { --section-color: var(--section4); }  /* Team Experience */
+.card-section:nth-child(5) { --section-color: var(--section5); }  /* Personality */
+.card-section:nth-child(6) { --section-color: var(--section6); }  /* 1hp & Vision */
+.card-section:nth-child(7) { --section-color: var(--section7); }  /* Additional Skills */
+.card-section:nth-child(8) { --section-color: var(--section8); }  /* Why Join 1hp */
+.card-section:nth-child(9) { --section-color: var(--section9); }  /* Current Goals */
+.card-section:nth-child(10){ --section-color: var(--section10); } /* Handling Adversity */
+.card-section:nth-child(11){ --section-color: var(--section11); } /* Team Excellence */
+.card-section:nth-child(12){ --section-color: var(--section12); } /* Technical Skills */
+.card-section:nth-child(13){ --section-color: var(--section13); } /* Communication Strengths */
+.card-section:nth-child(14){ --section-color: var(--section14); } /* Previous Clan Outcomes */
 
 .card-section-title {
     font-family: 'Montserrat', sans-serif;
@@ -667,38 +775,361 @@ button[type="submit"]:active {
     box-shadow: 0 4px 12px hsla(from var(--section-color) h s l / 0.3);
 }
 
-/* Card Actions & Footer */
+/* ==========================================================================
+   ENHANCED CARD ACTIONS & FOOTER - PREMIUM EDITION
+   ========================================================================== */
+
 .card-actions {
-    padding: 30px 40px;
-    background: rgba(35, 39, 42, 0.95);
-    border-top: 1px solid rgba(96, 165, 250, 0.2);
+    /* Enhanced background with multiple layers */
+    background: 
+        linear-gradient(135deg, rgba(35, 39, 42, 0.98) 0%, rgba(31, 41, 55, 0.95) 100%),
+        linear-gradient(45deg, rgba(59, 130, 246, 0.02) 0%, rgba(139, 92, 246, 0.02) 100%);
+    
+    /* Enhanced glassmorphism effect */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* Improved border with gradient */
+    border-top: 2px solid;
+    border-image: linear-gradient(90deg, 
+        rgba(96, 165, 250, 0.1) 0%, 
+        rgba(96, 165, 250, 0.4) 50%, 
+        rgba(96, 165, 250, 0.1) 100%) 1;
+    
+    /* Enhanced layout and spacing */
+    padding: 35px 40px;
     display: flex;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
+    align-items: center;
     flex-shrink: 0;
-    backdrop-filter: blur(10px);
+    position: relative;
+    
+    /* Subtle inner shadow for depth */
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 -2px 10px rgba(0, 0, 0, 0.1);
+    
+    /* Smooth transition for dynamic effects */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Subtle ambient glow effect */
+.card-actions::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, 
+        rgba(96, 165, 250, 0.03) 0%, 
+        transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Enhanced action buttons */
 .action-btn {
-    padding: 15px 30px;
+    /* Core button styling */
+    padding: 16px 32px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    min-width: 150px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    min-width: 160px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    
+    /* Enhanced text styling */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    
+    /* Advanced transitions */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Initial shadow and transform */
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(0) scale(1);
+    
+    /* Button stability */
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-.btn-new { background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%); color: #1a1d23; }
-.btn-edit { background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); color: white; }
-.btn-submit { background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%); color: white; }
+/* Shimmer effect overlay for all buttons */
+.action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+    );
+    transition: left 0.6s ease-in-out;
+    z-index: 1;
+}
 
+.action-btn:hover::before {
+    left: 100%;
+}
+
+/* Individual button color schemes */
+.btn-new { 
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    color: #ffffff;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.btn-edit { 
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    color: #ffffff;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.btn-submit { 
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
+    color: #ffffff;
+    border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+/* Enhanced hover states */
 .action-btn:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.25),
+        0 4px 15px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.btn-new:hover { box-shadow: 0 8px 20px rgba(110, 231, 183, 0.4); }
-.btn-edit:hover { box-shadow: 0 8px 20px rgba(96, 165, 250, 0.4); }
-.btn-submit:hover { box-shadow: 0 8px 20px rgba(244, 114, 182, 0.4); }
+.btn-new:hover { 
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+    box-shadow: 
+        0 12px 30px rgba(16, 185, 129, 0.4),
+        0 4px 15px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(16, 185, 129, 0.6);
+}
+
+.btn-edit:hover { 
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+    box-shadow: 
+        0 12px 30px rgba(59, 130, 246, 0.4),
+        0 4px 15px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.btn-submit:hover { 
+    background: linear-gradient(135deg, #db2777 0%, #be185d 50%, #9d174d 100%);
+    box-shadow: 
+        0 12px 30px rgba(236, 72, 153, 0.4),
+        0 4px 15px rgba(236, 72, 153, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(236, 72, 153, 0.6);
+}
+
+/* Active/pressed states */
+.action-btn:active {
+    transform: translateY(-2px) scale(1.02);
+    transition: all 0.1s ease;
+    box-shadow: 
+        0 6px 15px rgba(0, 0, 0, 0.2),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus states for accessibility */
+.action-btn:focus {
+    outline: none;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.2),
+        0 0 0 3px rgba(96, 165, 250, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Loading state for submit button */
+.action-btn.loading {
+    pointer-events: none;
+    position: relative;
+    color: transparent !important;
+}
+
+.action-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: buttonSpin 1s linear infinite;
+    z-index: 2;
+}
+
+@keyframes buttonSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Button icons enhancement (if you add icons) */
+.action-btn .icon {
+    margin-right: 8px;
+    font-size: 1.1em;
+    transition: transform 0.3s ease;
+}
+
+.action-btn:hover .icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Enhanced responsive design */
+@media (max-width: 1024px) {
+    .card-actions {
+        padding: 30px 25px;
+        gap: 20px;
+    }
+    
+    .action-btn {
+        min-width: 140px;
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-actions {
+        flex-direction: column;
+        gap: 16px;
+        padding: 25px 20px;
+    }
+    
+    .action-btn {
+        width: 100%;
+        min-width: unset;
+        padding: 16px 24px;
+        font-size: 1rem;
+        
+        /* Reduce transforms on mobile for performance */
+        transform: none;
+    }
+    
+    .action-btn:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+    
+    /* Disable shimmer on mobile for performance */
+    .action-btn::before {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-actions {
+        padding: 20px 15px;
+        gap: 12px;
+    }
+    
+    .action-btn {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+        letter-spacing: 0.3px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .action-btn {
+        border-width: 2px;
+        border-style: solid;
+    }
+    
+    .btn-new { border-color: #10b981; }
+    .btn-edit { border-color: #3b82f6; }
+    .btn-submit { border-color: #ec4899; }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .action-btn {
+        transition: all 0.2s ease;
+    }
+    
+    .action-btn::before {
+        display: none;
+    }
+    
+    .action-btn:hover {
+        transform: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .action-btn.loading::after {
+        animation: none;
+        border: 2px solid #ffffff;
+    }
+}
+
+/* Enhanced button state classes for JavaScript control */
+.action-btn.success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: #ffffff !important;
+}
+
+.action-btn.error {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    color: #ffffff !important;
+}
+
+.action-btn.disabled {
+    background: rgba(107, 114, 128, 0.5) !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Subtle entrance animation */
+@keyframes cardActionsEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-actions {
+    animation: cardActionsEntrance 0.6s ease-out 0.3s both;
+}
+
+/* Individual button entrance with stagger */
+.action-btn:nth-child(1) {
+    animation: cardActionsEntrance 0.5s ease-out 0.4s both;
+}
+
+.action-btn:nth-child(2) {
+    animation: cardActionsEntrance 0.5s ease-out 0.5s both;
+}
+
+.action-btn:nth-child(3) {
+    animation: cardActionsEntrance 0.5s ease-out 0.6s both;
+}
 
 /* Hidden State for Card */
 .player-card.hidden {
@@ -760,19 +1191,251 @@ button[type="submit"]:active {
         margin: 0 auto;
     }
 }
+        /* ==========================================================================
+           BACK TO HOME BUTTON STYLING - ENHANCED TRANSLUCENT EDITION
+           ========================================================================== */
+        .back-button {
+            /* Enhanced translucent background with dual-layer effect */
+            background: 
+                linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            
+            /* Enhanced backdrop blur for premium glass effect */
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            
+            /* Subtle multi-layered border */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                0 4px 16px rgba(96, 165, 250, 0.08);
+            
+            /* Smooth transitions with enhanced easing */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            
+            /* Subtle text shadow for depth */
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            
+            /* Enhanced border radius for modern look */
+            border-radius: 12px;
+            
+            /* Subtle gradient overlay for premium feel */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Subtle shimmer effect overlay */
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.08),
+                transparent
+            );
+            transition: left 0.8s ease-in-out;
+            z-index: 1;
+        }
+        
+        .back-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Enhanced hover state */
+        .back-button:hover {
+            /* More vibrant but still translucent background */
+            background: 
+                linear-gradient(135deg, rgba(96, 165, 250, 0.25) 0%, rgba(139, 92, 246, 0.25) 100%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+            
+            /* Enhanced transform with subtle rotation */
+            transform: translateY(-3px) scale(1.05) rotate(-0.5deg);
+            
+            /* Enhanced glow effect */
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                0 4px 16px rgba(0, 0, 0, 0.15),
+                0 8px 32px rgba(96, 165, 250, 0.15),
+                0 0 0 1px rgba(96, 165, 250, 0.1);
+            
+            /* Enhanced border */
+            border-color: rgba(255, 255, 255, 0.25);
+            
+            /* Subtle backdrop blur increase */
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+        }
+        
+        /* Active state refinement */
+        .back-button:active {
+            transform: translateY(-1px) scale(1.02) rotate(0deg);
+            transition: all 0.1s ease;
+            
+            /* Subtle inset shadow for pressed effect */
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                0 4px 16px rgba(96, 165, 250, 0.1);
+        }
+        
+        /* Enhanced SVG icon animation */
+        .back-button svg {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+            position: relative;
+            z-index: 2;
+        }
+        
+        .back-button:hover svg {
+            transform: translateX(-3px) scale(1.1);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+        }
+        
+        /* Text enhancement */
+        .back-button span,
+        .back-button {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Enhanced z-index and visibility */
+        .fixed.top-4.left-4.z-50 {
+            position: fixed !important;
+            top: 1rem !important;
+            left: 1rem !important;
+            z-index: 50 !important;
+        }
+        
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 768px) {
+            .back-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.875rem;
+                border-radius: 10px;
+                
+                /* Slightly reduced effects for mobile performance */
+                backdrop-filter: blur(15px) saturate(150%);
+                -webkit-backdrop-filter: blur(15px) saturate(150%);
+            }
+            
+            .back-button svg {
+                width: 1rem;
+                height: 1rem;
+            }
+            
+            .back-button:hover {
+                transform: translateY(-2px) scale(1.03);
+                backdrop-filter: blur(18px) saturate(170%);
+                -webkit-backdrop-filter: blur(18px) saturate(170%);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .fixed.top-4.left-4.z-50 {
+                top: 0.5rem !important;
+                left: 0.5rem !important;
+            }
+            
+            .back-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+                border-radius: 8px;
+                
+                /* Optimized for smaller screens */
+                backdrop-filter: blur(12px) saturate(130%);
+                -webkit-backdrop-filter: blur(12px) saturate(130%);
+                
+                /* Simplified shadow for performance */
+                box-shadow: 
+                    0 2px 8px rgba(0, 0, 0, 0.1),
+                    0 4px 16px rgba(96, 165, 250, 0.06);
+            }
+            
+            .back-button:hover {
+                transform: translateY(-1px) scale(1.02);
+            }
+            
+            /* Disable shimmer effect on mobile for performance */
+            .back-button::before {
+                display: none;
+            }
+        }
+        
+        /* Enhanced focus state for accessibility */
+        .back-button:focus {
+            outline: none;
+            border-color: rgba(96, 165, 250, 0.4);
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                0 0 0 3px rgba(96, 165, 250, 0.1),
+                0 4px 16px rgba(0, 0, 0, 0.15),
+                0 8px 32px rgba(96, 165, 250, 0.1);
+        }
+        
+        /* Subtle animation on page load */
+        @keyframes buttonEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .back-button {
+            animation: buttonEntrance 0.6s ease-out 0.2s both;
+        }
+        
+        /* Optional: Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            .back-button {
+                animation: none;
+                transition: all 0.2s ease;
+            }
+            
+            .back-button::before {
+                display: none;
+            }
+            
+            .back-button:hover {
+                transform: none;
+            }
+            
+            .back-button svg {
+                transition: transform 0.2s ease;
+            }
+            
+            .back-button:hover svg {
+                transform: translateX(-2px);
+            }
+        }
 </style>
 
 </head>
 <body>
   <!-- Back to Home Button -->
-  <div class="fixed top-4 left-4 z-50">
-    <a href="index.html" class="back-button orbitron inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-gray-200 hover:text-white shadow-lg">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-        <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd"/>
-      </svg>
-      Back to Home
-    </a>
-  </div>
+    <div class="fixed top-4 left-4 z-50">
+        <a href="index.html" 
+           class="back-button orbitron inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-gray-200 hover:text-white shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+            </svg>
+            Back to Home
+        </a>
+    </div>
   
   <!-- Main Container -->
   <div class="container mx-auto max-w-5xl p-4 sm:p-6 lg:p-8">
@@ -1033,7 +1696,7 @@ button[type="submit"]:active {
           
           <div id="previousClanOutcomeGroup" class="form-group hidden">
             <label>Previous Clan Outcome <span class="required">*</span> [If not first clan]</label>
-            <div class="text-sm text-gray-400 mb-3">Select all that apply to your previous clan experiences</div>
+            <div class="text-sm text-gray-400 mb-3 style="font-style: italic;">Select all that apply to your previous clan experiences</div>
             <div class="space-y-2">
               <label><input type="checkbox" name="previous_clan_outcome" value="natural_progression"><span><strong>Natural Progression</strong> - Outgrew the skill level and moved forward</span></label>
               <label><input type="checkbox" name="previous_clan_outcome" value="leadership_conflicts"><span><strong>Leadership Conflicts</strong> - Disagreements with clan management decisions</span></label>
@@ -1275,7 +1938,7 @@ button[type="submit"]:active {
           
           <div class="form-group">
             <label>Handling Adversity <span class="required">*</span></label>
-            <div class="text-sm text-gray-400 mb-3">Select all that apply - how do you handle difficult situations?</div>
+            <div class="text-sm text-gray-400 mb-3" >Select all that apply - how do you handle difficult situations?</div>
             <div class="space-y-2">
               <label><input type="checkbox" name="adversity" value="stay_calm"><span><strong>Stay Calm</strong> - Maintain composure during difficult situations</span></label>
               <label><input type="checkbox" name="adversity" value="positive_energy"><span><strong>Positive Energy</strong> - Keep teammates motivated when things go wrong</span></label>
@@ -1333,8 +1996,7 @@ button[type="submit"]:active {
           
           <div class="form-group">
             <label>Communication Strengths <span class="required">*</span></label>
-            <div class="text-sm text-gray-400 mb-3">Select all that apply - how do you excel at communication?</div>
-            <div class="space-y-2">
+            <div class="text-sm text-gray-400 mb-3">Select all that apply - how do you excel at communication?</div>            <div class="space-y-2">
               <label><input type="checkbox" name="comm_strengths" value="clear_callouts"><span><strong>Clear callouts</strong> - Precise and timely in-game information sharing</span></label>
               <label><input type="checkbox" name="comm_strengths" value="motivational_speaking"><span><strong>Motivational speaking</strong> - Inspire teammates during difficult moments</span></label>
               <label><input type="checkbox" name="comm_strengths" value="strategic_discussion"><span><strong>Strategic discussion</strong> - Contribute meaningfully to tactical planning sessions</span></label>
@@ -1374,7 +2036,7 @@ button[type="submit"]:active {
 
                 <!-- Final Questions Section -->
         <div class="space-y-6">
-          <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4">🏁 Final Questions</h2>
+          <h2 class="text-2xl font-bold text-white border-l-4 border-emerald-500 pl-4">🏁 Wrapping Up</h2>
           
           <div class="form-group">
             <label>Biggest Gaming Achievement <span class="required">*</span></label>
@@ -1415,9 +2077,9 @@ button[type="submit"]:active {
         </div>
 
         <!-- Final Submit Button -->
-        <div class="text-center pt-8">
-            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition transform hover:scale-105">
-                🚀 Review Application
+        <div class="text-center pt-6">
+            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105">
+                🔍 Review Application
             </button>
         </div>
       </form>
