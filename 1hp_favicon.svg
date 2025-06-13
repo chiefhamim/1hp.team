@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 361 361">
+  <defs>
+    <radialGradient id="radial-gradient" cx="180.5" cy="180.5" fx="180.5" fy="-76.37" r="256.87" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1b1464"/>
+      <stop offset=".18" stop-color="#120d45"/>
+      <stop offset=".39" stop-color="#0a0727"/>
+      <stop offset=".61" stop-color="#040311"/>
+      <stop offset=".81" stop-color="#010004"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="361" height="361" rx="180.5" ry="180.5" style="fill: url(#radial-gradient);"/>
+  <g>
+    <path d="M95.96,268.09h0c-15.44-15.06-24.14-35.72-24.12-57.28,0-10,.02-20,.02-30.01.01-.3.02-1.6-.95-2.71-1.19-1.36-2.87-1.34-3.1-1.33-18.44-.06-36.89-.12-55.33-.18,27.69-27.88,55.78-55.77,83.47-83.66.13,58.39-.13,116.78,0,175.17Z" style="fill: #ffce41; stroke: #96581e; stroke-miterlimit: 10; stroke-width: 2.3px;"/>
+    <path d="M265.04,268.09h0c15.44-15.06,24.14-35.72,24.12-57.28,0-10-.02-20-.02-30.01-.01-.3-.02-1.6.95-2.71,1.19-1.36,2.87-1.34,3.1-1.33,18.44-.06,36.89-.12,55.33-.18-27.69-27.88-55.78-55.77-83.47-83.66-.13,58.39.13,116.78,0,175.17Z" style="fill: #664bf0; stroke: #2b1f68; stroke-miterlimit: 10; stroke-width: 2.3px;"/>
+    <path d="M201.21,148.04c0,2.11-1.71,3.99-3.82,4-11.24.07-22.43-.03-33.68.03-2.13.01-3.92-1.71-3.92-3.84V27.5c-7.93,7.87-15.85,15.73-23.78,23.6v258.26c7.93,8.01,15.85,16.02,23.78,24.03v-157.17s41.04,0,41.04,0v157.28c8.05-7.97,16.11-15.93,24.16-23.9V51.31l-23.78-23.78v120.51Z" style="fill: #ec4158; stroke: #77212e; stroke-miterlimit: 10; stroke-width: 2.3px;"/>
+  </g>
+</svg>
